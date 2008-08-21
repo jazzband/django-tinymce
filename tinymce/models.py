@@ -1,1 +1,1 @@
-# Empty models modules
+# This application does not contain any models.

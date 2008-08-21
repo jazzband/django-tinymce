@@ -1,6 +1,6 @@
 """
-This TinyMCE widget was copied and extended from
-http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE.
+This TinyMCE widget was copied and extended from this code by John D'Agostino:
+http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
 
 from django import forms
@@ -10,21 +10,15 @@ from django.forms.widgets import flatatt
 from django.forms.util import smart_unicode
 from django.utils.html import escape
 from django.utils import simplejson
+from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
-from django.utils.translation import get_language
-from tinymce.utils import get_language_config
+from django.utils.translation import get_language, ugettext as _
 
-try:
-    JS_URL = settings.TINYMCE_JS_URL
-except AttributeError:
-    JS_URL = settings.MEDIA_URL + 'js/tiny_mce/tiny_mce_src.js'
-
-try:
-    DEFAULT_CONFIG = settings.TINYMCE_DEFAULT_CONFIG
-except AttributeError:
-    DEFAULT_CONFIG = {
-        'theme': "simple",
-    }
+JS_URL = getattr(settings, 'TINYMCE_JS_URL',
+        settings.MEDIA_URL + 'js/tiny_mce/tiny_mce.js')
+DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG',
+        {'theme': "simple"})
+USE_SPELLCHECKER = getattr(settings, 'TINYMCE_SPELLCHECKER', False)
 
 class TinyMCE(forms.Textarea):
     """
@@ -61,7 +55,6 @@ class TinyMCE(forms.Textarea):
         mce_config.update(self.mce_attrs)
         mce_config['mode'] = 'exact'
         mce_config['elements'] = final_attrs['id']
-        mce_config['spellchecker_rpc_url'] = reverse('tinymce.views.spell_check')
         mce_json = simplejson.dumps(mce_config)
 
         return mark_safe(
@@ -72,3 +65,35 @@ class TinyMCE(forms.Textarea):
 
     class Media:
             js = (JS_URL,)
+
+
+def get_language_config(content_language=None):
+    language = get_language()[:2]
+    if not content_language:
+        content_language = content_language[:2]
+    else:
+        content_language = language
+
+    config = {}
+    config['language'] = language
+
+    lang_names = SortedDict()
+    for lang, name in settings.LANGUAGES:
+        if lang[:2] not in lang_names: lang_names[lang[:2]] = []
+        lang_names[lang[:2]].append(_(name))
+    sp_langs = []
+    for lang, names in lang_names.items():
+        default = '+' if lang == content_language else ''
+        sp_langs.append(u'%s%s=%s' % (default, ' / '.join(names), lang))
+
+    config['spellchecker_languages'] = ','.join(sp_langs)
+
+    if content_language in settings.LANGUAGES_BIDI:
+        config['directionality'] = 'rtl'
+    else:
+        config['directionality'] = 'ltr'
+
+    if USE_SPELLCHECKER:
+        config['spellchecker_rpc_url'] = reverse('tinymce.views.spell_check')
+
+    return config
