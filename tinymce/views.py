@@ -55,3 +55,30 @@ def spell_check(request):
         return HttpResponse(_("Error running spellchecker"))
     return HttpResponse(simplejson.dumps(output),
             content_type='application/json')
+
+
+def flatpages_link_list(request):
+    from django.contrib.flatpages.models import FlatPage
+    link_list = [(page.title, page.url) for page in FlatPage.objects.all()]
+    return render_to_link_list(link_list)
+
+
+def render_to_link_list(link_list):
+    """
+    Returns a HttpResponse whose content is a Javscript file representing a
+    list of links suitable for use wit the TinyMCE external_link_list_url
+    configuration option. The link_list parameter must be a list of 2-tuples.
+    """
+    return render_to_js_vardef('tinyMCELinkList', link_list)
+
+def render_to_image_list(image_list):
+    """
+    Returns a HttpResponse whose content is a Javscript file representing a
+    list of images suitable for use wit the TinyMCE external_image_list_url
+    configuration option. The image_list parameter must be a list of 2-tuples.
+    """
+    return render_to_js_vardef('tinyMCEImageList', image_list)
+
+def render_to_js_vardef(var_name, var_value):
+    output = "var %s = %s" % (var_name, simplejson.dumps(var_value))
+    return HttpResponse(output, content_type='application/x-javascript')

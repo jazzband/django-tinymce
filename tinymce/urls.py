@@ -1,7 +1,8 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('',
-    url(r'^js/textareas/(?P<name>.+)/$', 'tinymce.views.textareas_js', name='tinymce-js'),
-    #url(r'^js/textareas/(?P<name>.+)/(?P<lang>.*)$', 'tinymce.views.textareas_js', name='tinymce-js'),
-    url(r'^spellchecker/$', 'tinymce.views.spell_check'),
+urlpatterns = patterns('tinymce.views',
+    url(r'^js/textareas/(?P<name>.+)/$', 'textareas_js', name='tinymce-js'),
+    #url(r'^js/textareas/(?P<name>.+)/(?P<lang>.*)$', 'textareas_js', name='tinymce-js'),
+    url(r'^spellchecker/$', 'spell_check'),
+    url(r'^flatpages_link_list/$', 'flatpages_link_list'),
 )
