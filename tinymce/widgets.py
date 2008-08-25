@@ -85,7 +85,7 @@ def get_language_config(content_language=None):
     for lang, names in lang_names.items():
         if lang == content_language:
            default = '+'
-       else:
+        else:
            default = ''
         sp_langs.append(u'%s%s=%s' % (default, ' / '.join(names), lang))
 
