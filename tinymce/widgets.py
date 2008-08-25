@@ -83,7 +83,10 @@ def get_language_config(content_language=None):
         lang_names[lang[:2]].append(_(name))
     sp_langs = []
     for lang, names in lang_names.items():
-        default = '+' if lang == content_language else ''
+        if lang == content_language:
+           default = '+'
+       else:
+           default = ''
         sp_langs.append(u'%s%s=%s' % (default, ' / '.join(names), lang))
 
     config['spellchecker_languages'] = ','.join(sp_langs)

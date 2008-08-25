@@ -9,6 +9,12 @@ from django.utils.translation import ugettext as _
 from tinymce.widgets import TinyMCE, get_language_config
 
 def textareas_js(request, name, lang=None):
+    """
+    Returns a HttpResponse whose content is a Javscript file. The template
+    is loaded from 'tinymce/<name>_textareas.js' or
+    '<name>/tinymce_textareas.js'. Optionally, the lang argument sets the
+    content language.
+    """
     template_files = (
         'tinymce/%s_textareas.js' % name,
         '%s/tinymce_textareas.js' % name,
@@ -24,6 +30,9 @@ def textareas_js(request, name, lang=None):
 
 
 def spell_check(request):
+    """
+    Returns a HttpResponse that implements the TinyMCE spellchecker protocol.
+    """
     try:
         import enchant
 
@@ -58,6 +67,10 @@ def spell_check(request):
 
 
 def flatpages_link_list(request):
+    """
+    Returns a HttpResponse whose content is a Javscript file representing a
+    list of links to flatpages.
+    """
     from django.contrib.flatpages.models import FlatPage
     link_list = [(page.title, page.url) for page in FlatPage.objects.all()]
     return render_to_link_list(link_list)
