@@ -49,6 +49,7 @@ class TinyMCE(forms.Textarea):
         if value is None: value = ''
         value = smart_unicode(value)
         final_attrs = self.build_attrs(attrs)
+        final_attrs['name'] = name
 
         mce_config = DEFAULT_CONFIG.copy()
         mce_config.update(get_language_config(self.content_language))
