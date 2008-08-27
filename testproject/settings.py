@@ -90,6 +90,6 @@ TINYMCE_SPELLCHECKER = True
 
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "advanced",
-    'plugins': "|,spellchecker",
-    'theme_advanced_buttons3_add': "spellchecker",
+    'plugins': "spellchecker",
+    'theme_advanced_buttons3_add': "|,spellchecker",
 }
