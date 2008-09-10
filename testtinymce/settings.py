@@ -1,4 +1,4 @@
-# Django settings for testproject project.
+# Django settings for testtinymce project.
 
 import os
 
@@ -69,7 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
-ROOT_URLCONF = 'testproject.urls'
+ROOT_URLCONF = 'testtinymce.urls'
 
 TEMPLATE_DIRS = (
     "%s/%s/" % (ROOT_PATH, 'templates'),
