@@ -1,15 +1,20 @@
+#!/usr/bin/env python
+
 from distutils.core import setup
 
-setup(
-    name = "django-tinymce",
-    version = "DEV",
+app_name = 'tinymce'
+version = 'DEV'
 
-    packages = ['tinymce'],
-    package_data = {'tinymce': ['*.txt']},
+setup(
+    name = "django-%s" % app_name,
+    version = version,
+
+    packages = [app_name],
 
     author = "Joost Cassee",
     author_email = "joost@cassee.net",
-    description = "A Django application that contains a widget to render a form field as a TinyMCE editor.",
+    description = "A Django application that contains a widget to render a" \
+            " form field as a TinyMCE editor.",
     long_description = \
 """
 Use the TinyMCE editor for your form textareas.
@@ -22,7 +27,7 @@ Features:
 * Enables predefined link and image lists for dialogs.
 """,
     license = "MIT License",
-    keywords = "django",
+    keywords = "django widget tinymce",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
@@ -34,6 +39,7 @@ Features:
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    url = "http://code.google.com/p/django-tinymce/",
-    download_url = "http://django-tinymcel.googlecode.com/files/tinymce-1.0.tar.gz",
+    url = "http://code.google.com/p/django-%s/" % app_name,
+    download_url = "http://code.google.com/p/django-%s/downloads/list" \
+            % app_name,
 )
