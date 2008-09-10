@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 app_name = 'tinymce'
-version = 'DEV'
+version = '1.0'
 
 setup(
     name = "django-%s" % app_name,
