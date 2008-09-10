@@ -28,7 +28,7 @@ Features:
 """,
     license = "MIT License",
     keywords = "django widget tinymce",
-    classifiers=[
+    classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Framework :: Django',
@@ -39,6 +39,7 @@ Features:
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
+    platforms = ['any'],
     url = "http://code.google.com/p/django-%s/" % app_name,
     download_url = "http://code.google.com/p/django-%s/downloads/list" \
             % app_name,
