@@ -1,3 +1,6 @@
+# Copyright (c) 2008 Joost Cassee
+# Licensed under the terms of the MIT License (see LICENSE.txt)
+
 """
 This TinyMCE widget was copied and extended from this code by John D'Agostino:
 http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE

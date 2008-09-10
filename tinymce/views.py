@@ -1,3 +1,6 @@
+# Copyright (c) 2008 Joost Cassee
+# Licensed under the terms of the MIT License (see LICENSE.txt)
+
 import logging
 from django.forms import ModelForm
 from django.forms.models import modelformset_factory
