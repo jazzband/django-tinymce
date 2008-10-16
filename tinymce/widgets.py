@@ -8,6 +8,7 @@ http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 
 from django import forms
 from django.conf import settings
+from django.contrib.admin import widgets as admin_widgets
 from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt
 from django.forms.util import smart_unicode
@@ -69,6 +70,10 @@ class TinyMCE(forms.Textarea):
 
     class Media:
             js = (JS_URL,)
+
+
+class AdminTinyMCE(admin_widgets.AdminTextareaWidget, TinyMCE):
+    pass
 
 
 def get_language_config(content_language=None):
