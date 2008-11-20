@@ -57,6 +57,7 @@ class TinyMCE(forms.Textarea):
         value = smart_unicode(value)
         final_attrs = self.build_attrs(attrs)
         final_attrs['name'] = name
+        assert 'id' in final_attrs, "TinyMCE widget attributes must contain 'id'"
 
         mce_config = DEFAULT_CONFIG.copy()
         mce_config.update(get_language_config(self.content_language))
