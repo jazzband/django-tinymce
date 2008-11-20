@@ -18,11 +18,14 @@ from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
 
-JS_URL = getattr(settings, 'TINYMCE_JS_URL',
-        settings.MEDIA_URL + 'js/tiny_mce/tiny_mce.js')
 DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG',
         {'theme': "simple"})
 USE_SPELLCHECKER = getattr(settings, 'TINYMCE_SPELLCHECKER', False)
+USE_COMPRESSOR = getattr(settings, 'TINYMCE_COMPRESSOR', False)
+JS_URL = getattr(settings, 'TINYMCE_JS_URL', '%sjs/tiny_mce/%s' % (
+    settings.MEDIA_URL,
+    USE_COMPRESSOR and 'tiny_mce_gzip.js' or 'tiny_mce.js',
+))
 
 class TinyMCE(forms.Textarea):
     """
@@ -60,16 +63,26 @@ class TinyMCE(forms.Textarea):
         mce_config.update(self.mce_attrs)
         mce_config['mode'] = 'exact'
         mce_config['elements'] = final_attrs['id']
+        mce_config['strict_loading_mode'] = 1
         mce_json = simplejson.dumps(mce_config)
 
-        return mark_safe(
-                u'<textarea%s>%s</textarea>'
-                u'<script type="text/javascript">tinyMCE.init(%s)</script>'
-                    % (flatatt(final_attrs), escape(value), mce_json)
-            )
+        html = [u'<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
+        if USE_COMPRESSOR:
+            compressor_config = {
+                'plugins': mce_config['plugins'],
+                'themes': mce_config['theme'],
+                'languages': mce_config['language'],
+                'diskcache': True,
+                'debug': False,
+            }
+            compressor_json = simplejson.dumps(compressor_config)
+            html.append(u'<script type="text/javascript">tinyMCE_GZ.init(%s)</script>' % compressor_json)
+        html.append(u'<script type="text/javascript">tinyMCE.init(%s)</script>' % mce_json)
+
+        return mark_safe(u'\n'.join(html))
 
     class Media:
-            js = (JS_URL,)
+        js = (JS_URL,)
 
 
 class AdminTinyMCE(admin_widgets.AdminTextareaWidget, TinyMCE):
@@ -93,9 +106,9 @@ def get_language_config(content_language=None):
     sp_langs = []
     for lang, names in lang_names.items():
         if lang == content_language:
-           default = '+'
+            default = '+'
         else:
-           default = ''
+            default = ''
         sp_langs.append(u'%s%s=%s' % (default, ' / '.join(names), lang))
 
     config['spellchecker_languages'] = ','.join(sp_langs)

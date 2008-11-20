@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+class TestPage(models.Model):
+    content1 = models.TextField()
+    content2 = models.TextField()

@@ -2,14 +2,12 @@
 # Licensed under the terms of the MIT License (see LICENSE.txt)
 
 import logging
-from django.forms import ModelForm
-from django.forms.models import modelformset_factory
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.utils import simplejson
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
-from tinymce.widgets import TinyMCE, get_language_config
+from tinymce.compressor import gzip_compressor
+from tinymce.widgets import get_language_config
 
 def textareas_js(request, name, lang=None):
     """
@@ -77,6 +75,13 @@ def flatpages_link_list(request):
     from django.contrib.flatpages.models import FlatPage
     link_list = [(page.title, page.url) for page in FlatPage.objects.all()]
     return render_to_link_list(link_list)
+
+
+def compressor(request):
+    """
+    Returns a GZip-compressed response.
+    """
+    return gzip_compressor(request)
 
 
 def render_to_link_list(link_list):

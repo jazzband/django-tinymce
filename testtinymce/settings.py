@@ -88,6 +88,8 @@ INSTALLED_APPS = (
 
 TINYMCE_SPELLCHECKER = True
 
+TINYMCE_COMPRESSOR = True
+
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "advanced",
     'plugins': "spellchecker",

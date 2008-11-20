@@ -1,1 +1,0 @@
-from testapp import admin
