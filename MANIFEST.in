@@ -1,1 +1,2 @@
-include *.txt
+include *.txt *.py
+include docs/*.rst

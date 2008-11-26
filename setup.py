@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 from distutils.core import setup
+import metadata
 
-app_name = 'tinymce'
-version = 'DEV'
+app_name = metadata.name
+version = metadata.version
 
 setup(
     name = "django-%s" % app_name,
@@ -25,6 +26,7 @@ Features:
 * Enhanced support for content languages.
 * Integration with the TinyMCE spellchecker.
 * Enables predefined link and image lists for dialogs.
+* Can compress the TinyMCE javascript files.
 """,
     license = "MIT License",
     keywords = "django widget tinymce",

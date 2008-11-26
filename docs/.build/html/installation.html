@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+ 
+ <title>django-tinymce - Google Code</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ 
+ <link rel="shortcut icon" href="http://code.google.com/favicon.ico"/>
+ <link type="text/css" rel="stylesheet"
+       href="_static/custom.css" />
+ <link type="text/css" rel="stylesheet"
+       href="http://code.google.com/hosting/css/d_20081006.css" />
+ <link rel="stylesheet"  type="text/css"
+       href="_static/pygments.css" /> 
+ 
+ <link type="application/atom+xml" rel="alternate"
+ href="/feeds/p/django-tinymce/svnchanges/basic?path=/wiki/" />
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet"
+       href="http://code.google.com/hosting/css/d_ie.css" />
+<![endif]-->
+
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     'trunk',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: '.html'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/interface.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="tinymce vtrunk documentation" href="index.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="Welcome to the tinymce documentation" href="index.html" />
+</head>
+<body class="t6">
+ <div id=gaia>
+  <font size="-1">
+ 
+ <a href="http://code.google.com/p/support/wiki/WhatsNew" style="color:#a03">What's new?</a>
+ | <a href="http://code.google.com/p/support/">Help</a>
+ 
+ </font> 
+
+ </div>
+ <table style="padding:0px; margin: 0px 0px -6px 0; width:100%" cellpadding=0 cellspacing=0>
+ <tr>
+ <td style="width:153px"><a href="/"><img src="http://www.gstatic.com/codesite/ph/images/code_sm.png" width=153 height=55 alt="Google"/></a></td>
+ <td style="padding-left: 1.5em">
+ 
+ <div id="pname">
+ <a href="http://code.google.com/p/django-tinymce/" style="text-decoration:none; color:#000">django-tinymce</a>
+ 
+ </div>
+ <div id="psum">
+ <i><a href="http://code.google.com/p/django-tinymce/" style="text-decoration:none; color:#000">tinymce vtrunk documentation</a></i>
+ </div>
+ 
+ </td>
+ <td style="white-space:nowrap; text-align:right">
+ 
+ <form action="http://code.google.com/hosting/search">
+ <input size=30 name=q value=""/>
+ <input type=submit name=projectsearch value="Search Projects" />
+ <input type=submit name=websearch value="Search the Web" />
+ </form>
+ 
+ </tr>
+ </table>
+
+
+<table id="mt" cellspacing="0" cellpadding="0" width="100%" border="0">
+ <tr>
+ <th onclick="if (!cancelBubble) _go('http://code.google.com/p/django-tinymce/');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="http://code.google.com/p/django-tinymce/">Project&nbsp;Home</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('http://code.google.com/p/django-tinymce/downloads/list');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="http://code.google.com/p/django-tinymce/downloads/list">Downloads</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('http://code.google.com/p/django-tinymce/issues/list');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="http://code.google.com/p/django-tinymce/issues/list">Issues</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('http://code.google.com/p/django-tinymce/source/list');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="http://code.google.com/p/django-tinymce/source/list">Source</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ <td width="100%">&nbsp;</td>
+ </tr>
+</table>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ <td>
+ <div class="issueList">
+<div class=isf>
+ 
+ 
+ 
+ <a href="index.html">tinymce vtrunk documentation</a> |
+ <span>
+   <a href="usage.html" title="Usage"
+      accesskey="N">next</a>
+ </span> |
+ <span>
+   <a href="index.html" title="Welcome to the tinymce documentation"
+      accesskey="P">previous</a>
+ </span> |
+ <span class="inIssueList">
+   <span>Search</span>
+    <form action="search.html" method="GET" style="display:inline">
+      <input size=30 name=q value=""/>
+      <input type=submit name=projectsearch value="Search Documentation" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+ </span>
+
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <td height=4 align=right valign=top class="bevel-right">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ </td>
+ </tr>
+</table>
+<script>
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+
+<div id="maincol">
+<!-- IE -->
+
+
+
+<style>
+ #downloadbox { 
+ padding: 6px; 
+ overflow: hidden;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ }
+ #downloadbox a {
+ margin: 0 0 0 0;
+ display: block;
+ padding-left: 0px;
+ }
+ #owners a, #members a { white-space: nowrap; }
+</style>
+
+<div style="float:right; width:25em; margin:0 0 1em 2em">
+
+ 
+ <div class=pmeta_bubble_bg>
+ <div class="round4"></div>
+ <div class="round2"></div>
+
+ <div class="round1"></div>
+ <div class="box-inner">
+ <table class="pmeta" cellpadding=5>
+ <tr><th>Previous:</th>
+ <td><ul>
+ 
+ <li>
+   <a href="index.html" title="previous chapter">Welcome to the tinymce documentation</a>
+ </li>
+ 
+
+ 
+ </ul></td>
+ </tr>
+ <tr><th>Next:</th>
+ <td><ul>
+ 
+ <li>
+   <a href="usage.html" title="next chapter">Usage</a>
+ </li>
+ 
+
+ 
+ </ul></td>
+ </tr>
+ 
+ 
+ 
+ </table>
+
+ </div>
+ <div class="round1"></div>
+ <div class="round2"></div>
+ <div class="round4"></div>
+ </div>
+ 
+ 
+ 
+ <div style="background:#ddf8cc; margin-bottom: 5px;table-layout:fixed">
+
+ <div class="round4"></div>
+
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <div id=downloadbox>
+  <b>Table of Contents</b><br/>
+  <table class="pmeta toc" cellpadding=5><tr><td>
+	<ul>
+<li><a class="reference" href="">Installation</a><ul>
+<li><a class="reference" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference" href="#id1">Installation</a></li>
+<li><a class="reference" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+
+  </td></tr></table>
+
+ 
+ </div>
+ </div>
+ <div class="round1"></div>
+ <div class="round2"></div>
+ <div class="round4"></div>
+ </div>
+ 
+ 
+
+
+ </div>
+</div>
+
+ <div style="padding:0 3em 1.2em 0">
+   
+     
+  
+  <div class="section">
+<h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>This section describes how to install the tinymce application in your Django project.</p>
+<div class="section">
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>The tinymce application requires <a class="reference" href="http://www.djangoproject.com/download/">Django</a> version 1.0 or higher. You will also need <a class="reference" href="http://tinymce.moxiecode.com/download.php">TinyMCE</a> version 3.0 or higher and optionally a <a class="reference" href="http://tinymce.moxiecode.com/download_i18n.php">language pack</a> for your projects languages. If you want to use the <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker">spellchecker plugin</a> using the supplied view (no PHP needed) you must install the <a class="reference" href="http://pyenchant.sourceforge.net/">PyEnchant</a> package and dictionaries for your project languages.</p>
+</div>
+<div class="section">
+<h2 id="id1">Installation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Place the <tt class="docutils literal"><span class="pre">tinymce</span></tt> module in your Python path. You could put it into your Django project directory or run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> from a shell.)</li>
+<li>Copy the <tt class="docutils literal"><span class="pre">jscripts/tiny_mce</span></tt> directory from the TinyMCE distribution into a directory named <tt class="docutils literal"><span class="pre">js</span></tt> in your media root. You can override the location in your settings (see below).</li>
+<li>If you want to use the TinyMCE compressor, copy <tt class="docutils literal"><span class="pre">media/tiny_mce_gzip.js</span></tt> from the <tt class="docutils literal"><span class="pre">tinymce</span></tt> module into the same directory as <tt class="docutils literal"><span class="pre">tiny_mce.js</span></tt> from the previous step.</li>
+<li>If you want to use any of the views add tinymce your installed applications list and URLconf:</li>
+</ol>
+<p><tt class="docutils literal"><span class="pre">settings.py</span></tt>:</p>
+<pre>INSTALLED_APPS = (
+    ...
+    'tinymce',
+    ...
+)</pre>
+<p><tt class="docutils literal"><span class="pre">urls.py</span></tt>:</p>
+<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="p">(</span><span class="s">r&#39;^tinymce/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;tinymce.urls&#39;</span><span class="p">)),</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section">
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>The application can be configured by editing the project&#8217;s <tt class="docutils literal"><span class="pre">settings.py</span></tt> file.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">TINYMCE_JS_URL</span></tt> (default: <tt class="docutils literal"><span class="pre">settings.MEDIA_URL</span> <span class="pre">+</span> <span class="pre">'js/tiny_mce/tiny_mce.js'</span></tt>)</dt>
+<dd>The URL of the TinyMCE javascript file.</dd>
+<dt><tt class="docutils literal"><span class="pre">TINYMCE_DEFAULT_CONFIG</span></tt> (default: <tt class="docutils literal"><span class="pre">{'theme':</span> <span class="pre">&quot;simple&quot;}</span></tt>)</dt>
+<dd>The default TinyMCE configuration to use. See <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration">the TinyMCE manual</a> for all options.</dd>
+<dt><tt class="docutils literal"><span class="pre">TINYMCE_SPELLCHECKER</span></tt> (default: <tt class="xref docutils literal"><span class="pre">False</span></tt>)</dt>
+<dd>Whether to use the spell checker through the supplied view. You must add <tt class="docutils literal"><span class="pre">spellchecker</span></tt> to the plugin list yourself, it is not added automatically.</dd>
+<dt><tt class="docutils literal"><span class="pre">TINYMCE_COMPRESSOR</span></tt> (default: <tt class="xref docutils literal"><span class="pre">False</span></tt>)</dt>
+<dd>Whether to use the TinyMCE compressor, which gzips all Javascript files into a single stream.  This makes the overall download size 75% smaller and also reduces the number of requests. The overall initialization time for TinyMCE will be reduced dramatically if you use this option.</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight"><pre><span class="n">TINYMCE_JS_URL</span> <span class="o">=</span> <span class="s">&#39;http://debug.example.org/tiny_mce/tiny_mce_src.js&#39;</span>
+<span class="n">TINYMCE_DEFAULT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;plugins&#39;</span><span class="p">:</span> <span class="s">&quot;table,spellchecker,paste,searchreplace&quot;</span><span class="p">,</span>
+    <span class="s">&#39;theme&#39;</span><span class="p">:</span> <span class="s">&quot;advanced&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">TINYMCE_SPELLCHECKER</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">TINYMCE_COMPRESSOR</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+</div>
+
+
+   
+ 
+ 
+ </div>
+<div id="footer" dir="ltr">
+ 
+ <div class="text">
+ 
+ &copy;2008 Google -
+ <a href="http://code.google.com/">Code Home</a> -
+ <a href="http://code.google.com/tos.html">Terms of Service</a> -
+ <a href="http://www.google.com/privacy.html">Privacy Policy</a> -
+  
+ </body>
+</html>
