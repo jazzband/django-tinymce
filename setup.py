@@ -11,6 +11,7 @@ setup(
     version = version,
 
     packages = [app_name],
+    package_data = {app_name: ['templates/tinymce/*']},
 
     author = "Joost Cassee",
     author_email = "joost@cassee.net",
