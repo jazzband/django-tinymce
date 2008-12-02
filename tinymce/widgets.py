@@ -22,10 +22,8 @@ DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG',
         {'theme': "simple"})
 USE_SPELLCHECKER = getattr(settings, 'TINYMCE_SPELLCHECKER', False)
 USE_COMPRESSOR = getattr(settings, 'TINYMCE_COMPRESSOR', False)
-JS_URL = getattr(settings, 'TINYMCE_JS_URL', '%sjs/tiny_mce/%s' % (
-    settings.MEDIA_URL,
-    USE_COMPRESSOR and 'tiny_mce_gzip.js' or 'tiny_mce.js',
-))
+JS_URL = getattr(settings, 'TINYMCE_JS_URL', '%sjs/tiny_mce/tiny_mce.js' % settings.MEDIA_URL)
+
 
 class TinyMCE(forms.Textarea):
     """
@@ -82,8 +80,11 @@ class TinyMCE(forms.Textarea):
 
         return mark_safe(u'\n'.join(html))
 
-    class Media:
-        js = (JS_URL,)
+    def _media(self):
+        if USE_COMPRESSOR:
+            return forms.Media(js=(reverse('tinymce-compressor'),))
+        return forms.Media(js=(JS_URL,))
+    media = property(_media)
 
 
 class AdminTinyMCE(admin_widgets.AdminTextareaWidget, TinyMCE):

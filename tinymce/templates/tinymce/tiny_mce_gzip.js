@@ -15,25 +15,20 @@ var tinyMCE_GZ = {
 		plugins : '',
 		languages : '',
 		disk_cache : true,
-		page_name : '/tinymce/compressor/',
+		page_name : '{% url tinymce-compressor %}',
 		debug : false,
 		suffix : ''
 	},
 
 	init : function(s, cb, sc) {
-		var t = this, n, i, nl = document.getElementsByTagName('script');
+		var t = this, n, i;//, nl = document.getElementsByTagName('script');
 
 		for (n in s)
 			t.settings[n] = s[n];
 
 		s = t.settings;
 
-		for (i=0; i<nl.length; i++) {
-			n = nl[i];
-
-			if (n.src && n.src.indexOf('tiny_mce') != -1)
-                t.baseURL = n.src.substring(0, n.src.lastIndexOf('/'));
-		}
+        t.baseURL = '{{ TINYMCE_BASE_URL }}';
 
 		if (!t.coreLoaded)
 			t.loadScripts(1, s.themes, s.plugins, s.languages, cb, sc);

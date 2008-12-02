@@ -13,12 +13,16 @@ from django.conf import settings
 from django.core.cache import cache
 from django.http import HttpResponse
 from django.shortcuts import Http404
+from django.template import RequestContext
+from django.template.loader import render_to_string
 from django.utils.text import compress_string
 from django.utils.cache import patch_vary_headers, patch_response_headers
 
 from datetime import datetime
 
 TINYMCE_JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT', os.path.join(settings.MEDIA_ROOT, 'js/tiny_mce'))
+TINYMCE_BASE_URL = getattr(settings, 'TINYMCE_JS_URL', '%sjs/tiny_mce/tiny_mce.js' % settings.MEDIA_URL)
+TINYMCE_BASE_URL = TINYMCE_BASE_URL[:TINYMCE_BASE_URL.rfind('/')]
 
 def getFileContents(filename):
     try:
@@ -48,7 +52,10 @@ def gzip_compressor(request):
     response["Content-Type"] = "text/javascript"
 
     if not isJS:
-        raise Http404
+        response.write(render_to_string('tinymce/tiny_mce_gzip.js', {
+            'TINYMCE_BASE_URL': TINYMCE_BASE_URL,
+        }, context_instance=RequestContext(request)))
+        return response
 
     patch_vary_headers(response, ['Accept-Encoding'])
 
@@ -75,8 +82,8 @@ def gzip_compressor(request):
                 response['Content-Length'] = '0'
                 return response
 
-    # Add core
-    content.append(getFileContents("tiny_mce%s.js" % suffix))
+    # Add core, with baseURL added
+    content.append(getFileContents("tiny_mce%s.js" % suffix).replace("tinymce._init();", "tinymce.baseURL='%s';tinymce._init();" % TINYMCE_BASE_URL))
 
     # Patch loading functions
     content.append("tinyMCE_GZ.start();")
