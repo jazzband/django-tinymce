@@ -3,6 +3,7 @@
 
 import logging
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
 from django.utils import simplejson
 from django.utils.translation import ugettext as _
@@ -103,3 +104,7 @@ def render_to_image_list(image_list):
 def render_to_js_vardef(var_name, var_value):
     output = "var %s = %s" % (var_name, simplejson.dumps(var_value))
     return HttpResponse(output, content_type='application/x-javascript')
+
+def filebrowser(request):
+    return render_to_response('tinymce/filebrowser.js', {},
+            context_instance=RequestContext(request))

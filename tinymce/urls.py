@@ -9,4 +9,5 @@ urlpatterns = patterns('tinymce.views',
     url(r'^spellchecker/$', 'spell_check'),
     url(r'^flatpages_link_list/$', 'flatpages_link_list'),
     url(r'^compressor/$', 'compressor', name='tinymce-compressor'),
+    url(r'^filebrowser/$', 'filebrowser', name='tinymce-filebrowser'),
 )

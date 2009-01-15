@@ -22,13 +22,17 @@ DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG',
         {'theme': "simple"})
 USE_SPELLCHECKER = getattr(settings, 'TINYMCE_SPELLCHECKER', False)
 USE_COMPRESSOR = getattr(settings, 'TINYMCE_COMPRESSOR', False)
-JS_URL = getattr(settings, 'TINYMCE_JS_URL', '%sjs/tiny_mce/tiny_mce.js' % settings.MEDIA_URL)
+USE_FILEBROWSER = getattr(settings, 'TINYMCE_FILEBROWSER', 'filebrowser' in settings.INSTALLED_APPS)
+if USE_COMPRESSOR:
+    JS_URL = reverse('tinymce-compressor')
+else:
+    JS_URL = getattr(settings, 'TINYMCE_JS_URL', '%sjs/tiny_mce/tiny_mce.js' % settings.MEDIA_URL)
 
 
 class TinyMCE(forms.Textarea):
     """
     TinyMCE widget. Set settings.TINYMCE_JS_URL to set the location of the
-    javascript file. Default is "MEDIA_URL + 'js/tiny_mce/tiny_mce_src.js'".
+    javascript file. Default is "MEDIA_URL + 'js/tiny_mce/tiny_mce.js'".
     You can customize the configuration with the mce_attrs argument to the
     constructor.
 
@@ -59,6 +63,8 @@ class TinyMCE(forms.Textarea):
 
         mce_config = DEFAULT_CONFIG.copy()
         mce_config.update(get_language_config(self.content_language))
+        if USE_FILEBROWSER:
+            mce_config['file_browser_callback'] = "DjangoFileBrowser"
         mce_config.update(self.mce_attrs)
         mce_config['mode'] = 'exact'
         mce_config['elements'] = final_attrs['id']
@@ -81,9 +87,10 @@ class TinyMCE(forms.Textarea):
         return mark_safe(u'\n'.join(html))
 
     def _media(self):
-        if USE_COMPRESSOR:
-            return forms.Media(js=(reverse('tinymce-compressor'),))
-        return forms.Media(js=(JS_URL,))
+        js = [JS_URL]
+        if USE_FILEBROWSER:
+            js.append(reverse('tinymce-filebrowser'))
+        return forms.Media(js=js)
     media = property(_media)
 
 
