@@ -2,6 +2,15 @@
 Changelog
 =========
 
+2009-01-15:
+  * Added integration with `django-filebrowser`_.
+  * Released version 1.3.
+
+.. _`django-filebrowser`: http://code.google.com/p/django-filebrowser/
+
+2008-12-02:
+  * Updated TinyMCE compressor support: copying media files no longer required.
+
 2008-11-26:
   * Released version 1.2.
 
