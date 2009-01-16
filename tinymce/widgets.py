@@ -17,16 +17,7 @@ from django.utils import simplejson
 from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
-
-DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG',
-        {'theme': "simple"})
-USE_SPELLCHECKER = getattr(settings, 'TINYMCE_SPELLCHECKER', False)
-USE_COMPRESSOR = getattr(settings, 'TINYMCE_COMPRESSOR', False)
-USE_FILEBROWSER = getattr(settings, 'TINYMCE_FILEBROWSER', 'filebrowser' in settings.INSTALLED_APPS)
-if USE_COMPRESSOR:
-    JS_URL = reverse('tinymce-compressor')
-else:
-    JS_URL = getattr(settings, 'TINYMCE_JS_URL', '%sjs/tiny_mce/tiny_mce.js' % settings.MEDIA_URL)
+import tinymce.settings
 
 
 class TinyMCE(forms.Textarea):
@@ -61,9 +52,9 @@ class TinyMCE(forms.Textarea):
         final_attrs['name'] = name
         assert 'id' in final_attrs, "TinyMCE widget attributes must contain 'id'"
 
-        mce_config = DEFAULT_CONFIG.copy()
+        mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
         mce_config.update(get_language_config(self.content_language))
-        if USE_FILEBROWSER:
+        if settings.tinymce.USE_FILEBROWSER:
             mce_config['file_browser_callback'] = "DjangoFileBrowser"
         mce_config.update(self.mce_attrs)
         mce_config['mode'] = 'exact'
@@ -72,7 +63,7 @@ class TinyMCE(forms.Textarea):
         mce_json = simplejson.dumps(mce_config)
 
         html = [u'<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
-        if USE_COMPRESSOR:
+        if tinymce.settings.USE_COMPRESSOR:
             compressor_config = {
                 'plugins': mce_config['plugins'],
                 'themes': mce_config['theme'],
@@ -87,8 +78,11 @@ class TinyMCE(forms.Textarea):
         return mark_safe(u'\n'.join(html))
 
     def _media(self):
-        js = [JS_URL]
-        if USE_FILEBROWSER:
+        if tinymce.settings.USE_COMPRESSOR:
+            js = [reverse('tinymce-compressor')]
+        else:
+            js = tinymce.settings.JS_URL
+        if tinymce.settings.USE_FILEBROWSER:
             js.append(reverse('tinymce-filebrowser'))
         return forms.Media(js=js)
     media = property(_media)
@@ -127,7 +121,7 @@ def get_language_config(content_language=None):
     else:
         config['directionality'] = 'ltr'
 
-    if USE_SPELLCHECKER:
+    if tinymce.settings.USE_SPELLCHECKER:
         config['spellchecker_rpc_url'] = reverse('tinymce.views.spell_check')
 
     return config

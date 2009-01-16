@@ -1,8 +1,8 @@
 /**
  * Based on "TinyMCE Compressor PHP" from MoxieCode.
- * 
+ *
  * http://tinymce.moxiecode.com/
- * 
+ *
  * Copyright (c) 2008 Jason Davies
  * Licensed under the terms of the MIT License (see LICENSE.txt)
  *
@@ -28,7 +28,7 @@ var tinyMCE_GZ = {
 
 		s = t.settings;
 
-        t.baseURL = '{{ TINYMCE_BASE_URL }}';
+        t.baseURL = '{{ base_url }}';
 
 		if (!t.coreLoaded)
 			t.loadScripts(1, s.themes, s.plugins, s.languages, cb, sc);

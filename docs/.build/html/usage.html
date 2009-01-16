@@ -337,7 +337,7 @@
 <p>The widget accepts the following keyword arguments:</p>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">mce_attrs</span></tt> (default: <tt class="docutils literal"><span class="pre">{}</span></tt>)</dt>
-<dd>Extra TinyMCE configuration options.</dd>
+<dd>Extra TinyMCE configuration options. Options from <tt class="docutils literal"><span class="pre">settings.TINYMCE_DEFAULT_CONFIG</span></tt> (see <a class="reference" href="installation.html#configuration"><em>Configuration</em></a>) are applied first and can be overridden.</dd>
 <dt><tt class="docutils literal"><span class="pre">content_language</span></tt> (default: <tt class="docutils literal"><span class="pre">django.utils.translation.get_language_code()</span></tt>)</dt>
 <dd>The language of the widget content. Will be used to set the <tt class="docutils literal"><span class="pre">language</span></tt>, <tt class="docutils literal"><span class="pre">directionality</span></tt> and <tt class="docutils literal"><span class="pre">spellchecker_languages</span></tt> configuration options of the TinyMCE editor. It may be different from the interface language (changed using <tt class="docutils literal"><span class="pre">language</span></tt> in <tt class="docutils literal"><span class="pre">mce_attrs</span></tt>) which defaults to the current Django language.</dd>
 </dl>

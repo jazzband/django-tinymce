@@ -4,6 +4,7 @@ Installation
 
 This section describes how to install the tinymce application in your Django project.
 
+
 Prerequisites
 -------------
 
@@ -20,6 +21,7 @@ If you want to use the `spellchecker plugin`_ using the supplied view (no PHP ne
 .. _`spellchecker plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker
 .. _`PyEnchant`: http://pyenchant.sourceforge.net/
 .. _`django-filebrowser`: http://code.google.com/p/django-filebrowser/
+
 
 Installation
 ------------
@@ -46,6 +48,9 @@ Installation
       ...
   )
 
+
+.. _configuration:
+
 Configuration
 -------------
 
@@ -53,6 +58,9 @@ The application can be configured by editing the project's ``settings.py`` file.
 
 ``TINYMCE_JS_URL`` (default: ``settings.MEDIA_URL + 'js/tiny_mce/tiny_mce.js'``)
   The URL of the TinyMCE javascript file.
+  
+``TINYMCE_JS_ROOT`` (default: ``settings.MEDIA_ROOT + 'js/tiny_mce'``)
+  The filesystem location of the TinyMCE files.
 
 ``TINYMCE_DEFAULT_CONFIG`` (default: ``{'theme': "simple"}``)
   The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all options.

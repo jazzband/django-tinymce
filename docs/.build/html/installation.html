@@ -279,7 +279,7 @@
 <li><a class="reference" href="">Installation</a><ul>
 <li><a class="reference" href="#prerequisites">Prerequisites</a></li>
 <li><a class="reference" href="#id1">Installation</a></li>
-<li><a class="reference" href="#configuration">Configuration</a></li>
+<li><a class="reference" href="#id2">Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -337,11 +337,13 @@
 </pre></div>
 </div>
 <div class="section">
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<h2 id="id2"><span id="configuration"></span>Configuration<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>The application can be configured by editing the project&#8217;s <tt class="docutils literal"><span class="pre">settings.py</span></tt> file.</p>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_JS_URL</span></tt> (default: <tt class="docutils literal"><span class="pre">settings.MEDIA_URL</span> <span class="pre">+</span> <span class="pre">'js/tiny_mce/tiny_mce.js'</span></tt>)</dt>
 <dd>The URL of the TinyMCE javascript file.</dd>
+<dt><tt class="docutils literal"><span class="pre">TINYMCE_JS_ROOT</span></tt> (default: <tt class="docutils literal"><span class="pre">settings.MEDIA_ROOT</span> <span class="pre">+</span> <span class="pre">'js/tiny_mce'</span></tt>)</dt>
+<dd>The filesystem location of the TinyMCE files.</dd>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_DEFAULT_CONFIG</span></tt> (default: <tt class="docutils literal"><span class="pre">{'theme':</span> <span class="pre">&quot;simple&quot;}</span></tt>)</dt>
 <dd>The default TinyMCE configuration to use. See <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration">the TinyMCE manual</a> for all options.</dd>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_SPELLCHECKER</span></tt> (default: <tt class="xref docutils literal"><span class="pre">False</span></tt>)</dt>

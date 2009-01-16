@@ -29,7 +29,7 @@ The TinyMCE widget can be enabled by setting it as the widget for a formfield. F
 The widget accepts the following keyword arguments:
 
 ``mce_attrs`` (default: ``{}``)
-  Extra TinyMCE configuration options.
+  Extra TinyMCE configuration options. Options from ``settings.TINYMCE_DEFAULT_CONFIG`` (see :ref:`configuration`) are applied first and can be overridden.
 
 ``content_language`` (default: ``django.utils.translation.get_language_code()``)
   The language of the widget content. Will be used to set the ``language``, ``directionality`` and ``spellchecker_languages`` configuration options of the TinyMCE editor. It may be different from the interface language (changed using ``language`` in ``mce_attrs``) which defaults to the current Django language.

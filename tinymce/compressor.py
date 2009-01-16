@@ -7,6 +7,7 @@ Copyright (c) 2008 Jason Davies
 Licensed under the terms of the MIT License (see LICENSE.txt)
 """
 
+from datetime import datetime
 import os
 
 from django.conf import settings
@@ -18,15 +19,12 @@ from django.template.loader import render_to_string
 from django.utils.text import compress_string
 from django.utils.cache import patch_vary_headers, patch_response_headers
 
-from datetime import datetime
+import tinymce.settings
 
-TINYMCE_JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT', os.path.join(settings.MEDIA_ROOT, 'js/tiny_mce'))
-TINYMCE_BASE_URL = getattr(settings, 'TINYMCE_JS_URL', '%sjs/tiny_mce/tiny_mce.js' % settings.MEDIA_URL)
-TINYMCE_BASE_URL = TINYMCE_BASE_URL[:TINYMCE_BASE_URL.rfind('/')]
 
-def getFileContents(filename):
+def get_file_contents(filename):
     try:
-        f = open(os.path.join(TINYMCE_JS_ROOT, filename))
+        f = open(os.path.join(tinymce.settings.JS_ROOT, filename))
         try:
             return f.read()
         finally:
@@ -53,7 +51,7 @@ def gzip_compressor(request):
 
     if not isJS:
         response.write(render_to_string('tinymce/tiny_mce_gzip.js', {
-            'TINYMCE_BASE_URL': TINYMCE_BASE_URL,
+            'base_url': tinymce.settings.JS_BASE_URL,
         }, context_instance=RequestContext(request)))
         return response
 
@@ -83,28 +81,38 @@ def gzip_compressor(request):
                 return response
 
     # Add core, with baseURL added
-    content.append(getFileContents("tiny_mce%s.js" % suffix).replace("tinymce._init();", "tinymce.baseURL='%s';tinymce._init();" % TINYMCE_BASE_URL))
+    content.append(get_file_contents("tiny_mce%s.js" % suffix).replace(
+            "tinymce._init();", "tinymce.baseURL='%s';tinymce._init();"
+            % TINYMCE_BASE_URL))
 
     # Patch loading functions
     content.append("tinyMCE_GZ.start();")
 
     # Add core languages
     for lang in languages:
-        content.append(getFileContents("langs/%s.js" % lang))
+        content.append(get_file_contents("langs/%s.js" % lang))
 
     # Add themes
     for theme in themes:
-        content.append(getFileContents("themes/%s/editor_template%s.js"%  (theme, suffix)))
+        content.append(get_file_contents("themes/%s/editor_template%s.js"
+                % (theme, suffix)))
 
         for lang in languages:
-            content.append(getFileContents("themes/%s/langs/%s.js" % (theme, lang)))
+            content.append(get_file_contents("themes/%s/langs/%s.js"
+                    % (theme, lang)))
 
     # Add plugins
     for plugin in plugins:
-        content.append(getFileContents("plugins/%s/editor_plugin%s.js" % (plugin, suffix)))
+        content.append(get_file_contents("plugins/%s/editor_plugin%s.js"
+                % (plugin, suffix)))
 
         for lang in languages:
-            content.append(getFileContents("plugins/%s/langs/%s.js" % (plugin, lang)))
+            content.append(get_file_contents("plugins/%s/langs/%s.js"
+                    % (plugin, lang)))
+
+    # Add filebrowser
+    if tinymce.settings.USE_FILEBROWSER:
+        content.append('')
 
     # Restore loading functions
     content.append("tinyMCE_GZ.end();")
