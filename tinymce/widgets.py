@@ -54,7 +54,7 @@ class TinyMCE(forms.Textarea):
 
         mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
         mce_config.update(get_language_config(self.content_language))
-        if settings.tinymce.USE_FILEBROWSER:
+        if tinymce.settings.USE_FILEBROWSER:
             mce_config['file_browser_callback'] = "DjangoFileBrowser"
         mce_config.update(self.mce_attrs)
         mce_config['mode'] = 'exact'

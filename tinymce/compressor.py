@@ -83,7 +83,7 @@ def gzip_compressor(request):
     # Add core, with baseURL added
     content.append(get_file_contents("tiny_mce%s.js" % suffix).replace(
             "tinymce._init();", "tinymce.baseURL='%s';tinymce._init();"
-            % TINYMCE_BASE_URL))
+            % tinymce.settings.JS_BASE_URL))
 
     # Patch loading functions
     content.append("tinyMCE_GZ.start();")
@@ -112,7 +112,8 @@ def gzip_compressor(request):
 
     # Add filebrowser
     if tinymce.settings.USE_FILEBROWSER:
-        content.append('')
+        content.append(render_to_response('tinymce/filebrowser.js', {},
+            context_instance=RequestContext(request)))
 
     # Restore loading functions
     content.append("tinyMCE_GZ.end();")
