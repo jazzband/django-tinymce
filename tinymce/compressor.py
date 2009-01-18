@@ -112,8 +112,8 @@ def gzip_compressor(request):
 
     # Add filebrowser
     if tinymce.settings.USE_FILEBROWSER:
-        content.append(render_to_response('tinymce/filebrowser.js', {},
-            context_instance=RequestContext(request)))
+        content.append(render_to_string('tinymce/filebrowser.js', {},
+            context_instance=RequestContext(request)).encode("utf-8"))
 
     # Restore loading functions
     content.append("tinyMCE_GZ.end();")

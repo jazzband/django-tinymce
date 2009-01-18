@@ -90,6 +90,14 @@ TINYMCE_SPELLCHECKER = True
 
 TINYMCE_COMPRESSOR = True
 
+# Check to see if django-filebrowser is installed
+try:
+    import filebrowser
+    INSTALLED_APPS += ('filebrowser',)
+    TINYMCE_FILEBROWSER = True
+except ImportError:
+    pass
+
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "advanced",
     'plugins': "spellchecker",
