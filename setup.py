@@ -28,6 +28,7 @@ Features:
 * Integration with the TinyMCE spellchecker.
 * Enables predefined link and image lists for dialogs.
 * Can compress the TinyMCE javascript files.
+* Integration with django-filebrowser.
 """,
     license = "MIT License",
     keywords = "django widget tinymce",

@@ -26,7 +26,7 @@ If you want to use the `spellchecker plugin`_ using the supplied view (no PHP ne
 Installation
 ------------
 
-#. Place the ``tinymce`` module in your Python path. You could put it into your Django project directory or run ``python setup.py install`` from a shell.)
+#. Place the ``tinymce`` module in your Python path. You can put it into your Django project directory or run ``python setup.py install`` from a shell.
 
 #. Copy the ``jscripts/tiny_mce`` directory from the TinyMCE distribution into a directory named ``js`` in your media root. You can override the location in your settings (see below).
 
@@ -58,7 +58,7 @@ The application can be configured by editing the project's ``settings.py`` file.
 
 ``TINYMCE_JS_URL`` (default: ``settings.MEDIA_URL + 'js/tiny_mce/tiny_mce.js'``)
   The URL of the TinyMCE javascript file.
-  
+
 ``TINYMCE_JS_ROOT`` (default: ``settings.MEDIA_ROOT + 'js/tiny_mce'``)
   The filesystem location of the TinyMCE files.
 

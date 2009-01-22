@@ -2,6 +2,9 @@
 Changelog
 =========
 
+2009-01-18:
+  * Released version 1.4.
+
 2009-01-15:
   * Added integration with `django-filebrowser`_.
   * Released version 1.3.
