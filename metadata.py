@@ -1,4 +1,4 @@
 name = 'tinymce'
 authors = 'Joost Cassee'
-version = 'trunk'
-release = version
+version = '1.4'
+release = '1.4.1'

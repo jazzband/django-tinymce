@@ -2,6 +2,9 @@
 Changelog
 =========
 
+2009-01-22:
+  * Released version 1.4.1.
+
 2009-01-18:
   * Released version 1.4.
 
