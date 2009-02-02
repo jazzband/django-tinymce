@@ -63,7 +63,7 @@ The application can be configured by editing the project's ``settings.py`` file.
   The filesystem location of the TinyMCE files.
 
 ``TINYMCE_DEFAULT_CONFIG`` (default: ``{'theme': "simple"}``)
-  The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all options.
+  The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all options. To set the configuration for a specific TinyMCE editor, see the ``mce_attrs`` parameter for the :ref:`widget <widget>`.
 
 ``TINYMCE_SPELLCHECKER`` (default: ``False``)
   Whether to use the spell checker through the supplied view. You must add ``spellchecker`` to the TinyMCE plugin list yourself, it is not added automatically.

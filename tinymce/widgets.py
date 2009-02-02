@@ -65,9 +65,9 @@ class TinyMCE(forms.Textarea):
         html = [u'<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
         if tinymce.settings.USE_COMPRESSOR:
             compressor_config = {
-                'plugins': mce_config['plugins'],
-                'themes': mce_config['theme'],
-                'languages': mce_config['language'],
+                'plugins': mce_config.get('plugins', ''),
+                'themes': mce_config.get('theme', 'advanced'),
+                'languages': mce_config.get('language', ''),
                 'diskcache': True,
                 'debug': False,
             }

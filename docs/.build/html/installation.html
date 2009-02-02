@@ -10,7 +10,7 @@
  <link type="text/css" rel="stylesheet"
        href="_static/custom.css" />
  <link type="text/css" rel="stylesheet"
-       href="http://code.google.com/hosting/css/d_20081006.css" />
+       href="http://www.gstatic.com/codesite/ph/4770211810525696068/css/d_20081117.css" />
  <link rel="stylesheet"  type="text/css"
        href="_static/pygments.css" /> 
  
@@ -20,7 +20,7 @@
  
 <!--[if IE]>
  <link type="text/css" rel="stylesheet"
-       href="http://code.google.com/hosting/css/d_ie.css" />
+       href="http://www.gstatic.com/codesite/ph/4770211810525696068/css/d_ie.css" />
 <![endif]-->
 
 <script type="text/javascript">
@@ -318,7 +318,7 @@
 <div class="section">
 <h2 id="id1">Installation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Place the <tt class="docutils literal"><span class="pre">tinymce</span></tt> module in your Python path. You could put it into your Django project directory or run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> from a shell.)</li>
+<li>Place the <tt class="docutils literal"><span class="pre">tinymce</span></tt> module in your Python path. You can put it into your Django project directory or run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> from a shell.</li>
 <li>Copy the <tt class="docutils literal"><span class="pre">jscripts/tiny_mce</span></tt> directory from the TinyMCE distribution into a directory named <tt class="docutils literal"><span class="pre">js</span></tt> in your media root. You can override the location in your settings (see below).</li>
 <li>If you want to use any of the views add tinymce your installed applications list and URLconf:</li>
 </ol>
@@ -345,7 +345,7 @@
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_JS_ROOT</span></tt> (default: <tt class="docutils literal"><span class="pre">settings.MEDIA_ROOT</span> <span class="pre">+</span> <span class="pre">'js/tiny_mce'</span></tt>)</dt>
 <dd>The filesystem location of the TinyMCE files.</dd>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_DEFAULT_CONFIG</span></tt> (default: <tt class="docutils literal"><span class="pre">{'theme':</span> <span class="pre">&quot;simple&quot;}</span></tt>)</dt>
-<dd>The default TinyMCE configuration to use. See <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration">the TinyMCE manual</a> for all options.</dd>
+<dd>The default TinyMCE configuration to use. See <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration">the TinyMCE manual</a> for all options. To set the configuration for a specific TinyMCE editor, see the <tt class="docutils literal"><span class="pre">mce_attrs</span></tt> parameter for the <a class="reference" href="usage.html#widget"><em>widget</em></a>.</dd>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_SPELLCHECKER</span></tt> (default: <tt class="xref docutils literal"><span class="pre">False</span></tt>)</dt>
 <dd>Whether to use the spell checker through the supplied view. You must add <tt class="docutils literal"><span class="pre">spellchecker</span></tt> to the TinyMCE plugin list yourself, it is not added automatically.</dd>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_COMPRESSOR</span></tt> (default: <tt class="xref docutils literal"><span class="pre">False</span></tt>)</dt>

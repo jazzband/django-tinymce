@@ -4,6 +4,9 @@ Usage
 
 The application can enable TinyMCE for one form field using the ``widget`` keyword argument of ``Field`` constructors or for all textareas on a page using a view.
 
+
+.. _widget:
+
 Using the widget
 ----------------
 
@@ -15,7 +18,7 @@ Python code
 The TinyMCE widget can be enabled by setting it as the widget for a formfield. For example, to use a nice big TinyMCE widget for the content field of a flatpage form you could use the following code::
 
   from django import forms
-  from django.contrib.models import FlatPage
+  from django.contrib.flatpages.models import FlatPage
   from tinymce.widgets import TinyMCE
 
   class FlatPageForm(ModelForm):
@@ -23,13 +26,14 @@ The TinyMCE widget can be enabled by setting it as the widget for a formfield. F
       content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
       ...
 
-  class Meta:
-      model = FlatPage
+      class Meta:
+          model = FlatPage
 
 The widget accepts the following keyword arguments:
 
 ``mce_attrs`` (default: ``{}``)
   Extra TinyMCE configuration options. Options from ``settings.TINYMCE_DEFAULT_CONFIG`` (see :ref:`configuration`) are applied first and can be overridden.
+  Python types are automatically converted to Javascript types, using standard JSON encoding. For example, to disable word wrapping you would include ``'nowrap': True``.
 
 ``content_language`` (default: ``django.utils.translation.get_language_code()``)
   The language of the widget content. Will be used to set the ``language``, ``directionality`` and ``spellchecker_languages`` configuration options of the TinyMCE editor. It may be different from the interface language (changed using ``language`` in ``mce_attrs``) which defaults to the current Django language.

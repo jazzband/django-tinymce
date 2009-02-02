@@ -10,7 +10,7 @@
  <link type="text/css" rel="stylesheet"
        href="_static/custom.css" />
  <link type="text/css" rel="stylesheet"
-       href="http://code.google.com/hosting/css/d_20081006.css" />
+       href="http://www.gstatic.com/codesite/ph/4770211810525696068/css/d_20081117.css" />
  <link rel="stylesheet"  type="text/css"
        href="_static/pygments.css" /> 
  
@@ -20,7 +20,7 @@
  
 <!--[if IE]>
  <link type="text/css" rel="stylesheet"
-       href="http://code.google.com/hosting/css/d_ie.css" />
+       href="http://www.gstatic.com/codesite/ph/4770211810525696068/css/d_ie.css" />
 <![endif]-->
 
 <script type="text/javascript">
@@ -317,13 +317,13 @@
 <h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <p>The application can enable TinyMCE for one form field using the <tt class="docutils literal"><span class="pre">widget</span></tt> keyword argument of <tt class="docutils literal"><span class="pre">Field</span></tt> constructors or for all textareas on a page using a view.</p>
 <div class="section">
-<h2 id="using-the-widget">Using the widget<a class="headerlink" href="#using-the-widget" title="Permalink to this headline">¶</a></h2>
+<h2 id="using-the-widget"><span id="widget"></span>Using the widget<a class="headerlink" href="#using-the-widget" title="Permalink to this headline">¶</a></h2>
 <p>If you use the widget (recommended) you need to add some python code and possibly modify your template.</p>
 <div class="section">
 <h3 id="python-code">Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h3>
 <p>The TinyMCE widget can be enabled by setting it as the widget for a formfield. For example, to use a nice big TinyMCE widget for the content field of a flatpage form you could use the following code:</p>
 <div class="highlight"><pre><span class="k">from</span> <span class="nn">django</span> <span class="k">import</span> <span class="n">forms</span>
-<span class="k">from</span> <span class="nn">django.contrib.models</span> <span class="k">import</span> <span class="n">FlatPage</span>
+<span class="k">from</span> <span class="nn">django.contrib.flatpages.models</span> <span class="k">import</span> <span class="n">FlatPage</span>
 <span class="k">from</span> <span class="nn">tinymce.widgets</span> <span class="k">import</span> <span class="n">TinyMCE</span>
 
 <span class="k">class</span> <span class="nc">FlatPageForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
@@ -331,13 +331,14 @@
     <span class="n">content</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">TinyMCE</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;cols&#39;</span><span class="p">:</span> <span class="mf">80</span><span class="p">,</span> <span class="s">&#39;rows&#39;</span><span class="p">:</span> <span class="mf">30</span><span class="p">}))</span>
     <span class="o">...</span>
 
-<span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">FlatPage</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">FlatPage</span>
 </pre></div>
 <p>The widget accepts the following keyword arguments:</p>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">mce_attrs</span></tt> (default: <tt class="docutils literal"><span class="pre">{}</span></tt>)</dt>
-<dd>Extra TinyMCE configuration options. Options from <tt class="docutils literal"><span class="pre">settings.TINYMCE_DEFAULT_CONFIG</span></tt> (see <a class="reference" href="installation.html#configuration"><em>Configuration</em></a>) are applied first and can be overridden.</dd>
+<dd>Extra TinyMCE configuration options. Options from <tt class="docutils literal"><span class="pre">settings.TINYMCE_DEFAULT_CONFIG</span></tt> (see <a class="reference" href="installation.html#configuration"><em>Configuration</em></a>) are applied first and can be overridden.
+Python types are automatically converted to Javascript types, using standard JSON encoding. For example, to disable word wrapping you would include <tt class="docutils literal"><span class="pre">'nowrap':</span> <span class="pre">True</span></tt>.</dd>
 <dt><tt class="docutils literal"><span class="pre">content_language</span></tt> (default: <tt class="docutils literal"><span class="pre">django.utils.translation.get_language_code()</span></tt>)</dt>
 <dd>The language of the widget content. Will be used to set the <tt class="docutils literal"><span class="pre">language</span></tt>, <tt class="docutils literal"><span class="pre">directionality</span></tt> and <tt class="docutils literal"><span class="pre">spellchecker_languages</span></tt> configuration options of the TinyMCE editor. It may be different from the interface language (changed using <tt class="docutils literal"><span class="pre">language</span></tt> in <tt class="docutils literal"><span class="pre">mce_attrs</span></tt>) which defaults to the current Django language.</dd>
 </dl>
