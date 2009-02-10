@@ -2,6 +2,7 @@
 # Licensed under the terms of the MIT License (see LICENSE.txt)
 
 import logging
+from django.core import urlresolvers
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
@@ -106,5 +107,7 @@ def render_to_js_vardef(var_name, var_value):
     return HttpResponse(output, content_type='application/x-javascript')
 
 def filebrowser(request):
-    return render_to_response('tinymce/filebrowser.js', {},
+    fb_url = "%s://%s%s" % (request.is_secure() and 'https' or 'http',
+            request.get_host(), urlresolvers.reverse('filebrowser-index'))
+    return render_to_response('tinymce/filebrowser.js', {'fb_url': fb_url},
             context_instance=RequestContext(request))

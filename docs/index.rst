@@ -1,7 +1,8 @@
 Welcome to the tinymce documentation
 ====================================
 
-tinymce is a Django_ application that contains a widget to render a form field as a TinyMCE_ editor.
+tinymce is a Django_ application that contains a widget to render a form field
+as a TinyMCE_ editor.
 
 Features:
   * Use as a form widget or with a view.
@@ -11,7 +12,9 @@ Features:
   * Can compress the TinyMCE Javascript code.
   * Integration with `django-filebrowser`_.
 
-The tinymce code is licensed under the `MIT License`_. See the ``LICENSE.txt`` file in the distribution. Note that the TinyMCE editor is distributed under `its own license`_.
+The tinymce code is licensed under the `MIT License`_. See the ``LICENSE.txt``
+file in the distribution. Note that the TinyMCE editor is distributed under
+`its own license`_.
 
 .. _Django: http://www.djangoproject.com/
 .. _TinyMCE: http://tinymce.moxiecode.com/
