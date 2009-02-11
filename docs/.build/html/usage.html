@@ -38,7 +38,7 @@
     <link rel="index" title="Global index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="tinymce trunk documentation" href="index.html" />
-    <link rel="next" title="Changelog" href="history.html" />
+    <link rel="next" title="History" href="history.html" />
     <link rel="prev" title="Installation" href="installation.html" />
 </head>
 <body class="t6">
@@ -159,7 +159,7 @@
  
  <a href="index.html">tinymce trunk documentation</a> |
  <span>
-   <a href="history.html" title="Changelog"
+   <a href="history.html" title="History"
       accesskey="N">next</a>
  </span> |
  <span>
@@ -245,7 +245,7 @@
  <td><ul>
  
  <li>
-   <a href="history.html" title="next chapter">Changelog</a>
+   <a href="history.html" title="next chapter">History</a>
  </li>
  
 
@@ -289,6 +289,7 @@
 <li><a class="reference" href="#the-flatpages-link-list-view">The <tt class="docutils literal"><span class="pre">flatpages_link_list</span></tt> view</a></li>
 </ul>
 </li>
+<li><a class="reference" href="#the-tinymce-preview-button">The TinyMCE preview button</a></li>
 </ul>
 </li>
 </ul>
@@ -489,6 +490,33 @@ You just need to add the TinyMCE javascript code.</p>
 <li>Connect to <a class="reference" href="http://localhost:8000/admin/">http://localhost:8000/admin/</a></li>
 </ol>
 </div>
+</div>
+<div class="section">
+<h2 id="the-tinymce-preview-button">The TinyMCE preview button<a class="headerlink" href="#the-tinymce-preview-button" title="Permalink to this headline">¶</a></h2>
+<p>TinyMCE contains a <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/preview">preview plugin</a> that can be used to allow the user to view
+the contents of the editor in the website context. The tinymce application
+provides a view and a template tag to make supporting this plugin easier. To
+use it point the <tt class="docutils literal"><span class="pre">plugin_preview_pageurl</span></tt> configuration to the view named
+<tt class="docutils literal"><span class="pre">tinymce-preview</span></tt>:</p>
+<div class="highlight"><pre><span class="k">from</span> <span class="nn">django.core.urlresolvers</span> <span class="k">import</span> <span class="n">reverse</span>
+<span class="n">widget</span> <span class="o">=</span> <span class="n">TinyMCE</span><span class="p">(</span><span class="n">mce_attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;plugin_preview_pageurl&#39;</span><span class="p">:</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&#39;tinymce-preview&#39;</span><span class="p">,</span> <span class="s">&quot;NAME&quot;</span><span class="p">)})</span>
+</pre></div>
+<p>The view named by <tt class="docutils literal"><span class="pre">tinymce-preview</span></tt> looks for a template named either
+<tt class="docutils literal"><span class="pre">tinymce/NAME_preview.html</span></tt> or <tt class="docutils literal"><span class="pre">NAME/tinymce_preview.html</span></tt>. The template
+accesses the content of the TinyMCE editor by using the <tt class="docutils literal"><span class="pre">tinymce_preview</span></tt>
+tag:</p>
+<pre>{% load tinymce_tags %}
+&lt;html&gt;
+&lt;head&gt;
+...
+{% tinymce_preview "preview-content" %}
+&lt;/head&gt;
+&lt;body&gt;
+...
+&lt;div id="preview-content"&gt;&lt;/div&gt;
+...</pre>
+<p>With this template code the tekst inside the HTML element with id
+<tt class="docutils literal"><span class="pre">preview-content</span></tt> will be replace by the content of the TinyMCE editor.</p>
 </div>
 </div>
 

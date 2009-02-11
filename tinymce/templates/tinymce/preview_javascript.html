@@ -1,0 +1,12 @@
+<script language="javascript" src="{{ base_url }}/tiny_mce_popup.js"></script>
+<script type="text/javascript"
+src="{{ base_url }}/plugins/preview/jscripts/embed.js"></script>
+<script type="text/javascript">
+    tinyMCEPopup.onInit.add(function(ed) {
+        var dom = tinyMCEPopup.dom;
+
+        dom.setHTML('{{ element_id }}', ed.getContent());
+    });
+
+    document.write('<base href="' + tinyMCEPopup.getWindowArg("base") + '">');
+</script>

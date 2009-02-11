@@ -69,6 +69,21 @@ def spell_check(request):
             content_type='application/json')
 
 
+def preview(request, name):
+    """
+    Returns a HttpResponse whose content is an HTML file that is used
+    by the TinyMCE preview plugin. The template is loaded from
+    'tinymce/<name>_preview.html' or '<name>/tinymce_preview.html'.
+    """
+    template_files = (
+        'tinymce/%s_preview.html' % name,
+        '%s/tinymce_preview.html' % name,
+    )
+    template = loader.select_template(template_files)
+    return HttpResponse(template.render(RequestContext(request)),
+            content_type="text/html")
+
+
 def flatpages_link_list(request):
     """
     Returns a HttpResponse whose content is a Javscript file representing a
