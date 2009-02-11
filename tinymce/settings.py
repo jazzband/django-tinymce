@@ -2,7 +2,7 @@ import os
 from django.conf import settings
 
 DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG',
-        {'theme': "simple"})
+        {'theme': "simple", 'relative_urls': False})
 
 USE_SPELLCHECKER = getattr(settings, 'TINYMCE_SPELLCHECKER', False)
 

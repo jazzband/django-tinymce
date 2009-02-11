@@ -12,6 +12,9 @@ Repository:
   * Fixed the filebrowser integration when serving media from a different
     domain.
   * Fixed flatpages example code in documentation.
+  * Added support for the preview plugin.
+  * Added "'relative_urls': False" to the default settings to fix integration
+    with django-filebrowser.
 
 Release 1.4 (2009-01-28):
   * Fixed bugs in compressor code causing it not to load.

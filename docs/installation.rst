@@ -77,7 +77,7 @@ file.
 ``TINYMCE_JS_ROOT`` (default: ``settings.MEDIA_ROOT + 'js/tiny_mce'``)
   The filesystem location of the TinyMCE files.
 
-``TINYMCE_DEFAULT_CONFIG`` (default: ``{'theme': "simple"}``)
+``TINYMCE_DEFAULT_CONFIG`` (default: ``{'theme': "simple", 'relative_urls': False}``)
   The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all
   options. To set the configuration for a specific TinyMCE editor, see the
   ``mce_attrs`` parameter for the :ref:`widget <widget>`.
