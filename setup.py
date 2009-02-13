@@ -10,7 +10,7 @@ setup(
     name = "django-%s" % app_name,
     version = version,
 
-    packages = [app_name],
+    packages = [app_name, '%s.templatetags' % app_name],
     package_data = {app_name: ['templates/tinymce/*']},
 
     author = "Joost Cassee",
