@@ -37,14 +37,14 @@ Installation
 ------------
 
 #. Place the ``tinymce`` module in your Python path. You can put it into your
-Django project directory or run ``python setup.py install`` from a shell.
+   Django project directory or run ``python setup.py install`` from a shell.
 
 #. Copy the ``jscripts/tiny_mce`` directory from the TinyMCE distribution into
-a directory named ``js`` in your media root. You can override the location in
-your settings (see below).
+   a directory named ``js`` in your media root. You can override the location in
+   your settings (see below).
 
 #. If you want to use any of the views add tinymce your installed applications
-list and URLconf:
+   list and URLconf:
 
 ``settings.py``::
 
