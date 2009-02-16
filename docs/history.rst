@@ -5,6 +5,9 @@ History
 Changelog
 ---------
 
+Repository:
+  * Fixed the external list example in the documentation.
+
 Release 1.5 (2009-02-13):
   * Updated Google Code CSS location.
   * Fixed a compressor crash when 'theme' configuration was omitted.
