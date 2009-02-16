@@ -34,7 +34,7 @@ flatpage form you could use the following code::
       class Meta:
           model = FlatPage
 
-The widget accepts the following keyword arguments:
+The widget accepts the following extra keyword argument:
 
 ``mce_attrs`` (default: ``{}``)
   Extra TinyMCE configuration options. Options from
@@ -44,12 +44,15 @@ The widget accepts the following keyword arguments:
   JSON encoding. For example, to disable word wrapping you would include
   ``'nowrap': True``.
 
+The tinymce application adds one TinyMCE configuration option that can be set
+using ``mce_attrs`` (it is not useful as a default configuration):
+
 ``content_language`` (default: ``django.utils.translation.get_language_code()``)
   The language of the widget content. Will be used to set the ``language``,
   ``directionality`` and ``spellchecker_languages`` configuration options of
-  the TinyMCE editor. It may be different from the interface language (changed
-  using ``language`` in ``mce_attrs``) which defaults to the current Django
-  language.
+  the TinyMCE editor. It may be different from the interface language, which
+  defaults to the current Django language and can be changed using the
+  ``language`` configuration option in ``mce_attrs``)
 
 Templates
 ^^^^^^^^^
@@ -203,8 +206,10 @@ ModelAdmin class for flatpages first::
 The source contains a `test project`_ that includes this flatpages model admin.
 You just need to add the TinyMCE javascript code.
 
-#. Checkout the test project: ``svn checkout http://django-tinymce.googlecode.com/svn/trunk/testtinymce``
-#. Copy the ``tiny_mce`` directory from the TinyMCE distribution into ``media/js``
+#. Checkout the test project:
+   ``svn checkout http://django-tinymce.googlecode.com/svn/trunk/testtinymce``
+#. Copy the ``tiny_mce`` directory from the TinyMCE distribution into
+   ``media/js``
 #. Run ``python manage.py syncdb``
 #. Run ``python manage.py runserver``
 #. Connect to `http://localhost:8000/admin/`_

@@ -43,8 +43,8 @@ Installation
    a directory named ``js`` in your media root. You can override the location in
    your settings (see below).
 
-#. If you want to use any of the views add tinymce your installed applications
-   list and URLconf:
+#. If you want to use any of the views add tinymce to your installed
+   applications list and URLconf:
 
 ``settings.py``::
 

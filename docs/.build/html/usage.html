@@ -340,7 +340,7 @@ flatpage form you could use the following code:</p>
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">FlatPage</span>
 </pre></div>
-<p>The widget accepts the following keyword arguments:</p>
+<p>The widget accepts the following extra keyword argument:</p>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">mce_attrs</span></tt> (default: <tt class="docutils literal"><span class="pre">{}</span></tt>)</dt>
 <dd>Extra TinyMCE configuration options. Options from
@@ -349,12 +349,16 @@ first and can be overridden.
 Python types are automatically converted to Javascript types, using standard
 JSON encoding. For example, to disable word wrapping you would include
 <tt class="docutils literal"><span class="pre">'nowrap':</span> <span class="pre">True</span></tt>.</dd>
+</dl>
+<p>The tinymce application adds one TinyMCE configuration option that can be set
+using <tt class="docutils literal"><span class="pre">mce_attrs</span></tt> (it is not useful as a default configuration):</p>
+<dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">content_language</span></tt> (default: <tt class="docutils literal"><span class="pre">django.utils.translation.get_language_code()</span></tt>)</dt>
 <dd>The language of the widget content. Will be used to set the <tt class="docutils literal"><span class="pre">language</span></tt>,
 <tt class="docutils literal"><span class="pre">directionality</span></tt> and <tt class="docutils literal"><span class="pre">spellchecker_languages</span></tt> configuration options of
-the TinyMCE editor. It may be different from the interface language (changed
-using <tt class="docutils literal"><span class="pre">language</span></tt> in <tt class="docutils literal"><span class="pre">mce_attrs</span></tt>) which defaults to the current Django
-language.</dd>
+the TinyMCE editor. It may be different from the interface language, which
+defaults to the current Django language and can be changed using the
+<tt class="docutils literal"><span class="pre">language</span></tt> configuration option in <tt class="docutils literal"><span class="pre">mce_attrs</span></tt>)</dd>
 </dl>
 </div>
 <div class="section">
@@ -482,8 +486,10 @@ ModelAdmin class for flatpages first:</p>
 <p>The source contains a <a class="reference" href="http://code.google.com/p/django-tinymce/source/browse/trunk/testproject/">test project</a> that includes this flatpages model admin.
 You just need to add the TinyMCE javascript code.</p>
 <ol class="arabic simple">
-<li>Checkout the test project: <tt class="docutils literal"><span class="pre">svn</span> <span class="pre">checkout</span> <span class="pre">http://django-tinymce.googlecode.com/svn/trunk/testtinymce</span></tt></li>
-<li>Copy the <tt class="docutils literal"><span class="pre">tiny_mce</span></tt> directory from the TinyMCE distribution into <tt class="docutils literal"><span class="pre">media/js</span></tt></li>
+<li>Checkout the test project:
+<tt class="docutils literal"><span class="pre">svn</span> <span class="pre">checkout</span> <span class="pre">http://django-tinymce.googlecode.com/svn/trunk/testtinymce</span></tt></li>
+<li>Copy the <tt class="docutils literal"><span class="pre">tiny_mce</span></tt> directory from the TinyMCE distribution into
+<tt class="docutils literal"><span class="pre">media/js</span></tt></li>
 <li>Run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">syncdb</span></tt></li>
 <li>Run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver</span></tt></li>
 <li>Connect to <a class="reference" href="http://localhost:8000/admin/">http://localhost:8000/admin/</a></li>
