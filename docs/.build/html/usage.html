@@ -429,11 +429,10 @@ view). The value is a URL that points to a view that fills a list of 2-tuples
 (<em>name</em>, <em>URL</em>) and calls <tt class="docutils literal"><span class="pre">tinymce.views.render_to_link_list</span></tt>. For example:</p>
 <p>Create the widget:</p>
 <pre>from django import forms
-from django.db import models
 from django.core.urlresolvers import reverse
 from tinymce.widgets import TinyMCE
 
-class SomeModel(models.Model):
+class SomeForm(forms.Form):
     somefield = forms.CharField(widget=TinyMCE(mce_attrs={'external_link_list_url': reverse('someapp.views.someview')})</pre>
 <p>Create the view:</p>
 <div class="highlight"><pre><span class="k">from</span> <span class="nn">tinymce.views</span> <span class="k">import</span> <span class="n">render_to_link_list</span>

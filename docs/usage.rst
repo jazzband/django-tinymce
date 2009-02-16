@@ -144,11 +144,10 @@ view). The value is a URL that points to a view that fills a list of 2-tuples
 Create the widget::
 
   from django import forms
-  from django.db import models
   from django.core.urlresolvers import reverse
   from tinymce.widgets import TinyMCE
 
-  class SomeModel(models.Model):
+  class SomeForm(forms.Form):
       somefield = forms.CharField(widget=TinyMCE(mce_attrs={'external_link_list_url': reverse('someapp.views.someview')})
 
 Create the view::
@@ -244,7 +243,5 @@ tag::
 
 With this template code the tekst inside the HTML element with id
 ``preview-content`` will be replace by the content of the TinyMCE editor.
-
-
 
 .. _`preview plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/preview
