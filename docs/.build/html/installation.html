@@ -271,9 +271,9 @@
   <table class="pmeta toc" cellpadding=5><tr><td>
 	<ul>
 <li><a class="reference" href="">Installation</a><ul>
-<li><a class="reference" href="#prerequisites">Prerequisites</a></li>
-<li><a class="reference" href="#id1">Installation</a></li>
-<li><a class="reference" href="#id2">Configuration</a></li>
+<li><a class="reference" href="#id1">Prerequisites</a></li>
+<li><a class="reference" href="#id2">Installation</a></li>
+<li><a class="reference" href="#id3">Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -303,7 +303,7 @@
 <p>This section describes how to install the tinymce application in your Django
 project.</p>
 <div class="section">
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<h2 id="id1"><span id="prerequisites"></span>Prerequisites<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>The tinymce application requires <a class="reference" href="http://www.djangoproject.com/download/">Django</a> version 1.0 or higher. You will also
 need <a class="reference" href="http://tinymce.moxiecode.com/download.php">TinyMCE</a> version 3.0 or higher and optionally a <a class="reference" href="http://tinymce.moxiecode.com/download_i18n.php">language pack</a> for your
 projects languages. If you use the <a class="reference" href="http://code.google.com/p/django-filebrowser/">django-filebrowser</a> application in your
@@ -318,15 +318,17 @@ Python code:</p>
 <div class="highlight"><pre><span class="k">import</span> <span class="nn">enchant</span>
 <span class="n">enchant</span><span class="o">.</span><span class="n">dict_exists</span><span class="p">(</span><span class="s">&#39;en&#39;</span><span class="p">)</span>
 </pre></div>
+<p>Note that the documentation will use &#8216;TinyMCE&#8217; (capitalized) to refer the
+editor itself and &#8216;tinymce&#8217; (lower case) to refer to this Django application.</p>
 </div>
 <div class="section">
-<h2 id="id1">Installation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2 id="id2">Installation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Place the <tt class="docutils literal"><span class="pre">tinymce</span></tt> module in your Python path. You can put it into your
 Django project directory or run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> from a shell.</li>
-<li>Copy the <tt class="docutils literal"><span class="pre">jscripts/tiny_mce</span></tt> directory from the TinyMCE distribution into
-a directory named <tt class="docutils literal"><span class="pre">js</span></tt> in your media root. You can override the location in
-your settings (see below).</li>
+<li>Copy the <tt class="docutils literal"><span class="pre">jscripts/tiny_mce</span></tt> directory from the TinyMCE distribution
+(see <a class="reference" href="#prerequisites"><em>Prerequisites</em></a>) into a directory named <tt class="docutils literal"><span class="pre">js</span></tt> in your media root.
+You can override the location in your settings (see below).</li>
 <li>If you want to use any of the views add tinymce to your installed
 applications list and URLconf:</li>
 </ol>
@@ -345,7 +347,7 @@ applications list and URLconf:</li>
 </pre></div>
 </div>
 <div class="section">
-<h2 id="id2"><span id="configuration"></span>Configuration<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2 id="id3"><span id="configuration"></span>Configuration<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>The application can be configured by editing the project&#8217;s <tt class="docutils literal"><span class="pre">settings.py</span></tt>
 file.</p>
 <dl class="docutils">

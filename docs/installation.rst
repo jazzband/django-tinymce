@@ -6,6 +6,8 @@ This section describes how to install the tinymce application in your Django
 project.
 
 
+.. _prerequisites:
+
 Prerequisites
 -------------
 
@@ -25,6 +27,9 @@ Python code::
   import enchant
   enchant.dict_exists('en')
 
+Note that the documentation will use 'TinyMCE' (capitalized) to refer the
+editor itself and 'tinymce' (lower case) to refer to this Django application.
+
 .. _Django: http://www.djangoproject.com/download/
 .. _TinyMCE: http://tinymce.moxiecode.com/download.php
 .. _`language pack`: http://tinymce.moxiecode.com/download_i18n.php
@@ -39,9 +44,9 @@ Installation
 #. Place the ``tinymce`` module in your Python path. You can put it into your
    Django project directory or run ``python setup.py install`` from a shell.
 
-#. Copy the ``jscripts/tiny_mce`` directory from the TinyMCE distribution into
-   a directory named ``js`` in your media root. You can override the location in
-   your settings (see below).
+#. Copy the ``jscripts/tiny_mce`` directory from the TinyMCE distribution
+   (see :ref:`prerequisites`) into a directory named ``js`` in your media root.
+   You can override the location in your settings (see below).
 
 #. If you want to use any of the views add tinymce to your installed
    applications list and URLconf:
