@@ -305,9 +305,10 @@ project.</p>
 <div class="section">
 <h2 id="id1"><span id="prerequisites"></span>Prerequisites<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>The tinymce application requires <a class="reference" href="http://www.djangoproject.com/download/">Django</a> version 1.0 or higher. You will also
-need <a class="reference" href="http://tinymce.moxiecode.com/download.php">TinyMCE</a> version 3.0 or higher and optionally a <a class="reference" href="http://tinymce.moxiecode.com/download_i18n.php">language pack</a> for your
-projects languages. If you use the <a class="reference" href="http://code.google.com/p/django-filebrowser/">django-filebrowser</a> application in your
-project, the tinymce application can use it as a browser when including media.</p>
+need <a class="reference" href="http://tinymce.moxiecode.com/download.php">TinyMCE</a> version 3.0 or higher and a <a class="reference" href="http://tinymce.moxiecode.com/download_i18n.php">language pack</a> for <em>every language</em>
+you enabled in <tt class="docutils literal"><span class="pre">settings.LANGUAGES</span></tt>. If you use the <a class="reference" href="http://code.google.com/p/django-filebrowser/">django-filebrowser</a>
+application in your project, the tinymce application can use it as a browser
+when including media.</p>
 <p>If you want to use the <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker">spellchecker plugin</a> using the supplied view (no PHP
 needed) you must install the <a class="reference" href="http://pyenchant.sourceforge.net/">PyEnchant</a> package and dictionaries for your
 project languages. Note that the Enchant needs a dictionary that exactly
@@ -319,7 +320,7 @@ Python code:</p>
 <span class="n">enchant</span><span class="o">.</span><span class="n">dict_exists</span><span class="p">(</span><span class="s">&#39;en&#39;</span><span class="p">)</span>
 </pre></div>
 <p>Note that the documentation will use &#8216;TinyMCE&#8217; (capitalized) to refer the
-editor itself and &#8216;tinymce&#8217; (lower case) to refer to this Django application.</p>
+editor itself and &#8216;tinymce&#8217; (lower case) to refer to the Django application.</p>
 </div>
 <div class="section">
 <h2 id="id2">Installation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
