@@ -12,9 +12,10 @@ Prerequisites
 -------------
 
 The tinymce application requires Django_ version 1.0 or higher. You will also
-need TinyMCE_ version 3.0 or higher and optionally a `language pack`_ for your
-projects languages. If you use the `django-filebrowser`_ application in your
-project, the tinymce application can use it as a browser when including media.
+need TinyMCE_ version 3.0 or higher and a `language pack`_ for *every language*
+you enabled in ``settings.LANGUAGES``. If you use the `django-filebrowser`_
+application in your project, the tinymce application can use it as a browser
+when including media.
 
 If you want to use the `spellchecker plugin`_ using the supplied view (no PHP
 needed) you must install the `PyEnchant`_ package and dictionaries for your
@@ -28,7 +29,7 @@ Python code::
   enchant.dict_exists('en')
 
 Note that the documentation will use 'TinyMCE' (capitalized) to refer the
-editor itself and 'tinymce' (lower case) to refer to this Django application.
+editor itself and 'tinymce' (lower case) to refer to the Django application.
 
 .. _Django: http://www.djangoproject.com/download/
 .. _TinyMCE: http://tinymce.moxiecode.com/download.php
