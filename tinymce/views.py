@@ -49,7 +49,7 @@ def spell_check(request):
 
         if not enchant.dict_exists(str(lang)):
             raise RuntimeError("dictionary not found for language '%s'" % lang)
-        checker = enchant.Dict(lang)
+        checker = enchant.Dict(str(lang))
 
         if method == 'checkWords':
             result = [word for word in arg if not checker.check(word)]
