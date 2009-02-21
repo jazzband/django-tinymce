@@ -305,8 +305,8 @@ project.</p>
 <div class="section">
 <h2 id="id1"><span id="prerequisites"></span>Prerequisites<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>The tinymce application requires <a class="reference" href="http://www.djangoproject.com/download/">Django</a> version 1.0 or higher. You will also
-need <a class="reference" href="http://tinymce.moxiecode.com/download.php">TinyMCE</a> version 3.0 or higher and a <a class="reference" href="http://tinymce.moxiecode.com/download_i18n.php">language pack</a> for <em>every language</em>
-you enabled in <tt class="docutils literal"><span class="pre">settings.LANGUAGES</span></tt>. If you use the <a class="reference" href="http://code.google.com/p/django-filebrowser/">django-filebrowser</a>
+need <a class="reference" href="http://tinymce.moxiecode.com/download.php">TinyMCE</a> version 3.0.1 or higher and a <a class="reference" href="http://tinymce.moxiecode.com/download_i18n.php">language pack</a> for <em>every
+language</em> you enabled in <tt class="docutils literal"><span class="pre">settings.LANGUAGES</span></tt>. If you use the <a class="reference" href="http://code.google.com/p/django-filebrowser/">filebrowser</a>
 application in your project, the tinymce application can use it as a browser
 when including media.</p>
 <p>If you want to use the <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker">spellchecker plugin</a> using the supplied view (no PHP
@@ -370,8 +370,8 @@ a single stream.  This makes the overall download size 75% smaller and also
 reduces the number of requests. The overall initialization time for TinyMCE
 will be reduced dramatically if you use this option.</dd>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_FILEBROWSER</span></tt> (default: <tt class="xref docutils literal"><span class="pre">True</span></tt> if <tt class="docutils literal"><span class="pre">'filebrowser'</span></tt> is in <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt>, else <tt class="xref docutils literal"><span class="pre">False</span></tt>)</dt>
-<dd>Whether to use <a class="reference" href="http://code.google.com/p/django-filebrowser/">django-filebrowser</a> as a custom filebrowser for media
-inclusion. See the <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Custom_filebrowser">official TinyMCE documentation on custom filebrowsers</a>.</dd>
+<dd>Whether to use the <a class="reference" href="http://code.google.com/p/django-filebrowser/">filebrowser</a> as a custom filebrowser for media inclusion.
+See the <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Custom_filebrowser">official TinyMCE documentation on custom filebrowsers</a>.</dd>
 </dl>
 <p>Example:</p>
 <div class="highlight"><pre><span class="n">TINYMCE_JS_URL</span> <span class="o">=</span> <span class="s">&#39;http://debug.example.org/tiny_mce/tiny_mce_src.js&#39;</span>
