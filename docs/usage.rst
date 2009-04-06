@@ -186,7 +186,7 @@ the link dialog you could use something like this::
   class TinyMCEFlatPageAdmin(FlatPageAdmin):
       def formfield_for_dbfield(self, db_field, **kwargs):
           if db_field.name == 'content':
-              return forms.CharField(widget=TinyMCE(
+              return db_field.formfield(widget=TinyMCE(
                   attrs={'cols': 80, 'rows': 30},
                   mce_attrs={'external_link_list_url': reverse('tinymce.views.flatpages_link_list')},
               ))

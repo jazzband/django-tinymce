@@ -7,6 +7,8 @@ Changelog
 
 Repository:
   * Fixed the external list example in the documentation.
+  * Fixed documentation and test code to use ``db_field.formfield`` instead of
+    ``forms.CharField``.
 
 Release 1.5 (2009-02-13):
   * Updated Google Code CSS location.
