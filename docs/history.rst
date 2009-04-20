@@ -5,7 +5,7 @@ History
 Changelog
 ---------
 
-Repository:
+Release 1.6 (2009-04-20):
   * Fixed the external list example in the documentation.
   * Fixed documentation and test code to use ``db_field.formfield`` instead of
     ``forms.CharField``.

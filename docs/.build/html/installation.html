@@ -355,7 +355,8 @@ file.</p>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_JS_URL</span></tt> (default: <tt class="docutils literal"><span class="pre">settings.MEDIA_URL</span> <span class="pre">+</span> <span class="pre">'js/tiny_mce/tiny_mce.js'</span></tt>)</dt>
 <dd>The URL of the TinyMCE javascript file.</dd>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_JS_ROOT</span></tt> (default: <tt class="docutils literal"><span class="pre">settings.MEDIA_ROOT</span> <span class="pre">+</span> <span class="pre">'js/tiny_mce'</span></tt>)</dt>
-<dd>The filesystem location of the TinyMCE files.</dd>
+<dd>The filesystem location of the TinyMCE files. It is used by the compressor
+(see below).</dd>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_DEFAULT_CONFIG</span></tt> (default: <tt class="docutils literal"><span class="pre">{'theme':</span> <span class="pre">&quot;simple&quot;,</span> <span class="pre">'relative_urls':</span> <span class="pre">False}</span></tt>)</dt>
 <dd>The default TinyMCE configuration to use. See <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration">the TinyMCE manual</a> for all
 options. To set the configuration for a specific TinyMCE editor, see the
