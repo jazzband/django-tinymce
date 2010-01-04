@@ -6,6 +6,7 @@ Changelog
 ---------
 
 Repository:
+  * Fixed mutable default argument in widget code.
   * Fixed the external list example in the documentation.
   * Fixed documentation and test code to use ``db_field.formfield`` instead of
     ``forms.CharField``.

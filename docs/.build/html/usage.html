@@ -270,20 +270,20 @@
   <b>Table of Contents</b><br/>
   <table class="pmeta toc" cellpadding=5><tr><td>
 	<ul>
-<li><a class="reference" href="">Usage</a><ul>
-<li><a class="reference" href="#using-the-widget">Using the widget</a><ul>
-<li><a class="reference" href="#python-code">Python code</a></li>
-<li><a class="reference" href="#templates">Templates</a></li>
-<li><a class="reference" href="#the-htmlfield-model-field-type">The <tt class="docutils literal"><span class="pre">HTMLField</span></tt> model field type</a></li>
+<li><a class="reference external" href="">Usage</a><ul>
+<li><a class="reference external" href="#using-the-widget">Using the widget</a><ul>
+<li><a class="reference external" href="#python-code">Python code</a></li>
+<li><a class="reference external" href="#templates">Templates</a></li>
+<li><a class="reference external" href="#the-htmlfield-model-field-type">The <tt class="docutils literal"><span class="pre">HTMLField</span></tt> model field type</a></li>
 </ul>
 </li>
-<li><a class="reference" href="#using-the-view">Using the view</a></li>
-<li><a class="reference" href="#external-link-and-image-lists">External link and image lists</a><ul>
-<li><a class="reference" href="#creating-external-link-and-image-views">Creating external link and image views</a></li>
-<li><a class="reference" href="#the-flatpages-link-list-view">The <tt class="docutils literal"><span class="pre">flatpages_link_list</span></tt> view</a></li>
+<li><a class="reference external" href="#using-the-view">Using the view</a></li>
+<li><a class="reference external" href="#external-link-and-image-lists">External link and image lists</a><ul>
+<li><a class="reference external" href="#creating-external-link-and-image-views">Creating external link and image views</a></li>
+<li><a class="reference external" href="#the-flatpages-link-list-view">The <tt class="docutils literal"><span class="pre">flatpages_link_list</span></tt> view</a></li>
 </ul>
 </li>
-<li><a class="reference" href="#the-tinymce-preview-button">The TinyMCE preview button</a></li>
+<li><a class="reference external" href="#the-tinymce-preview-button">The TinyMCE preview button</a></li>
 </ul>
 </li>
 </ul>
@@ -307,24 +307,23 @@
  <div style="padding:0 3em 1.2em 0">
    
      
-  
-  <div class="section">
-<h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <p>The application can enable TinyMCE for one form field using the <tt class="docutils literal"><span class="pre">widget</span></tt>
 keyword argument of <tt class="docutils literal"><span class="pre">Field</span></tt> constructors or for all textareas on a page using
 a view.</p>
-<div class="section">
-<h2 id="using-the-widget"><span id="widget"></span>Using the widget<a class="headerlink" href="#using-the-widget" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-the-widget">
+<span id="widget"></span><h2>Using the widget<a class="headerlink" href="#using-the-widget" title="Permalink to this headline">¶</a></h2>
 <p>If you use the widget (recommended) you need to add some python code and
 possibly modify your template.</p>
-<div class="section">
-<h3 id="python-code">Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="python-code">
+<h3>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h3>
 <p>The TinyMCE widget can be enabled by setting it as the widget for a formfield.
 For example, to use a nice big TinyMCE widget for the content field of a
 flatpage form you could use the following code:</p>
-<div class="highlight"><pre><span class="k">from</span> <span class="nn">django</span> <span class="k">import</span> <span class="n">forms</span>
-<span class="k">from</span> <span class="nn">django.contrib.flatpages.models</span> <span class="k">import</span> <span class="n">FlatPage</span>
-<span class="k">from</span> <span class="nn">tinymce.widgets</span> <span class="k">import</span> <span class="n">TinyMCE</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.contrib.flatpages.models</span> <span class="kn">import</span> <span class="n">FlatPage</span>
+<span class="kn">from</span> <span class="nn">tinymce.widgets</span> <span class="kn">import</span> <span class="n">TinyMCE</span>
 
 <span class="k">class</span> <span class="nc">FlatPageForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
     <span class="o">...</span>
@@ -334,11 +333,12 @@ flatpage form you could use the following code:</p>
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">FlatPage</span>
 </pre></div>
+</div>
 <p>The widget accepts the following extra keyword argument:</p>
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">mce_attrs</span></tt> (default: <tt class="docutils literal"><span class="pre">{}</span></tt>)</dt>
 <dd>Extra TinyMCE configuration options. Options from
-<tt class="docutils literal"><span class="pre">settings.TINYMCE_DEFAULT_CONFIG</span></tt> (see <a class="reference" href="installation.html#configuration"><em>Configuration</em></a>) are applied
+<tt class="docutils literal"><span class="pre">settings.TINYMCE_DEFAULT_CONFIG</span></tt> (see <a class="reference external" href="installation.html#configuration"><em>Configuration</em></a>) are applied
 first and can be overridden.
 Python types are automatically converted to Javascript types, using standard
 JSON encoding. For example, to disable word wrapping you would include
@@ -355,49 +355,52 @@ defaults to the current Django language and can be changed using the
 <tt class="docutils literal"><span class="pre">language</span></tt> configuration option in <tt class="docutils literal"><span class="pre">mce_attrs</span></tt>)</dd>
 </dl>
 </div>
-<div class="section">
-<h3 id="templates">Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="templates">
+<h3>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h3>
 <p>The widget requires a link to the TinyMCE javascript code. The
 <tt class="docutils literal"><span class="pre">django.contrib.admin</span></tt> templates do this for you automatically, so if you are
 just using tinymce in admin forms then you are done. In your own templates
 containing a TinyMCE widget you must add the following to the HTML <tt class="docutils literal"><span class="pre">HEAD</span></tt>
 section (assuming you named your form &#8216;form&#8217;):</p>
-<pre>&lt;head&gt;
+<div class="highlight-python"><pre>&lt;head&gt;
     ...
     {{ form.media }}
 &lt;/head&gt;</pre>
-<p>See also <a class="reference" href="http://www.djangoproject.com/documentation/forms/#media-on-forms">the section of form media</a> in the Django documentation.</p>
 </div>
-<div class="section">
-<h3 id="the-htmlfield-model-field-type">The <tt class="docutils literal"><span class="pre">HTMLField</span></tt> model field type<a class="headerlink" href="#the-htmlfield-model-field-type" title="Permalink to this headline">¶</a></h3>
+<p>See also <a class="reference external" href="http://www.djangoproject.com/documentation/forms/#media-on-forms">the section of form media</a> in the Django documentation.</p>
+</div>
+<div class="section" id="the-htmlfield-model-field-type">
+<h3>The <tt class="docutils literal"><span class="pre">HTMLField</span></tt> model field type<a class="headerlink" href="#the-htmlfield-model-field-type" title="Permalink to this headline">¶</a></h3>
 <p>For lazy developers the tinymce application also contains a model field type
 for storing HTML. It uses the TinyMCE widget to render its form field. In this
 example, the admin will render the <tt class="docutils literal"><span class="pre">my_field</span></tt> field using the TinyMCE
 widget:</p>
-<div class="highlight"><pre><span class="k">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
-<span class="k">from</span> <span class="nn">tinymce</span> <span class="k">import</span> <span class="n">models</span> <span class="k">as</span> <span class="n">tinymce_models</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">tinymce</span> <span class="kn">import</span> <span class="n">models</span> <span class="k">as</span> <span class="n">tinymce_models</span>
 
 <span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">my_field</span> <span class="o">=</span> <span class="n">tinymce_models</span><span class="o">.</span><span class="n">HTMLField</span><span class="p">()</span>
 </pre></div>
+</div>
 <p>In all other regards, <tt class="docutils literal"><span class="pre">HTMLField</span></tt> behaves just like the standard Django
 <tt class="docutils literal"><span class="pre">TextField</span></tt> field type.</p>
 </div>
 </div>
-<div class="section">
-<h2 id="using-the-view">Using the view<a class="headerlink" href="#using-the-view" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-the-view">
+<h2>Using the view<a class="headerlink" href="#using-the-view" title="Permalink to this headline">¶</a></h2>
 <p>If you cannot or will not change the widget on a form you can also use the
 <tt class="docutils literal"><span class="pre">tinymce-js</span></tt> named view to convert some or all textfields on a page to
 TinyMCE editors. On the template of the page, add the following lines to the
 <tt class="docutils literal"><span class="pre">HEAD</span></tt> element:</p>
-<pre>&lt;script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"&gt;&lt;/script&gt;
+<div class="highlight-python"><pre>&lt;script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="{% url tinymce-js "NAME" %}"&gt;&lt;/script&gt;</pre>
+</div>
 <p>The <tt class="docutils literal"><span class="pre">NAME</span></tt> argument allows you to create multiple TinyMCE configurations. Now
 create a template containing the Javascript initialization code. It should be
 placed in the template path as <tt class="docutils literal"><span class="pre">NAME/tinymce_textareas.js</span></tt> or
 <tt class="docutils literal"><span class="pre">tinymce/NAME_textareas.js</span></tt>.</p>
 <p>Example:</p>
-<div class="highlight"><pre><span class="n">tinyMCE</span><span class="o">.</span><span class="n">init</span><span class="p">({</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tinyMCE</span><span class="o">.</span><span class="n">init</span><span class="p">({</span>
     <span class="n">mode</span><span class="p">:</span> <span class="s">&quot;textareas&quot;</span><span class="p">,</span>
     <span class="n">theme</span><span class="p">:</span> <span class="s">&quot;advanced&quot;</span><span class="p">,</span>
     <span class="n">plugins</span><span class="p">:</span> <span class="s">&quot;spellchecker,directionality,paste,searchreplace&quot;</span><span class="p">,</span>
@@ -407,56 +410,60 @@ placed in the template path as <tt class="docutils literal"><span class="pre">NA
     <span class="n">spellchecker_rpc_url</span> <span class="p">:</span> <span class="s">&quot;{{ spellchecker_rpc_url }}&quot;</span>
 <span class="p">});</span>
 </pre></div>
+</div>
 <p>This example also shows the variables you can use in the template. The language
 variables are based on the current Django language. If the content language is
 different from the interface language use the <tt class="docutils literal"><span class="pre">tinymce-js-lang</span></tt> view which
 takes a language (<tt class="docutils literal"><span class="pre">LANG_CODE</span></tt>) argument:</p>
-<pre>&lt;script type="text/javascript" src="{% url tinymce-js-lang "NAME","LANG_CODE" %}"&gt;&lt;/script&gt;</pre>
+<div class="highlight-python"><pre>&lt;script type="text/javascript" src="{% url tinymce-js-lang "NAME","LANG_CODE" %}"&gt;&lt;/script&gt;</pre>
 </div>
-<div class="section">
-<h2 id="external-link-and-image-lists">External link and image lists<a class="headerlink" href="#external-link-and-image-lists" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="external-link-and-image-lists">
+<h2>External link and image lists<a class="headerlink" href="#external-link-and-image-lists" title="Permalink to this headline">¶</a></h2>
 <p>The TinyMCE link and image dialogs can be enhanced with a predefined list of
-<a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_link_list_url">links</a> and <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_image_list_url">images</a>. These entries are filled using a variable loaded from an
+<a class="reference external" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_link_list_url">links</a> and <a class="reference external" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_image_list_url">images</a>. These entries are filled using a variable loaded from an
 external Javascript location. The tinymce application can serve these lists for
 you.</p>
-<div class="section">
-<h3 id="creating-external-link-and-image-views">Creating external link and image views<a class="headerlink" href="#creating-external-link-and-image-views" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="creating-external-link-and-image-views">
+<h3>Creating external link and image views<a class="headerlink" href="#creating-external-link-and-image-views" title="Permalink to this headline">¶</a></h3>
 <p>To use a predefined link list, add the <tt class="docutils literal"><span class="pre">external_link_list_url</span></tt> option to the
 <tt class="docutils literal"><span class="pre">mce_attrs</span></tt> keyword argument to the widget (or the template if you use the
 view). The value is a URL that points to a view that fills a list of 2-tuples
 (<em>name</em>, <em>URL</em>) and calls <tt class="docutils literal"><span class="pre">tinymce.views.render_to_link_list</span></tt>. For example:</p>
 <p>Create the widget:</p>
-<pre>from django import forms
+<div class="highlight-python"><pre>from django import forms
 from django.core.urlresolvers import reverse
 from tinymce.widgets import TinyMCE
 
 class SomeForm(forms.Form):
     somefield = forms.CharField(widget=TinyMCE(mce_attrs={'external_link_list_url': reverse('someapp.views.someview')})</pre>
+</div>
 <p>Create the view:</p>
-<div class="highlight"><pre><span class="k">from</span> <span class="nn">tinymce.views</span> <span class="k">import</span> <span class="n">render_to_link_list</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">tinymce.views</span> <span class="kn">import</span> <span class="n">render_to_link_list</span>
 
 <span class="k">def</span> <span class="nf">someview</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">objects</span> <span class="o">=</span> <span class="o">...</span>
     <span class="n">link_list</span> <span class="o">=</span> <span class="p">[(</span><span class="nb">unicode</span><span class="p">(</span><span class="n">obj</span><span class="p">),</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_absolute_url</span><span class="p">())</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">render_to_link_list</span><span class="p">(</span><span class="n">link_list</span><span class="p">)</span>
 </pre></div>
+</div>
 <p>Finally, include the view in your URLconf.</p>
 <p>Image lists work exactly the same way, just use the TinyMCE
 <tt class="docutils literal"><span class="pre">external_image_list_url</span></tt> configuration option and call
 <tt class="docutils literal"><span class="pre">tinymce.views.render_to_image_list</span></tt> from your view.</p>
 </div>
-<div class="section">
-<h3 id="the-flatpages-link-list-view">The <tt class="docutils literal"><span class="pre">flatpages_link_list</span></tt> view<a class="headerlink" href="#the-flatpages-link-list-view" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-flatpages-link-list-view">
+<h3>The <tt class="docutils literal"><span class="pre">flatpages_link_list</span></tt> view<a class="headerlink" href="#the-flatpages-link-list-view" title="Permalink to this headline">¶</a></h3>
 <p>As an example, the tinymce application contains a predefined view that lists
 all <tt class="docutils literal"><span class="pre">django.contrib.flatpages</span></tt> objects:
 <tt class="docutils literal"><span class="pre">tinymce.views.flatpages_link_list</span></tt>. If you want to use a TinyMCE widget for
 the flatpages <tt class="docutils literal"><span class="pre">content</span></tt> field with a predefined list of other flatpages in
 the link dialog you could use something like this:</p>
-<div class="highlight"><pre><span class="k">from</span> <span class="nn">django</span> <span class="k">import</span> <span class="n">forms</span>
-<span class="k">from</span> <span class="nn">django.core.urlresolvers</span> <span class="k">import</span> <span class="n">reverse</span>
-<span class="k">from</span> <span class="nn">django.contrib.flatpages.admin</span> <span class="k">import</span> <span class="n">FlatPageAdmin</span>
-<span class="k">from</span> <span class="nn">django.contrib.flatpages.models</span> <span class="k">import</span> <span class="n">FlatPage</span>
-<span class="k">from</span> <span class="nn">tinymce.widgets</span> <span class="k">import</span> <span class="n">TinyMCE</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">django.contrib.flatpages.admin</span> <span class="kn">import</span> <span class="n">FlatPageAdmin</span>
+<span class="kn">from</span> <span class="nn">django.contrib.flatpages.models</span> <span class="kn">import</span> <span class="n">FlatPage</span>
+<span class="kn">from</span> <span class="nn">tinymce.widgets</span> <span class="kn">import</span> <span class="n">TinyMCE</span>
 
 <span class="k">class</span> <span class="nc">TinyMCEFlatPageAdmin</span><span class="p">(</span><span class="n">FlatPageAdmin</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">formfield_for_dbfield</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_field</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -469,15 +476,17 @@ the link dialog you could use something like this:</p>
 
 <span class="n">somesite</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">FlatPage</span><span class="p">,</span> <span class="n">TinyMCEFlatPageAdmin</span><span class="p">)</span>
 </pre></div>
+</div>
 <p>If you want to enable this for the default admin site
 (<tt class="docutils literal"><span class="pre">django.contrib.admin.site</span></tt>) you will need to unregister the original
 ModelAdmin class for flatpages first:</p>
-<div class="highlight"><pre><span class="k">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="n">FlatPage</span><span class="p">)</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">FlatPage</span><span class="p">,</span> <span class="n">TinyMCEFlatPageAdmin</span><span class="p">)</span>
 </pre></div>
-<p>The source contains a <a class="reference" href="http://code.google.com/p/django-tinymce/source/browse/trunk/testproject/">test project</a> that includes this flatpages model admin.
+</div>
+<p>The source contains a <a class="reference external" href="http://code.google.com/p/django-tinymce/source/browse/trunk/testproject/">test project</a> that includes this flatpages model admin.
 You just need to add the TinyMCE javascript code.</p>
 <ol class="arabic simple">
 <li>Checkout the test project:
@@ -486,25 +495,26 @@ You just need to add the TinyMCE javascript code.</p>
 <tt class="docutils literal"><span class="pre">media/js</span></tt></li>
 <li>Run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">syncdb</span></tt></li>
 <li>Run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver</span></tt></li>
-<li>Connect to <a class="reference" href="http://localhost:8000/admin/">http://localhost:8000/admin/</a></li>
+<li>Connect to <a class="reference external" href="http://localhost:8000/admin/">http://localhost:8000/admin/</a></li>
 </ol>
 </div>
 </div>
-<div class="section">
-<h2 id="the-tinymce-preview-button">The TinyMCE preview button<a class="headerlink" href="#the-tinymce-preview-button" title="Permalink to this headline">¶</a></h2>
-<p>TinyMCE contains a <a class="reference" href="http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/preview">preview plugin</a> that can be used to allow the user to view
+<div class="section" id="the-tinymce-preview-button">
+<h2>The TinyMCE preview button<a class="headerlink" href="#the-tinymce-preview-button" title="Permalink to this headline">¶</a></h2>
+<p>TinyMCE contains a <a class="reference external" href="http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/preview">preview plugin</a> that can be used to allow the user to view
 the contents of the editor in the website context. The tinymce application
 provides a view and a template tag to make supporting this plugin easier. To
 use it point the <tt class="docutils literal"><span class="pre">plugin_preview_pageurl</span></tt> configuration to the view named
 <tt class="docutils literal"><span class="pre">tinymce-preview</span></tt>:</p>
-<div class="highlight"><pre><span class="k">from</span> <span class="nn">django.core.urlresolvers</span> <span class="k">import</span> <span class="n">reverse</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse</span>
 <span class="n">widget</span> <span class="o">=</span> <span class="n">TinyMCE</span><span class="p">(</span><span class="n">mce_attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;plugin_preview_pageurl&#39;</span><span class="p">:</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&#39;tinymce-preview&#39;</span><span class="p">,</span> <span class="s">&quot;NAME&quot;</span><span class="p">)})</span>
 </pre></div>
+</div>
 <p>The view named by <tt class="docutils literal"><span class="pre">tinymce-preview</span></tt> looks for a template named either
 <tt class="docutils literal"><span class="pre">tinymce/NAME_preview.html</span></tt> or <tt class="docutils literal"><span class="pre">NAME/tinymce_preview.html</span></tt>. The template
 accesses the content of the TinyMCE editor by using the <tt class="docutils literal"><span class="pre">tinymce_preview</span></tt>
 tag:</p>
-<pre>{% load tinymce_tags %}
+<div class="highlight-python"><pre>{% load tinymce_tags %}
 &lt;html&gt;
 &lt;head&gt;
 ...
@@ -514,6 +524,7 @@ tag:</p>
 ...
 &lt;div id="preview-content"&gt;&lt;/div&gt;
 ...</pre>
+</div>
 <p>With this template code the tekst inside the HTML element with id
 <tt class="docutils literal"><span class="pre">preview-content</span></tt> will be replace by the content of the TinyMCE editor.</p>
 </div>
