@@ -11,7 +11,10 @@ from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
 from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt
-from django.forms.util import smart_unicode
+try:
+    from django.utils.encoding import smart_unicode
+except ImportError:
+    from django.forms.util import smart_unicode
 from django.utils.html import escape
 from django.utils import simplejson
 from django.utils.datastructures import SortedDict
