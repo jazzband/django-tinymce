@@ -13,7 +13,7 @@ Prerequisites
 
 The tinymce application requires Django_ version 1.0 or higher. You will also
 need TinyMCE_ version 3.0.1 or higher and a `language pack`_ for *every
-language* you enabled in ``settings.LANGUAGES``. If you use the filebrowser_
+language* you enabled in ``settings.LANGUAGES``. If you use the django-filebrowser_
 application in your project, the tinymce application can use it as a browser
 when including media.
 
@@ -30,14 +30,12 @@ Python code::
 
 Note that the documentation will use 'TinyMCE' (capitalized) to refer the
 editor itself and 'tinymce' (lower case) to refer to the Django application.
-
 .. _Django: http://www.djangoproject.com/download/
 .. _TinyMCE: http://tinymce.moxiecode.com/download.php
 .. _`language pack`: http://tinymce.moxiecode.com/download_i18n.php
 .. _`spellchecker plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker
 .. _`PyEnchant`: http://pyenchant.sourceforge.net/
-.. _filebrowser: http://code.google.com/p/django-filebrowser/
-
+.. _`django-filebrowser`: http://code.google.com/p/django-filebrowser/
 
 Installation
 ------------
@@ -101,7 +99,7 @@ file.
   will be reduced dramatically if you use this option.
 
 ``TINYMCE_FILEBROWSER`` (default: ``True`` if ``'filebrowser'`` is in ``INSTALLED_APPS``, else ``False``)
-  Whether to use the filebrowser_ as a custom filebrowser for media inclusion.
+  Whether to use the django-filebrowser_ as a custom filebrowser for media inclusion.
   See the `official TinyMCE documentation on custom filebrowsers`_.
 
 Example::
