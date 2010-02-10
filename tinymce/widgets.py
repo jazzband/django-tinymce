@@ -41,8 +41,10 @@ class TinyMCE(forms.Textarea):
     parameter.
     """
 
-    def __init__(self, content_language=None, attrs=None, mce_attrs={}):
+    def __init__(self, content_language=None, attrs=None, mce_attrs=None):
         super(TinyMCE, self).__init__(attrs)
+        if mce_attrs is None:
+            mce_attrs = {}
         self.mce_attrs = mce_attrs
         if content_language is None:
             content_language = mce_attrs.get('language', None)
