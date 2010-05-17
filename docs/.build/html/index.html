@@ -25,7 +25,7 @@
 
 <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-          URL_ROOT:    '',
+          URL_ROOT:    '#',
           VERSION:     'trunk',
           COLLAPSE_MODINDEX: false,
           FILE_SUFFIX: '.html'
@@ -37,7 +37,7 @@
     <link rel="contents" title="Global table of contents" href="contents.html" />
     <link rel="index" title="Global index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="tinymce trunk documentation" href="" />
+    <link rel="top" title="tinymce trunk documentation" href="#" />
     <link rel="next" title="Installation" href="installation.html" />
 </head>
 <body class="t6">
@@ -150,7 +150,7 @@
  
  
  
- <a href="">tinymce trunk documentation</a> |
+ <a href="#">tinymce trunk documentation</a> |
  <span>
    <a href="installation.html" title="Installation"
       accesskey="N">next</a>
@@ -254,7 +254,7 @@
   <b>Table of Contents</b><br/>
   <table class="pmeta toc" cellpadding=5><tr><td>
 	<ul>
-<li><a class="reference external" href="">Welcome to the tinymce documentation</a><ul>
+<li><a class="reference external" href="#">Welcome to the django-tinymce documentation</a><ul>
 <li><a class="reference external" href="#documentation">Documentation</a><ul>
 </ul>
 </li>
@@ -281,9 +281,9 @@
  <div style="padding:0 3em 1.2em 0">
    
      
-  <div class="section" id="welcome-to-the-tinymce-documentation">
-<h1>Welcome to the tinymce documentation<a class="headerlink" href="#welcome-to-the-tinymce-documentation" title="Permalink to this headline">¶</a></h1>
-<p>tinymce is a <a class="reference external" href="http://www.djangoproject.com/">Django</a> application that contains a widget to render a form field
+  <div class="section" id="welcome-to-the-django-tinymce-documentation">
+<h1>Welcome to the django-tinymce documentation<a class="headerlink" href="#welcome-to-the-django-tinymce-documentation" title="Permalink to this headline">¶</a></h1>
+<p>django-tinymce is a <a class="reference external" href="http://www.djangoproject.com/">Django</a> application that contains a widget to render a form field
 as a <a class="reference external" href="http://tinymce.moxiecode.com/">TinyMCE</a> editor.</p>
 <dl class="docutils">
 <dt>Features:</dt>
@@ -292,20 +292,25 @@ as a <a class="reference external" href="http://tinymce.moxiecode.com/">TinyMCE<
 <li>Enhanced support for content languages.</li>
 <li>Integration with the TinyMCE spellchecker.</li>
 <li>Enables predefined link and image lists for dialogs.</li>
+<li>Support for django-staticfiles</li>
 <li>Can compress the TinyMCE Javascript code.</li>
 <li>Integration with <a class="reference external" href="http://code.google.com/p/django-filebrowser/">django-filebrowser</a>.</li>
 </ul>
 </dd>
 </dl>
-<p>The tinymce code is licensed under the <a class="reference external" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>. See the <tt class="docutils literal"><span class="pre">LICENSE.txt</span></tt>
+<p>The django-tinymce code is licensed under the <a class="reference external" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>. See the <tt class="docutils literal"><span class="pre">LICENSE.txt</span></tt>
 file in the distribution. Note that the TinyMCE editor is distributed under
 <a class="reference external" href="http://tinymce.moxiecode.com/license.php">its own license</a>.</p>
+<p>Starting with django-tinymce v1.5.1 TinyMCE editor is bundled with django-tinymce to enable easy installation and usage.
+<a class="reference external" href="http://pypi.python.org/pypi/django-staticfiles/">django-staticfiles</a> support is added to provide an easier way to configure and use django-tinymce.
+Note that django-tinymce and TinyMCE licenses are compatible (although different) and we have permission to bundle TinyMCE with django-tinymce.</p>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="installation.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference external" href="installation.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference external" href="installation.html#id2">Installation</a></li>
+<li class="toctree-l2"><a class="reference external" href="installation.html#testing">Testing</a></li>
 <li class="toctree-l2"><a class="reference external" href="installation.html#configuration">Configuration</a></li>
 </ul>
 </li>

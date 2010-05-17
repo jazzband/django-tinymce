@@ -2,7 +2,7 @@
 Installation
 ============
 
-This section describes how to install the tinymce application in your Django
+This section describes how to install the django-tinymce application in your Django
 project.
 
 
@@ -11,9 +11,9 @@ project.
 Prerequisites
 -------------
 
-The tinymce application requires Django_ version 1.0 or higher. You will also
-need TinyMCE_ version 3.0.1 or higher and a `language pack`_ for *every
-language* you enabled in ``settings.LANGUAGES``. If you use the django-filebrowser_
+The django-tinymce application requires `Django`_ version 1.0 or higher. You will also
+need `TinyMCE`_ version 3.0.1 or higher and a `language pack`_ for *every
+language* you enabled in ``settings.LANGUAGES``. If you use the `django-filebrowser`_
 application in your project, the tinymce application can use it as a browser
 when including media.
 
@@ -29,9 +29,10 @@ Python code::
   enchant.dict_exists('en')
 
 Note that the documentation will use 'TinyMCE' (capitalized) to refer the
-editor itself and 'tinymce' (lower case) to refer to the Django application.
-.. _Django: http://www.djangoproject.com/download/
-.. _TinyMCE: http://tinymce.moxiecode.com/download.php
+editor itself and 'django-tinymce' (lower case) to refer to the Django application.
+
+.. _`Django`: http://www.djangoproject.com/download/
+.. _`TinyMCE`: http://tinymce.moxiecode.com/download.php
 .. _`language pack`: http://tinymce.moxiecode.com/download_i18n.php
 .. _`spellchecker plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker
 .. _`PyEnchant`: http://pyenchant.sourceforge.net/
@@ -39,33 +40,64 @@ editor itself and 'tinymce' (lower case) to refer to the Django application.
 
 Installation
 ------------
+#. Install django-tinymce using `pip`_ (or any other way to install python package) from `PyPI`_. If you need to use a different way to install django-tinymce you can place the ``tinymce`` module on your Python path. You can put it into your Django project directory or run ``python setup.py install`` from a shell. ::
 
-#. Place the ``tinymce`` module in your Python path. You can put it into your
-   Django project directory or run ``python setup.py install`` from a shell.
+    pip install django-tinymce
 
-#. Copy the ``jscripts/tiny_mce`` directory from the TinyMCE distribution
-   (see :ref:`prerequisites`) into a directory named ``js`` in your media root.
-   You can override the location in your settings (see below).
+#. Add ``tinymce`` to INSTALLED_APPS in ``settings.py`` for your project::
 
-#. If you want to use any of the views add tinymce to your installed
-   applications list and URLconf:
+    INSTALLED_APPS = (
+        ...
+        'tinymce',
+        ...
+    )
 
-``settings.py``::
+#. Add ``tinymce.urls`` to ``urls.py`` for your project::
 
-  INSTALLED_APPS = (
-      ...
-      'tinymce',
-      ...
-  )
+    urlpatterns = patterns('',
+        ...
+        (r'^tinymce/', include('tinymce.urls')),
+        ...
+    )
 
-``urls.py``::
+#. If you are using ``django-staticfiles`` you can skip this step. Copy the ``jscripts/tiny_mce`` directory from the TinyMCE distribution (see :ref:`prerequisites`) into a directory named ``js`` in your media root. You can override the location in your settings (see below).
 
-  urlpatterns = patterns('',
-      ...
-      (r'^tinymce/', include('tinymce.urls')),
-      ...
-  )
+.. _`pip`: http://pip.openplans.org/
+.. _`PyPI`: http://pypi.python.org/
 
+Testing
+-------
+
+Verify that everything is installed and configured properly:
+
+#. Setup an isolated environment with `virtualenv`_ and activate environment::
+    
+    virtualenv --no-site-packages env
+    . env/bin/activate
+
+#. Install required packages::
+
+    pip install Django django-staticfiles django-tinymce==1.5.1
+
+#. Setup environment variable ``DJANGO_SETTINGS_MODULE``::
+
+    export DJANGO_SETTINGS_MODULE='testtinymce.staticfiles_settings'
+
+#. Setup test database (it will be created in current folder)::
+
+    django-admin.py syncdb
+
+#. Run Django runserver command to verify results::
+
+    django-admin.py runserver
+
+#. Open this address in a browser:
+
+    http://localhost:8000/admin/testapp/testpage/add/
+
+If you see TinyMCE instead of standard textarea boxes everything is working fine, otherwise check installation steps.
+
+.. _`virtualenv`: http://virtualenv.openplans.org/
 
 .. _configuration:
 
@@ -74,6 +106,7 @@ Configuration
 
 The application can be configured by editing the project's ``settings.py``
 file.
+
 
 ``TINYMCE_JS_URL`` (default: ``settings.MEDIA_URL + 'js/tiny_mce/tiny_mce.js'``)
   The URL of the TinyMCE javascript file.

@@ -25,7 +25,7 @@
 
 <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-          URL_ROOT:    '',
+          URL_ROOT:    '#',
           VERSION:     'trunk',
           COLLAPSE_MODINDEX: false,
           FILE_SUFFIX: '.html'
@@ -39,7 +39,7 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="tinymce trunk documentation" href="index.html" />
     <link rel="next" title="Usage" href="usage.html" />
-    <link rel="prev" title="Welcome to the tinymce documentation" href="index.html" />
+    <link rel="prev" title="Welcome to the django-tinymce documentation" href="index.html" />
 </head>
 <body class="t6">
  <div id=gaia>
@@ -157,7 +157,7 @@
       accesskey="N">next</a>
  </span> |
  <span>
-   <a href="index.html" title="Welcome to the tinymce documentation"
+   <a href="index.html" title="Welcome to the django-tinymce documentation"
       accesskey="P">previous</a>
  </span> |
  <span class="inIssueList">
@@ -228,7 +228,7 @@
  <td><ul>
  
  <li>
-   <a href="index.html" title="previous chapter">Welcome to the tinymce documentation</a>
+   <a href="index.html" title="previous chapter">Welcome to the django-tinymce documentation</a>
  </li>
  
 
@@ -270,9 +270,10 @@
   <b>Table of Contents</b><br/>
   <table class="pmeta toc" cellpadding=5><tr><td>
 	<ul>
-<li><a class="reference external" href="">Installation</a><ul>
+<li><a class="reference external" href="#">Installation</a><ul>
 <li><a class="reference external" href="#prerequisites">Prerequisites</a></li>
 <li><a class="reference external" href="#id2">Installation</a></li>
+<li><a class="reference external" href="#testing">Testing</a></li>
 <li><a class="reference external" href="#configuration">Configuration</a></li>
 </ul>
 </li>
@@ -299,13 +300,13 @@
      
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>This section describes how to install the tinymce application in your Django
+<p>This section describes how to install the django-tinymce application in your Django
 project.</p>
 <div class="section" id="prerequisites">
 <span id="id1"></span><h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>The tinymce application requires <a class="reference external" href="http://www.djangoproject.com/download/">Django</a> version 1.0 or higher. You will also
+<p>The django-tinymce application requires <a class="reference external" href="http://www.djangoproject.com/download/">Django</a> version 1.0 or higher. You will also
 need <a class="reference external" href="http://tinymce.moxiecode.com/download.php">TinyMCE</a> version 3.0.1 or higher and a <a class="reference external" href="http://tinymce.moxiecode.com/download_i18n.php">language pack</a> for <em>every
-language</em> you enabled in <tt class="docutils literal"><span class="pre">settings.LANGUAGES</span></tt>. If you use the <a class="reference external" href="http://code.google.com/p/django-filebrowser/">filebrowser</a>
+language</em> you enabled in <tt class="docutils literal"><span class="pre">settings.LANGUAGES</span></tt>. If you use the <a class="reference external" href="http://code.google.com/p/django-filebrowser/">django-filebrowser</a>
 application in your project, the tinymce application can use it as a browser
 when including media.</p>
 <p>If you want to use the <a class="reference external" href="http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker">spellchecker plugin</a> using the supplied view (no PHP
@@ -320,27 +321,24 @@ Python code:</p>
 </pre></div>
 </div>
 <p>Note that the documentation will use &#8216;TinyMCE&#8217; (capitalized) to refer the
-editor itself and &#8216;tinymce&#8217; (lower case) to refer to the Django application.</p>
+editor itself and &#8216;django-tinymce&#8217; (lower case) to refer to the Django application.</p>
 </div>
 <div class="section" id="id2">
 <h2>Installation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Place the <tt class="docutils literal"><span class="pre">tinymce</span></tt> module in your Python path. You can put it into your
-Django project directory or run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> from a shell.</li>
-<li>Copy the <tt class="docutils literal"><span class="pre">jscripts/tiny_mce</span></tt> directory from the TinyMCE distribution
-(see <a class="reference internal" href="#prerequisites"><em>Prerequisites</em></a>) into a directory named <tt class="docutils literal"><span class="pre">js</span></tt> in your media root.
-You can override the location in your settings (see below).</li>
-<li>If you want to use any of the views add tinymce to your installed
-applications list and URLconf:</li>
-</ol>
-<p><tt class="docutils literal"><span class="pre">settings.py</span></tt>:</p>
+<ol class="arabic">
+<li><p class="first">Install django-tinymce using <a class="reference external" href="http://pip.openplans.org/">pip</a> (or any other way to install python package) from <a class="reference external" href="http://pypi.python.org/">PyPI</a>. If you need to use a different way to install django-tinymce you can place the <tt class="docutils literal"><span class="pre">tinymce</span></tt> module on your Python path. You can put it into your Django project directory or run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> from a shell.</p>
+<div class="highlight-python"><pre>pip install django-tinymce</pre>
+</div>
+</li>
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">tinymce</span></tt> to INSTALLED_APPS in <tt class="docutils literal"><span class="pre">settings.py</span></tt> for your project:</p>
 <div class="highlight-python"><pre>INSTALLED_APPS = (
     ...
     'tinymce',
     ...
 )</pre>
 </div>
-<p><tt class="docutils literal"><span class="pre">urls.py</span></tt>:</p>
+</li>
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">tinymce.urls</span></tt> to <tt class="docutils literal"><span class="pre">urls.py</span></tt> for your project:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
     <span class="o">...</span>
     <span class="p">(</span><span class="s">r&#39;^tinymce/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;tinymce.urls&#39;</span><span class="p">)),</span>
@@ -348,6 +346,43 @@ applications list and URLconf:</li>
 <span class="p">)</span>
 </pre></div>
 </div>
+</li>
+<li><p class="first">If you are using <tt class="docutils literal"><span class="pre">django-staticfiles</span></tt> you can skip this step. Copy the <tt class="docutils literal"><span class="pre">jscripts/tiny_mce</span></tt> directory from the TinyMCE distribution (see <a class="reference internal" href="#prerequisites"><em>Prerequisites</em></a>) into a directory named <tt class="docutils literal"><span class="pre">js</span></tt> in your media root. You can override the location in your settings (see below).</p>
+</li>
+</ol>
+</div>
+<div class="section" id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<p>Verify that everything is installed and configured properly:</p>
+<ol class="arabic">
+<li><p class="first">Setup an isolated environment with <a class="reference external" href="http://virtualenv.openplans.org/">virtualenv</a> and activate environment:</p>
+<div class="highlight-python"><pre>virtualenv --no-site-packages env
+. env/bin/activate</pre>
+</div>
+</li>
+<li><p class="first">Install required packages:</p>
+<div class="highlight-python"><pre>pip install Django django-staticfiles django-tinymce==1.5.1</pre>
+</div>
+</li>
+<li><p class="first">Setup environment variable <tt class="docutils literal"><span class="pre">DJANGO_SETTINGS_MODULE</span></tt>:</p>
+<div class="highlight-python"><pre>export DJANGO_SETTINGS_MODULE='testtinymce.staticfiles_settings'</pre>
+</div>
+</li>
+<li><p class="first">Setup test database (it will be created in current folder):</p>
+<div class="highlight-python"><pre>django-admin.py syncdb</pre>
+</div>
+</li>
+<li><p class="first">Run Django runserver command to verify results:</p>
+<div class="highlight-python"><pre>django-admin.py runserver</pre>
+</div>
+</li>
+<li><p class="first">Open this address in a browser:</p>
+<blockquote>
+<p><a class="reference external" href="http://localhost:8000/admin/testapp/testpage/add/">http://localhost:8000/admin/testapp/testpage/add/</a></p>
+</blockquote>
+</li>
+</ol>
+<p>If you see TinyMCE instead of standard textarea boxes everything is working fine, otherwise check installation steps.</p>
 </div>
 <div class="section" id="configuration">
 <span id="id3"></span><h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
@@ -373,7 +408,7 @@ a single stream.  This makes the overall download size 75% smaller and also
 reduces the number of requests. The overall initialization time for TinyMCE
 will be reduced dramatically if you use this option.</dd>
 <dt><tt class="docutils literal"><span class="pre">TINYMCE_FILEBROWSER</span></tt> (default: <tt class="xref docutils literal"><span class="pre">True</span></tt> if <tt class="docutils literal"><span class="pre">'filebrowser'</span></tt> is in <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt>, else <tt class="xref docutils literal"><span class="pre">False</span></tt>)</dt>
-<dd>Whether to use the <a class="reference external" href="http://code.google.com/p/django-filebrowser/">filebrowser</a> as a custom filebrowser for media inclusion.
+<dd>Whether to use the <a class="reference external" href="http://code.google.com/p/django-filebrowser/">django-filebrowser</a> as a custom filebrowser for media inclusion.
 See the <a class="reference external" href="http://wiki.moxiecode.com/index.php/TinyMCE:Custom_filebrowser">official TinyMCE documentation on custom filebrowsers</a>.</dd>
 </dl>
 <p>Example:</p>
@@ -382,7 +417,7 @@ See the <a class="reference external" href="http://wiki.moxiecode.com/index.php/
     <span class="s">&#39;plugins&#39;</span><span class="p">:</span> <span class="s">&quot;table,spellchecker,paste,searchreplace&quot;</span><span class="p">,</span>
     <span class="s">&#39;theme&#39;</span><span class="p">:</span> <span class="s">&quot;advanced&quot;</span><span class="p">,</span>
     <span class="s">&#39;cleanup_on_startup&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="s">&#39;custom_undo_redo_levels&#39;</span><span class="p">:</span> <span class="mf">10</span><span class="p">,</span>
+    <span class="s">&#39;custom_undo_redo_levels&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">TINYMCE_SPELLCHECKER</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">TINYMCE_COMPRESSOR</span> <span class="o">=</span> <span class="bp">True</span>

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+# from distutils.core import setup
+from setuptools import setup, find_packages
 import metadata
 
 app_name = metadata.name
@@ -10,8 +11,20 @@ setup(
     name = "django-%s" % app_name,
     version = version,
 
-    packages = [app_name, '%s.templatetags' % app_name],
-    package_data = {app_name: ['templates/tinymce/*']},
+    # packages = [app_name, '%s.templatetags' % app_name, 'testtinymce'],
+    packages = find_packages(),
+    include_package_data = True,
+    #package_data = {
+        # app_name: [
+            #'templates/tinymce/*',
+            # 'media/*',
+            #'media/tiny_mce/*/*/*/*',
+            #'media/tiny_mce/*/*/*',
+            #'media/tiny_mce/*/*',
+            #'media/tiny_mce/*',
+        # ],
+        # 'testtinymce': ['templates/flatpages/*', 'testapp/*']
+    # },
 
     author = "Joost Cassee",
     author_email = "joost@cassee.net",

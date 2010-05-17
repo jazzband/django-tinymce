@@ -25,7 +25,7 @@
 
 <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-          URL_ROOT:    '',
+          URL_ROOT:    '#',
           VERSION:     'trunk',
           COLLAPSE_MODINDEX: false,
           FILE_SUFFIX: '.html'
@@ -270,7 +270,7 @@
   <b>Table of Contents</b><br/>
   <table class="pmeta toc" cellpadding=5><tr><td>
 	<ul>
-<li><a class="reference external" href="">Usage</a><ul>
+<li><a class="reference external" href="#">Usage</a><ul>
 <li><a class="reference external" href="#using-the-widget">Using the widget</a><ul>
 <li><a class="reference external" href="#python-code">Python code</a></li>
 <li><a class="reference external" href="#templates">Templates</a></li>
@@ -327,7 +327,7 @@ flatpage form you could use the following code:</p>
 
 <span class="k">class</span> <span class="nc">FlatPageForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
     <span class="o">...</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">TinyMCE</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;cols&#39;</span><span class="p">:</span> <span class="mf">80</span><span class="p">,</span> <span class="s">&#39;rows&#39;</span><span class="p">:</span> <span class="mf">30</span><span class="p">}))</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">TinyMCE</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;cols&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&#39;rows&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}))</span>
     <span class="o">...</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
@@ -469,7 +469,7 @@ the link dialog you could use something like this:</p>
     <span class="k">def</span> <span class="nf">formfield_for_dbfield</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_field</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">db_field</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&#39;content&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">db_field</span><span class="o">.</span><span class="n">formfield</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">TinyMCE</span><span class="p">(</span>
-                <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;cols&#39;</span><span class="p">:</span> <span class="mf">80</span><span class="p">,</span> <span class="s">&#39;rows&#39;</span><span class="p">:</span> <span class="mf">30</span><span class="p">},</span>
+                <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;cols&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&#39;rows&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
                 <span class="n">mce_attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;external_link_list_url&#39;</span><span class="p">:</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&#39;tinymce.views.flatpages_link_list&#39;</span><span class="p">)},</span>
             <span class="p">))</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">TinyMCEFlatPageAdmin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">formfield_for_dbfield</span><span class="p">(</span><span class="n">db_field</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

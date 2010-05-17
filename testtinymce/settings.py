@@ -3,6 +3,7 @@
 import os
 
 ROOT_PATH = os.path.dirname(os.path.realpath(__file__))
+CURRENT_PATH = os.getcwd()
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,7 +15,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = 'database.sqlite' # Or path to database file if using sqlite3.
+DATABASE_NAME = os.path.join(CURRENT_PATH, 'database.sqlite') # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -83,7 +84,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.flatpages',
     'tinymce',
-    'testapp',
+    'testtinymce.testapp',
 )
 
 TINYMCE_SPELLCHECKER = True
