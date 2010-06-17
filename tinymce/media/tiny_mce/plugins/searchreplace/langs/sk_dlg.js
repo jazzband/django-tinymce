@@ -9,7 +9,7 @@ replacewith:"Nahradi\u0165 \u010D\u00EDm",
 direction:"Smer",
 up:"Nahor",
 down:"Nadol",
-mcase:"Rozli\u0161ova\u0165 ve\u013Ekos\u0165",
+mcase:"Rozli\u0161ova\u0165 mal\u00E9 a VE\u013DK\u00C9 p\u00EDsmen\u00E1",
 findnext:"H\u013Eada\u0165 dalej",
 replace:"Nahradi\u0165",
 replaceall:"Nahradi\u0165 v\u0161etko"

@@ -1,5 +1,5 @@
 tinyMCE.addI18n('sk.advanced',{
-style_select:"\u0160t\u00FDl",
+style_select:"\u0160t\u00FDly",
 font_size:"Ve\u013Ekos\u0165 p\u00EDsma",
 fontdefault:"P\u00EDsmo",
 block:"Form\u00E1t",

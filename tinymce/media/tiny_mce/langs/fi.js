@@ -27,8 +27,8 @@ date_fmt:"%d.%m.%Y",
 time_fmt:"%H:%M:%S",
 insertdate_desc:"Lis\u00E4\u00E4 p\u00E4iv\u00E4m\u00E4\u00E4r\u00E4",
 inserttime_desc:"Lis\u00E4\u00E4 kellonaika",
-months_long:"Tammikuu,Helmikuu,Maaliskuu,Huhtikuu,Toukokuu,Kes\u00E4kuu,Hein\u00E4kuu,Elokuu,Syyskuu,Lokakuu,Marraskuu,Joulukuu",
-months_short:"Tammi,Helmi,Maalis,Huhti,Touko,Kes\u00E4,Hein\u00E4,Elo,Syys,Loka,Marras,Joulu",
+months_long:"tammikuu,helmikuu,maaliskuu,huhtikuu,toukokuu,kes\u00E4kuu,hein\u00E4kuu,elokuu,syyskuu,lokakuu,marraskuu,joulukuu",
+months_short:"tammi,helmi,maalis,huhti,touko,kes\u00E4,hein\u00E4,elo,syys,loka,marras,joulu",
 day_long:"sunnuntai,maanantai,tiistai,keskiviikko,torstai,perjantai,lauantai,sunnuntai",
 day_short:"su,ma,ti,ke,to,pe,la,su"
 },
@@ -91,8 +91,8 @@ paste:{
 paste_text_desc:"Liit\u00E4 pelkk\u00E4n\u00E4 tekstin\u00E4",
 paste_word_desc:"Liit\u00E4 Wordist\u00E4",
 selectall_desc:"Valitse kaikki",
-plaintext_mode_sticky:"Paste is now in plain text mode. Click again to toggle back to regular paste mode. After you paste something you will be returned to regular paste mode.",
-plaintext_mode:"Paste is now in plain text mode. Click again to toggle back to regular paste mode."
+plaintext_mode_sticky:"Liitt\u00E4minen on nyt pelkk\u00E4n\u00E4 tekstin\u00E4. Klikkaa uudelleen vaihtaaksesi takaisin tavalliseen tilaan. Palaat takaisin tavalliseen tilaan liitetty\u00E4si jotakin.",
+plaintext_mode:"Liitt\u00E4minen on nyt pelkk\u00E4n\u00E4 tekstin\u00E4. Klikkaa uudelleen vaihtaaksesi takaisin tavalliseen tilaan."
 },
 paste_dlg:{
 text_title:"Paina CTRL+V liitt\u00E4\u00E4ksesi sis\u00E4ll\u00F6n ikkunaan.",
@@ -124,8 +124,8 @@ cellprops_delta_width:"80"
 },
 autosave:{
 unload_msg:"Tekem\u00E4si muutokset menetet\u00E4\u00E4n jos poistut t\u00E4lt\u00E4 sivulta.",
-restore_content:"Restore auto-saved content.",
-warning_message:"If you restore the saved content, you will lose all the content that is currently in the editor.\n\nAre you sure you want to restore the saved content?."
+restore_content:"Palauta automaattisesti tallennettu sis\u00E4lt\u00F6.",
+warning_message:"Jos palautat automaattisesti tallennetun sis\u00E4ll\u00F6n, menet\u00E4t t\u00E4ll\u00E4 hetkell\u00E4 editorissa olevan sis\u00E4ll\u00F6n.\n\nHaluatko varmasti palauttaa tallennetun sis\u00E4ll\u00F6n?"
 },
 fullscreen:{
 desc:"Kokoruututila"
@@ -158,14 +158,14 @@ pagebreak:{
 desc:"Lis\u00E4\u00E4 sivunvaihto."
 },
 advlist:{
-types:"Types",
-def:"Default",
-lower_alpha:"Lower alpha",
-lower_greek:"Lower greek",
-lower_roman:"Lower roman",
-upper_alpha:"Upper alpha",
-upper_roman:"Upper roman",
-circle:"Circle",
-disc:"Disc",
-square:"Square"
+types:"Tyypit",
+def:"Oletus",
+lower_alpha:"pienet kirjaimet: a, b, c",
+lower_greek:"pienet kirjaimet: \u03B1, \u03B2, \u03B3",
+lower_roman:"pienet kirjaimet: i, ii, iii",
+upper_alpha:"isot kirjaimet: A, B, C",
+upper_roman:"isot kirjaimet: I, II, III",
+circle:"Pallo",
+disc:"Ympyr\u00E4",
+square:"Neli\u00F6"
 }}});

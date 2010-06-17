@@ -1,5 +1,5 @@
 tinyMCE.addI18n('ja.advanced',{
-style_select:"\u30B9\u30BF\u30A4\u30EB",
+style_select:"style\u5C5E\u6027",
 font_size:"\u30D5\u30A9\u30F3\u30C8\u30B5\u30A4\u30BA",
 fontdefault:"\u30D5\u30A9\u30F3\u30C8",
 block:"\u30D5\u30A9\u30FC\u30DE\u30C3\u30C8",

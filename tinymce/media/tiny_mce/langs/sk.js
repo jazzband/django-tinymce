@@ -1,6 +1,6 @@
 tinyMCE.addI18n({sk:{
 common:{
-edit_confirm:"Chcete pou\u017Ei\u0165 WYSIWYG m\u00F3d pre tento text?",
+edit_confirm:"Chcete pou\u017Ei\u0165 WYSIWYG re\u017Eim pre tento text?",
 apply:"Pou\u017Ei\u0165",
 insert:"Vlo\u017Ei\u0165",
 update:"Aktualizova\u0165",
@@ -11,7 +11,7 @@ class_name:"Trieda",
 not_set:"-- Nezadan\u00E9 --",
 clipboard_msg:"Funkcie kop\u00EDrova\u0165/vystrihn\u00FA\u0165/vlo\u017Ei\u0165 nie s\u00FA podporovan\u00E9 v prehliada\u010Doch Mozilla a Firefox.\nChcete viac inform\u00E1ci\u00ED o tomto probl\u00E9me?",
 clipboard_no_support:"T\u00E1to funkcia nie je va\u0161\u00EDm prehliada\u010Dom podporovan\u00E1. Pou\u017Eite namiesto toho kl\u00E1vesov\u00FA skratku.",
-popup_blocked:"Ospravedl\u0148ujeme sa, ale blokovanie vyskakovac\u00EDch okien neumo\u017Enilo otvori\u0165 okno, ktor\u00E9 poskytuje funk\u010Dnos\u0165 aplik\u00E1cie. Pre pln\u00E9 vyu\u017Eitie mo\u017Enost\u00ED aplik\u00E1cie mus\u00EDte vypn\u00FA\u0165 blokovanie vyskakovac\u00EDch okien pre tento web.",
+popup_blocked:"Blokovanie vyskakovac\u00EDch okien neumo\u017Enilo otvori\u0165 okno, ktor\u00E9 poskytuje funk\u010Dnos\u0165 aplik\u00E1cie. Pre pln\u00E9 vyu\u017Eitie mo\u017Enost\u00ED aplik\u00E1cie mus\u00EDte vypn\u00FA\u0165 blokovanie vyskakovac\u00EDch okien pre tento web.",
 invalid_data:"Chyba: Boli zadan\u00E9 neplatn\u00E9 hodnoty a tieto boli ozna\u010Den\u00E9 \u010Dervenou farbou.",
 more_colors:"\u010Eal\u0161ie farby"
 },
@@ -58,7 +58,7 @@ nonbreaking_desc:"Vlo\u017Ei\u0165 nerozdelite\u013En\u00FA medzeru"
 },
 iespell:{
 iespell_desc:"Spusti\u0165 kontrolu pravopisu",
-download:"Slovn\u00EDk ieSpell nebol detekovan\u00FD. Chcete ho teraz nain\u0161talova\u0165?"
+download:"Slovn\u00EDk ieSpell nebol detekovan\u00FD. Chcete ho nain\u0161talova\u0165?"
 },
 advhr:{
 advhr_desc:"Vodorovn\u00FD odde\u013Eova\u010D"
@@ -160,7 +160,7 @@ no_sug:"\u017Diadne ponuky",
 no_mpell:"Bez pravopisn\u00FDch ch\u00FDb."
 },
 pagebreak:{
-desc:"Vlo\u017Ei\u0165 koniec str\u00E1nky."
+desc:"Vlo\u017Ei\u0165 zalomenie str\u00E1nky."
 },
 advlist:{
 types:"Typ",

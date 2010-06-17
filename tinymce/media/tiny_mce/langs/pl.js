@@ -50,7 +50,7 @@ absolute_desc:"Prze\u0142\u0105cz pozycjonowanie absolutne",
 content:"Nowa warstwa..."
 },
 save:{
-save_desc:"Zachowaj",
+save_desc:"Zachowaj\u015B\u017A\u0142",
 cancel_desc:"Anuluj wszystkie zmiany"
 },
 nonbreaking:{
@@ -151,20 +151,20 @@ langs:"J\u0119zyki",
 wait:"Prosz\u0119 poczeka\u0107...",
 sug:"Sugestie",
 no_sug:"Brak sugestii",
-no_mpell:"\u017Badnych brakuj\u0105cych nie znaleziono."
+no_mpell:"\u0139\u0165adnych brakuj\u0105cych nie znaleziono."
 },
 pagebreak:{
 desc:"Wstaw lini\u0119."
 },
 advlist:{
-types:"Types",
-def:"Default",
+types:"Typy",
+def:"Domy\u015Blny",
 lower_alpha:"Lower alpha",
 lower_greek:"Lower greek",
 lower_roman:"Lower roman",
 upper_alpha:"Upper alpha",
 upper_roman:"Upper roman",
-circle:"Circle",
-disc:"Disc",
-square:"Square"
+circle:"Ko\u0142o",
+disc:"Elipsa",
+square:"Kwadrat"
 }}});

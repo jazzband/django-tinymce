@@ -91,8 +91,8 @@ paste:{
 paste_text_desc:"Enganxa com a text pla",
 paste_word_desc:"Enganxa des del Word",
 selectall_desc:"Selecciona-ho tot",
-plaintext_mode_sticky:"Paste is now in plain text mode. Click again to toggle back to regular paste mode. After you paste something you will be returned to regular paste mode.",
-plaintext_mode:"Paste is now in plain text mode. Click again to toggle back to regular paste mode."
+plaintext_mode_sticky:"Enganxa est\u00E0 ara configurat en mode text pla. Clica de nou per tornar al mode normal d'enganxar. Despr\u00E9s d'enganxar quelcom ser\u00E0s retornat al mode normal d'enganxar.",
+plaintext_mode:"Enganxa est\u00E0 ara configurat en mode text pla. Clica de nou per tornar al mode normal d'enganxar."
 },
 paste_dlg:{
 text_title:"Amb el teclat utilitzeu CTRL+V per a enganxar el text dins la finestra.",
@@ -123,8 +123,8 @@ cell:"Cel\u00B7la"
 },
 autosave:{
 unload_msg:"Els canvis que heu fet es perdran si navegueu a fora d\'aquesta p\u00E0gina.",
-restore_content:"Restore auto-saved content.",
-warning_message:"If you restore the saved content, you will lose all the content that is currently in the editor.\n\nAre you sure you want to restore the saved content?."
+restore_content:"Restaura el contingut guardat autom\u00E0ticament.",
+warning_message:"Si restaures el contingut guardat, perdr\u00E0s tot el contingut actual de l'editor. Est\u00E0s segur de voler continuar?"
 },
 fullscreen:{
 desc:"Commuta a mode de pantalla completa"
@@ -157,14 +157,14 @@ pagebreak:{
 desc:"Insereix un salt de p\u00E0gina."
 },
 advlist:{
-types:"Types",
-def:"Default",
-lower_alpha:"Lower alpha",
-lower_greek:"Lower greek",
-lower_roman:"Lower roman",
-upper_alpha:"Upper alpha",
-upper_roman:"Upper roman",
-circle:"Circle",
+types:"Tipus",
+def:"Per defecte",
+lower_alpha:"Lletres",
+lower_greek:"Lletres gregues (min\u00FAscules)",
+lower_roman:"Nombres romans (min\u00FAscules)",
+upper_alpha:"Lletres (maj\u00FAscules)",
+upper_roman:"Nombres romans (maj\u00FAscules)",
+circle:"Cercle",
 disc:"Disc",
-square:"Square"
+square:"Quadrat"
 }}});

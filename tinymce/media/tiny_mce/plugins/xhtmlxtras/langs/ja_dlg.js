@@ -1,8 +1,8 @@
 tinyMCE.addI18n('ja.xhtmlxtras_dlg',{
 attribute_label_title:"\u30BF\u30A4\u30C8\u30EB",
-attribute_label_id:"ID",
-attribute_label_class:"\u30AF\u30E9\u30B9",
-attribute_label_style:"\u30B9\u30BF\u30A4\u30EB",
+attribute_label_id:"ID\u5C5E\u6027",
+attribute_label_class:"class\u5C5E\u6027",
+attribute_label_style:"style\u5C5E\u6027",
 attribute_label_cite:"\u5F15\u7528",
 attribute_label_datetime:"\u65E5\u4ED8/\u6642\u523B",
 attribute_label_langdir:"\u6587\u7AE0\u306E\u65B9\u5411",
