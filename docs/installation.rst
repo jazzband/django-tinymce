@@ -77,7 +77,7 @@ Verify that everything is installed and configured properly:
 
 #. Install required packages::
 
-    pip install Django django-staticfiles django-tinymce==1.5.1
+    pip install Django django-staticfiles django-tinymce
 
 #. Setup environment variable ``DJANGO_SETTINGS_MODULE``::
 
@@ -91,7 +91,7 @@ Verify that everything is installed and configured properly:
 
     django-admin.py runserver
 
-#. Open this address in a browser:
+#. Open this address in a browser::
 
     http://localhost:8000/admin/testapp/testpage/add/
 
@@ -107,13 +107,16 @@ Configuration
 The application can be configured by editing the project's ``settings.py``
 file.
 
-
 ``TINYMCE_JS_URL`` (default: ``settings.MEDIA_URL + 'js/tiny_mce/tiny_mce.js'``)
-  The URL of the TinyMCE javascript file.
+    The URL of the TinyMCE javascript file::
+
+        TINYMCE_JS_URL = os.path.join(MEDIA_ROOT, "path/to/tiny_mce/tiny_mce.js")
 
 ``TINYMCE_JS_ROOT`` (default: ``settings.MEDIA_ROOT + 'js/tiny_mce'``)
   The filesystem location of the TinyMCE files. It is used by the compressor
-  (see below).
+  (see below)::
+
+        TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, "path/to/tiny_mce")
 
 ``TINYMCE_DEFAULT_CONFIG`` (default: ``{'theme': "simple", 'relative_urls': False}``)
   The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all
