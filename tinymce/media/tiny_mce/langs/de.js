@@ -88,7 +88,7 @@ style:{
 desc:"CSS-Styles bearbeiten"
 },
 paste:{
-paste_text_desc:"Als normalen Text einf\u00FCgen",
+paste_text_desc:"Als einfachen Text einf\u00FCgen",
 paste_word_desc:"Mit Formatierungen (aus Word) einf\u00FCgen",
 selectall_desc:"Alles ausw\u00E4hlen",
 plaintext_mode_sticky:"Einf\u00FCgemodus ist nun \"Nur Text\". Erneut klicken (oder das Einf\u00FCgen aus der Zwischenablage) stellt den Normalmodus wieder her.",

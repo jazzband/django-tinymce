@@ -61,20 +61,30 @@ iespell_desc:"Hizkuntza zuzendu",
 download:"ieSpell ez da aurkitu. Instalatu egin nahi duzu?"
 },
 advhr:{
-advhr_desc:"Marra horizontala"
+advhr_desc:"Marra horizontala",
+delta_width:"Zabalera",
+delta_height:"Altuera"
 },
 emotions:{
-emotions_desc:"Ikonotxoak"
+emotions_desc:"Ikonotxoak",
+delta_width:"Zabalera",
+delta_height:"Altuera"
 },
 searchreplace:{
 search_desc:"Bilatu",
-replace_desc:"Bilatu/Ordeztu"
+replace_desc:"Bilatu/Ordeztu",
+delta_width:"Zabalera",
+delta_height:"Altuera"
 },
 advimage:{
-image_desc:"Irudia txertatu/editatu"
+image_desc:"Irudia txertatu/editatu",
+delta_width:"Zabalera",
+delta_height:"Altuera"
 },
 advlink:{
-link_desc:"Lotura txertatu/editatu"
+link_desc:"Lotura txertatu/editatu",
+delta_width:"Zabalera",
+delta_height:"Altuera"
 },
 xhtmlxtras:{
 cite_desc:"Zita",
@@ -82,17 +92,31 @@ abbr_desc:"Laburdura",
 acronym_desc:"Akronimoa",
 del_desc:"Ezabaketa",
 ins_desc:"Txertaketa",
-attribs_desc:"Atributuak txertatu/editatu"
+attribs_desc:"Atributuak txertatu/editatu",
+cite_delta_width:"Ziten zabalera",
+cite_delta_height:"Ziten altuera",
+abbr_delta_width:"Laburduren zabalera",
+abbr_delta_height:"Laburduren altuera",
+acronym_delta_width:"Akronimoen zabalera",
+acronym_delta_height:"Akronimoen altuera",
+del_delta_width:"Ezabaketaren zabalera",
+del_delta_height:"Ezabaketaren altuera",
+ins_delta_width:"Txertaketaren zabalera",
+ins_delta_height:"Txertaketaren altuera",
+attribs_delta_width:"Atributuen zabalera",
+attribs_delta_height:"Atributuen altuera"
 },
 style:{
-desc:"Aldatu CSS estiloa"
+desc:"Aldatu CSS estiloa",
+delta_width:"Zabalera",
+delta_height:"Altuera"
 },
 paste:{
 paste_text_desc:"Testu gisa itsatsi",
 paste_word_desc:"Word-etik itsatsi",
 selectall_desc:"Aukeratu guztia",
-plaintext_mode_sticky:"Paste is now in plain text mode. Click again to toggle back to regular paste mode. After you paste something you will be returned to regular paste mode.",
-plaintext_mode:"Paste is now in plain text mode. Click again to toggle back to regular paste mode."
+plaintext_mode_sticky:"Itsasketa testu moduan dago orain. Egin klik itsasketa arruntera itzultzeko. Zerbait itsatsi ostean, modu arruntera pasatuko zara automatikoki.",
+plaintext_mode:"Itsasketa testu moduan dago orain. Egin klik itsasketa arruntera itzultzeko."
 },
 paste_dlg:{
 text_title:"Erabili CTRL+V testua lehioan itsasteko.",
@@ -119,22 +143,34 @@ copy_row_desc:"Kopiatu lerroa",
 del:"Ezabatu taula",
 row:"Lerroa",
 col:"Zutabea",
-cell:"Gelaxka"
+cell:"Gelaxka",
+rowprops_delta_width:"Lerroen propietateen zabalera",
+rowprops_delta_height:"Lerroen propietateen altuera",
+cellprops_delta_width:"Gelaxken propietateen zabalera",
+cellprops_delta_height:"Gelaxken propietateen altuera",
+table_delta_width:"Taularen zabalera",
+table_delta_height:"Taularen altuera",
+merge_cells_delta_width:"Gelaxkak batzearen zabalera",
+merge_cells_delta_height:"Gelaxkak batzearen altuera"
 },
 autosave:{
 unload_msg:"Egindako aldaketak galdu egingo dira orri honetatik kanpona nabigatzen baldin baduzu.",
-restore_content:"Restore auto-saved content.",
-warning_message:"If you restore the saved content, you will lose all the content that is currently in the editor.\n\nAre you sure you want to restore the saved content?."
+restore_content:"Automatikoki gordetako edukia errekuperatu.",
+warning_message:"Gordetako edukia errekuperatzen baduzu, orain editorean dagoena galdu egingo duzu.\n\nZiur zaude gordetakoa errekuperatzea nahi duzula?"
 },
 fullscreen:{
 desc:"Aldatu pantaila osoko modura"
 },
 media:{
 desc:"Insert / edit embedded media",
-edit:"Edit embedded media"
+edit:"Edit embedded media",
+delta_width:"Zabalera",
+delta_height:"Altuera"
 },
 fullpage:{
-desc:"Dokumentuaren ezaugarriak"
+desc:"Dokumentuaren ezaugarriak",
+delta_width:"Zabalera",
+delta_height:"Altuera"
 },
 template:{
 desc:"Txertatu aurredefinitutako txantiloiaren edukia"
@@ -157,14 +193,14 @@ pagebreak:{
 desc:"Txertatu orri jauzia."
 },
 advlist:{
-types:"Types",
-def:"Default",
-lower_alpha:"Lower alpha",
-lower_greek:"Lower greek",
-lower_roman:"Lower roman",
-upper_alpha:"Upper alpha",
-upper_roman:"Upper roman",
-circle:"Circle",
-disc:"Disc",
-square:"Square"
+types:"Motak",
+def:"Defektuzkoa",
+lower_alpha:"Hizki xeheak",
+lower_greek:"Hizki greko xeheak",
+lower_roman:"Zenbaki erromatar xeheak",
+upper_alpha:"Hizki larriak",
+upper_roman:"Zenbaki erromatar larriak",
+circle:"Borobila",
+disc:"Diskoa",
+square:"Karratua"
 }}});

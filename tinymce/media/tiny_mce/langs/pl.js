@@ -1,6 +1,6 @@
 tinyMCE.addI18n({pl:{
 common:{
-edit_confirm:"Czy chcesz usu trybu WYSIWYG dla tego pola formularza?",
+edit_confirm:"Czy chcesz u\u017Cy\u0107 trybu WYSIWYG dla tego pola formularza?",
 apply:"Zastosuj",
 insert:"Wstaw",
 update:"Aktualizuj",
@@ -91,8 +91,8 @@ paste:{
 paste_text_desc:"Wklej jako zwyk\u0142y tekst",
 paste_word_desc:"Wklej z Worda",
 selectall_desc:"Zaznacz wszystko",
-plaintext_mode_sticky:"Paste is now in plain text mode. Click again to toggle back to regular paste mode. After you paste something you will be returned to regular paste mode.",
-plaintext_mode:"Paste is now in plain text mode. Click again to toggle back to regular paste mode."
+plaintext_mode_sticky:"Wklejanie jest teraz dost\u0119pne w trybie tekstowym. Kliknij ponownie, aby prze\u0142\u0105czy\u0107 si\u0119 z powrotem do trybu wklejania sformatowanego tekstu. Po wklejeniu tekstu nast\u0105pi powr\u00F3t do trybu wklejania zformatowanego tekstu.",
+plaintext_mode:"Wklejanie jest teraz dost\u0119pne w trybie tekstowym. Kliknij ponownie, aby prze\u0142\u0105czy\u0107 si\u0119 z powrotem do trybu wklejania sformatowanego tekstu."
 },
 paste_dlg:{
 text_title:"U\u017Cyj CTRL+V na swojej klawiaturze \u017Ceby wklei\u0107 tekst do okna.",
@@ -123,8 +123,8 @@ cell:"Kom\u00F3rka"
 },
 autosave:{
 unload_msg:"Zmiany, kt\u00F3re zrobi\u0142e\u015B zostan\u0105 utracone je\u015Bli opu\u015Bcisz t\u0119 stron\u0119.",
-restore_content:"Restore auto-saved content.",
-warning_message:"If you restore the saved content, you will lose all the content that is currently in the editor.\n\nAre you sure you want to restore the saved content?."
+restore_content:"Przywr\u00F3\u0107 automatycznie zapisan\u0105 tre\u015B\u0107.",
+warning_message:"Je\u015Bli przywr\u00F3cisz zapisan\u0105 tre\u015B\u0107, stracisz ca\u0142\u0105 tre\u015B\u0107, kt\u00F3ra teraz si\u0119 znajduje w edytorze.\n\nJeste\u015B pewien, \u017Ce chcesz przywr\u00F3ci\u0107 zapisan\u0105 tre\u015B\u0107?."
 },
 fullscreen:{
 desc:"Prze\u0142\u0105cz tryb pe\u0142noekranowy"
@@ -151,7 +151,7 @@ langs:"J\u0119zyki",
 wait:"Prosz\u0119 poczeka\u0107...",
 sug:"Sugestie",
 no_sug:"Brak sugestii",
-no_mpell:"\u0139\u0165adnych brakuj\u0105cych nie znaleziono."
+no_mpell:"\u017Badnych brakuj\u0105cych nie znaleziono."
 },
 pagebreak:{
 desc:"Wstaw lini\u0119."
@@ -159,11 +159,11 @@ desc:"Wstaw lini\u0119."
 advlist:{
 types:"Typy",
 def:"Domy\u015Blny",
-lower_alpha:"Lower alpha",
-lower_greek:"Lower greek",
-lower_roman:"Lower roman",
-upper_alpha:"Upper alpha",
-upper_roman:"Upper roman",
+lower_alpha:"Ma\u0142e alfabetu",
+lower_greek:"Ma\u0142e greckie",
+lower_roman:"Ma\u0142e rzymskie",
+upper_alpha:"Du\u017Ce alfabetu",
+upper_roman:"Du\u017Ce rzymskie",
 circle:"Ko\u0142o",
 disc:"Elipsa",
 square:"Kwadrat"

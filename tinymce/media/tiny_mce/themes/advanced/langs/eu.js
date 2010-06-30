@@ -58,5 +58,15 @@ clipboard_msg:"Kopiatu/Ebaki/Itsatsi ez dago Mozilla eta Firefoxen.\nHonen ingur
 path:"Bidea",
 newdocument:"Eduki guztia kendu nahi duzu?",
 toolbar_focus:"Tresnaren botoietara joan - Alt+Q, Editorera joan - Alt-Z, Elementuaren bidera joan - Alt-X",
-more_colors:"Kolore gehiago"
+more_colors:"Kolore gehiago",
+image_delta_width:"Irudiaren zabalera",
+image_delta_height:"Irudiaren altuera",
+link_delta_width:"Loturaren zabalera",
+link_delta_height:"Loturaren altuera",
+colorpicker_delta_width:"Kolore hautatzailearen zabalera",
+colorpicker_delta_height:"Kolore hautatzailearen altuera",
+charmap_delta_width:"Karaktere maparen zabalera",
+charmap_delta_height:"Karaktere maparen altuera",
+anchor_delta_width:"Ainguraren zabalera",
+anchor_delta_height:"Ainguraren altuera"
 });

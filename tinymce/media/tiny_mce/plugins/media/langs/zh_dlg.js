@@ -2,7 +2,7 @@ tinyMCE.addI18n('zh.media_dlg',{
 title:"\u63D2\u5165/\u7F16\u8F91\u591A\u5A92\u4F53",
 general:"\u4E00\u822C",
 advanced:"\u66F4\u591A\u8BBE\u5B9A",
-file:"\u6863\u6848/\u7F51\u5740",
+file:"\u6863\u6849/\u7F51\u5740",
 list:"\u5217\u8868",
 size:"\u5C3A\u5BF8",
 preview:"\u9884\u89C8",

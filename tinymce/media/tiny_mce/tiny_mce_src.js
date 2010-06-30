@@ -5,9 +5,9 @@
 	var tinymce = {
 		majorVersion : '3',
 
-		minorVersion : '3.7',
+		minorVersion : '3.8',
 
-		releaseDate : '2010-06-10',
+		releaseDate : '2010-06-30',
 
 		_init : function() {
 			var t = this, d = document, na = navigator, ua = na.userAgent, i, nl, n, base, p, v;
@@ -1578,7 +1578,6 @@ tinymce.create('static tinymce.util.XHR', {
 					e = t.boxModel ? d.documentElement : d.body;
 					x = t.getStyle(t.select('html')[0], 'borderWidth'); // Remove border
 					x = (x == 'medium' || t.boxModel && !t.isIE6) && 2 || x;
-					n.top += t.win.self != t.win.top ? 2 : 0; // IE adds some strange extra cord if used in a frameset
 
 					return {x : n.left + e.scrollLeft - x, y : n.top + e.scrollTop - x};
 				}
@@ -3372,148 +3371,81 @@ tinymce.create('static tinymce.util.XHR', {
 		};
 
 		this.addRange = function(rng) {
-			var ieRng, ieRng2, doc = selection.dom.doc, body = doc.body, startPos, endPos, sc, so, ec, eo, marker, lastIndex, skipStart, skipEnd;
+			var ieRng, ctrlRng, startContainer, startOffset, endContainer, endOffset, doc = selection.dom.doc, body = doc.body;
 
+			function setEndPoint(start) {
+				var container, offset, marker, tmpRng, nodes;
+
+				marker = dom.create('a');
+				container = start ? startContainer : endContainer;
+				offset = start ? startOffset : endOffset;
+				tmpRng = ieRng.duplicate();
+
+				if (container == doc) {
+					container = body;
+					offset = 0;
+				}
+
+				if (container.nodeType == 3) {
+					container.parentNode.insertBefore(marker, container);
+					tmpRng.moveToElementText(marker);
+					tmpRng.moveStart('character', offset);
+					dom.remove(marker);
+					ieRng.setEndPoint(start ? 'StartToStart' : 'EndToEnd', tmpRng);
+				} else {
+					nodes = container.childNodes;
+
+					if (nodes.length) {
+						if (offset >= nodes.length) {
+							dom.insertAfter(marker, nodes[nodes.length - 1]);
+						} else {
+							container.insertBefore(marker, nodes[offset]);
+						}
+
+						tmpRng.moveToElementText(marker);
+					} else {
+						// Empty node selection for example <div>|</div>
+						marker = doc.createTextNode(invisibleChar);
+						container.appendChild(marker);
+						tmpRng.moveToElementText(marker.parentNode);
+						tmpRng.collapse(TRUE);
+					}
+
+					ieRng.setEndPoint(start ? 'StartToStart' : 'EndToEnd', tmpRng);
+					dom.remove(marker);
+				}
+			}
+
+			// Destroy cached range
 			this.destroy();
 
 			// Setup some shorter versions
-			sc = rng.startContainer;
-			so = rng.startOffset;
-			ec = rng.endContainer;
-			eo = rng.endOffset;
+			startContainer = rng.startContainer;
+			startOffset = rng.startOffset;
+			endContainer = rng.endContainer;
+			endOffset = rng.endOffset;
 			ieRng = body.createTextRange();
 
-			// If document selection move caret to first node in document
-			if (sc == doc || ec == doc) {
-				ieRng = body.createTextRange();
-				ieRng.collapse();
-				ieRng.select();
-				return;
-			}
-
-			// If child index resolve it
-			if (sc.nodeType == 1 && sc.hasChildNodes()) {
-				lastIndex = sc.childNodes.length - 1;
-
-				// Index is higher that the child count then we need to jump over the start container
-				if (so > lastIndex) {
-					skipStart = 1;
-					sc = sc.childNodes[lastIndex];
-				} else
-					sc = sc.childNodes[so];
-
-				// Child was text node then move offset to start of it
-				if (sc.nodeType == 3)
-					so = 0;
-			}
-
-			// If child index resolve it
-			if (ec.nodeType == 1 && ec.hasChildNodes()) {
-				lastIndex = ec.childNodes.length - 1;
-
-				if (eo == 0) {
-					skipEnd = 1;
-					ec = ec.childNodes[0];
-				} else {
-					ec = ec.childNodes[Math.min(lastIndex, eo - 1)];
-
-					// Child was text node then move offset to end of text node
-					if (ec.nodeType == 3)
-						eo = ec.nodeValue.length;
-				}
-			}
-
-			// Single element selection
-			if (sc == ec && sc.nodeType == 1) {
-				// Make control selection for some elements
-				if (/^(IMG|TABLE)$/.test(sc.nodeName) && so != eo) {
-					ieRng = body.createControlRange();
-					ieRng.addElement(sc);
-				} else {
-					ieRng = body.createTextRange();
-
-					// Padd empty elements with invisible character
-					if (!sc.hasChildNodes() && sc.canHaveHTML)
-						sc.innerHTML = invisibleChar;
-
-					// Select element contents
-					ieRng.moveToElementText(sc);
-
-					// If it's only containing a padding remove it so the caret remains
-					if (sc.innerHTML == invisibleChar) {
-						ieRng.collapse(TRUE);
-						sc.removeChild(sc.firstChild);
+			// If single element selection then try making a control selection out of it
+			if (startContainer == endContainer && startContainer.nodeType == 1 && startOffset == endOffset - 1) {
+				if (startOffset == endOffset - 1) {
+					try {
+						ctrlRng = body.createControlRange();
+						ctrlRng.addElement(startContainer.childNodes[startOffset]);
+						ctrlRng.select();
+						ctrlRng.scrollIntoView();
+						return;
+					} catch (ex) {
+						// Ignore
 					}
 				}
-
-				if (so == eo)
-					ieRng.collapse(eo <= rng.endContainer.childNodes.length - 1);
-
-				ieRng.select();
-				ieRng.scrollIntoView();
-				return;
 			}
 
-			// Create range and marker
-			ieRng = body.createTextRange();
-			marker = doc.createElement('span');
-			marker.innerHTML = ' ';
+			// Set start/end point of selection
+			setEndPoint(true);
+			setEndPoint();
 
-			// Set start of range to startContainer/startOffset
-			if (sc.nodeType == 3) {
-				// Insert marker after/before startContainer
-				if (skipStart)
-					dom.insertAfter(marker, sc);
-				else
-					sc.parentNode.insertBefore(marker, sc);
-
-				// Select marker the caret to offset position
-				ieRng.moveToElementText(marker);
-				marker.parentNode.removeChild(marker);
-
-				// Move if we need to, moving it 0 characters actually moves it!
-				if (so > 0)
-					ieRng.move('character', so);
-			} else {
-				ieRng.moveToElementText(sc);
-
-				if (skipStart)
-					ieRng.collapse(FALSE);
-			}
-
-			// If same text container then we can do a more simple move
-			if (sc == ec && sc.nodeType == 3) {
-				try {
-					ieRng.moveEnd('character', eo - so);
-					ieRng.select();
-					ieRng.scrollIntoView();
-				} catch (ex) {
-					// Some times a Runtime error of the 800a025e type gets thrown
-					// especially when the caret is placed before a table.
-					// This is a somewhat strange location for the caret.
-					// TODO: Find a better solution for this would possible require a rewrite of the setRng method
-				}
-
-				return;
-			}
-
-			// Set end of range to endContainer/endOffset
-			ieRng2 = body.createTextRange();
-			if (ec.nodeType == 3) {
-				// Insert marker after/before startContainer
-				ec.parentNode.insertBefore(marker, ec);
-
-				// Move selection to end marker and move caret to end offset
-				ieRng2.moveToElementText(marker);
-				marker.parentNode.removeChild(marker);
-				ieRng2.move('character', eo);
-				ieRng.setEndPoint('EndToStart', ieRng2);
-			} else {
-				ieRng2.moveToElementText(ec);
-				ieRng2.collapse(!!skipEnd);
-				ieRng.setEndPoint('EndToEnd', ieRng2);
-			}
-
+			// Select the new range and scroll it into view
 			ieRng.select();
 			ieRng.scrollIntoView();
 		};
@@ -6474,7 +6406,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 		},
 
 		_serializeNode : function(n, inner) {
-			var t = this, s = t.settings, w = t.writer, hc, el, cn, i, l, a, at, no, v, nn, ru, ar, iv, closed, keep, type;
+			var t = this, s = t.settings, w = t.writer, hc, el, cn, i, l, a, at, no, v, nn, ru, ar, iv, closed, keep, type, scopeName;
 
 			if (!s.node_filter || s.node_filter(n)) {
 				switch (n.nodeType) {
@@ -6498,8 +6430,9 @@ window.tinymce.dom.Sizzle = Sizzle;
 
 						// Add correct prefix on IE
 						if (isIE) {
-							if (n.scopeName !== 'HTML' && n.scopeName !== 'html')
-								nn = n.scopeName + ':' + nn;
+							scopeName = n.scopeName;
+							if (scopeName && scopeName !== 'HTML' && scopeName !== 'html')
+								nn = scopeName + ':' + nn;
 						}
 
 						// Remove mce prefix on IE needed for the abbr element
@@ -10943,7 +10876,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				});
 
 				t.onKeyDown.add(function(ed, e) {
-					var rng, tmpRng, parent, offset;
+					var rng, parent, bookmark;
 
 					// IE has a really odd bug where the DOM might include an node that doesn't have
 					// a proper structure. If you try to access nodeValue it would throw an illegal value exception.
@@ -10954,12 +10887,6 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 						if (rng.parentElement) {
 							parent = rng.parentElement();
-
-							// Get the current caret position within the element
-							tmpRng = rng.duplicate();
-							tmpRng.moveToElementText(parent);
-							tmpRng.setEndPoint('EndToEnd', rng);
-							offset = tmpRng.text.length;
 
 							// Select next word when ctrl key is used in combo with delete
 							if (e.ctrlKey) {
@@ -10972,6 +10899,8 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 							// Check if we are within the same parent
 							if (rng.parentElement() == parent) {
+								bookmark = t.selection.getBookmark();
+
 								try {
 									// Update the HTML and hopefully it will remove the artifacts
 									parent.innerHTML = parent.innerHTML;
@@ -10980,10 +10909,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 								}
 
 								// Restore the caret position
-								tmpRng.moveToElementText(parent);
-								tmpRng.collapse();
-								tmpRng.move('character', offset);
-								tmpRng.select();
+								t.selection.moveToBookmark(bookmark);
 							}
 
 							// Block the default delete behavior since it might be broken
@@ -11279,7 +11205,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			},
 
 			FormatBlock : function(command, ui, value) {
-				return toggleFormat(value);
+				return toggleFormat(value || 'p');
 			},
 
 			mceCleanup : function() {
@@ -11404,10 +11330,11 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 			},
 			
 			selectAll : function() {
-				var root = dom.getRoot();
-				var rng = dom.createRng();
+				var root = dom.getRoot(), rng = dom.createRng();
+
 				rng.setStart(root, 0);
 				rng.setEnd(root, root.childNodes.length);
+
 				editor.selection.setRng(rng);
 			}
 		});
@@ -13173,6 +13100,45 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 		function remove(name, vars, node) {
 			var formatList = get(name), format = formatList[0], bookmark, i, rng;
 
+			function moveStart(rng) {
+				var container = rng.startContainer,
+					offset = rng.startOffset,
+					walker, node, nodes, tmpNode;
+
+				// Convert text node into index if possible
+				if (container.nodeType == 3 && offset >= container.nodeValue.length - 1) {
+					container = container.parentNode;
+					offset = nodeIndex(container) + 1;
+				}
+
+				// Move startContainer/startOffset in to a suitable node
+				if (container.nodeType == 1) {
+					nodes = container.childNodes;
+					container = nodes[Math.min(offset, nodes.length - 1)];
+					walker = new TreeWalker(container);
+
+					// If offset is at end of the parent node walk to the next one
+					if (offset > nodes.length - 1)
+						walker.next();
+
+					for (node = walker.current(); node; node = walker.next()) {
+						if (node.nodeType == 3 && !isWhiteSpaceNode(node)) {
+							// IE has a "neat" feature where it moves the start node into the closest element
+							// we can avoid this by inserting an element before it and then remove it after we set the selection
+							tmpNode = dom.create('a', null, INVISIBLE_CHAR);
+							node.parentNode.insertBefore(tmpNode, node);
+
+							// Set selection and remove tmpNode
+							rng.setStart(node, 0);
+							selection.setRng(rng);
+							dom.remove(tmpNode);
+
+							return;
+						}
+					}
+				}
+			};
+
 			// Merges the styles for each node
 			function process(node) {
 				var children, i, l;
@@ -13326,6 +13292,12 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				bookmark = selection.getBookmark();
 				removeRngStyle(selection.getRng(TRUE));
 				selection.moveToBookmark(bookmark);
+
+				// Check if start element still has formatting then we are at: "<b>text|</b>text" and need to move the start into the next text node
+				if (match(name, vars, selection.getStart())) {
+					moveStart(selection.getRng(true));
+				}
+
 				ed.nodeChanged();
 			} else
 				performCaretAction('remove', name, vars);
