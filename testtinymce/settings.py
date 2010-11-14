@@ -89,7 +89,7 @@ INSTALLED_APPS = (
 
 TINYMCE_SPELLCHECKER = True
 TINYMCE_JS_URL = "%sjs/tiny_mce/tiny_mce_src.js" % MEDIA_URL
-TINYMCE_COMPRESSOR = False
+TINYMCE_COMPRESSOR = True
 
 # Check to see if django-filebrowser is installed
 try:

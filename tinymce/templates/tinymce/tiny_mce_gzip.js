@@ -28,7 +28,7 @@ var tinyMCE_GZ = {
 
 		s = t.settings;
 
-        t.baseURL = '{{ base_url }}';
+		t.baseURL = '{{ base_url }}';
 
 		if (!t.coreLoaded)
 			t.loadScripts(1, s.themes, s.plugins, s.languages, cb, sc);
@@ -126,9 +126,9 @@ var tinyMCE_GZ = {
 	},
 
 	eval : function(co) {
-		var w = window;
-
-		// Evaluate script
+		var w = window, t = this;
+		window.tinyMCEPreInit = {"base": t.baseURL,
+			"suffix": t.settings.suffix};
 		if (!w.execScript) {
 			if (/Gecko/.test(navigator.userAgent))
 				eval(co, w); // Firefox 3.0

@@ -23,8 +23,12 @@ import tinymce.settings
 
 
 def get_file_contents(filename):
+    base_path = tinymce.settings.JS_ROOT
+    if settings.DEBUG and settings.STATIC_ROOT:
+        base_path = os.path.join(os.path.dirname(__file__), "media/tiny_mce")
+
     try:
-        f = open(os.path.join(tinymce.settings.JS_ROOT, filename))
+        f = open(os.path.join(base_path, filename))
         try:
             return f.read()
         finally:
