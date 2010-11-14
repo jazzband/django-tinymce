@@ -9,8 +9,8 @@ replacewith:"Erstatt med",
 direction:"Retning",
 up:"Oppover",
 down:"Nedover",
-mcase:"Skill mellom store og sm\u00E5 tegn",
+mcase:"Skille mellom store og sm\u00E5 bokstaver",
 findnext:"Finn neste",
 replace:"Erstatt",
-replaceall:"Erstatt alt"
+replaceall:"Erstatt alle"
 });

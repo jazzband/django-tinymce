@@ -1,6 +1,6 @@
 tinyMCE.addI18n({hu:{
 common:{
-edit_confirm:"Haszn\u00E1lni k\u00EDv\u00E1nja a WYSIWYG m\u00F3dot ebben a sz\u00F6vegdobozban?",
+edit_confirm:"Haszn\u00E1lni k\u00EDv\u00E1nja a sz\u00F6vegszerkeszt\u0151 m\u00F3dot ebben a sz\u00F6vegdobozban?",
 apply:"Alkalmaz\u00E1s",
 insert:"Besz\u00FAr\u00E1s",
 update:"Friss\u00EDt\u00E9s",

@@ -61,30 +61,20 @@ iespell_desc:"Esegui controllo ortografico",
 download:"ieSpell non rilevato. Installarlo ora?"
 },
 advhr:{
-advhr_desc:"Riga orizzontale",
-delta_width:"Larghezza",
-delta_height:"Altezza"
+advhr_desc:"Riga orizzontale"
 },
 emotions:{
-emotions_desc:"Faccine",
-delta_width:"Larghezza",
-delta_height:"Altezza"
+emotions_desc:"Faccine"
 },
 searchreplace:{
 search_desc:"Trova",
-replace_desc:"Trova/Sostituisci",
-delta_width:"Larghezza",
-delta_height:"Altezza"
+replace_desc:"Trova/Sostituisci"
 },
 advimage:{
-image_desc:"Inserisci/modifica immagine",
-delta_width:"Larghezza",
-delta_height:"Altezza"
+image_desc:"Inserisci/modifica immagine"
 },
 advlink:{
-link_desc:"Inserisci/modifica collegamento",
-delta_width:"Larghezza",
-delta_height:"Altezza"
+link_desc:"Inserisci/modifica collegamento"
 },
 xhtmlxtras:{
 cite_desc:"Citazione",
@@ -92,24 +82,10 @@ abbr_desc:"Abbreviazione",
 acronym_desc:"Acronimo",
 del_desc:"Cancellamento",
 ins_desc:"Inserimento",
-attribs_desc:"Inserisci/modifica attributi",
-cite_delta_width:"Larghezza",
-cite_delta_height:"Altezza",
-abbr_delta_width:"Larghezza",
-abbr_delta_height:"Altezza",
-acronym_delta_width:"Larghezza",
-acronym_delta_height:"Altezza",
-del_delta_width:"Larghezza",
-del_delta_height:"Altezza",
-ins_delta_width:"Larghezza",
-ins_delta_height:"Altezza",
-attribs_delta_width:"Larghezza",
-attribs_delta_height:"Altezza"
+attribs_desc:"Inserisci/modifica attributi"
 },
 style:{
-desc:"Modifica stile CSS",
-delta_width:"Larghezza",
-delta_height:"Altezza"
+desc:"Modifica stile CSS"
 },
 paste:{
 paste_text_desc:"Incolla come testo semplice",
@@ -143,15 +119,7 @@ copy_row_desc:"Copia riga",
 del:"Elimina tabella",
 row:"Riga",
 col:"Colonna",
-cell:"Cella",
-rowprops_delta_width:"Larghezza",
-rowprops_delta_height:"Altezza",
-cellprops_delta_width:"Larghezza",
-cellprops_delta_height:"Altezza",
-table_delta_width:"Larghezza",
-table_delta_height:"Altezza",
-merge_cells_delta_width:"Larghezza",
-merge_cells_delta_height:"Altezza"
+cell:"Cella"
 },
 autosave:{
 unload_msg:"I cambiamenti effettuati saranno persi se si abbandona la pagina corrente.",
@@ -163,14 +131,10 @@ desc:"Attiva/disattiva modalit\u00E0 a tutto schermo"
 },
 media:{
 desc:"Inserisci/modifica file multimediale",
-edit:"Modifica file multimediale",
-delta_width:"Larghezza",
-delta_height:"Altezza"
+edit:"Modifica file multimediale"
 },
 fullpage:{
-desc:"Propriet\u00E0 Documento",
-delta_width:"Larghezza",
-delta_height:"Altezza"
+desc:"Propriet\u00E0 Documento"
 },
 template:{
 desc:"Inserisci contenuto da modello predefinito"

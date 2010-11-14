@@ -1,7 +1,7 @@
 tinyMCE.addI18n('eu.advanced',{
 style_select:"Estiloak",
 font_size:"Letra-tamaina",
-fontdefault:"Letra-tipoa",
+fontdefault:"Letra-mota",
 block:"Formatua",
 paragraph:"Parrafoa",
 div:"Div",

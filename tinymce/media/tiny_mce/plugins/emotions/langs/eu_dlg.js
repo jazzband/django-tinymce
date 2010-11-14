@@ -16,5 +16,5 @@ surprised:"Harrituta",
 tongue_out:"Mihia atera",
 undecided:"Zalantzan",
 wink:"Keinua",
-yell:"Ohiua"
+yell:"Oihua"
 });

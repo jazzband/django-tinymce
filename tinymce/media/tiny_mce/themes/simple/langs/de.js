@@ -7,5 +7,5 @@ bullist_desc:"Aufz\u00E4hlung",
 numlist_desc:"Nummerierung",
 undo_desc:"R\u00FCckg\u00E4ngig (Strg+Z)",
 redo_desc:"Wiederholen (Strg+Y)",
-cleanup_desc:"Quellcode s\u00E4ubern"
+cleanup_desc:"Quellcode aufr\u00E4umen"
 });

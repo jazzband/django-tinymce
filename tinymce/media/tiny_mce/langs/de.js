@@ -1,6 +1,6 @@
 tinyMCE.addI18n({de:{
 common:{
-edit_confirm:"Wollen Sie diesen Textbereich mit WYSIWYG bearbeiten?",
+edit_confirm:"M\u00F6chten Sie diesen Text jetzt bearbeiten?",
 apply:"\u00DCbernehmen",
 insert:"Einf\u00FCgen",
 update:"Aktualisieren",

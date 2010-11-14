@@ -1,14 +1,14 @@
 tinyMCE.addI18n({eu:{
 common:{
-edit_confirm:"Testu-kutxa honek WYSIWYG editorea izatea nahi duzu?",
+edit_confirm:"Testu-kutxa hau WYSIWYG editorea izatea nahi duzu?",
 apply:"Aplikatu",
 insert:"Txertatu",
 update:"Eguneratu",
 cancel:"Utzi",
 close:"Itxi",
 browse:"Arakatu",
-class_name:"Kalsea",
-not_set:"-- Ezarri gabe --",
+class_name:"Klasea",
+not_set:"-- Bat ere ez --",
 clipboard_msg:"Kopiatu/Ebaki/Itsatsi ez dago Mozilla eta Firefoxen.\nHonen inguruko informazioa nahi duzu??",
 clipboard_no_support:"Zure nabigatzailean ez dabil, erabili teklatuko laster-teklak honetarako..",
 popup_blocked:"Ups, zure popup blokeatzaileak funtzionalitate bat eskaintzen duen leihoa blokeatu du. Blokeatzailea desgaitu beharko duzu tresna hau erabiltzeko.",
@@ -121,7 +121,7 @@ plaintext_mode:"Itsasketa testu moduan dago orain. Egin klik itsasketa arruntera
 paste_dlg:{
 text_title:"Erabili CTRL+V testua lehioan itsasteko.",
 text_linebreaks:"Mantendu lerro-jauziak",
-word_title:"Erabili CTRL+V testua lehioan itsasteko.."
+word_title:"Erabili CTRL+V testua lehioan itsasteko."
 },
 table:{
 desc:"Taula berri bat txertatu",
@@ -162,8 +162,8 @@ fullscreen:{
 desc:"Aldatu pantaila osoko modura"
 },
 media:{
-desc:"Insert / edit embedded media",
-edit:"Edit embedded media",
+desc:"Sartu / editatu ahokatutako euskarria",
+edit:"Editatu ahokatutako euskarria",
 delta_width:"Zabalera",
 delta_height:"Altuera"
 },
@@ -179,22 +179,22 @@ visualchars:{
 desc:"Begi kontrol karaktereak gaitu/ezgaitu."
 },
 spellchecker:{
-desc:"Toggle spellchecker",
-menu:"Spellchecker settings",
+desc:"Ortografia zuzentzaile modura aldatu",
+menu:"Ortografia zuzentzailearen doikuntza",
 ignore_word:"Ezikusi hitza",
 ignore_words:"Ezikusi guztiak",
 langs:"Hizkuntzak",
 wait:"Itxaron mesedez...",
 sug:"Gomendioa",
 no_sug:"Gomendiorik ez",
-no_mpell:"Ez da akatsik aurkitu."
+no_mpell:"Ez da akatsik aurkitu"
 },
 pagebreak:{
 desc:"Txertatu orri jauzia."
 },
 advlist:{
 types:"Motak",
-def:"Defektuzkoa",
+def:"Lehenetsiak",
 lower_alpha:"Hizki xeheak",
 lower_greek:"Hizki greko xeheak",
 lower_roman:"Zenbaki erromatar xeheak",

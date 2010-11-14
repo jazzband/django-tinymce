@@ -46,7 +46,7 @@ rel:"Hedeften sayfaya ili\u015Fki",
 rev:"Sayfadan hedefe ili\u015Fki",
 tabindex:"Sekme indeksi",
 accesskey:"Eri\u015Fim tu\u015Fu",
-ltr:"Soldan sa\u011Fa",
-rtl:"Sa\u011Fdan sola",
+ltr:"Sa\u011Fdan sola",
+rtl:"Soldan sa\u011Fa",
 link_list:"Ba\u011Flant\u0131 listesi"
 });

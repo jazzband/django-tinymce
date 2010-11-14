@@ -1,7 +1,7 @@
 tinyMCE.addI18n('fa.xhtmlxtras_dlg',{
 attribute_label_title:"\u0639\u0646\u0648\u0627\u0646",
 attribute_label_id:"\u0634\u0646\u0627\u0633\u0647",
-attribute_label_class:"\u0643\u0644\u0627\u0633",
+attribute_label_class:"\u06A9\u0644\u0627\u0633",
 attribute_label_style:"\u0627\u0633\u062A\u06CC\u0644",
 attribute_label_cite:"\u0627\u0639\u0644\u0627\u0645\u06CC\u0647",
 attribute_label_datetime:"\u062A\u0627\u0631\u06CC\u062E/\u0632\u0645\u0627\u0646",

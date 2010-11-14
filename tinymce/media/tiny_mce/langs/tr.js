@@ -12,7 +12,7 @@ not_set:"-- Ayarlanmad\u0131 --",
 clipboard_msg:"Mozilla Firefox da Kes/Kopyala/Yap\u0131\u015Ft\u0131r \u00F6zelli\u011Fi kullan\u0131lmamaktad\u0131r. \nBu konu hakk\u0131nda bilgi almak ister misiniz?",
 clipboard_no_support:"\u015Eu an kulland\u0131\u011F\u0131n\u0131z taray\u0131c\u0131n\u0131z klavye k\u0131sayollar\u0131n\u0131 desteklememektedir.",
 popup_blocked:"\u00DCzg\u00FCn\u00FCz, a\u00E7\u0131l\u0131r pencere engelleyiciniz uygulama i\u00E7in gerekli bir pencereyi engelledi. Bu arac\u0131 tam olarak kullanabilmek i\u00E7in a\u00E7\u0131l\u0131r pencere engelleyicisini kapat\u0131n\u0131z.",
-invalid_data:"Hata: Invalid values entered, these are marked in red.",
+invalid_data:"Hata: Ge\u00E7ersiz de\u011Fer girildi, bunlar k\u0131rm\u0131z\u0131yla i\u015Faretlenmi\u015Ftir.",
 more_colors:"Daha fazla renk"
 },
 contextmenu:{
@@ -91,8 +91,8 @@ paste:{
 paste_text_desc:"D\u00FCz metin olarak yap\u0131\u015Ft\u0131r",
 paste_word_desc:"Word'den yap\u0131\u015Ft\u0131r",
 selectall_desc:"T\u00FCm\u00FCn\u00FC se\u00E7",
-plaintext_mode_sticky:"Paste is now in plain text mode. Click again to toggle back to regular paste mode. After you paste something you will be returned to regular paste mode.",
-plaintext_mode:"Paste is now in plain text mode. Click again to toggle back to regular paste mode."
+plaintext_mode_sticky:"D\u00FCz metin modunda yap\u0131\u015Ft\u0131r. Normal yap\u0131\u015Ft\u0131rma moduna ge\u00E7mek i\u00E7in tekrar t\u0131klay\u0131n. Yap\u0131\u015Ft\u0131rma i\u015Fleminden sonra normal yap\u0131\u015Ft\u0131rma moduna ge\u00E7ilecektir.",
+plaintext_mode:"D\u00FCz metin modunda yap\u0131\u015Ft\u0131r. Normal yap\u0131\u015Ft\u0131rma moduna ge\u00E7mek i\u00E7in tekrar t\u0131klay\u0131n."
 },
 paste_dlg:{
 text_title:"Pencereye metin yap\u0131\u015Ft\u0131rmak i\u00E7in klavyeden CTRL+V i kullan\u0131n.",
@@ -123,8 +123,8 @@ cell:"H\u00FCcre"
 },
 autosave:{
 unload_msg:"Bu sayfadan \u00E7\u0131karsan\u0131z yapt\u0131\u011F\u0131n\u0131z de\u011Fi\u015Fiklikler kaybolabilir.",
-restore_content:"Restore auto-saved content.",
-warning_message:"If you restore the saved content, you will lose all the content that is currently in the editor.\n\nAre you sure you want to restore the saved content?."
+restore_content:"Geri y\u00FCkleme i\u00E7eri\u011Fe otomatik kaydedildi.",
+warning_message:"E\u011Fer geri y\u00FCkleme i\u00E7eri\u011Fe otomatik kay\u0131t edilirse, edit\u00F6rde varolan t\u00FCm i\u00E7eri\u011Fi kaybedebilirsiniz.\n\nGeri y\u00FCklemenin i\u00E7eri\u011Fe kaydedilmesini istedi\u011Finizden emin misiniz?"
 },
 fullscreen:{
 desc:"Tam ekran modunu a\u00E7/kapat"
@@ -157,14 +157,14 @@ pagebreak:{
 desc:"Sayfa sonu ekle."
 },
 advlist:{
-types:"Types",
-def:"Default",
-lower_alpha:"Lower alpha",
-lower_greek:"Lower greek",
-lower_roman:"Lower roman",
-upper_alpha:"Upper alpha",
-upper_roman:"Upper roman",
-circle:"Circle",
-disc:"Disc",
-square:"Square"
+types:"Tipler",
+def:"Varsay\u0131lan",
+lower_alpha:"K\u00FC\u00E7\u00FCk harf alfa",
+lower_greek:"K\u00FC\u00E7\u00FCk harf grek",
+lower_roman:"K\u00FC\u00E7\u00FCk harf roman",
+upper_alpha:"B\u00FCy\u00FCk harf alfa",
+upper_roman:"B\u00FCy\u00FCk harf roman",
+circle:"\u00C7ember",
+disc:"Daire",
+square:"Kare"
 }}});

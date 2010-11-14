@@ -61,7 +61,9 @@ iespell_desc:"Lancer le v\u00E9rificateur d'orthographe",
 download:"ieSpell n'est pas install\u00E9. Souhaitez-vous l'installer maintenant ?"
 },
 advhr:{
-advhr_desc:"Ins\u00E9rer un trait horizontal"
+advhr_desc:"Ins\u00E9rer un trait horizontal",
+delta_width:"Ecart de largeur",
+delta_height:"Ecart de hauteur"
 },
 emotions:{
 emotions_desc:"\u00C9motic\u00F4nes"

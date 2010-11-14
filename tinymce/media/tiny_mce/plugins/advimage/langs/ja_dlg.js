@@ -1,5 +1,5 @@
 tinyMCE.addI18n('ja.advimage_dlg',{
-tab_general:"\u4E00\u822C",
+tab_general:"\u30A2\u30C9\u30EC\u30B9\u304B\u3089",
 tab_appearance:"\u8868\u793A",
 tab_advanced:"\u4E0A\u7D1A\u8005\u5411\u3051",
 general:"\u4E00\u822C",

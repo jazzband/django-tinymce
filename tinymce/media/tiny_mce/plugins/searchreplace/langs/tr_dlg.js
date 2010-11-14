@@ -1,6 +1,6 @@
 tinyMCE.addI18n('tr.searchreplace_dlg',{
 searchnext_desc:"Tekrar ara",
-notfound:"Arama tamamland\u0131. The search string could not be found.",
+notfound:"Arama tamamland\u0131. Aranan metin bulunamad\u0131.",
 search_title:"Bul",
 replace_title:"Bul/De\u011Fi\u015Ftir",
 allreplaced:"Aranan metin bulundu\u011Fu yerlede de\u011Fi\u015Ftirildi.",
