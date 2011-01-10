@@ -1,5 +1,1 @@
-tinyMCE.addI18n('sq.advhr_dlg',{
-width:"Gjer\u00EBsia",
-size:"Gjat\u00EBsia",
-noshade:"Pa hije"
-});
+tinyMCE.addI18n('sq.advhr_dlg',{size:"Gjat\u00ebsia",noshade:"Pa hije",width:"Gjer\u00ebsia"});

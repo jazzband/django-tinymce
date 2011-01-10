@@ -1,11 +1,1 @@
-tinyMCE.addI18n('hu.simple',{
-bold_desc:"F\u00E9lk\u00F6v\u00E9r (Ctrl+B)",
-italic_desc:"D\u0151lt (Ctrl+I)",
-underline_desc:"Al\u00E1h\u00FAzott (Ctrl+U)",
-striketrough_desc:"\u00C1th\u00FAzott",
-bullist_desc:"Felsorol\u00E1sos lista",
-numlist_desc:"Sorrendezett lista",
-undo_desc:"Visszavon\u00E1s (Ctrl+Z)",
-redo_desc:"M\u00E9gis v\u00E9grehajt (Ctrl+Y)",
-cleanup_desc:"Rendetlen k\u00F3d tiszt\u00EDt\u00E1sa"
-});
+tinyMCE.addI18n('hu.simple',{cleanup_desc:"Rendetlen k\u00f3d tiszt\u00edt\u00e1sa",redo_desc:"M\u00e9gis v\u00e9grehajt (Ctrl+Y)",undo_desc:"Visszavon\u00e1s (Ctrl+Z)",numlist_desc:"Sorrendezett lista",bullist_desc:"Felsorol\u00e1sos lista",striketrough_desc:"\u00c1th\u00fazott",underline_desc:"Al\u00e1h\u00fazott (Ctrl+U)",italic_desc:"D\u0151lt (Ctrl+I)",bold_desc:"F\u00e9lk\u00f6v\u00e9r (Ctrl+B)"});

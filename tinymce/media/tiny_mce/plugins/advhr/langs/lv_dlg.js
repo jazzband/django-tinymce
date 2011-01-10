@@ -1,5 +1,1 @@
-tinyMCE.addI18n('lv.advhr_dlg',{
-width:"Platums",
-size:"Augstums",
-noshade:"Bez \u0113nas"
-});
+tinyMCE.addI18n('lv.advhr_dlg',{size:"Augstums",noshade:"Bez \u0113nas",width:"Platums"});

@@ -1,5 +1,1 @@
-tinyMCE.addI18n('pl.advhr_dlg',{
-width:"Szeroko\u015B\u0107",
-size:"Wysoko\u015B\u0107",
-noshade:"Bez cienia"
-});
+tinyMCE.addI18n('pl.advhr_dlg',{size:"Wysoko\u015b\u0107",noshade:"Bez cienia",width:"Szeroko\u015b\u0107"});

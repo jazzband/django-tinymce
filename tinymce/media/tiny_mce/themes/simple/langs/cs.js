@@ -1,11 +1,1 @@
-tinyMCE.addI18n('cs.simple',{
-bold_desc:"Tu\u010Dn\u00E9 (Ctrl+B)",
-italic_desc:"Kurz\u00EDva (Ctrl+I)",
-underline_desc:"Podtr\u017Een\u00E9 (Ctrl+U)",
-striketrough_desc:"P\u0159e\u0161krtnut\u00E9",
-bullist_desc:"Seznam s odr\u00E1\u017Ekami",
-numlist_desc:"\u010C\u00EDslovan\u00FD seznam",
-undo_desc:"Zp\u011Bt (Ctrl+Z)",
-redo_desc:"Znovu (Ctrl+Y)",
-cleanup_desc:"Vy\u010Distit k\u00F3d"
-});
+tinyMCE.addI18n('cs.simple',{cleanup_desc:"Vy\u010distit k\u00f3d",redo_desc:"Znovu (Ctrl+Y)",undo_desc:"Zp\u011bt (Ctrl+Z)",numlist_desc:"\u010c\u00edslovan\u00fd seznam",bullist_desc:"Seznam s odr\u00e1\u017ekami",striketrough_desc:"P\u0159e\u0161krtnut\u00e9",underline_desc:"Podtr\u017een\u00e9 (Ctrl+U)",italic_desc:"Kurz\u00edva (Ctrl+I)",bold_desc:"Tu\u010dn\u00e9 (Ctrl+B)"});

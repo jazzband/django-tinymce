@@ -1,11 +1,1 @@
-tinyMCE.addI18n('nl.simple',{
-bold_desc:"Vet (Ctrl+B)",
-italic_desc:"Cursief (Ctrl+I)",
-underline_desc:"Onderstrepen (Ctrl+U)",
-striketrough_desc:"Doorhalen",
-bullist_desc:"Opsommingstekens",
-numlist_desc:"Nummering",
-undo_desc:"Ongedaan maken (Ctrl+Z)",
-redo_desc:"Herhalen (Ctrl+Y)",
-cleanup_desc:"Code opruimen"
-});
+tinyMCE.addI18n('nl.simple',{cleanup_desc:"Code opruimen",redo_desc:"Herhalen (Ctrl+Y)",undo_desc:"Ongedaan maken (Ctrl+Z)",numlist_desc:"Nummering",bullist_desc:"Opsommingstekens",striketrough_desc:"Doorhalen",underline_desc:"Onderstrepen (Ctrl+U)",italic_desc:"Cursief (Ctrl+I)",bold_desc:"Vet (Ctrl+B)"});

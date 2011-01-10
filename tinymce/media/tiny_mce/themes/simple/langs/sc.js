@@ -1,11 +1,1 @@
-tinyMCE.addI18n('sc.simple',{
-bold_desc:"\u9ED1\u4F53(Ctrl+B)",
-italic_desc:"\u659C\u4F53(Ctrl+I)",
-underline_desc:"\u5E95\u7EBF(Ctrl+U)",
-striketrough_desc:"\u5220\u9664\u7EBF",
-bullist_desc:"\u4E13\u6848\u7B26\u53F7",
-numlist_desc:"\u7F16\u53F7",
-undo_desc:"\u64A4\u9500(Ctrl+Z)",
-redo_desc:"\u91CD\u505A(Ctrl+Y)",
-cleanup_desc:"\u6E05\u9664\u591A\u4F59\u4EE3\u7801"
-});
+tinyMCE.addI18n('sc.simple',{cleanup_desc:"\u6e05\u9664\u591a\u4f59\u4ee3\u7801",redo_desc:"\u91cd\u505a(Ctrl+Y)",undo_desc:"\u64a4\u9500(Ctrl+Z)",numlist_desc:"\u7f16\u53f7",bullist_desc:"\u4e13\u6848\u7b26\u53f7",striketrough_desc:"\u5220\u9664\u7ebf",underline_desc:"\u5e95\u7ebf(Ctrl+U)",italic_desc:"\u659c\u4f53(Ctrl+I)",bold_desc:"\u9ed1\u4f53(Ctrl+B)"});

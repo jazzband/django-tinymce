@@ -1,5 +1,1 @@
-tinyMCE.addI18n('ms.advhr_dlg',{
-width:"Lebar",
-size:"Tinggi",
-noshade:"Tanpa bayang"
-});
+tinyMCE.addI18n('ms.advhr_dlg',{size:"Tinggi",noshade:"Tanpa bayang",width:"Lebar"});

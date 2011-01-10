@@ -1,5 +1,1 @@
-tinyMCE.addI18n('eu.paste_dlg',{
-text_title:"Erabili CTRL+V testua lehioan itsasteko.",
-text_linebreaks:"Mantendu lerro-jauziak",
-word_title:"Erabili CTRL+V testua lehioan itsasteko."
-});
+tinyMCE.addI18n('eu.paste_dlg',{word_title:"Erabili CTRL+V testua lehioan itsasteko.",text_linebreaks:"Mantendu lerro-jauziak",text_title:"Erabili CTRL+V testua lehioan itsasteko."});

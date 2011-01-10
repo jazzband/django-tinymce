@@ -1,5 +1,1 @@
-tinyMCE.addI18n('ar.advhr_dlg',{
-width:"Width",
-size:"Height",
-noshade:"No shadow"
-});
+tinyMCE.addI18n('ar.advhr_dlg',{size:"\u0627\u0644\u0627\u0631\u062a\u0641\u0627\u0639",noshade:"\u0644\u0627 \u0638\u0644",width:"\u0627\u0644\u0639\u0631\u0636"});

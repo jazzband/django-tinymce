@@ -1,11 +1,1 @@
-tinyMCE.addI18n('ro.simple',{
-bold_desc:"\u00CEngro\u015Fat (Ctrl+B)",
-italic_desc:"Italic (Ctrl+I)",
-underline_desc:"Subliniat (Ctrl+U)",
-striketrough_desc:"T\u0103iat",
-bullist_desc:"List\u0103 neordonat\u0103",
-numlist_desc:"List\u0103 ordonat\u0103",
-undo_desc:"Undo (Ctrl+Z)",
-redo_desc:"Ref\u0103 (Ctrl+Y)",
-cleanup_desc:"Cur\u0103\u0163\u0103 cod invalid"
-});
+tinyMCE.addI18n('ro.simple',{cleanup_desc:"Cur\u0103\u0163\u0103 cod invalid",redo_desc:"Ref\u0103 (Ctrl+Y)",undo_desc:"Undo (Ctrl+Z)",numlist_desc:"List\u0103 ordonat\u0103",bullist_desc:"List\u0103 neordonat\u0103",striketrough_desc:"T\u0103iat",underline_desc:"Subliniat (Ctrl+U)",italic_desc:"Italic (Ctrl+I)",bold_desc:"\u00cengro\u015fat (Ctrl+B)"});

@@ -1,5 +1,1 @@
-tinyMCE.addI18n('zh.advhr_dlg',{
-width:"\u5BEC\u5EA6",
-size:"\u9AD8\u5EA6",
-noshade:"\u7121\u9670\u5F71"
-});
+tinyMCE.addI18n('zh.advhr_dlg',{size:"\u9ad8\u5ea6",noshade:"\u65e0\u9634\u5f71",width:"\u5bbd\u5ea6"});

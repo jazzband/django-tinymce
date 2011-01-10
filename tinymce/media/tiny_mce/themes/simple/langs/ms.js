@@ -1,11 +1,1 @@
-tinyMCE.addI18n('ms.simple',{
-bold_desc:"Tebal (Ctrl+B)",
-italic_desc:"Condong (Ctrl+I)",
-underline_desc:"Garis bawah (Ctrl+U)",
-striketrough_desc:"Garis tengah",
-bullist_desc:"Senarai tidak tertib",
-numlist_desc:"Senarai tertib",
-undo_desc:"Buat asal (Ctrl+Z)",
-redo_desc:"Buat semula (Ctrl+Y)",
-cleanup_desc:"Bersihkan kod yang bersepah"
-});
+tinyMCE.addI18n('ms.simple',{cleanup_desc:"Bersihkan kod yang bersepah",redo_desc:"Buat semula (Ctrl+Y)",undo_desc:"Buat asal (Ctrl+Z)",numlist_desc:"Senarai tertib",bullist_desc:"Senarai tidak tertib",striketrough_desc:"Garis tengah",underline_desc:"Garis bawah (Ctrl+U)",italic_desc:"Condong (Ctrl+I)",bold_desc:"Tebal (Ctrl+B)"});

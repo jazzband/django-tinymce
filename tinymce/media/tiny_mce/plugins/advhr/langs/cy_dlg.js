@@ -1,5 +1,1 @@
-tinyMCE.addI18n('cy.advhr_dlg',{
-width:"Lled",
-size:"Uchder",
-noshade:"Dim cysgod"
-});
+tinyMCE.addI18n('cy.advhr_dlg',{size:"Uchder",noshade:"Dim cysgod",width:"Lled"});

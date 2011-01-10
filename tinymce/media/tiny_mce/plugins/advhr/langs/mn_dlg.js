@@ -1,5 +1,1 @@
-tinyMCE.addI18n('mn.advhr_dlg',{
-width:"\u04E8\u0440\u0433\u04E9\u043D",
-size:"\u04E8\u043D\u0434\u04E9\u0440",
-noshade:"\u0421\u04AF\u04AF\u0434\u044D\u0440\u0433\u04AF\u0439"
-});
+tinyMCE.addI18n('mn.advhr_dlg',{size:"\u04e8\u043d\u0434\u04e9\u0440",noshade:"\u0421\u04af\u04af\u0434\u044d\u0440\u0433\u04af\u0439",width:"\u04e8\u0440\u0433\u04e9\u043d"});

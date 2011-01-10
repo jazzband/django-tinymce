@@ -1,11 +1,1 @@
-tinyMCE.addI18n('cy.simple',{
-bold_desc:"Trwm (Ctrl+B)",
-italic_desc:"Italig (Ctrl+I)",
-underline_desc:"Tanlinellu (Ctrl+U)",
-striketrough_desc:"Taro drwodd",
-bullist_desc:"Rhestr didrenus",
-numlist_desc:"Rhestr trenus",
-undo_desc:"Dadwneud (Ctrl+Z)",
-redo_desc:"Ailwneud (Ctrl+Y)",
-cleanup_desc:"Glanhau c\u00F4d anhrefnus"
-});
+tinyMCE.addI18n('cy.simple',{cleanup_desc:"Glanhau c\u00f4d anhrefnus",redo_desc:"Ailwneud (Ctrl+Y)",undo_desc:"Dadwneud (Ctrl+Z)",numlist_desc:"Rhestr trenus",bullist_desc:"Rhestr didrenus",striketrough_desc:"Taro drwodd",underline_desc:"Tanlinellu (Ctrl+U)",italic_desc:"Italig (Ctrl+I)",bold_desc:"Trwm (Ctrl+B)"});

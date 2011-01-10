@@ -1,11 +1,1 @@
-tinyMCE.addI18n('ja.simple',{
-bold_desc:"\u592A\u5B57 (Ctrl+B)",
-italic_desc:"\u659C\u4F53 (Ctrl+I)",
-underline_desc:"\u4E0B\u7DDA (Ctrl+U)",
-striketrough_desc:"\u6253\u6D88\u3057\u7DDA",
-bullist_desc:"\u756A\u53F7\u306A\u3057\u30EA\u30B9\u30C8",
-numlist_desc:"\u756A\u53F7\u3064\u304D\u30EA\u30B9\u30C8",
-undo_desc:"\u5143\u306B\u623B\u3059 (Ctrl+Z)",
-redo_desc:"\u3084\u308A\u76F4\u3059 (Ctrl+Y)",
-cleanup_desc:"\u30B3\u30FC\u30C9\u6574\u5F62"
-});
+tinyMCE.addI18n('ja.simple',{cleanup_desc:"\u30b3\u30fc\u30c9\u6574\u5f62",redo_desc:"\u3084\u308a\u76f4\u3059 (Ctrl+Y)",undo_desc:"\u5143\u306b\u623b\u3059 (Ctrl+Z)",numlist_desc:"\u756a\u53f7\u3064\u304d\u30ea\u30b9\u30c8",bullist_desc:"\u756a\u53f7\u306a\u3057\u30ea\u30b9\u30c8",striketrough_desc:"\u6253\u6d88\u3057\u7dda",underline_desc:"\u4e0b\u7dda (Ctrl+U)",italic_desc:"\u659c\u4f53 (Ctrl+I)",bold_desc:"\u592a\u5b57 (Ctrl+B)"});

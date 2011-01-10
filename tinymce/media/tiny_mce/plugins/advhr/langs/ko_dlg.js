@@ -1,5 +1,1 @@
-tinyMCE.addI18n('ko.advhr_dlg',{
-width:"\uD3ED",
-size:"\uB192\uC774",
-noshade:"\uADF8\uB9BC\uC790\uC5C6\uC74C"
-});
+tinyMCE.addI18n('ko.advhr_dlg',{size:"\ub192\uc774",noshade:"\uadf8\ub9bc\uc790\uc5c6\uc74c",width:"\ud3ed"});
