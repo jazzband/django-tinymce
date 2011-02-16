@@ -4,8 +4,11 @@ from sorl.thumbnail import get_thumbnail
 
 from django.conf.urls.defaults import patterns, url
 
-# This is one nasty dependency I forgot about. Will be added shortly
-from simplesite.utils import ExtendibleModelAdminMixin
+# This nice little snippet makes the life of someone extending the admin
+# functionality a lot easier.
+
+# Find the original at: http://djangosnippets.org/snippets/1804/
+from utils import ExtendibleModelAdminMixin
 
 from tinymce.widgets import TinyMCE
 from tinymce.views import render_to_image_list, render_to_link_list
