@@ -4,7 +4,7 @@ from sorl.thumbnail import get_thumbnail
 
 from django.conf.urls.defaults import patterns, url
 
-from simplesite.settings import PAGEIMAGE_SIZE
+# This is one nasty dependency I forgot about. Will be added shortly
 from simplesite.utils import ExtendibleModelAdminMixin
 
 from tinymce.widgets import TinyMCE
