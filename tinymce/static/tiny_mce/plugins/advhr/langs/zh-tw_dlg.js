@@ -1,0 +1,1 @@
+tinyMCE.addI18n('zh-tw.advhr_dlg',{size:"Height",noshade:"No shadow",width:"Width"});

@@ -1,0 +1,1 @@
+tinyMCE.addI18n('sr.advhr_dlg',{size:"Visina",noshade:"Bez sen\u010denja",width:"\u0160irina"});

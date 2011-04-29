@@ -1,0 +1,1 @@
+tinyMCE.addI18n('uk.wordcount',{words:"Words: "});
