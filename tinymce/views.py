@@ -53,7 +53,7 @@ def spell_check(request):
         checker = enchant.Dict(str(lang))
 
         if method == 'checkWords':
-            result = [word for word in arg if not checker.check(word)]
+            result = [word for word in arg if word and not checker.check(word)]
         elif method == 'getSuggestions':
             result = checker.suggest(arg)
         else:
