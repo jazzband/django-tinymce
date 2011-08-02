@@ -133,6 +133,6 @@ def gzip_compressor(request):
     patch_response_headers(response, timeout)
     cache.set(cacheKey, {
         'Last-Modified': response['Last-Modified'],
-        'ETag': response['ETag'],
+        'ETag': response.get('ETag', ''),
     })
     return response
