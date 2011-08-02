@@ -71,7 +71,6 @@ var tinyMCE_GZ = {
 					if (c < 10000 && x.status == 200) {
 						t.loaded = 1;
 						t.eval(x.responseText);
-						tinymce.dom.Event.domLoaded = true;
 						cb.call(sc || t, x);
 					}
 
@@ -123,6 +122,7 @@ var tinyMCE_GZ = {
 	},
 
 	end : function() {
+        tinymce.dom.Event.domLoaded = true;
 	},
 
 	eval : function(co) {
