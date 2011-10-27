@@ -14,7 +14,7 @@ USE_FILEBROWSER = getattr(settings, 'TINYMCE_FILEBROWSER',
 JS_URL = getattr(settings, 'TINYMCE_JS_URL', None)
 JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT', None)
 
-# Allways allow overriding of the default settings
+# Always allow overriding of the default settings
 if 'staticfiles' in settings.INSTALLED_APPS or 'django.contrib.staticfiles' in settings.INSTALLED_APPS:
     if not JS_URL:
         JS_URL = os.path.join(getattr(settings, 'STATIC_URL', ''), 'tiny_mce/tiny_mce.js')
