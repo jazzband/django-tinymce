@@ -62,10 +62,8 @@ class TinyMCE(forms.Textarea):
         if tinymce.settings.USE_FILEBROWSER:
             mce_config['file_browser_callback'] = "djangoFileBrowser"
         mce_config.update(self.mce_attrs)
-        if not 'mode' in mce_config:
-            mce_config['mode'] = 'exact'
-        if mce_config['mode'] == 'exact':
-            mce_config['elements'] = final_attrs['id']
+        mce_config['mode'] = 'exact'
+        mce_config['elements'] = final_attrs['id']
         mce_config['strict_loading_mode'] = 1
         
         # Fix for js functions
