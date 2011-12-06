@@ -1,6 +1,6 @@
 tinyMCEPopup.requireLangPack();
 
-var detail = 50, strhex = "0123456789ABCDEF", i, isMouseDown = false, isMouseOver = false;
+var detail = 50, strhex = "0123456789abcdef", i, isMouseDown = false, isMouseOver = false;
 
 var colors = [
 	"#000000","#000033","#000066","#000099","#0000cc","#0000ff","#330000","#330033",
@@ -202,7 +202,7 @@ function generateWebColors() {
 
 	for (i=0; i<colors.length; i++) {
 		h += '<td bgcolor="' + colors[i] + '" width="10" height="10">'
-			+ '<a href="javascript:insertAction();" role="option" tabindex="-1" aria-labelledby="web_colors_' + i + '" onfocus="showColor(\'' + colors[i] +  '\');" onmouseover="showColor(\'' + colors[i] +  '\');" style="display:block;width:10px;height:10px;overflow:hidden;">';
+			+ '<a href="javascript:insertAction();" role="option" tabindex="-1" aria-labelledby="web_colors_' + i + '" onfocus="showColor(\'' + colors[i] + '\');" onmouseover="showColor(\'' + colors[i] + '\');" style="display:block;width:10px;height:10px;overflow:hidden;">';
 		if (tinyMCEPopup.editor.forcedHighContrastMode) {
 			h += '<canvas class="mceColorSwatch" height="10" width="10" data-color="' + colors[i] + '"></canvas>';
 		}
@@ -238,7 +238,7 @@ function generateNamedColors() {
 
 	for (n in named) {
 		v = named[n];
-		h += '<a href="javascript:insertAction();" role="option" tabindex="-1" aria-labelledby="named_colors_' + i + '" onfocus="showColor(\'' + n + '\',\'' + v + '\');" onmouseover="showColor(\'' + n +  '\',\'' + v + '\');" style="background-color: ' + n + '">';
+		h += '<a href="javascript:insertAction();" role="option" tabindex="-1" aria-labelledby="named_colors_' + i + '" onfocus="showColor(\'' + n + '\',\'' + v + '\');" onmouseover="showColor(\'' + n + '\',\'' + v + '\');" style="background-color: ' + n + '">';
 		if (tinyMCEPopup.editor.forcedHighContrastMode) {
 			h += '<canvas class="mceColorSwatch" height="10" width="10" data-color="' + colors[i] + '"></canvas>';
 		}
@@ -256,9 +256,9 @@ function generateNamedColors() {
 
 function enableKeyboardNavigation(el) {
 	tinyMCEPopup.editor.windowManager.createInstance('tinymce.ui.KeyboardNavigation', {
-    	root: el,
-    	items: tinyMCEPopup.dom.select('a', el)    	
-    }, tinyMCEPopup.dom);
+		root: el,
+		items: tinyMCEPopup.dom.select('a', el)
+	}, tinyMCEPopup.dom);
 }
 
 function dechex(n) {
@@ -266,10 +266,10 @@ function dechex(n) {
 }
 
 function computeColor(e) {
-	var x, y, partWidth, partDetail, imHeight, r, g, b, coef, i, finalCoef, finalR, finalG, finalB;
+	var x, y, partWidth, partDetail, imHeight, r, g, b, coef, i, finalCoef, finalR, finalG, finalB, pos = tinyMCEPopup.dom.getPos(e.target);
 
-	x = e.offsetX ? e.offsetX : (e.target ? e.clientX - e.target.x : 0);
-	y = e.offsetY ? e.offsetY : (e.target ? e.clientY - e.target.y : 0);
+	x = e.offsetX ? e.offsetX : (e.target ? e.clientX - pos.x : 0);
+	y = e.offsetY ? e.offsetY : (e.target ? e.clientY - pos.y : 0);
 
 	partWidth = document.getElementById('colors').width / 6;
 	partDetail = detail / 2;

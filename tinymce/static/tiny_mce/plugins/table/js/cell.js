@@ -63,6 +63,11 @@ function init() {
 function updateAction() {
 	var el, inst = ed, tdElm, trElm, tableElm, formObj = document.forms[0];
 
+	if (!AutoValidator.validate(formObj)) {
+		tinyMCEPopup.alert(AutoValidator.getErrorMessages(formObj).join('. ') + '.');
+		return false;
+	}
+
 	tinyMCEPopup.restoreSelection();
 	el = ed.selection.getStart();
 	tdElm = ed.dom.getParent(el, "td,th");
@@ -82,8 +87,6 @@ function updateAction() {
 		tinyMCEPopup.close();
 		return;
 	}
-
-	ed.execCommand('mceBeginUndoLevel');
 
 	switch (getSelectValue(formObj, 'action')) {
 		case "cell":
@@ -122,6 +125,36 @@ function updateAction() {
 			do {
 				cell = updateCell(cell, true);
 			} while ((cell = nextCell(cell)) != null);
+
+			break;
+
+		case "col":
+			var curr, col = 0, cell = trElm.firstChild, rows = tableElm.getElementsByTagName("tr");
+
+			if (cell.nodeName != "TD" && cell.nodeName != "TH")
+				cell = nextCell(cell);
+
+			do {
+				if (cell == tdElm)
+					break;
+				col += cell.getAttribute("colspan");
+			} while ((cell = nextCell(cell)) != null);
+
+			for (var i=0; i<rows.length; i++) {
+				cell = rows[i].firstChild;
+
+				if (cell.nodeName != "TD" && cell.nodeName != "TH")
+					cell = nextCell(cell);
+
+				curr = 0;
+				do {
+					if (curr == col) {
+						cell = updateCell(cell, true);
+						break;
+					}
+					curr += cell.getAttribute("colspan");
+				} while ((cell = nextCell(cell)) != null);
+			}
 
 			break;
 
@@ -166,15 +199,15 @@ function updateCell(td, skip_id) {
 	var dom = ed.dom;
 
 	if (!skip_id)
-		td.setAttribute('id', formObj.id.value);
+		dom.setAttrib(td, 'id', formObj.id.value);
 
-	td.setAttribute('align', formObj.align.value);
-	td.setAttribute('vAlign', formObj.valign.value);
-	td.setAttribute('lang', formObj.lang.value);
-	td.setAttribute('dir', getSelectValue(formObj, 'dir'));
-	td.setAttribute('style', ed.dom.serializeStyle(ed.dom.parseStyle(formObj.style.value)));
-	td.setAttribute('scope', formObj.scope.value);
-	ed.dom.setAttrib(td, 'class', getSelectValue(formObj, 'class'));
+	dom.setAttrib(td, 'align', formObj.align.value);
+	dom.setAttrib(td, 'vAlign', formObj.valign.value);
+	dom.setAttrib(td, 'lang', formObj.lang.value);
+	dom.setAttrib(td, 'dir', getSelectValue(formObj, 'dir'));
+	dom.setAttrib(td, 'style', ed.dom.serializeStyle(ed.dom.parseStyle(formObj.style.value)));
+	dom.setAttrib(td, 'scope', formObj.scope.value);
+	dom.setAttrib(td, 'class', getSelectValue(formObj, 'class'));
 
 	// Clear deprecated attributes
 	ed.dom.setAttrib(td, 'width', '');
