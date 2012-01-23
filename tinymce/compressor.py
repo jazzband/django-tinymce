@@ -22,7 +22,7 @@ from django.utils.cache import patch_vary_headers, patch_response_headers
 
 import tinymce.settings
 
-safe_filename_re = re.compile("^[a-zA-Z0-9_-]+$")
+safe_filename_re = re.compile("^[a-zA-Z][a-zA-Z0-9_/-]*$")
 
 def get_file_contents(filename):
     base_path = tinymce.settings.JS_ROOT
