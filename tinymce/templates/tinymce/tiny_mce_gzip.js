@@ -1,13 +1,10 @@
 /**
- * Based on "TinyMCE Compressor PHP" from MoxieCode.
+ * Based on "TinyMCE Compressor PHP v2.0.4" from MoxieCode.
  *
  * http://tinymce.moxiecode.com/
  *
- * Copyright (c) 2008 Jason Davies
+ * Copyright (c) 2012 Jason Davies
  * Licensed under the terms of the MIT License (see LICENSE.txt)
- *
- * Usage: copy this file into the same directory as tiny_mce.js and change
- * settings.page_name below to match your tinymce installation as appropriate.
  */
 var tinyMCE_GZ = {
 	settings : {
@@ -21,14 +18,18 @@ var tinyMCE_GZ = {
 	},
 
 	init : function(s, cb, sc) {
-		var t = this, n, i;//, nl = document.getElementsByTagName('script');
+		var t = this, n, i;
 
 		for (n in s)
 			t.settings[n] = s[n];
 
 		s = t.settings;
 
-		t.baseURL = '{{ base_url }}';
+		if (window.tinyMCEPreInit) {
+			t.baseURL = tinyMCEPreInit.base;
+		} else {
+			t.baseURL = '{{ base_url }}';
+		}
 
 		if (!t.coreLoaded)
 			t.loadScripts(1, s.themes, s.plugins, s.languages, cb, sc);
@@ -57,7 +58,7 @@ var tinyMCE_GZ = {
 		// Send request
 		x = w.XMLHttpRequest ? new XMLHttpRequest() : get('Msxml2.XMLHTTP') || get('Microsoft.XMLHTTP');
 		x.overrideMimeType && x.overrideMimeType('text/javascript');
-		x.open('GET', s.page_name + '?' + q, !!cb);
+		x.open('GET', t.baseURL + '/' + s.page_name + '?' + q, !!cb);
 //		x.setRequestHeader('Content-Type', 'text/javascript');
 		x.send('');
 
@@ -71,6 +72,7 @@ var tinyMCE_GZ = {
 					if (c < 10000 && x.status == 200) {
 						t.loaded = 1;
 						t.eval(x.responseText);
+						tinymce.dom.Event.domLoaded = true;
 						cb.call(sc || t, x);
 					}
 
@@ -122,19 +124,17 @@ var tinyMCE_GZ = {
 	},
 
 	end : function() {
-        tinymce.dom.Event.domLoaded = true;
 	},
 
 	eval : function(co) {
-		var w = window, t = this;
-		window.tinyMCEPreInit = {"base": t.baseURL,
-			"suffix": t.settings.suffix};
-		if (!w.execScript) {
-			if (/Gecko/.test(navigator.userAgent))
-				eval(co, w); // Firefox 3.0
-			else
-				eval.call(w, co);
-		} else
-			w.execScript(co); // IE
+		var se = document.createElement('script');
+
+		// Create script
+		se.type = 'text/javascript';
+		se.text = co;
+
+		// Add it to evaluate it and remove it
+		(document.getElementsByTagName('head')[0] || document.documentElement).appendChild(se);
+		se.parentNode.removeChild(se);
 	}
 };
