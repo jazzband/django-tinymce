@@ -58,11 +58,11 @@ var tinyMCE_GZ = {
 		// Send request
 		x = w.XMLHttpRequest ? new XMLHttpRequest() : get('Msxml2.XMLHTTP') || get('Microsoft.XMLHTTP');
 		x.overrideMimeType && x.overrideMimeType('text/javascript');
-		x.open('GET', t.baseURL + '/' + s.page_name + '?' + q, !!cb);
+		x.open('GET', (/^\//.test(s.page_name) ? "" : t.baseURL + '/') + s.page_name + '?' + q, !!cb);
 //		x.setRequestHeader('Content-Type', 'text/javascript');
 		x.send('');
 
-		// Handle asyncronous loading
+		// Handle asynchronous loading
 		if (cb) {
 			// Wait for response
 			ti = w.setInterval(function() {
