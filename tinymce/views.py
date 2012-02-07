@@ -31,7 +31,7 @@ def textareas_js(request, name, lang=None):
     return HttpResponse(template.render(context),
             content_type="application/x-javascript")
 
-
+@csrf_exempt
 def spell_check(request):
     """
     Returns a HttpResponse that implements the TinyMCE spellchecker protocol.
