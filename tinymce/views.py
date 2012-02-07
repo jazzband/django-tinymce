@@ -10,6 +10,7 @@ from django.utils import simplejson
 from django.utils.translation import ugettext as _
 from tinymce.compressor import gzip_compressor
 from tinymce.widgets import get_language_config
+from django.views.decorators.csrf import csrf_exempt
 
 def textareas_js(request, name, lang=None):
     """
