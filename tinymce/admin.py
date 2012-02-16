@@ -15,7 +15,7 @@ from tinymce.views import render_to_image_list, render_to_link_list
 
 
 class TinyMCEImageListMixin(object):
-    """ 
+    """
     Example usage::
         related_image_field = 'image'
         related_image_size = '200x300'
