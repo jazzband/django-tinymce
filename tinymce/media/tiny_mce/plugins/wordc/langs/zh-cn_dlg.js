@@ -1,1 +1,0 @@
-tinyMCE.addI18n('zh-cn.wordcount',{words:"Words: "});

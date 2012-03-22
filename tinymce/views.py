@@ -10,6 +10,10 @@ from django.utils import simplejson
 from django.utils.translation import ugettext as _
 from tinymce.compressor import gzip_compressor
 from tinymce.widgets import get_language_config
+try:
+    from django.views.decorators.csrf import csrf_exempt
+except ImportError:
+    pass
 
 def textareas_js(request, name, lang=None):
     """
@@ -30,7 +34,6 @@ def textareas_js(request, name, lang=None):
 
     return HttpResponse(template.render(context),
             content_type="application/x-javascript")
-
 
 def spell_check(request):
     """
@@ -69,6 +72,10 @@ def spell_check(request):
     return HttpResponse(simplejson.dumps(output),
             content_type='application/json')
 
+try:
+    spell_check = csrf_exempt(spell_check)
+except NameError:
+    pass
 
 def preview(request, name):
     """
@@ -123,6 +130,10 @@ def render_to_js_vardef(var_name, var_value):
     return HttpResponse(output, content_type='application/x-javascript')
 
 def filebrowser(request):
-    fb_url = request.build_absolute_uri(urlresolvers.reverse('fb_browse'))
+    try:
+        fb_url = request.build_absolute_uri(urlresolvers.reverse('fb_browse'))
+    except:
+        fb_url = request.build_absolute_uri(urlresolvers.reverse('filebrowser:fb_browse'))
+
     return render_to_response('tinymce/filebrowser.js', {'fb_url': fb_url},
             context_instance=RequestContext(request))

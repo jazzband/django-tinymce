@@ -13,7 +13,7 @@
 
 	tinymce.create('tinymce.plugins.FullScreenPlugin', {
 		init : function(ed, url) {
-			var t = this, s = {}, vp;
+			var t = this, s = {}, vp, posCss;
 
 			t.editor = ed;
 
@@ -27,7 +27,7 @@
 					else {
 						DOM.win.setTimeout(function() {
 							tinymce.dom.Event.remove(DOM.win, 'resize', t.resizeFunc);
-							tinyMCE.get(ed.getParam('fullscreen_editor_id')).setContent(ed.getContent({format : 'raw'}), {format : 'raw'});
+							tinyMCE.get(ed.getParam('fullscreen_editor_id')).setContent(ed.getContent());
 							tinyMCE.remove(ed);
 							DOM.remove('mce_fullscreen_container');
 							de.style.overflow = ed.getParam('fullscreen_html_overflow');
@@ -78,7 +78,15 @@
 					if (tinymce.isIE)
 						vp.h -= 1;
 
-					n = DOM.add(DOM.doc.body, 'div', {id : 'mce_fullscreen_container', style : 'position:' + (tinymce.isIE6 || (tinymce.isIE && !DOM.boxModel) ? 'absolute' : 'fixed') + ';top:0;left:0;width:' + vp.w + 'px;height:' + vp.h + 'px;z-index:200000;'});
+					// Use fixed position if it exists
+					if (tinymce.isIE6)
+						posCss = 'absolute;top:' + vp.y;
+					else
+						posCss = 'fixed;top:0';
+
+					n = DOM.add(DOM.doc.body, 'div', {
+						id : 'mce_fullscreen_container', 
+						style : 'position:' + posCss + ';left:0;width:' + vp.w + 'px;height:' + vp.h + 'px;z-index:200000;'});
 					DOM.add(n, 'div', {id : 'mce_fullscreen'});
 
 					tinymce.each(ed.settings, function(v, n) {
@@ -92,7 +100,7 @@
 					s.fullscreen_editor_id = ed.id;
 					s.theme_advanced_resizing = false;
 					s.save_onsavecallback = function() {
-						ed.setContent(tinyMCE.get(s.id).getContent({format : 'raw'}), {format : 'raw'});
+						ed.setContent(tinyMCE.get(s.id).getContent());
 						ed.execCommand('mceSave');
 					};
 

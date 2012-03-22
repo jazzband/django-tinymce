@@ -1,1 +1,0 @@
-tinyMCE.addI18n('cy.wordcount',{words:"Words: "});
