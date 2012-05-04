@@ -144,7 +144,7 @@ function insertTable() {
 		//elm.outerHTML = elm.outerHTML;
 
 		inst.nodeChanged();
-		inst.execCommand('mceEndUndoLevel');
+		inst.execCommand('mceEndUndoLevel', false, {}, {skip_undo: true});
 
 		// Repaint if dimensions changed
 		if (formObj.width.value != orgTableWidth || formObj.height.value != orgTableHeight)
@@ -245,6 +245,11 @@ function insertTable() {
 	tinymce.each(dom.select('table[data-mce-new]'), function(node) {
 		var tdorth = dom.select('td,th', node);
 
+		// Fixes a bug in IE where the caret cannot be placed after the table if the table is at the end of the document
+		if (tinymce.isIE && node.nextSibling == null) {
+			dom.insertAfter(dom.create('p'), node);
+		}
+
 		try {
 			// IE9 might fail to do this selection 
 			inst.selection.setCursorLocation(tdorth[0], 0);
@@ -256,7 +261,7 @@ function insertTable() {
 	});
 
 	inst.addVisual();
-	inst.execCommand('mceEndUndoLevel');
+	inst.execCommand('mceEndUndoLevel', false, {}, {skip_undo: true});
 
 	tinyMCEPopup.close();
 }
