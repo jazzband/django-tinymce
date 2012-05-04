@@ -56,29 +56,17 @@ class TinyMCE(forms.Textarea):
         final_attrs = self.build_attrs(attrs)
         final_attrs['name'] = name
         assert 'id' in final_attrs, "TinyMCE widget attributes must contain 'id'"
-
+        
         mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
         mce_config.update(get_language_config(self.content_language))
         if tinymce.settings.USE_FILEBROWSER:
             mce_config['file_browser_callback'] = "djangoFileBrowser"
         mce_config.update(self.mce_attrs)
-        if not 'mode' in mce_config:
-            mce_config['mode'] = 'exact'
-        if mce_config['mode'] == 'exact':
-            mce_config['elements'] = final_attrs['id']
+        mce_config['mode'] = 'exact'
+        mce_config['elements'] = final_attrs['id']
         mce_config['strict_loading_mode'] = 1
-        
-        # Fix for js functions
-        js_functions = {}
-        for k in ('paste_preprocess','paste_postprocess'):
-            if k in mce_config:
-               js_functions[k] = mce_config[k]
-               del mce_config[k]
         mce_json = simplejson.dumps(mce_config)
-        for k in js_functions:
-            index = mce_json.rfind('}')
-            mce_json = mce_json[:index]+', '+k+':'+js_functions[k].strip()+mce_json[index:]
-            
+
         html = [u'<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
         if tinymce.settings.USE_COMPRESSOR:
             compressor_config = {
@@ -110,9 +98,9 @@ class AdminTinyMCE(admin_widgets.AdminTextareaWidget, TinyMCE):
 
 
 def get_language_config(content_language=None):
-    language = get_language()[:2]
+    language = get_language()
     if content_language:
-        content_language = content_language[:2]
+        content_language = content_language
     else:
         content_language = language
 
@@ -121,8 +109,8 @@ def get_language_config(content_language=None):
 
     lang_names = SortedDict()
     for lang, name in settings.LANGUAGES:
-        if lang[:2] not in lang_names: lang_names[lang[:2]] = []
-        lang_names[lang[:2]].append(_(name))
+        if lang not in lang_names: lang_names[lang] = []
+        lang_names[lang].append(_(name))
     sp_langs = []
     for lang, names in lang_names.items():
         if lang == content_language:
@@ -132,7 +120,7 @@ def get_language_config(content_language=None):
         sp_langs.append(u'%s%s=%s' % (default, ' / '.join(names), lang))
 
     config['spellchecker_languages'] = ','.join(sp_langs)
-
+    
     if content_language in settings.LANGUAGES_BIDI:
         config['directionality'] = 'rtl'
     else:
