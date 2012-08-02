@@ -26,7 +26,7 @@ flatpage form you could use the following code::
   from django.contrib.flatpages.models import FlatPage
   from tinymce.widgets import TinyMCE
 
-  class FlatPageForm(ModelForm):
+  class FlatPageForm(forms.ModelForm):
       ...
       content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
       ...
