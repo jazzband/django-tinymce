@@ -177,7 +177,6 @@ all ``django.contrib.flatpages`` objects:
 the flatpages ``content`` field with a predefined list of other flatpages in
 the link dialog you could use something like this::
 
-  from django import forms
   from django.core.urlresolvers import reverse
   from django.contrib.flatpages.admin import FlatPageAdmin
   from django.contrib.flatpages.models import FlatPage
