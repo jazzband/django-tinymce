@@ -95,9 +95,7 @@ class TinyMCE(forms.Textarea):
                 'debug': False,
             }
             compressor_json = simplejson.dumps(compressor_config)
-            html.append(u'<script type="text/javascript">tinyMCE_GZ.init(%s)</script>' % compressor_json)
-
-        html.append(u'<script type="text/javascript">tinyMCE.init(%s)</script>' % mce_json)
+            
         if pos != -1:
             html.append(u'''<script type="text/javascript">
 setTimeout(function () {
