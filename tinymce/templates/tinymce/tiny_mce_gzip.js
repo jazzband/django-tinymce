@@ -1,4 +1,4 @@
-/**
+{% load url from future %}/**
  * Based on "TinyMCE Compressor PHP v2.0.4" from MoxieCode.
  *
  * http://tinymce.moxiecode.com/
@@ -12,7 +12,7 @@ var tinyMCE_GZ = {
 		plugins : '',
 		languages : '',
 		disk_cache : true,
-		page_name : '{% url tinymce-compressor %}',
+		page_name : '{% url "tinymce-compressor" %}',
 		debug : false,
 		suffix : ''
 	},
