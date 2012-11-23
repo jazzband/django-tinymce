@@ -10,38 +10,65 @@ version = metadata.version
 setup(
     name = "django-%s" % app_name,
     version = version,
-
-    # packages = [app_name, '%s.templatetags' % app_name, 'testtinymce'],
     packages = find_packages(),
     include_package_data = True,
-    #package_data = {
-        # app_name: [
-            #'templates/tinymce/*',
-            # 'media/*',
-            #'media/tiny_mce/*/*/*/*',
-            #'media/tiny_mce/*/*/*',
-            #'media/tiny_mce/*/*',
-            #'media/tiny_mce/*',
-        # ],
-        # 'testtinymce': ['templates/flatpages/*', 'testapp/*']
-    # },
-
-    author = "Joost Cassee",
-    author_email = "joost@cassee.net",
+    author = "Aljosa Mohorovic",
+    author_email = "aljosa.mohorovic@gmail.com",
     description = "A Django application that contains a widget to render a" \
             " form field as a TinyMCE editor.",
     long_description = \
 """
-Use the TinyMCE editor for your form textareas.
+django-tinymce
+===
 
-Features:
+**django-tinymce** is a Django application that contains a widget to render a form field as a TinyMCE editor.
 
-* Use as a form widget or with a view.
-* Enhanced support for content languages.
-* Integration with the TinyMCE spellchecker.
-* Enables predefined link and image lists for dialogs.
-* Can compress the TinyMCE javascript files.
-* Integration with django-filebrowser.
+Quickstart:
+===
+
+Install django-tinymce:
+
+    $ pip install django-tinymce
+
+Add tinymce to INSTALLED_APPS in settings.py for your project:
+
+    INSTALLED_APPS = (
+        ...
+        'tinymce',
+    )
+
+Add tinymce.urls to urls.py for your project:
+
+    urlpatterns = patterns('',
+        ...
+        (r'^tinymce/', include('tinymce.urls')),
+    )
+
+In your code:
+
+    from django.db import models
+    from tinymce.models import HTMLField
+
+    class MyModel(models.Model):
+        ...
+        content = HTMLField()
+
+**django-tinymce** uses staticfiles so everything should work as expected, different use cases (like using widget instead of HTMLField) and other stuff is available in documentation.
+
+Documentation:
+===
+http://django-tinymce.readthedocs.org/
+
+Support and updates:
+===
+You can contact me directly at aljosa.mohorovic@gmail.com, track updates at https://twitter.com/maljosa or use github issues.
+Be persistent and bug me, I often find myself lost in time so ping me if you're still waiting for me to answer.
+
+License (and related information):
+===
+Originally written by Joost Cassee.
+
+This program is licensed under the MIT License (see LICENSE.txt)
 """,
     license = "MIT License",
     keywords = "django widget tinymce",
@@ -57,7 +84,5 @@ Features:
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     platforms = ['any'],
-    url = "http://code.google.com/p/django-%s/" % app_name,
-    download_url = "http://code.google.com/p/django-%s/downloads/list" \
-            % app_name,
+    url = "https://github.com/aljosa/django-tinymce",
 )
