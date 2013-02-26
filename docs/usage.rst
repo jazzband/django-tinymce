@@ -97,8 +97,9 @@ If you cannot or will not change the widget on a form you can also use the
 TinyMCE editors. On the template of the page, add the following lines to the
 ``HEAD`` element::
 
+  {% load url from future %}
   <script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
-  <script type="text/javascript" src="{% url tinymce-js "NAME" %}"></script>
+  <script type="text/javascript" src="{% url "tinymce-js" "NAME" %}"></script>
 
 The ``NAME`` argument allows you to create multiple TinyMCE configurations. Now
 create a template containing the Javascript initialization code. It should be
@@ -122,7 +123,8 @@ variables are based on the current Django language. If the content language is
 different from the interface language use the ``tinymce-js-lang`` view which
 takes a language (``LANG_CODE``) argument::
 
-  <script type="text/javascript" src="{% url tinymce-js-lang "NAME","LANG_CODE" %}"></script>
+  {% load url from future %}
+  <script type="text/javascript" src="{% url "tinymce-js-lang" "NAME","LANG_CODE" %}"></script>
 
 
 External link and image lists
