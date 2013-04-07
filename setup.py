@@ -84,5 +84,5 @@ This program is licensed under the MIT License (see LICENSE.txt)
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     platforms = ['any'],
-    url = "https://github.com/aljosa/django-tinymce",
+    url = "https://github.com/agushuley/gu-django-tinymce",
 )
