@@ -131,6 +131,8 @@ setTimeout(function () {
             js = [tinymce.settings.JS_URL]
         if tinymce.settings.USE_FILEBROWSER:
             js.append(reverse('tinymce-filebrowser'))
+            import filebrowser
+            js.append(reverse('tinymce-filebrowser-path') + u'?dir=' + filebrowser.get_default_dir())
         return forms.Media(js=js)
     media = property(_media)
 

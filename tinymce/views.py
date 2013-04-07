@@ -129,11 +129,18 @@ def render_to_js_vardef(var_name, var_value):
     output = "var %s = %s" % (var_name, simplejson.dumps(var_value))
     return HttpResponse(output, content_type='application/x-javascript')
 
+
 def filebrowser(request):
     try:
         fb_url = request.build_absolute_uri(urlresolvers.reverse('fb_browse'))
     except:
         fb_url = request.build_absolute_uri(urlresolvers.reverse('filebrowser:fb_browse'))
 
-    return render_to_response('tinymce/filebrowser.js', {'fb_url': fb_url},
+    return render_to_response('tinymce/filebrowser.js', {'fb_url': fb_url },
             context_instance=RequestContext(request))
+
+def filebrowserPath(request):
+    dir = request.GET['dir']
+
+    return render_to_response('tinymce/defaultpath.js', { 'dir': dir, },
+                              context_instance=RequestContext(request))

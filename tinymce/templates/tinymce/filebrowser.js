@@ -1,5 +1,10 @@
 function djangoFileBrowser(field_name, url, type, win) {
+
     var url = "{{ fb_url }}?pop=2&type=" + type;
+    var dir = window.filebrowserPath.getDefaultPath();
+    if ( dir ) {
+        url += "&dir=" + dir
+    }
 
     tinyMCE.activeEditor.windowManager.open(
         {

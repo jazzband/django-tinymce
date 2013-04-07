@@ -8,7 +8,7 @@ app_name = metadata.name
 version = metadata.version
 
 setup(
-    name = "django-%s" % app_name,
+    name = "gu-django-%s" % app_name,
     version = version,
     packages = find_packages(),
     include_package_data = True,

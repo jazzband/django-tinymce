@@ -1,14 +1,14 @@
-django-tinymce
+gu-django-tinymce
 ===
 
-**django-tinymce** is a Django application that contains a widget to render a form field as a TinyMCE editor.
+**gu-django-tinymce** is a Django application that contains a widget to render a form field as a TinyMCE editor.
 
 Quickstart:
 ===
 
-Install django-tinymce:
+Install gu-django-tinymce:
 
-    $ pip install django-tinymce
+    $ pip install gu-django-tinymce
 
 Add tinymce to INSTALLED_APPS in settings.py for your project:
 
