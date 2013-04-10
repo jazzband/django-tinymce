@@ -8,6 +8,7 @@ http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 
 from django import forms
 from django.conf import settings
+import json
 from django.contrib.admin import widgets as admin_widgets
 from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt

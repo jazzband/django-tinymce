@@ -9,6 +9,7 @@ from django.template import RequestContext, loader
 from django.utils.translation import ugettext as _
 from tinymce.compressor import gzip_compressor
 from tinymce.widgets import get_language_config
+import json
 try:
     from django.views.decorators.csrf import csrf_exempt
 except ImportError:
