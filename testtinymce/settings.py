@@ -9,10 +9,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': join(ROOT_PATH, "testtinymce.sqlite"),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
     }
 }
 
@@ -41,6 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.flatpages',
+    'django_extensions',
+    'grappelli',
+    'filebrowser',
     'tinymce',
     'testapp',
 )
@@ -51,4 +50,42 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme': "advanced",
     'plugins': "spellchecker",
     'theme_advanced_buttons3_add': "|,spellchecker",
+}
+TINYMCE_DEFAULT_CONFIG = {
+    # General options
+    'mode' : "textareas",
+    'theme' : "advanced",
+    'plugins' : "media,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave",
+
+    'theme_advanced_buttons1_add' : "media",
+    'theme_advanced_buttons2_add' : "advimage",
+
+    # Theme options
+    'theme_advanced_buttons1' : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,fontselect,fontsizeselect,", 
+    'theme_advanced_buttons2' : "bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,|,forecolor,backcolor",
+
+    'theme_advanced_toolbar_location' : "top",
+    'theme_advanced_toolbar_align' : "left",
+    'theme_advanced_statusbar_location' : "bottom",
+    'theme_advanced_resizing' : 'true',
+
+    #Example content CSS (should be your site CSS)
+    #content_css : "/css/style.css",
+
+    'template_external_list_url' : "lists/template_list.js",
+    'external_link_list_url' : "lists/link_list.js",
+    'external_image_list_url' : "lists/image_list.js",
+    'media_external_list_url' : "lists/media_list.js",
+
+    # Style formats
+    'style_formats' : [
+        {'title' : 'Bold text', 'inline' : 'strong'},
+        {'title' : 'Red text', 'inline' : 'span', 'styles' : {'color' : '#ff0000'}},
+        {'title' : 'Help', 'inline' : 'strong', 'classes' : 'help'},
+        {'title' : 'Table styles'},
+        {'title' : 'Table row 1', 'selector' : 'tr', 'classes' : 'tablerow'}
+    ],
+
+    'width': '700',
+    'height': '400'
 }
