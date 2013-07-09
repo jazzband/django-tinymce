@@ -113,7 +113,6 @@ setTimeout(function () {
         window._tinymce_inited[id] = true;
     } else {
         var elements = id.replace(/__prefix__/, parseInt(document.getElementById('%sTOTAL_FORMS').value) - 1);
-        console.log(elements);
         if (document.getElementById(elements)) {
             tinymce.init(%s);
         }
