@@ -4,7 +4,7 @@
 try:
     from django.conf.urls import url, patterns
 except:
-    from django.conf.urls.defaults import *
+    from django.conf.urls.defaults import url, patterns
 
 urlpatterns = patterns('tinymce.views',
     url(r'^js/textareas/(?P<name>.+)/$', 'textareas_js', name='tinymce-js'),
