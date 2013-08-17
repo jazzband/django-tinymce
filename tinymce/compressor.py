@@ -71,7 +71,7 @@ def gzip_compressor(request):
     cacheData = cache.get(cacheKey)
 
     if not cacheData is None:
-        if cacheData.has_key('ETag'):
+        if 'ETag' in cacheData:
             if_none_match = request.META.get('HTTP_IF_NONE_MATCH', None)
             if if_none_match == cacheData['ETag']:
                 response.status_code = 304
@@ -79,7 +79,7 @@ def gzip_compressor(request):
                 response['Content-Length'] = '0'
                 return response
 
-        if cacheData.has_key('Last-Modified'):
+        if 'Last-Modified' in cacheData:
             if_modified_since = request.META.get('HTTP_IF_MODIFIED_SINCE', None)
             if if_modified_since == cacheData['Last-Modified']:
                 response.status_code = 304
