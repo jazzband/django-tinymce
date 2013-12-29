@@ -19,11 +19,11 @@ except ImportError:
     except ImportError:
         from django.forms.util import smart_unicode
 from django.utils.html import escape
-from django.utils import simplejson
 from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
 import tinymce.settings
+import json
 
 
 class TinyMCE(forms.Textarea):
@@ -77,7 +77,7 @@ class TinyMCE(forms.Textarea):
             if k in mce_config:
                js_functions[k] = mce_config[k]
                del mce_config[k]
-        mce_json = simplejson.dumps(mce_config)
+        mce_json = json.dumps(mce_config)
 
         pos = final_attrs['id'].find('__prefix__')
         if pos != -1:
@@ -97,7 +97,7 @@ class TinyMCE(forms.Textarea):
                 'diskcache': True,
                 'debug': False,
             }
-            compressor_json = simplejson.dumps(compressor_config)
+            compressor_json = json.dumps(compressor_config)
             
         if pos != -1:
             html.append(u'''<script type="text/javascript">
