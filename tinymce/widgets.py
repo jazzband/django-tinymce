@@ -5,12 +5,22 @@
 This TinyMCE widget was copied and extended from this code by John D'Agostino:
 http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
+from __future__ import unicode_literals
 
+import tinymce.settings
 from django import forms
 from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
 from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt
+from django.utils.html import escape
+from django.utils.datastructures import SortedDict
+from django.utils.safestring import mark_safe
+from django.utils.translation import get_language, ugettext as _
+try:
+    import json
+except ImportError:
+    from django.utils import simplejson as json
 try:
     from django.utils.encoding import smart_text as smart_unicode
 except ImportError:
@@ -18,12 +28,6 @@ except ImportError:
         from django.utils.encoding import smart_unicode
     except ImportError:
         from django.forms.util import smart_unicode
-from django.utils.html import escape
-from django.utils.datastructures import SortedDict
-from django.utils.safestring import mark_safe
-from django.utils.translation import get_language, ugettext as _
-import tinymce.settings
-import json
 
 
 class TinyMCE(forms.Textarea):
@@ -81,14 +85,14 @@ class TinyMCE(forms.Textarea):
 
         pos = final_attrs['id'].find('__prefix__')
         if pos != -1:
-            mce_json = mce_json.replace(u'"%s"' % final_attrs['id'], u'elements')
+            mce_json = mce_json.replace('"%s"' % final_attrs['id'], 'elements')
 
         for k in js_functions:
             index = mce_json.rfind('}')
             mce_json = mce_json[:index]+', '+k+':'+js_functions[k].strip()+mce_json[index:]
             
 
-        html = [u'<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
+        html = ['<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
         if tinymce.settings.USE_COMPRESSOR:
             compressor_config = {
                 'plugins': mce_config.get('plugins', ''),
@@ -98,9 +102,10 @@ class TinyMCE(forms.Textarea):
                 'debug': False,
             }
             compressor_json = json.dumps(compressor_config)
-            
+            html.append('<script type="text/javascript">tinyMCE_GZ.init(%s)</script>' % compressor_json)
+
         if pos != -1:
-            html.append(u'''<script type="text/javascript">
+            html.append('''<script type="text/javascript">
 setTimeout(function () {
     var id = '%s';
     
@@ -112,7 +117,6 @@ setTimeout(function () {
         window._tinymce_inited[id] = true;
     } else {
         var elements = id.replace(/__prefix__/, parseInt(document.getElementById('%sTOTAL_FORMS').value) - 1);
-        console.log(elements);
         if (document.getElementById(elements)) {
             tinymce.init(%s);
         }
@@ -120,9 +124,9 @@ setTimeout(function () {
 }, 0);
 </script>''' % (final_attrs['id'], final_attrs['id'][0:pos], mce_json))
         else:
-            html.append(u'<script type="text/javascript">tinyMCE.init(%s)</script>' % mce_json)
+            html.append('<script type="text/javascript">tinyMCE.init(%s)</script>' % mce_json)
 
-        return mark_safe(u'\n'.join(html))
+        return mark_safe('\n'.join(html))
 
     def _media(self):
         if tinymce.settings.USE_COMPRESSOR:
@@ -161,7 +165,7 @@ def get_language_config(content_language=None):
             default = '+'
         else:
             default = ''
-        sp_langs.append(u'%s%s=%s' % (default, ' / '.join(names), lang))
+        sp_langs.append('%s%s=%s' % (default, ' / '.join(names), lang))
 
     config['spellchecker_languages'] = ','.join(sp_langs)
 
