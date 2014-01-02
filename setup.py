@@ -8,14 +8,15 @@ app_name = metadata.name
 version = metadata.version
 
 setup(
-    name = "gu-django-%s" % app_name,
+    name="gu-django-%s" % app_name,
     version = version,
     packages = find_packages(),
     include_package_data = True,
-    author = "Aljosa Mohorovic",
+    author = "Aljosa Mohorovic, Andriy Gushuley",
     author_email = "aljosa.mohorovic@gmail.com",
     description = "A Django application that contains a widget to render a" \
-            " form field as a TinyMCE editor.",
+            " form field as a TinyMCE editor." \
+            " Adopted for gu-djanog-filebrowser-no-grapelli",
     long_description = \
 """
 django-tinymce
@@ -26,9 +27,9 @@ django-tinymce
 Quickstart:
 ===
 
-Install django-tinymce:
+Install gu-django-tinymce:
 
-    $ pip install django-tinymce
+    $ pip install gu-django-tinymce
 
 Add tinymce to INSTALLED_APPS in settings.py for your project:
 

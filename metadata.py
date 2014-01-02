@@ -1,4 +1,4 @@
 name = 'tinymce'
-authors = 'Joost Cassee, Aljosa Mohorovic'
-version = '1.5.2'
+authors = 'Joost Cassee, Aljosa Mohorovic, Andriy Gushuley'
+version = '1.5.20'
 release = version
