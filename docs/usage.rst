@@ -97,8 +97,19 @@ If you cannot or will not change the widget on a form you can also use the
 TinyMCE editors. On the template of the page, add the following lines to the
 ``HEAD`` element::
 
-  <script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/tiny_mce/tiny_mce.js"></script>
   <script type="text/javascript" src="{% url "tinymce-js" "NAME" %}"></script>
+
+The use of ``STATIC_URL`` needs the
+``django.core.context_processors.static`` context processors.
+
+You may want to use``{% static %}`` instead like::
+
+  <script type="text/javascript" src="{% static "js/tiny_mce/tiny_mce.js" %}"></script>
+  <script type="text/javascript" src="{% url "tinymce-js" "NAME" %}"></script>
+
+Be careful that some ``STATICFILES_STORAGE`` will modify your
+``tiny_mce.js`` file name and your file will fail to load.
 
 The ``NAME`` argument allows you to create multiple TinyMCE configurations. Now
 create a template containing the Javascript initialization code. It should be
