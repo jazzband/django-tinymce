@@ -7,7 +7,11 @@ http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
 from __future__ import unicode_literals
 
+<<<<<<< HEAD
 import tinymce.settings
+=======
+import json
+>>>>>>> tinymce4
 from django import forms
 from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
@@ -28,6 +32,14 @@ except ImportError:
         from django.utils.encoding import smart_unicode
     except ImportError:
         from django.forms.util import smart_unicode
+<<<<<<< HEAD
+=======
+from django.utils.html import escape
+from django.utils.datastructures import SortedDict
+from django.utils.safestring import mark_safe
+from django.utils.translation import get_language, ugettext as _
+import tinymce.settings
+>>>>>>> tinymce4
 
 
 class TinyMCE(forms.Textarea):
@@ -102,7 +114,11 @@ class TinyMCE(forms.Textarea):
                 'debug': False,
             }
             compressor_json = json.dumps(compressor_config)
+<<<<<<< HEAD
             html.append('<script type="text/javascript">tinyMCE_GZ.init(%s)</script>' % compressor_json)
+=======
+            html.append(u'<script type="text/javascript">tinyMCE_GZ.init(%s)</script>' % compressor_json)
+>>>>>>> tinymce4
             
         if pos != -1:
             html.append('''<script type="text/javascript">

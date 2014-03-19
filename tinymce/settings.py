@@ -1,21 +1,27 @@
 import os
+import warnings
 from django.conf import settings
+from django.contrib.staticfiles.storage import staticfiles_storage
 
-DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG',
-        {'theme': "simple", 'relative_urls': False})
+OLD_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', False)
+if OLD_CONFIG:
+    warnings.warn("TINYMCE_DEFAULT_CONFIG is deprecated, check docs for instructions.", DeprecationWarning)
+DEFAULT_CONFIG = OLD_CONFIG or {'theme': "modern", 'relative_urls': False}
 
-USE_SPELLCHECKER = getattr(settings, 'TINYMCE_SPELLCHECKER', False)
-
-USE_COMPRESSOR = getattr(settings, 'TINYMCE_COMPRESSOR', False)
-
-USE_FILEBROWSER = getattr(settings, 'TINYMCE_FILEBROWSER',
-        'filebrowser' in settings.INSTALLED_APPS)
-
-if 'staticfiles' in settings.INSTALLED_APPS or 'django.contrib.staticfiles' in settings.INSTALLED_APPS:
-    JS_URL = getattr(settings, 'TINYMCE_JS_URL',os.path.join(settings.STATIC_URL, 'tiny_mce/tiny_mce.js'))
-    JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT',os.path.join(settings.STATIC_ROOT, 'tiny_mce'))
-else:
-    JS_URL = getattr(settings, 'TINYMCE_JS_URL','%sjs/tiny_mce/tiny_mce.js' % settings.MEDIA_URL)
-    JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT', os.path.join(settings.MEDIA_ROOT, 'js/tiny_mce'))
-
+if getattr(settings, 'TINYMCE_JS_URL', False):
+    raise RuntimeError("TINYMCE_JS_URL is not supported anymore, check docs for instructions.")
+JS_URL = staticfiles_storage.url('tinymce/tinymce.min.js')
+JS_ROOT = staticfiles_storage.url('tinymce')
 JS_BASE_URL = JS_URL[:JS_URL.rfind('/')]
+
+if getattr(settings, 'TINYMCE_SPELLCHECKER', False):
+    raise NotImplementedError("TINYMCE_SPELLCHECKER is not implemented yet.")
+USE_SPELLCHECKER = False
+
+if getattr(settings, 'TINYMCE_COMPRESSOR', False):
+    raise NotImplementedError("TINYMCE_COMPRESSOR is not implemented yet.")
+USE_COMPRESSOR = False
+
+if getattr(settings, 'TINYMCE_FILEBROWSER', False):
+    raise RuntimeError("TINYMCE_FILEBROWSER is not supported anymore, check docs for instructions.")
+USE_FILEBROWSER = False
