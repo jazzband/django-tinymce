@@ -38,7 +38,7 @@ master_doc = 'index'
 
 # General substitutions.
 project = metadata.name
-copyright = "2008, %s" % metadata.authors
+copyright = "2014, %s" % metadata.authors
 
 # The default replacements for |version| and |release|, also used in various
 # other places throughout the built documents.
