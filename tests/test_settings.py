@@ -1,9 +1,10 @@
 import pytest
+from pytest import raises
 from tinymce.utils import is_installed
 
 
 def test_settings(settings):
-    with pytest.raises(RuntimeError):
+    with raises(RuntimeError):
         is_installed(settings)
 
     settings.INSTALLED_APPS = ('tinymce',)
