@@ -101,4 +101,59 @@ def parse_profile(profile):
     if i is not None and i not in ('html4', 'html5', 'html5-strict'):
         raise ConfigurationError('schema must be html4, html5 or html5-strict')
 
+    # visual
+    i = D.get('visual', None)
+    if i is not None and i not in (False, True):
+        raise ConfigurationError('visual must be True or False')
+
+    # custom_undo_redo_levels
+    i = D.get('custom_undo_redo_levels', None)
+    if i is not None and not isinstance(i, int):
+        raise ConfigurationError('custom_undo_redo_levels must be int')
+
+    # menu
+    i = D.get('menu', None)
+    if i is not None and not isinstance(i, dict):
+        raise ConfigurationError('menu must be dict')
+
+    # statusbar
+    i = D.get('statusbar', None)
+    if i is not None and i not in (False, True):
+        raise ConfigurationError('statusbar must be True or False')
+
+    # resize
+    i = D.get('resize', None)
+    if i is not None and i not in (False, True, 'both'):
+        raise ConfigurationError('resize must be True, False or "both"')
+
+    # convert_urls
+    i = D.get('convert_urls', None)
+    if i is not None and i not in (False, True):
+        raise ConfigurationError('convert_urls must be True or False')
+
+    # relative_urls
+    i = D.get('relative_urls', None)
+    if i is not None and i not in (False, True):
+        raise ConfigurationError('relative_urls must be True or False')
+
+    # remove_script_host
+    i = D.get('remove_script_host', None)
+    if i is not None and i not in (False, True):
+        raise ConfigurationError('remove_script_host must be True or False')
+
+    # document_base_url
+    i = D.get('document_base_url', None)
+    if i is not None and (not isinstance(i, str) or not i.endswith('/')):
+        raise ConfigurationError('document_base_url must be str and end with "/"')
+
+    # file_browser_callback_types
+    i = D.get('file_browser_callback_types', None)
+    if i is not None:
+        if not isinstance(i, str): 
+            raise ConfigurationError('file_browser_callback_types must be str and combination of file, image or media')
+        allowed_types = ('file', 'image', 'media')
+        types = set(i.split(' '))
+        if not all([(t in allowed_types) for t in types]):
+            raise ConfigurationError('file_browser_callback_types must be str and combination of file, image or media')
+
     return D
