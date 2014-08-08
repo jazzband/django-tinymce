@@ -11,7 +11,7 @@ Repository:
   * Fixed documentation and test code to use ``db_field.formfield`` instead of
     ``forms.CharField``.
 
-Release 1.5 (2009-02-13):
+2.1 (2014-08-08)
   * Updated Google Code CSS location.
   * Fixed a compressor crash when 'theme' configuration was omitted.
   * Added a note in the documentation about Python-JSON type conversion.
