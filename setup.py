@@ -11,7 +11,7 @@ long_description = read('README.md')
 
 setup(
     name = "fool-django-%s" % app_name,
-    version='2.2.2.dev0',
+    version='2.2.2',
     packages = find_packages(),
     include_package_data = True,
     author = "Aljosa Mohorovic",
