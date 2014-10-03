@@ -98,8 +98,15 @@ TinyMCE editors. On the template of the page, add the following lines to the
 ``HEAD`` element::
 
   {% load url from future %}
-  <script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/tiny_mce/tiny_mce.js"></script>
   <script type="text/javascript" src="{% url "tinymce-js" "NAME" %}"></script>
+
+The use of ``STATIC_URL`` needs the
+``django.core.context_processors.static`` context processors.
+
+Be careful if you want to use ``{% static %}`` instead because some
+``STATICFILES_STORAGE`` will modify your ``tiny_mce.js`` file name and
+then break it.
 
 The ``NAME`` argument allows you to create multiple TinyMCE configurations. Now
 create a template containing the Javascript initialization code. It should be
