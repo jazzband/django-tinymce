@@ -1,3 +1,7 @@
+var django = django || {
+    "jQuery": jQuery.noConflict(true)
+};
+
 (function ($) {
   function initTinyMCE($e) {
     if ($e.parents('.empty-form').length == 0) {  // Don't do empty inlines
