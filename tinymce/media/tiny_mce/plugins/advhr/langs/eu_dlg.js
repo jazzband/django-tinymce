@@ -1,1 +1,1 @@
-tinyMCE.addI18n('eu.advhr_dlg',{size:"Altuera",noshade:"Itzalik gabe",width:"Zabalera",normal:"Normal",widthunits:"Units"});
+tinyMCE.addI18n('eu.advhr_dlg',{size:"Altuera",noshade:"Itzalik gabe",width:"Zabalera",normal:"Ohikoa",widthunits:"Unitateak"});
