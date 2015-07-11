@@ -11,7 +11,12 @@ USE_COMPRESSOR = getattr(settings, 'TINYMCE_COMPRESSOR', False)
 USE_FILEBROWSER = getattr(settings, 'TINYMCE_FILEBROWSER',
         'filebrowser' in settings.INSTALLED_APPS)
 
+
+
 if 'staticfiles' in settings.INSTALLED_APPS or 'django.contrib.staticfiles' in settings.INSTALLED_APPS:
+    if not settings.STATIC_ROOT: #Fix for Django 1.8 which sets STATIC_ROOT as NONE.
+        settings.STATIC_ROOT = ''
+
     JS_URL = getattr(settings, 'TINYMCE_JS_URL',os.path.join(settings.STATIC_URL, 'tiny_mce/tiny_mce.js'))
     JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT',os.path.join(settings.STATIC_ROOT, 'tiny_mce'))
 else:
