@@ -81,7 +81,7 @@ Verify that everything is installed and configured properly:
 
 #. Setup environment variable ``DJANGO_SETTINGS_MODULE``::
 
-    export DJANGO_SETTINGS_MODULE='testtinymce.staticfiles_settings'
+    export DJANGO_SETTINGS_MODULE='testtinymce.settings'
 
 #. Setup test database (it will be created in current folder)::
 
