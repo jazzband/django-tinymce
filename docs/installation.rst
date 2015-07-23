@@ -83,11 +83,11 @@ Verify that everything is installed and configured properly:
 
 #. Setup test database (it will be created in current folder)::
 
-    django-admin.py syncdb
+    django-admin syncdb
 
 #. Run Django runserver command to verify results::
 
-    django-admin.py runserver
+    django-admin runserver
 
 #. Open this address in a browser::
 
