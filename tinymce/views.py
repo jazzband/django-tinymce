@@ -42,7 +42,7 @@ def spell_check(request):
     try:
         import enchant
 
-        raw = request.raw_post_data
+        raw = request.body
         input = json.loads(raw)
         id = input['id']
         method = input['method']
