@@ -17,10 +17,7 @@ from django.utils.html import escape
 from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
-try:
-    import json
-except ImportError:
-    from django.utils import simplejson as json
+import json
 try:
     from django.utils.encoding import smart_text as smart_unicode
 except ImportError:
