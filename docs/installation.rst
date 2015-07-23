@@ -60,8 +60,6 @@ Installation
         ...
     )
 
-#. If you are using ``django-staticfiles`` you can skip this step. Copy the ``jscripts/tiny_mce`` directory from the TinyMCE distribution (see :ref:`prerequisites`) into a directory named ``js`` in your media root. You can override the location in your settings (see below).
-
 .. _`pip`: http://pip.openplans.org/
 .. _`PyPI`: http://pypi.python.org/
 
@@ -77,7 +75,7 @@ Verify that everything is installed and configured properly:
 
 #. Install required packages::
 
-    pip install Django django-staticfiles django-tinymce
+    pip install Django django-tinymce
 
 #. Setup environment variable ``DJANGO_SETTINGS_MODULE``::
 
