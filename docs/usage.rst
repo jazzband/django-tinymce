@@ -246,7 +246,7 @@ tag::
   <div id="preview-content"></div>
   ...
 
-With this template code the tekst inside the HTML element with id
+With this template code the text inside the HTML element with id
 ``preview-content`` will be replace by the content of the TinyMCE editor.
 
 .. _`preview plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/preview
