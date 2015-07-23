@@ -121,7 +121,7 @@ def gzip_compressor(request):
 
     # Compress
     if compress:
-        content = compress_string(''.join(content))
+        content = compress_string(bytes(''.join(content), 'UTF-8'))
         response['Content-Encoding'] = 'gzip'
         response['Content-Length'] = str(len(content))
 
