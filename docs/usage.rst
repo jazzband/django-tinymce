@@ -144,8 +144,8 @@ links_ and images_. These entries are filled using a variable loaded from an
 external Javascript location. The tinymce application can serve these lists for
 you.
 
-.. _links: http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_link_list_url
-.. _images: http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_image_list_url
+.. _links: http://www.tinymce.com/wiki.php/Configuration:link_list
+.. _images: http://www.tinymce.com/wiki.php/Configuration:image_list
 
 Creating external link and image views
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

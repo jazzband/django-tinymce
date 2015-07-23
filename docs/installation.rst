@@ -150,5 +150,5 @@ Example::
   TINYMCE_SPELLCHECKER = True
   TINYMCE_COMPRESSOR = True
 
-.. _`the TinyMCE manual`: http://wiki.moxiecode.com/index.php/TinyMCE:Configuration
-.. _`official TinyMCE documentation on custom filebrowsers`: http://wiki.moxiecode.com/index.php/TinyMCE:Custom_filebrowser
+.. _`the TinyMCE manual`: http://www.tinymce.com/wiki.php/configuration
+.. _`official TinyMCE documentation on custom filebrowsers`: http://www.tinymce.com/wiki.php/TinyMCE3x:How-to_implement_a_custom_file_browser
