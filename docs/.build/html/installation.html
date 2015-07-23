@@ -349,8 +349,6 @@ editor itself and &#8216;django-tinymce&#8217; (lower case) to refer to the Djan
 </pre></div>
 </div>
 </li>
-<li><p class="first">If you are using <code class="docutils literal"><span class="pre">django-staticfiles</span></code> you can skip this step. Copy the <code class="docutils literal"><span class="pre">jscripts/tiny_mce</span></code> directory from the TinyMCE distribution (see <a class="reference internal" href="#prerequisites"><span>Prerequisites</span></a>) into a directory named <code class="docutils literal"><span class="pre">js</span></code> in your media root. You can override the location in your settings (see below).</p>
-</li>
 </ol>
 </div>
 <div class="section" id="testing">
@@ -364,22 +362,22 @@ editor itself and &#8216;django-tinymce&#8217; (lower case) to refer to the Djan
 </div>
 </li>
 <li><p class="first">Install required packages:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install Django django-staticfiles django-tinymce
+<div class="highlight-python"><div class="highlight"><pre>pip install Django django-tinymce
 </pre></div>
 </div>
 </li>
 <li><p class="first">Setup environment variable <code class="docutils literal"><span class="pre">DJANGO_SETTINGS_MODULE</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>export DJANGO_SETTINGS_MODULE=&#39;testtinymce.staticfiles_settings&#39;
+<div class="highlight-python"><div class="highlight"><pre>export DJANGO_SETTINGS_MODULE=&#39;testtinymce.settings&#39;
 </pre></div>
 </div>
 </li>
 <li><p class="first">Setup test database (it will be created in current folder):</p>
-<div class="highlight-python"><div class="highlight"><pre>django-admin.py syncdb
+<div class="highlight-python"><div class="highlight"><pre>django-admin syncdb
 </pre></div>
 </div>
 </li>
 <li><p class="first">Run Django runserver command to verify results:</p>
-<div class="highlight-python"><div class="highlight"><pre>django-admin.py runserver
+<div class="highlight-python"><div class="highlight"><pre>django-admin runserver
 </pre></div>
 </div>
 </li>
@@ -398,7 +396,7 @@ file.</p>
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">TINYMCE_JS_URL</span></code> (default: <code class="docutils literal"><span class="pre">settings.MEDIA_URL</span> <span class="pre">+</span> <span class="pre">'js/tiny_mce/tiny_mce.js'</span></code>)</dt>
 <dd><p class="first">The URL of the TinyMCE javascript file:</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="n">TINYMCE_JS_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">MEDIA_ROOT</span><span class="p">,</span> <span class="s">&quot;path/to/tiny_mce/tiny_mce.js&quot;</span><span class="p">)</span>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">TINYMCE_JS_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">MEDIA_URL</span><span class="p">,</span> <span class="s">&quot;path/to/tiny_mce/tiny_mce.js&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -410,7 +408,7 @@ file.</p>
 </div>
 </dd>
 <dt><code class="docutils literal"><span class="pre">TINYMCE_DEFAULT_CONFIG</span></code> (default: <code class="docutils literal"><span class="pre">{'theme':</span> <span class="pre">&quot;simple&quot;,</span> <span class="pre">'relative_urls':</span> <span class="pre">False}</span></code>)</dt>
-<dd>The default TinyMCE configuration to use. See <a class="reference external" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration">the TinyMCE manual</a> for all
+<dd>The default TinyMCE configuration to use. See <a class="reference external" href="http://www.tinymce.com/wiki.php/configuration">the TinyMCE manual</a> for all
 options. To set the configuration for a specific TinyMCE editor, see the
 <code class="docutils literal"><span class="pre">mce_attrs</span></code> parameter for the <a class="reference internal" href="usage.html#widget"><span>widget</span></a>.</dd>
 <dt><code class="docutils literal"><span class="pre">TINYMCE_SPELLCHECKER</span></code> (default: <code class="docutils literal"><span class="pre">False</span></code>)</dt>
@@ -424,7 +422,7 @@ reduces the number of requests. The overall initialization time for TinyMCE
 will be reduced dramatically if you use this option.</dd>
 <dt><code class="docutils literal"><span class="pre">TINYMCE_FILEBROWSER</span></code> (default: <code class="docutils literal"><span class="pre">True</span></code> if <code class="docutils literal"><span class="pre">'filebrowser'</span></code> is in <code class="docutils literal"><span class="pre">INSTALLED_APPS</span></code>, else <code class="docutils literal"><span class="pre">False</span></code>)</dt>
 <dd>Whether to use the <a class="reference external" href="http://code.google.com/p/django-filebrowser/">django-filebrowser</a> as a custom filebrowser for media inclusion.
-See the <a class="reference external" href="http://wiki.moxiecode.com/index.php/TinyMCE:Custom_filebrowser">official TinyMCE documentation on custom filebrowsers</a>.</dd>
+See the <a class="reference external" href="http://www.tinymce.com/wiki.php/TinyMCE3x:How-to_implement_a_custom_file_browser">official TinyMCE documentation on custom filebrowsers</a>.</dd>
 </dl>
 <p>Example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">TINYMCE_JS_URL</span> <span class="o">=</span> <span class="s">&#39;http://debug.example.org/tiny_mce/tiny_mce_src.js&#39;</span>

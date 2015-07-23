@@ -393,11 +393,19 @@ widget:</p>
 <code class="docutils literal"><span class="pre">tinymce-js</span></code> named view to convert some or all textfields on a page to
 TinyMCE editors. On the template of the page, add the following lines to the
 <code class="docutils literal"><span class="pre">HEAD</span></code> element:</p>
-<div class="highlight-python"><div class="highlight"><pre>{% load url from future %}
-&lt;script type=&quot;text/javascript&quot; src=&quot;{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js&quot;&gt;&lt;/script&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;script type=&quot;text/javascript&quot; src=&quot;{{ STATIC_URL }}js/tiny_mce/tiny_mce.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;{% url &quot;tinymce-js&quot; &quot;NAME&quot; %}&quot;&gt;&lt;/script&gt;
 </pre></div>
 </div>
+<p>The use of <code class="docutils literal"><span class="pre">STATIC_URL</span></code> needs the
+<code class="docutils literal"><span class="pre">django.core.context_processors.static</span></code> context processors.</p>
+<p>You may want to use``{% static %}`` instead like:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;script type=&quot;text/javascript&quot; src=&quot;{% static &quot;js/tiny_mce/tiny_mce.js&quot; %}&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;{% url &quot;tinymce-js&quot; &quot;NAME&quot; %}&quot;&gt;&lt;/script&gt;
+</pre></div>
+</div>
+<p>Be careful that some <code class="docutils literal"><span class="pre">STATICFILES_STORAGE</span></code> will modify your
+<code class="docutils literal"><span class="pre">tiny_mce.js</span></code> file name and your file will fail to load.</p>
 <p>The <code class="docutils literal"><span class="pre">NAME</span></code> argument allows you to create multiple TinyMCE configurations. Now
 create a template containing the Javascript initialization code. It should be
 placed in the template path as <code class="docutils literal"><span class="pre">NAME/tinymce_textareas.js</span></code> or
@@ -418,15 +426,14 @@ placed in the template path as <code class="docutils literal"><span class="pre">
 variables are based on the current Django language. If the content language is
 different from the interface language use the <code class="docutils literal"><span class="pre">tinymce-js-lang</span></code> view which
 takes a language (<code class="docutils literal"><span class="pre">LANG_CODE</span></code>) argument:</p>
-<div class="highlight-python"><div class="highlight"><pre>{% load url from future %}
-&lt;script type=&quot;text/javascript&quot; src=&quot;{% url &quot;tinymce-js-lang&quot; &quot;NAME&quot;,&quot;LANG_CODE&quot; %}&quot;&gt;&lt;/script&gt;
+<div class="highlight-python"><div class="highlight"><pre>&lt;script type=&quot;text/javascript&quot; src=&quot;{% url &quot;tinymce-js-lang&quot; &quot;NAME&quot;,&quot;LANG_CODE&quot; %}&quot;&gt;&lt;/script&gt;
 </pre></div>
 </div>
 </div>
 <div class="section" id="external-link-and-image-lists">
 <h2>External link and image lists<a class="headerlink" href="#external-link-and-image-lists" title="Permalink to this headline">¶</a></h2>
 <p>The TinyMCE link and image dialogs can be enhanced with a predefined list of
-<a class="reference external" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_link_list_url">links</a> and <a class="reference external" href="http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_image_list_url">images</a>. These entries are filled using a variable loaded from an
+<a class="reference external" href="http://www.tinymce.com/wiki.php/Configuration:link_list">links</a> and <a class="reference external" href="http://www.tinymce.com/wiki.php/Configuration:image_list">images</a>. These entries are filled using a variable loaded from an
 external Javascript location. The tinymce application can serve these lists for
 you.</p>
 <div class="section" id="creating-external-link-and-image-views">
@@ -532,8 +539,8 @@ tag:</p>
 ...
 </pre></div>
 </div>
-<p>With this template code the tekst inside the HTML element with id
-<code class="docutils literal"><span class="pre">preview-content</span></code> will be replace by the content of the TinyMCE editor.</p>
+<p>With this template code the text inside the HTML element with id
+<code class="docutils literal"><span class="pre">preview-content</span></code> will be replaced by the content of the TinyMCE editor.</p>
 </div>
 </div>
 
