@@ -258,6 +258,6 @@ tag::
   ...
 
 With this template code the text inside the HTML element with id
-``preview-content`` will be replace by the content of the TinyMCE editor.
+``preview-content`` will be replaced by the content of the TinyMCE editor.
 
 .. _`preview plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/preview
