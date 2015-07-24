@@ -4,10 +4,10 @@ Changelog
 This document describes changes between each past release.
 
 
-2.1.0 (unreleased)
+2.0.1 (2015-07-24)
 ==================
 
-- Nothing changed yet.
+- Fix missing CHANGELOG
 
 
 2.0.0 (2015-07-23)
