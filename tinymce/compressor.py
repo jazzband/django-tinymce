@@ -130,7 +130,7 @@ def gzip_compressor(request):
             try:
                 unicode_content.append(c.decode('utf-8'))
             except:
-                print "%s is nor latin-1 nor utf-8." % files[i]
+                print("%s is nor latin-1 nor utf-8." % files[i])
                 raise
 
     # Compress
