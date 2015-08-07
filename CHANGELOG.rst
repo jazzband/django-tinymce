@@ -4,10 +4,10 @@ Changelog
 This document describes changes between each past release.
 
 
-2.1.0 (unreleased)
+2.0.4 (2015-08-07)
 ==================
 
-- Nothing changed yet.
+- Fix non-admin jQuery.
 
 
 2.0.3 (2015-08-06)
