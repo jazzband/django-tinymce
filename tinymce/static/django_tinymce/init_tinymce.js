@@ -35,4 +35,4 @@
       }, 0);
     }, true);
   });
-}( function (django) { return django && django.jQuery || jQuery }()));
+}(django && django.jQuery || jQuery));
