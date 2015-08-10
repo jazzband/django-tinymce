@@ -1,4 +1,11 @@
 *.egg-info
+
 *.pyc
+
 .DS_Store
+
 *.sqlite
+
+config.bat
+
+node_modules
