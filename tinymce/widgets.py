@@ -15,9 +15,9 @@ from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt
 from django.utils.html import escape
 try:
-    from django.utils.datastructures import SortedDict
-except ImportError:
     from collections import OrderedDict as SortedDict
+except ImportError:
+    from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
 import json
