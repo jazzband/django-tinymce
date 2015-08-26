@@ -1,4 +1,4 @@
 name = 'tinymce'
 authors = 'Joost Cassee, Aljosa Mohorovic'
-version = '2.0-dev'
+version = '3.0'
 release = version
