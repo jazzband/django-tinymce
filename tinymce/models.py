@@ -15,12 +15,19 @@ class HTMLField(models.TextField):
     A large string field for HTML content. It uses the TinyMCE widget in
     forms.
     """
+    def __init__(self, *args, **kwargs):
+        self.tinymce_profile = kwargs.pop('profile', None)
+        super(HTMLField, self).__init__(*args, **kwargs)
+
     def formfield(self, **kwargs):
-        defaults = {'widget': tinymce_widgets.TinyMCE}
+        defaults = {
+            'widget': tinymce_widgets.TinyMCE(profile=self.tinymce_profile)
+        }
         defaults.update(kwargs)
 
         # As an ugly hack, we override the admin widget
         if defaults['widget'] == admin_widgets.AdminTextareaWidget:
-            defaults['widget'] = tinymce_widgets.AdminTinyMCE
+            defaults['widget'] = tinymce_widgets.AdminTinyMCE(
+                profile=self.tinymce_profile)
 
         return super(HTMLField, self).formfield(**defaults)
