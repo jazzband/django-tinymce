@@ -5,22 +5,13 @@
 This TinyMCE widget was copied and extended from this code by John D'Agostino:
 http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
-from __future__ import unicode_literals
 
-import tinymce.settings
+import json
 from django import forms
 from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
 from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt
-from django.utils.html import escape
-try:
-    from collections import OrderedDict as SortedDict
-except ImportError:
-    from django.utils.datastructures import SortedDict
-from django.utils.safestring import mark_safe
-from django.utils.translation import get_language, ugettext as _
-import json
 try:
     from django.utils.encoding import smart_text as smart_unicode
 except ImportError:
@@ -28,6 +19,12 @@ except ImportError:
         from django.utils.encoding import smart_unicode
     except ImportError:
         from django.forms.util import smart_unicode
+from django.utils.html import escape
+from django.utils.datastructures import SortedDict
+from django.utils.safestring import mark_safe
+from django.utils.translation import get_language, ugettext as _
+import tinymce.settings
+from tinymce.profiles import DEFAULT as DEFAULT_PROFILE
 
 
 class TinyMCE(forms.Textarea):
@@ -47,62 +44,50 @@ class TinyMCE(forms.Textarea):
     the current Django language, the others from the 'content_language'
     parameter.
     """
-    def __init__(self, content_language=None, attrs=None, mce_attrs=None):
+
+    def __init__(self, content_language=None, attrs=None, mce_attrs=None, profile=None):
         super(TinyMCE, self).__init__(attrs)
-        mce_attrs = mce_attrs or {}
+        if mce_attrs is None:
+            mce_attrs = {}
         self.mce_attrs = mce_attrs
-        if not 'mode' in self.mce_attrs:
-            self.mce_attrs['mode'] = 'exact'
-        self.mce_attrs['strict_loading_mode'] = 1
         if content_language is None:
             content_language = mce_attrs.get('language', None)
         self.content_language = content_language
-
-    def get_mce_config(self, attrs):
-        mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
-        mce_config.update(get_language_config(self.content_language))
-        if tinymce.settings.USE_FILEBROWSER:
-            mce_config['file_browser_callback'] = "djangoFileBrowser"
-        mce_config.update(self.mce_attrs)
-        if mce_config['mode'] == 'exact':
-            mce_config['elements'] = attrs['id']
-        return mce_config
-
-    def get_mce_json(self, mce_config):
-        # Fix for js functions
-        js_functions = {}
-        for k in ('paste_preprocess', 'paste_postprocess'):
-            if k in mce_config:
-               js_functions[k] = mce_config[k]
-               del mce_config[k]
-        mce_json = json.dumps(mce_config)
-        for k in js_functions:
-            index = mce_json.rfind('}')
-            mce_json = mce_json[:index]+', '+k+':'+js_functions[k].strip()+mce_json[index:]
-        return mce_json
+        self.profile = profile or DEFAULT_PROFILE
 
     def render(self, name, value, attrs=None):
-        if value is None:
-            value = ''
+        if value is None: value = ''
         value = smart_unicode(value)
         final_attrs = self.build_attrs(attrs)
         final_attrs['name'] = name
-        final_attrs['class'] = 'tinymce'
         assert 'id' in final_attrs, "TinyMCE widget attributes must contain 'id'"
-        mce_config = self.get_mce_config(final_attrs)
-        mce_json = self.get_mce_json(mce_config)
-        if tinymce.settings.USE_COMPRESSOR:
-            compressor_config = {
-                'plugins': mce_config.get('plugins', ''),
-                'themes': mce_config.get('theme', 'advanced'),
-                'languages': mce_config.get('language', ''),
-                'diskcache': True,
-                'debug': False,
-            }
-            final_attrs['data-mce-gz-conf'] = json.dumps(compressor_config)
-        final_attrs['data-mce-conf'] = mce_json
-        html = ['<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
-        return mark_safe('\n'.join(html))
+
+        mce_config = self.profile.copy()
+        #mce_config.update(get_language_config(self.content_language))
+        #if tinymce.settings.USE_FILEBROWSER:
+            #mce_config['file_browser_callback'] = "djangoFileBrowser"
+        mce_config.update(self.mce_attrs)
+        mce_config['selector'] = '#%s' % final_attrs['id']
+
+        # Fix for js functions
+        #js_functions = {}
+        #for k in ('paste_preprocess','paste_postprocess'):
+            #if k in mce_config:
+               #js_functions[k] = mce_config[k]
+               #del mce_config[k]
+        mce_json = json.dumps(mce_config)
+
+        #for k in js_functions:
+            #index = mce_json.rfind('}')
+            #mce_json = mce_json[:index]+', '+k+':'+js_functions[k].strip()+mce_json[index:]
+
+        if mce_config.get('inline', False):
+            html = [u'<div%s>%s</div>' % (flatatt(final_attrs), escape(value))]
+        else:
+            html = [u'<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
+        html.append(u'<script type="text/javascript">tinyMCE.init(%s)</script>' % mce_json)
+
+        return mark_safe(u'\n'.join(html))
 
     def _media(self):
         if tinymce.settings.USE_COMPRESSOR:
@@ -111,12 +96,11 @@ class TinyMCE(forms.Textarea):
             js = [tinymce.settings.JS_URL]
         if tinymce.settings.USE_FILEBROWSER:
             js.append(reverse('tinymce-filebrowser'))
-        js.append('django_tinymce/init_tinymce.js')
         return forms.Media(js=js)
     media = property(_media)
 
 
-class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
+class AdminTinyMCE(admin_widgets.AdminTextareaWidget, TinyMCE):
     pass
 
 
@@ -132,8 +116,7 @@ def get_language_config(content_language=None):
 
     lang_names = SortedDict()
     for lang, name in settings.LANGUAGES:
-        if lang[:2] not in lang_names:
-            lang_names[lang[:2]] = []
+        if lang[:2] not in lang_names: lang_names[lang[:2]] = []
         lang_names[lang[:2]].append(_(name))
     sp_langs = []
     for lang, names in lang_names.items():
@@ -141,7 +124,7 @@ def get_language_config(content_language=None):
             default = '+'
         else:
             default = ''
-        sp_langs.append('%s%s=%s' % (default, ' / '.join(names), lang))
+        sp_langs.append(u'%s%s=%s' % (default, ' / '.join(names), lang))
 
     config['spellchecker_languages'] = ','.join(sp_langs)
 

@@ -1,0 +1,7 @@
+Django==1.6.5
+ipdb==0.8
+ipython==2.1.0
+pytest==2.5.2
+pytest-django==2.6.2
+pytest-xdist==1.10
+simplejson
