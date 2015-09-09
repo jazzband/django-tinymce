@@ -4,10 +4,10 @@ Changelog
 This document describes changes between each past release.
 
 
-2.1.0 (unreleased)
+2.0.5 (2015-09-09)
 ==================
 
-- Nothing changed yet.
+- Use static finders for development mode. (#131)
 
 
 2.0.4 (2015-08-07)
