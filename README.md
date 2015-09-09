@@ -1,11 +1,11 @@
-django-tinymce
+django-tinymce4
 ===
 
-**django-tinymce** is a Django application that contains a widget to render a form field as a TinyMCE editor.
+**django-tinymce4** is a Django application that contains a widget to render a form field as a TinyMCE editor.
 
 WARNING:
 ===
-v2.0 uses TinyMCE v4.x and is not backwards compatible w/ previous versions.
+v3.0 uses TinyMCE v4.x and is not backwards compatible w/ previous versions.
 
 Quickstart:
 ===
@@ -16,7 +16,7 @@ Install requirements:
 
 Install django-tinymce:
 
-    $ pip install django-tinymce
+    $ pip install django-tinymce4
 
 Add tinymce to INSTALLED_APPS in settings.py for your project:
 
@@ -41,7 +41,7 @@ In your code:
         ...
         content = HTMLField()
 
-**django-tinymce** uses staticfiles so everything should work as expected, different use cases (like using widget instead of HTMLField) and other stuff is available in documentation.
+**django-tinymce4** uses staticfiles so everything should work as expected, different use cases (like using widget instead of HTMLField) and other stuff is available in documentation.
 
 Documentation:
 ===
