@@ -14,10 +14,10 @@ setup(
     version = version,
     packages = find_packages(),
     include_package_data = True,
-    author = "Aljosa Mohorovic",
-    author_email = "aljosa.mohorovic@gmail.com",
+    author = "Daniele Bernardini",
+    author_email = "db@intranetstandard.com",
     description = "A Django application that contains a widget to render a" \
-            " form field as a TinyMCE editor.",
+            " form field as a TinyMCE 4 editor.",
     long_description = long_description,
     license = "MIT License",
     keywords = "django widget tinymce",
@@ -33,5 +33,5 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     platforms = ['any'],
-    url = "https://github.com/aljosa/django-tinymce",
+    url = "https://github.com/dani0805/django-tinymce4",
 )

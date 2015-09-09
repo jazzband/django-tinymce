@@ -1,5 +1,5 @@
-Welcome to the django-tinymce documentation
-===========================================
+Welcome to the django-tinymce4 documentation
+============================================
 
 django-tinymce is a Django_ application that contains a widget to render a form field
 as a TinyMCE_ editor.
