@@ -27,7 +27,7 @@ Add tinymce.urls to urls.py for your project:
 
     urlpatterns = patterns('',
         ...
-        (r'^tinymce/', include('tinymce.urls')),
+        url(r'^tinymce/', include('tinymce.urls')),
     )
 
 In your code:
