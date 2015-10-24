@@ -68,7 +68,7 @@ class TinyMCE(forms.Textarea):
             #mce_config['file_browser_callback'] = "djangoFileBrowser"
         mce_config.update(self.mce_attrs)
         mce_config['selector'] = '#%s' % final_attrs['id']
-        
+
         # Fix for js functions
         #js_functions = {}
         #for k in ('paste_preprocess','paste_postprocess'):
@@ -100,7 +100,7 @@ class TinyMCE(forms.Textarea):
     media = property(_media)
 
 
-class AdminTinyMCE(admin_widgets.AdminTextareaWidget, TinyMCE):
+class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
     pass
 
 
