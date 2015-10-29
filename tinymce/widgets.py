@@ -14,9 +14,9 @@ from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt
 
 try:
-    from django.utils.datastructures import SortedDict
-except ImportError:
     from collections import OrderedDict as SortedDict
+except ImportError:
+    from django.utils.datastructures import SortedDict
 
 try:
     from django.utils.encoding import smart_text as smart_unicode
@@ -25,6 +25,7 @@ except ImportError:
         from django.utils.encoding import smart_unicode
     except ImportError:
         from django.forms.util import smart_unicode
+
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
