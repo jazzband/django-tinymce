@@ -35,4 +35,4 @@
       }, 0);
     }, true);
   });
-}(django && django.jQuery || jQuery));
+}((typeof django === 'undefined' || typeof django.jQuery === 'undefined') && jQuery || django && django.jQuery));
