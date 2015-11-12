@@ -4,10 +4,10 @@ Changelog
 This document describes changes between each past release.
 
 
-2.1.0 (unreleased)
+2.0.6 (2015-11-12)
 ==================
 
-- Nothing changed yet.
+- Make sure jQuery is loaded both in the admin and for non-admin forms. (#141)
 
 
 2.0.5 (2015-09-09)
