@@ -24,6 +24,7 @@ if getattr(settings, 'TINYMCE_COMPRESSOR', False):
     raise NotImplementedError("TINYMCE_COMPRESSOR is not implemented yet.")
 USE_COMPRESSOR = False
 
-if getattr(settings, 'TINYMCE_FILEBROWSER', False):
-    raise RuntimeError("TINYMCE_FILEBROWSER is not supported anymore, check docs for instructions.")
-USE_FILEBROWSER = False
+# if getattr(settings, 'TINYMCE_FILEBROWSER', False):
+#     raise RuntimeError("TINYMCE_FILEBROWSER is not supported anymore, check docs for instructions.")
+
+USE_FILEBROWSER = getattr(settings, 'TINYMCE_FILEBROWSER', False)
