@@ -9,10 +9,7 @@ from django.template import RequestContext, loader
 from django.utils.translation import ugettext as _
 from tinymce.compressor import gzip_compressor
 from tinymce.widgets import get_language_config
-try:
-    import json
-except ImportError:
-    from django.utils import simplejson as json
+import json
 try:
     from django.views.decorators.csrf import csrf_exempt
 except ImportError:
@@ -45,7 +42,7 @@ def spell_check(request):
     try:
         import enchant
 
-        raw = request.raw_post_data
+        raw = request.body
         input = json.loads(raw)
         id = input['id']
         method = input['method']

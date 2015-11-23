@@ -1,4 +1,4 @@
-{% load url from future %}/**
+/**
  * Based on "TinyMCE Compressor PHP v2.0.4" from MoxieCode.
  *
  * http://tinymce.moxiecode.com/

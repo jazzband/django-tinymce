@@ -14,7 +14,6 @@ import re
 from django.conf import settings
 from django.core.cache import cache
 from django.http import HttpResponse
-from django.shortcuts import Http404
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils.text import compress_string
@@ -24,9 +23,11 @@ import tinymce.settings
 
 safe_filename_re = re.compile("^[a-zA-Z][a-zA-Z0-9_/-]*$")
 
+
 def get_file_contents(filename):
     base_path = tinymce.settings.JS_ROOT
-    if settings.DEBUG and settings.STATIC_ROOT:
+    if 'staticfiles' in settings.INSTALLED_APPS or \
+       'django.contrib.staticfiles' in settings.INSTALLED_APPS:
         from django.contrib.staticfiles import finders
         base_path = finders.find('tiny_mce')
 
@@ -117,11 +118,25 @@ def gzip_compressor(request):
         content.append(get_file_contents("%s.js" % f))
 
     # Restore loading functions
-    content.append('tinymce.each("%s".split(","), function(f){tinymce.ScriptLoader.markDone(tinyMCE.baseURL+"/"+f+".js");});' % ",".join(files));
+    content.append('tinymce.each("%s".split(","), function(f){'
+                   'tinymce.ScriptLoader.markDone(tinyMCE.baseURL+'
+                   '"/"+f+".js");});' % ",".join(files))
+
+    unicode_content = []
+    for i, c in enumerate(content):
+        try:
+            unicode_content.append(c.decode('latin-1'))
+        except UnicodeDecodeError:
+            try:
+                unicode_content.append(c.decode('utf-8'))
+            except:
+                print("%s is nor latin-1 nor utf-8." % files[i])
+                raise
 
     # Compress
     if compress:
-        content = compress_string(''.join(content))
+        content = compress_string(''.join([c.encode('utf-8')
+                                           for c in unicode_content]))
         response['Content-Encoding'] = 'gzip'
         response['Content-Length'] = str(len(content))
 

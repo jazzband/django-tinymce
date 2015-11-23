@@ -97,9 +97,19 @@ If you cannot or will not change the widget on a form you can also use the
 TinyMCE editors. On the template of the page, add the following lines to the
 ``HEAD`` element::
 
-  {% load url from future %}
-  <script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/tiny_mce/tiny_mce.js"></script>
   <script type="text/javascript" src="{% url "tinymce-js" "NAME" %}"></script>
+
+The use of ``STATIC_URL`` needs the
+``django.core.context_processors.static`` context processors.
+
+You may want to use``{% static %}`` instead like::
+
+  <script type="text/javascript" src="{% static "js/tiny_mce/tiny_mce.js" %}"></script>
+  <script type="text/javascript" src="{% url "tinymce-js" "NAME" %}"></script>
+
+Be careful that some ``STATICFILES_STORAGE`` will modify your
+``tiny_mce.js`` file name and your file will fail to load.
 
 The ``NAME`` argument allows you to create multiple TinyMCE configurations. Now
 create a template containing the Javascript initialization code. It should be
@@ -123,7 +133,6 @@ variables are based on the current Django language. If the content language is
 different from the interface language use the ``tinymce-js-lang`` view which
 takes a language (``LANG_CODE``) argument::
 
-  {% load url from future %}
   <script type="text/javascript" src="{% url "tinymce-js-lang" "NAME","LANG_CODE" %}"></script>
 
 
@@ -135,8 +144,8 @@ links_ and images_. These entries are filled using a variable loaded from an
 external Javascript location. The tinymce application can serve these lists for
 you.
 
-.. _links: http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_link_list_url
-.. _images: http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/external_image_list_url
+.. _links: http://www.tinymce.com/wiki.php/Configuration:link_list
+.. _images: http://www.tinymce.com/wiki.php/Configuration:image_list
 
 Creating external link and image views
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -248,7 +257,7 @@ tag::
   <div id="preview-content"></div>
   ...
 
-With this template code the tekst inside the HTML element with id
-``preview-content`` will be replace by the content of the TinyMCE editor.
+With this template code the text inside the HTML element with id
+``preview-content`` will be replaced by the content of the TinyMCE editor.
 
 .. _`preview plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/preview

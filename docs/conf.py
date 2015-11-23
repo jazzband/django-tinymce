@@ -17,9 +17,6 @@ import sys, os
 # absolute, like shown here.
 sys.path.append(os.path.abspath('..'))
 
-# Load project meta-data.
-import metadata
-
 # General configuration
 # ---------------------
 
@@ -37,16 +34,17 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General substitutions.
-project = metadata.name
-copyright = "2008, %s" % metadata.authors
+project = "django-tinymce"
+authors = "Joost Cassee, Aljosa Mohorovic"
+copyright = "2008-2015, %s" % authors
 
 # The default replacements for |version| and |release|, also used in various
 # other places throughout the built documents.
 #
 # The short X.Y version.
-version = metadata.version
+version = "2.0"
 # The full version, including alpha/beta/rc tags.
-release = metadata.release
+release = "2.0.0"
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -144,7 +142,7 @@ html_copy_source = False
 html_file_suffix = '.html'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = '%sdoc' % metadata.name
+htmlhelp_basename = '%sdoc' % project
 
 
 # Options for LaTeX output
@@ -159,8 +157,8 @@ htmlhelp_basename = '%sdoc' % metadata.name
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, document class [howto/manual]).
 latex_documents = [
-  (master_doc, '%s.tex' % metadata.name, '%s Documentation' % metadata.name,
-   metadata.authors, 'manual'),
+    (master_doc, '%s.tex' % project, '%s Documentation' % project,
+     authors, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
