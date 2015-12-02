@@ -105,7 +105,7 @@ class TinyMCE(forms.Textarea):
     media = property(_media)
 
 
-class AdminTinyMCE(admin_widgets.AdminTextareaWidget, TinyMCE):
+class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
     pass
 
 
