@@ -11,6 +11,12 @@ Repository:
   * Fixed documentation and test code to use ``db_field.formfield`` instead of
     ``forms.CharField``.
 
+2.2.4 (unreleased)
+                  
+
+- Nothing changed yet.
+
+
 2.2.3 (2015-12-09)
                   
 
