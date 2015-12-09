@@ -10,8 +10,14 @@ DEFAULT_CONFIG = OLD_CONFIG or {'theme': "modern", 'relative_urls': False}
 
 if getattr(settings, 'TINYMCE_JS_URL', False):
     raise RuntimeError("TINYMCE_JS_URL is not supported anymore, check docs for instructions.")
-JS_URL = staticfiles_storage.url('tiny_mce/tinymce.min.js')
-JS_ROOT = staticfiles_storage.url('tiny_mce')
+
+try:
+	JS_URL = staticfiles_storage.url('tiny_mce/tinymce.min.js')
+	JS_ROOT = staticfiles_storage.url('tiny_mce')
+except ValueError:
+	JS_URL = os.path.join(settings.STATIC_URL, 'tiny_mce/tinymce.min.js')
+	JS_ROOT = ''
+
 JS_BASE_URL = JS_URL[:JS_URL.rfind('/')]
 
 if getattr(settings, 'TINYMCE_SPELLCHECKER', False):
