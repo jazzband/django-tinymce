@@ -4,10 +4,11 @@ Changelog
 This document describes changes between each past release.
 
 
-2.2.0 (unreleased)
+2.2.0 (2015-12-23)
 ==================
 
-- Nothing changed yet.
+- TinyMCE compressor now use staticfiles to get the file content (and
+  to find files that are in multiple static directory.) (#142)
 
 
 2.1.0 (2015-12-23)
