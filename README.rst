@@ -28,10 +28,10 @@ Add tinymce.urls to urls.py for your project:
 
 .. code-block::
 
-    urlpatterns = patterns('',
+    urlpatterns = [
         ...
         url(r'^tinymce/', include('tinymce.urls')),
-    )
+    ]
 
 In your code:
 
