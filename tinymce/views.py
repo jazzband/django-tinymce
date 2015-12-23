@@ -6,14 +6,20 @@ from django.core import urlresolvers
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
-import simplejson
 from django.utils.translation import ugettext as _
 from tinymce.compressor import gzip_compressor
 from tinymce.widgets import get_language_config
+
 try:
     from django.views.decorators.csrf import csrf_exempt
 except ImportError:
     pass
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
 
 def textareas_js(request, name, lang=None):
     """
@@ -43,7 +49,7 @@ def spell_check(request):
         import enchant
 
         raw = request.raw_post_data
-        input = simplejson.loads(raw)
+        input = json.loads(raw)
         id = input['id']
         method = input['method']
         params = input['params']
@@ -69,7 +75,7 @@ def spell_check(request):
     except Exception:
         logging.exception("Error running spellchecker")
         return HttpResponse(_("Error running spellchecker"))
-    return HttpResponse(simplejson.dumps(output),
+    return HttpResponse(json.dumps(output),
             content_type='application/json')
 
 try:
@@ -126,7 +132,7 @@ def render_to_image_list(image_list):
     return render_to_js_vardef('tinyMCEImageList', image_list)
 
 def render_to_js_vardef(var_name, var_value):
-    output = "var %s = %s" % (var_name, simplejson.dumps(var_value))
+    output = "var %s = %s" % (var_name, json.dumps(var_value))
     return HttpResponse(output, content_type='application/x-javascript')
 
 def filebrowser(request):

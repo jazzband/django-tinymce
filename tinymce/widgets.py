@@ -12,6 +12,12 @@ from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
 from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt
+
+try:
+    from django.utils.datastructures import SortedDict
+except ImportError:
+    from collections import OrderedDict as SortedDict
+
 try:
     from django.utils.encoding import smart_text as smart_unicode
 except ImportError:
@@ -20,7 +26,6 @@ except ImportError:
     except ImportError:
         from django.forms.util import smart_unicode
 from django.utils.html import escape
-from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
 import tinymce.settings
@@ -100,7 +105,7 @@ class TinyMCE(forms.Textarea):
     media = property(_media)
 
 
-class AdminTinyMCE(admin_widgets.AdminTextareaWidget, TinyMCE):
+class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
     pass
 
 
