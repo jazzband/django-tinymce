@@ -4,10 +4,11 @@ Changelog
 This document describes changes between each past release.
 
 
-2.1.0 (unreleased)
+2.1.0 (2015-12-23)
 ==================
 
-- Nothing changed yet.
+- Rewrite URL files to let it works with Django 1.9 (#147, #148)
+- Add a CONTRIBUTORS file.
 
 
 2.0.6 (2015-11-12)

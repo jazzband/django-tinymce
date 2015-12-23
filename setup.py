@@ -18,7 +18,7 @@ CHANGELOG = read_file('CHANGELOG.rst')
 
 setup(
     name="django-tinymce",
-    version='2.1.0.dev0',
+    version='2.1.0',
     packages=find_packages(),
     include_package_data=True,
     author="Aljosa Mohorovic",
@@ -28,6 +28,7 @@ setup(
     long_description = README + "\n\n" + CHANGELOG,
     license = "MIT License",
     keywords = "django widget tinymce",
+    zip_safe=False,
     classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
