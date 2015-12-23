@@ -1,4 +1,4 @@
-include *.txt *.py *.rst
+include *.txt *.py *.rst setup.cfg
 include docs/*.rst
 exclude *.pyc
 recursive-include testtinymce *
