@@ -252,3 +252,78 @@ With this template code the tekst inside the HTML element with id
 ``preview-content`` will be replace by the content of the TinyMCE editor.
 
 .. _`preview plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/preview
+
+Custom buttons and plugins
+--------------------------
+
+You can use `TinyMCE setup method`_ to call custom JavaScript functions after all TinyMCE files are loaded but before the editor instance is rendered on the page. This is suitable to add custom buttons, menu entries or events to TinyMCE.
+
+For example, to add custom button with simple functionality, add ``setup`` entry to your ``TINYMCE_PROFILE``::
+
+    TINYMCE_PROFILE = {
+        ...
+        'setup': 'addCustomButtons',
+        ...
+    }
+
+Then load JavaScript file containing ``addCustomButtons`` function using `Django ModelAdmin assets`_::
+
+    class ArticleAdmin(admin.ModelAdmin):
+      class Media:
+          js = ("tinymce_custom_buttons.js",)
+
+``tinymce_custom_buttons.js`` can look like this::
+
+    function addCustomButtons(editor) {
+      // This function replaces all whitespaces in selected area with dashes
+      var whitespace_replace = function () {
+          var selected_content = editor.selection.getContent();
+          var replaced_content = selected_content.replace(/ /g, "-");
+          editor.selection.setContent(replaced_content);
+          editor.undoManager.add();
+      };
+      // Adding button to editor
+      editor.addButton('test-button', {
+          tooltip: 'Replace whitespaces with dashes',
+          icon: 'blockquote',
+          onclick: whitespace_replace
+      });
+      // Adding menu item to editor
+      editor.addMenuItem('test-button', {
+          context: 'format',
+          text: 'Replace whitespaces with dashes',
+          icon: 'blockquote',
+          onclick: whitespace_replace
+      });
+    }
+
+**Note:** for custom button to appear in editor toolbar you must explicitly append it to ``TINYMCE_PROFILE`` ``toolbar`` entry::
+
+    TINYMCE_PROFILE = {
+        ...
+        'setup': 'addCustomButtons',
+        'toolbar': '... test-button',
+        ...
+    }
+
+For more information on custom buttons see `official TinyMCE documentation`_.
+
+
+If you want to implement more complex behavior (i.e. load auxiliary resources like button icons or js libraries) consider writing a TinyMCE plugin. TinyMCE plugins are small JavaScript files containing ``tinymce.PluginManager.add`` function (see `TinyMCE plugin tutorial`_ for more information). Then writing a plugin, place it in ``tinymce/plugins/<your_plugin_name>/plugin.min.js`` in one of your ``STATICFILES_DIRS``, then load the plugin with ``TINYMCE_PROFILE`` (you still have to explicitly add button to a toolbar)::
+
+    TINYMCE_PROFILE = {
+        ...
+        'plugins': '... example',
+        'toolbar': '... example',
+        ...
+    }
+
+(don't forget to run ``python manage.py collectstatic`` if you are not using built-it Django development server). The button should appear on a toolbar.
+
+**Note:** ensure you use unique plugin name. Overlapping of plugin names results in undefined behavior (see `list of TinyMCE built-in plugins`_).
+
+.. _`TinyMCE setup method`: http://www.tinymce.com/wiki.php/Configuration:setup
+.. _`Django ModelAdmin assets`: http://docs.djangoproject.com/en/1.8/ref/contrib/admin/#modeladmin-asset-definitions
+.. _`official TinyMCE documentation`: http://www.tinymce.com/wiki.php/api4:method.tinymce.Editor.addButton
+.. _`TinyMCE plugin tutorial`: http://www.tinymce.com/wiki.php/Tutorials:Creating_a_plugin
+.. _`list of TinyMCE built-in plugins`: http://www.tinymce.com/wiki.php/Plugins
