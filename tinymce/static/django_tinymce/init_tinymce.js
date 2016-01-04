@@ -6,6 +6,19 @@ var django = django || {
   function initTinyMCE($e) {
     if ($e.parents('.empty-form').length == 0) {  // Don't do empty inlines
       var mce_conf = $.parseJSON($e.attr('data-mce-conf'));
+      // There is no way to pass a JavaScript function as an option, because
+      // all options are serialized as JSON. For any TinyMCE options that expect
+      // functions, assume that we were given a function name, and resolve that
+      // to a function reference using the `window` global.
+      var fns = ['color_picker_callback', 'file_browser_callback', 'file_picker_callback',
+            'images_dataimg_filter', 'images_upload_handler'];
+      for (var i=0;i<fns.length;i++) {
+        if (typeof mce_conf[fns[i]] !== undefined) {
+          var fn = mce_conf[fns[i]];
+          mce_conf[fns[i]] = window[fn];  // resolve function name to reference
+        }
+      }
+
       var id = $e.attr('id');
       if ('elements' in mce_conf && mce_conf['mode'] == 'exact') {
         mce_conf['elements'] = id;
