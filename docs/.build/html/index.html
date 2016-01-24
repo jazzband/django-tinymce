@@ -25,8 +25,8 @@
 
 <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-          URL_ROOT:    '#',
-          VERSION:     'trunk',
+          URL_ROOT:    './',
+          VERSION:     '2.0.0',
           COLLAPSE_MODINDEX: false,
           FILE_SUFFIX: '.html'
       };
@@ -37,7 +37,7 @@
     <link rel="contents" title="Global table of contents" href="contents.html" />
     <link rel="index" title="Global index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="tinymce trunk documentation" href="#" />
+    <link rel="top" title="django-tinymce 2.0 documentation" href="#" />
     <link rel="next" title="Installation" href="installation.html" />
 </head>
 <body class="t6">
@@ -54,7 +54,7 @@
  
  </div>
  <div id="psum">
- <i><a href="http://code.google.com/p/django-tinymce/" style="text-decoration:none; color:#000">tinymce trunk documentation</a></i>
+ <i><a href="http://code.google.com/p/django-tinymce/" style="text-decoration:none; color:#000">django-tinymce 2.0 documentation</a></i>
  </div>
  
  </td>
@@ -150,7 +150,7 @@
  
  
  
- <a href="#">tinymce trunk documentation</a> |
+ <a href="#">django-tinymce 2.0 documentation</a> |
  <span>
    <a href="installation.html" title="Installation"
       accesskey="N">next</a>
@@ -254,10 +254,8 @@
   <b>Table of Contents</b><br/>
   <table class="pmeta toc" cellpadding=5><tr><td>
 	<ul>
-<li><a class="reference external" href="#">Welcome to the django-tinymce documentation</a><ul>
-<li><a class="reference external" href="#documentation">Documentation</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#">Welcome to the django-tinymce documentation</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -298,7 +296,7 @@ as a <a class="reference external" href="http://tinymce.moxiecode.com/">TinyMCE<
 </ul>
 </dd>
 </dl>
-<p>The django-tinymce code is licensed under the <a class="reference external" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>. See the <tt class="docutils literal"><span class="pre">LICENSE.txt</span></tt>
+<p>The django-tinymce code is licensed under the <a class="reference external" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>. See the <code class="docutils literal"><span class="pre">LICENSE.txt</span></code>
 file in the distribution. Note that the TinyMCE editor is distributed under
 <a class="reference external" href="http://tinymce.moxiecode.com/license.php">its own license</a>.</p>
 <p>Starting with django-tinymce v1.5.1 TinyMCE editor is bundled with django-tinymce to enable easy installation and usage.
@@ -306,27 +304,29 @@ file in the distribution. Note that the TinyMCE editor is distributed under
 Note that django-tinymce and TinyMCE licenses are compatible (although different) and we have permission to bundle TinyMCE with django-tinymce.</p>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference external" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference external" href="installation.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference external" href="installation.html#id2">Installation</a></li>
-<li class="toctree-l2"><a class="reference external" href="installation.html#testing">Testing</a></li>
-<li class="toctree-l2"><a class="reference external" href="installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#id2">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#configuration">Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="usage.html">Usage</a><ul>
-<li class="toctree-l2"><a class="reference external" href="usage.html#using-the-widget">Using the widget</a></li>
-<li class="toctree-l2"><a class="reference external" href="usage.html#using-the-view">Using the view</a></li>
-<li class="toctree-l2"><a class="reference external" href="usage.html#external-link-and-image-lists">External link and image lists</a></li>
-<li class="toctree-l2"><a class="reference external" href="usage.html#the-tinymce-preview-button">The TinyMCE preview button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#using-the-widget">Using the widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#using-the-view">Using the view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#external-link-and-image-lists">External link and image lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#the-tinymce-preview-button">The TinyMCE preview button</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="history.html">History</a><ul>
-<li class="toctree-l2"><a class="reference external" href="history.html#changelog">Changelog</a></li>
-<li class="toctree-l2"><a class="reference external" href="history.html#credits">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#changelog">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#credits">Credits</a></li>
 </ul>
 </li>
 </ul>
+</div>
 </div>
 </div>
 

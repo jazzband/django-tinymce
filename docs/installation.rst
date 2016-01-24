@@ -60,8 +60,6 @@ Installation
         ...
     )
 
-#. If you are using ``django-staticfiles`` you can skip this step. Copy the ``jscripts/tiny_mce`` directory from the TinyMCE distribution (see :ref:`prerequisites`) into a directory named ``js`` in your media root. You can override the location in your settings (see below).
-
 .. _`pip`: http://pip.openplans.org/
 .. _`PyPI`: http://pypi.python.org/
 
@@ -77,19 +75,19 @@ Verify that everything is installed and configured properly:
 
 #. Install required packages::
 
-    pip install Django django-staticfiles django-tinymce
+    pip install Django django-tinymce
 
 #. Setup environment variable ``DJANGO_SETTINGS_MODULE``::
 
-    export DJANGO_SETTINGS_MODULE='testtinymce.staticfiles_settings'
+    export DJANGO_SETTINGS_MODULE='testtinymce.settings'
 
 #. Setup test database (it will be created in current folder)::
 
-    django-admin.py syncdb
+    django-admin syncdb
 
 #. Run Django runserver command to verify results::
 
-    django-admin.py runserver
+    django-admin runserver
 
 #. Open this address in a browser::
 
@@ -110,7 +108,7 @@ file.
 ``TINYMCE_JS_URL`` (default: ``settings.MEDIA_URL + 'js/tiny_mce/tiny_mce.js'``)
     The URL of the TinyMCE javascript file::
 
-        TINYMCE_JS_URL = os.path.join(MEDIA_ROOT, "path/to/tiny_mce/tiny_mce.js")
+        TINYMCE_JS_URL = os.path.join(MEDIA_URL, "path/to/tiny_mce/tiny_mce.js")
 
 ``TINYMCE_JS_ROOT`` (default: ``settings.MEDIA_ROOT + 'js/tiny_mce'``)
   The filesystem location of the TinyMCE files. It is used by the compressor
@@ -150,5 +148,5 @@ Example::
   TINYMCE_SPELLCHECKER = True
   TINYMCE_COMPRESSOR = True
 
-.. _`the TinyMCE manual`: http://wiki.moxiecode.com/index.php/TinyMCE:Configuration
-.. _`official TinyMCE documentation on custom filebrowsers`: http://wiki.moxiecode.com/index.php/TinyMCE:Custom_filebrowser
+.. _`the TinyMCE manual`: http://www.tinymce.com/wiki.php/configuration
+.. _`official TinyMCE documentation on custom filebrowsers`: http://www.tinymce.com/wiki.php/TinyMCE3x:How-to_implement_a_custom_file_browser
