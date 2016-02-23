@@ -98,32 +98,32 @@ def gzip_compressor(request):
 
     # Add core languages
     for lang in languages:
-        files.append("langs/%s" % lang)
+        files.append("langs/{!s}".format(lang))
 
     # Add plugins
     for plugin in plugins:
-        files.append("plugins/%s/editor_plugin%s" % (plugin, suffix))
+        files.append("plugins/{!s}/editor_plugin{!s}".format(plugin, suffix))
 
         for lang in languages:
-            files.append("plugins/%s/langs/%s" % (plugin, lang))
+            files.append("plugins/{!s}/langs/{!s}".format(plugin, lang))
 
     # Add themes
     for theme in themes:
-        files.append("themes/%s/editor_template%s" % (theme, suffix))
+        files.append("themes/{!s}/editor_template{!s}".format(theme, suffix))
 
         for lang in languages:
-            files.append("themes/%s/langs/%s" % (theme, lang))
+            files.append("themes/{!s}/langs/{!s}".format(theme, lang))
 
     for f in files:
         # Check for unsafe characters
         if not safe_filename_re.match(f):
             continue
-        content.append(get_file_contents("%s.js" % f))
+        content.append(get_file_contents("{!s}.js".format(f)))
 
     # Restore loading functions
-    content.append('tinymce.each("%s".split(","), function(f){'
+    content.append('tinymce.each("{!s}".split(","), function(f){'
                    'tinymce.ScriptLoader.markDone(tinyMCE.baseURL+'
-                   '"/"+f+".js");});' % ",".join(files))
+                   '"/"+f+".js");});'.format(",".join(files)))
 
     unicode_content = []
     for i, c in enumerate(content):
@@ -133,7 +133,7 @@ def gzip_compressor(request):
             try:
                 unicode_content.append(c.decode('utf-8'))
             except:
-                print("%s is nor latin-1 nor utf-8." % files[i])
+                print("{!s} is nor latin-1 nor utf-8.".format(files[i]))
                 raise
 
     # Compress

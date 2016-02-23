@@ -24,8 +24,8 @@ def textareas_js(request, name, lang=None):
     content language.
     """
     template_files = (
-        'tinymce/%s_textareas.js' % name,
-        '%s/tinymce_textareas.js' % name,
+        'tinymce/{!s}_textareas.js'.format(name),
+        '{!s}/tinymce_textareas.js'.format(name),
     )
     template = loader.select_template(template_files)
 
@@ -53,7 +53,7 @@ def spell_check(request):
         arg = params[1]
 
         if not enchant.dict_exists(str(lang)):
-            raise RuntimeError("dictionary not found for language '%s'" % lang)
+            raise RuntimeError("dictionary not found for language {!r}".format(lang))
 
         checker = enchant.Dict(str(lang))
 
@@ -62,7 +62,7 @@ def spell_check(request):
         elif method == 'getSuggestions':
             result = checker.suggest(arg)
         else:
-            raise RuntimeError("Unkown spellcheck method: '%s'" % method)
+            raise RuntimeError("Unkown spellcheck method: {!r}".format(method))
         output = {
             'id': id,
             'result': result,
@@ -87,8 +87,8 @@ def preview(request, name):
     'tinymce/<name>_preview.html' or '<name>/tinymce_preview.html'.
     """
     template_files = (
-        'tinymce/%s_preview.html' % name,
-        '%s/tinymce_preview.html' % name,
+        'tinymce/{!s}_preview.html'.format(name),
+        '{!s}/tinymce_preview.html'.format(name),
     )
     template = loader.select_template(template_files)
     return HttpResponse(template.render(RequestContext(request)),
@@ -97,7 +97,7 @@ def preview(request, name):
 
 def flatpages_link_list(request):
     """
-    Returns a HttpResponse whose content is a Javscript file representing a
+    Returns a HttpResponse whose content is a Javascript file representing a
     list of links to flatpages.
     """
     from django.contrib.flatpages.models import FlatPage
@@ -114,7 +114,7 @@ def compressor(request):
 
 def render_to_link_list(link_list):
     """
-    Returns a HttpResponse whose content is a Javscript file representing a
+    Returns a HttpResponse whose content is a Javascript file representing a
     list of links suitable for use wit the TinyMCE external_link_list_url
     configuration option. The link_list parameter must be a list of 2-tuples.
     """
@@ -123,7 +123,7 @@ def render_to_link_list(link_list):
 
 def render_to_image_list(image_list):
     """
-    Returns a HttpResponse whose content is a Javscript file representing a
+    Returns a HttpResponse whose content is a Javascript file representing a
     list of images suitable for use wit the TinyMCE external_image_list_url
     configuration option. The image_list parameter must be a list of 2-tuples.
     """
@@ -131,7 +131,7 @@ def render_to_image_list(image_list):
 
 
 def render_to_js_vardef(var_name, var_value):
-    output = "var %s = %s" % (var_name, json.dumps(var_value))
+    output = "var {!s} = {!s};".format(var_name, json.dumps(var_value))
     return HttpResponse(output, content_type='application/x-javascript')
 
 
