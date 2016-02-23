@@ -10,6 +10,7 @@ try:
 except ImportError:
     pass
 
+
 class HTMLField(models.TextField):
     """
     A large string field for HTML content. It uses the TinyMCE widget in

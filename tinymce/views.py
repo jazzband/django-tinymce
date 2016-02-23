@@ -15,9 +15,10 @@ try:
 except ImportError:
     pass
 
+
 def textareas_js(request, name, lang=None):
     """
-    Returns a HttpResponse whose content is a Javscript file. The template
+    Returns a HttpResponse whose content is a Javascript file. The template
     is loaded from 'tinymce/<name>_textareas.js' or
     '<name>/tinymce_textareas.js'. Optionally, the lang argument sets the
     content language.
@@ -33,7 +34,8 @@ def textareas_js(request, name, lang=None):
     context = RequestContext(request, vars)
 
     return HttpResponse(template.render(context),
-            content_type="application/x-javascript")
+                        content_type="application/x-javascript")
+
 
 def spell_check(request):
     """
@@ -70,12 +72,13 @@ def spell_check(request):
         logging.exception("Error running spellchecker")
         return HttpResponse(_("Error running spellchecker"))
     return HttpResponse(json.dumps(output),
-            content_type='application/json')
+                        content_type='application/json')
 
 try:
     spell_check = csrf_exempt(spell_check)
 except NameError:
     pass
+
 
 def preview(request, name):
     """
@@ -89,7 +92,7 @@ def preview(request, name):
     )
     template = loader.select_template(template_files)
     return HttpResponse(template.render(RequestContext(request)),
-            content_type="text/html")
+                        content_type="text/html")
 
 
 def flatpages_link_list(request):
@@ -117,6 +120,7 @@ def render_to_link_list(link_list):
     """
     return render_to_js_vardef('tinyMCELinkList', link_list)
 
+
 def render_to_image_list(image_list):
     """
     Returns a HttpResponse whose content is a Javscript file representing a
@@ -125,9 +129,11 @@ def render_to_image_list(image_list):
     """
     return render_to_js_vardef('tinyMCEImageList', image_list)
 
+
 def render_to_js_vardef(var_name, var_value):
     output = "var %s = %s" % (var_name, json.dumps(var_value))
     return HttpResponse(output, content_type='application/x-javascript')
+
 
 def filebrowser(request):
     try:
@@ -136,4 +142,4 @@ def filebrowser(request):
         fb_url = request.build_absolute_uri(urlresolvers.reverse('filebrowser:fb_browse'))
 
     return render_to_response('tinymce/filebrowser.js', {'fb_url': fb_url},
-            context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))

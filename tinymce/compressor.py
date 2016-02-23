@@ -41,10 +41,12 @@ def get_file_contents(filename):
     except IOError:
         return ""
 
+
 def split_commas(str):
     if str == '':
         return []
     return str.split(",")
+
 
 def gzip_compressor(request):
     plugins = split_commas(request.GET.get("plugins", ""))
@@ -72,7 +74,7 @@ def gzip_compressor(request):
     cacheKey = '|'.join(plugins + languages + themes)
     cacheData = cache.get(cacheKey)
 
-    if not cacheData is None:
+    if cacheData is not None:
         if 'ETag' in cacheData:
             if_none_match = request.META.get('HTTP_IF_NONE_MATCH', None)
             if if_none_match == cacheData['ETag']:
@@ -89,7 +91,7 @@ def gzip_compressor(request):
                 response['Content-Length'] = '0'
                 return response
 
-    content.append("var tinyMCEPreInit={base:'%s',suffix:''};" % tinymce.settings.JS_BASE_URL);
+    content.append("var tinyMCEPreInit={base:'{}',suffix:''};".format(tinymce.settings.JS_BASE_URL))
 
     # Add core
     files = ["tiny_mce"]

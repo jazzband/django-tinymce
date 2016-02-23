@@ -51,7 +51,7 @@ class TinyMCE(forms.Textarea):
         super(TinyMCE, self).__init__(attrs)
         mce_attrs = mce_attrs or {}
         self.mce_attrs = mce_attrs
-        if not 'mode' in self.mce_attrs:
+        if 'mode' not in self.mce_attrs:
             self.mce_attrs['mode'] = 'exact'
         self.mce_attrs['strict_loading_mode'] = 1
         if content_language is None:
@@ -73,12 +73,12 @@ class TinyMCE(forms.Textarea):
         js_functions = {}
         for k in ('paste_preprocess', 'paste_postprocess'):
             if k in mce_config:
-               js_functions[k] = mce_config[k]
-               del mce_config[k]
+                js_functions[k] = mce_config[k]
+                del mce_config[k]
         mce_json = json.dumps(mce_config)
         for k in js_functions:
             index = mce_json.rfind('}')
-            mce_json = mce_json[:index]+', '+k+':'+js_functions[k].strip()+mce_json[index:]
+            mce_json = mce_json[:index] + ', ' + k + ':' + js_functions[k].strip() + mce_json[index:]
         return mce_json
 
     def render(self, name, value, attrs=None):
