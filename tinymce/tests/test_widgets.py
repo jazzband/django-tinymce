@@ -38,3 +38,7 @@ class TestWidgets(TestCase):
             'spellchecker_rpc_url': '/tinymce/spellchecker/'
         }
         self.assertEqual(config, config_ok)
+
+    def test_tinymce_widget(self):
+        # TODO: implement test
+        pass
