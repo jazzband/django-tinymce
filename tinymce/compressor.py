@@ -10,6 +10,7 @@ Licensed under the terms of the MIT License (see LICENSE.txt)
 from datetime import datetime
 import os
 import re
+import json
 
 from django.conf import settings
 from django.core.cache import cache
@@ -91,7 +92,11 @@ def gzip_compressor(request):
                 response['Content-Length'] = '0'
                 return response
 
-    content.append("var tinyMCEPreInit={base:'{}',suffix:''};".format(tinymce.settings.JS_BASE_URL))
+    tinyMCEPreInit = {
+        'base': tinymce.settings.JS_BASE_URL,
+        'suffix': '',
+    }
+    content.append("var tinyMCEPreInit={!s};".format(json.dumps(tinyMCEPreInit)))
 
     # Add core
     files = ["tiny_mce"]
@@ -121,9 +126,9 @@ def gzip_compressor(request):
         content.append(get_file_contents("{!s}.js".format(f)))
 
     # Restore loading functions
-    content.append('tinymce.each("{!s}".split(","), function(f){'
+    content.append('tinymce.each("{!s}".split(","), function(f){{'
                    'tinymce.ScriptLoader.markDone(tinyMCE.baseURL+'
-                   '"/"+f+".js");});'.format(",".join(files)))
+                   '"/"+f+".js");}});'.format(",".join(files)))
 
     unicode_content = []
     for i, c in enumerate(content):

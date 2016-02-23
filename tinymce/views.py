@@ -62,7 +62,7 @@ def spell_check(request):
         elif method == 'getSuggestions':
             result = checker.suggest(arg)
         else:
-            raise RuntimeError("Unkown spellcheck method: {!r}".format(method))
+            raise RuntimeError("Unknown spellcheck method: {!r}".format(method))
         output = {
             'id': id,
             'result': result,
