@@ -47,4 +47,5 @@ setup(
     ],
     platforms = ['any'],
     url = "https://github.com/aljosa/django-tinymce",
+    test_suite='runtests.runtests',
 )
