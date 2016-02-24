@@ -4,6 +4,7 @@ import json
 from mock import patch, Mock
 
 from django.contrib.flatpages.models import FlatPage
+from django.http import HttpResponse
 from django.test import TestCase
 
 from tinymce.views import render_to_image_list
@@ -24,15 +25,22 @@ class TestViews(TestCase):
         })
         response = self.client.post('/tinymce/spellchecker/',
                                     body, content_type='application/json')
-        result_ok = b'{"error": null, "id": "test", "result": ["test"]}'
+
+        output = {
+            'id': 'test',
+            'result': ['test'],
+            'error': None,
+        }
+        response_ok = HttpResponse(json.dumps(output), content_type='application/json')
         self.assertEqual(200, response.status_code)
         self.assertEqual('application/json', response['Content-Type'])
-        self.assertEqual(result_ok, response.content)
+        self.assertEqual(response_ok.content, response.content)
 
     @patch('tinymce.views.enchant')
     def test_spell_check_suggest(self, enchant_mock):
+        result = ['test']
         checker_mock = Mock()
-        checker_mock.suggest.return_value = ['test']
+        checker_mock.suggest.return_value = result
         enchant_mock.Dict.return_value = checker_mock
 
         body = json.dumps({
@@ -42,10 +50,16 @@ class TestViews(TestCase):
         })
         response = self.client.post('/tinymce/spellchecker/',
                                     body, content_type='application/json')
+        output = {
+            'id': 'test',
+            'result': result,
+            'error': None,
+        }
+        response_ok = HttpResponse(json.dumps(output), content_type='application/json')
         result_ok = b'{"error": null, "id": "test", "result": ["test"]}'
         self.assertEqual(200, response.status_code)
         self.assertEqual('application/json', response['Content-Type'])
-        self.assertEqual(result_ok, response.content)
+        self.assertEqual(response_ok.content, response.content)
 
     @patch('tinymce.views.enchant')
     def test_spell_check_unknown(self, enchant_mock):

@@ -19,6 +19,14 @@ try:
 except ImportError:
     enchant = None
 
+try:
+    from django.utils.encoding import smart_text as smart_unicode
+except ImportError:
+    try:
+        from django.utils.encoding import smart_unicode
+    except ImportError:
+        from django.forms.util import smart_unicode
+
 
 def textareas_js(request, name, lang=None):
     """
@@ -49,7 +57,7 @@ def spell_check(request):
         if not enchant:
             raise RuntimeError("install pyenchant for spellchecker functionality")
 
-        raw = request.body
+        raw = smart_unicode(request.body)
         input = json.loads(raw)
         id = input['id']
         method = input['method']
