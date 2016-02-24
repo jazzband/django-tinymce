@@ -23,7 +23,7 @@ class TestViews(TestCase):
             'params': ['en', ['test']]
         })
         response = self.client.post('/tinymce/spellchecker/',
-                               body, content_type='application/json')
+                                    body, content_type='application/json')
         result_ok = b'{"error": null, "id": "test", "result": ["test"]}'
         self.assertEqual(200, response.status_code)
         self.assertEqual('application/json', response['Content-Type'])
@@ -41,7 +41,7 @@ class TestViews(TestCase):
             'params': ['en', 'test']
         })
         response = self.client.post('/tinymce/spellchecker/',
-                               body, content_type='application/json')
+                                    body, content_type='application/json')
         result_ok = b'{"error": null, "id": "test", "result": ["test"]}'
         self.assertEqual(200, response.status_code)
         self.assertEqual('application/json', response['Content-Type'])
@@ -59,7 +59,7 @@ class TestViews(TestCase):
             'params': ['en', 'test']
         })
         response = self.client.post('/tinymce/spellchecker/',
-                               body, content_type='application/json')
+                                    body, content_type='application/json')
         result_ok = b'Error running spellchecker'
         self.assertEqual(200, response.status_code)
         self.assertEqual('text/html; charset=utf-8', response['Content-Type'])
