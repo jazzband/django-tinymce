@@ -6,6 +6,8 @@ django-tinymce
 .. image:: https://img.shields.io/pypi/v/django-tinymce.svg
         :target: https://pypi.python.org/pypi/django-tinymce
 
+.. image:: https://travis-ci.org/vanadium23/django-tinymce.svg
+
 Quickstart
 ==========
 
