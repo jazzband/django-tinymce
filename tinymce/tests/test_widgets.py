@@ -1,6 +1,10 @@
 # coding: utf-8
 
-from django.test import TestCase, override_settings
+from django.test import TestCase
+try:
+    from django.test import override_settings
+except ImportError:
+    from django.test.utils import override_settings
 
 from tinymce.widgets import get_language_config
 
