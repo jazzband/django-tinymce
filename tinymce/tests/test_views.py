@@ -1,6 +1,7 @@
 # coding: utf-8
 
-from mock import patch
+import json
+from mock import patch, Mock
 
 from django.contrib.flatpages.models import FlatPage
 from django.test import TestCase
@@ -9,9 +10,60 @@ from tinymce.views import render_to_image_list
 
 
 class TestViews(TestCase):
-    def test_spell_check(self):
-        # TODO: implement test for spellchecker
-        pass
+
+    @patch('tinymce.views.enchant.Dict')
+    def test_spell_check_words(self, dict_mock):
+        checker_mock = Mock()
+        checker_mock.check.return_value = False
+        dict_mock.return_value = checker_mock
+
+        body = json.dumps({
+            'id': 'test',
+            'method': 'checkWords',
+            'params': ['en', ['test']]
+        })
+        response = self.client.post('/tinymce/spellchecker/',
+                               body, content_type='application/json')
+        result_ok = b'{"error": null, "id": "test", "result": ["test"]}'
+        self.assertEqual(200, response.status_code)
+        self.assertEqual('application/json', response['Content-Type'])
+        self.assertEqual(result_ok, response.content)
+
+    @patch('tinymce.views.enchant.Dict')
+    def test_spell_check_suggest(self, dict_mock):
+        checker_mock = Mock()
+        checker_mock.suggest.return_value = ['test']
+        dict_mock.return_value = checker_mock
+
+        body = json.dumps({
+            'id': 'test',
+            'method': 'getSuggestions',
+            'params': ['en', 'test']
+        })
+        response = self.client.post('/tinymce/spellchecker/',
+                               body, content_type='application/json')
+        result_ok = b'{"error": null, "id": "test", "result": ["test"]}'
+        self.assertEqual(200, response.status_code)
+        self.assertEqual('application/json', response['Content-Type'])
+        self.assertEqual(result_ok, response.content)
+
+    @patch('tinymce.views.enchant.Dict')
+    def test_spell_check_unknown(self, dict_mock):
+        checker_mock = Mock()
+        checker_mock.suggest.return_value = ['test']
+        dict_mock.return_value = checker_mock
+
+        body = json.dumps({
+            'id': 'test',
+            'method': 'test',
+            'params': ['en', 'test']
+        })
+        response = self.client.post('/tinymce/spellchecker/',
+                               body, content_type='application/json')
+        result_ok = b'Error running spellchecker'
+        self.assertEqual(200, response.status_code)
+        self.assertEqual('text/html; charset=utf-8', response['Content-Type'])
+        self.assertEqual(result_ok, response.content)
 
     def test_flatpages_link_list(self):
         FlatPage.objects.create(

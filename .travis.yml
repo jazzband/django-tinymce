@@ -6,7 +6,7 @@ python:
 install:
   - pip install -e .
   - pip install $DJANGO
-  - pip install coverage flake8 mock
+  - pip install coverage flake8 mock pyenchant
 script:
   - export DJANGO_SETTINGS_MODULE=testtinymce.settings
   - export PYTHONPATH=$PWD:$PWD/testtinymce:$PYTHONPATH

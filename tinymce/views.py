@@ -14,6 +14,10 @@ try:
     from django.views.decorators.csrf import csrf_exempt
 except ImportError:
     pass
+try:
+    import enchant
+except ImportError:
+    enchant = None
 
 
 def textareas_js(request, name, lang=None):
@@ -42,7 +46,8 @@ def spell_check(request):
     Returns a HttpResponse that implements the TinyMCE spellchecker protocol.
     """
     try:
-        import enchant
+        if not enchant:
+            raise RuntimeError("install pyenchant for spellchecker functionality")
 
         raw = request.body
         input = json.loads(raw)
