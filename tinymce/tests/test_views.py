@@ -56,7 +56,6 @@ class TestViews(TestCase):
             'error': None,
         }
         response_ok = HttpResponse(json.dumps(output), content_type='application/json')
-        result_ok = b'{"error": null, "id": "test", "result": ["test"]}'
         self.assertEqual(200, response.status_code)
         self.assertEqual('application/json', response['Content-Type'])
         self.assertEqual(response_ok.content, response.content)
