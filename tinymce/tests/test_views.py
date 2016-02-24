@@ -11,11 +11,11 @@ from tinymce.views import render_to_image_list
 
 class TestViews(TestCase):
 
-    @patch('tinymce.views.enchant.Dict')
-    def test_spell_check_words(self, dict_mock):
+    @patch('tinymce.views.enchant')
+    def test_spell_check_words(self, enchant_mock):
         checker_mock = Mock()
         checker_mock.check.return_value = False
-        dict_mock.return_value = checker_mock
+        enchant_mock.Dict.return_value = checker_mock
 
         body = json.dumps({
             'id': 'test',
@@ -29,11 +29,11 @@ class TestViews(TestCase):
         self.assertEqual('application/json', response['Content-Type'])
         self.assertEqual(result_ok, response.content)
 
-    @patch('tinymce.views.enchant.Dict')
-    def test_spell_check_suggest(self, dict_mock):
+    @patch('tinymce.views.enchant')
+    def test_spell_check_suggest(self, enchant_mock):
         checker_mock = Mock()
         checker_mock.suggest.return_value = ['test']
-        dict_mock.return_value = checker_mock
+        enchant_mock.Dict.return_value = checker_mock
 
         body = json.dumps({
             'id': 'test',
@@ -47,11 +47,11 @@ class TestViews(TestCase):
         self.assertEqual('application/json', response['Content-Type'])
         self.assertEqual(result_ok, response.content)
 
-    @patch('tinymce.views.enchant.Dict')
-    def test_spell_check_unknown(self, dict_mock):
+    @patch('tinymce.views.enchant')
+    def test_spell_check_unknown(self, enchant_mock):
         checker_mock = Mock()
         checker_mock.suggest.return_value = ['test']
-        dict_mock.return_value = checker_mock
+        enchant_mock.Dict.return_value = checker_mock
 
         body = json.dumps({
             'id': 'test',
