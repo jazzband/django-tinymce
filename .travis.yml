@@ -12,6 +12,8 @@ script:
   - export PYTHONPATH=$PWD:$PWD/testtinymce:$PYTHONPATH
   - flake8 tinymce --ignore=E501,E402
   - coverage run --source=tinymce setup.py test
+after_success:
+  - coveralls
 env:
   - DJANGO="Django==1.6.11"
   - DJANGO="Django==1.7.8"

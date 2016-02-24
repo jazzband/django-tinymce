@@ -8,6 +8,8 @@ django-tinymce
 
 .. image:: https://travis-ci.org/vanadium23/django-tinymce.svg
 
+.. image:: https://coveralls.io/repos/vanadium23/django-tinymce/badge.svg?branch=master
+
 Quickstart
 ==========
 
