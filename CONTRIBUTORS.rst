@@ -31,3 +31,4 @@ Contributors
 * Tim Saylor <tim.saylor@gmail.com>
 * Venelin Stoykov <vkstoykov@gmail.com>
 * Zuzel Vera <zuzel.vp@gmail.com>
+* Ivan Chernov <chernoffivan@gmail.com>

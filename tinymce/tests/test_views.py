@@ -2,6 +2,7 @@
 
 import json
 from mock import patch, Mock
+from unittest import skip
 
 from django.contrib.flatpages.models import FlatPage
 from django.http import HttpResponse
@@ -89,8 +90,8 @@ class TestViews(TestCase):
         self.assertEqual('application/x-javascript', response['Content-Type'])
         self.assertEqual(result_ok, response.content)
 
+    @skip('implement test for compressor view')
     def test_compressor(self):
-        # TODO: implement test
         pass
 
     def test_render_to_image_list(self):
