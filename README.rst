@@ -7,8 +7,10 @@ django-tinymce
         :target: https://pypi.python.org/pypi/django-tinymce
 
 .. image:: https://travis-ci.org/aljosa/django-tinymce.svg
+        :target: https://travis-ci.org/aljosa/django-tinymce
 
 .. image:: https://coveralls.io/repos/aljosa/django-tinymce/badge.svg?branch=master
+        :target: https://coveralls.io/github/aljosa/django-tinymce
 
 Quickstart
 ==========
