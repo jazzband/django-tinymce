@@ -5,3 +5,4 @@
 .coverage
 .venv/
 __pycache__/
+.tox/
