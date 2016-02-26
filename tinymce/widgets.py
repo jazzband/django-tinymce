@@ -51,7 +51,7 @@ class TinyMCE(forms.Textarea):
         super(TinyMCE, self).__init__(attrs)
         mce_attrs = mce_attrs or {}
         self.mce_attrs = mce_attrs
-        if not 'mode' in self.mce_attrs:
+        if 'mode' not in self.mce_attrs:
             self.mce_attrs['mode'] = 'exact'
         self.mce_attrs['strict_loading_mode'] = 1
         if content_language is None:
@@ -73,12 +73,12 @@ class TinyMCE(forms.Textarea):
         js_functions = {}
         for k in ('paste_preprocess', 'paste_postprocess'):
             if k in mce_config:
-               js_functions[k] = mce_config[k]
-               del mce_config[k]
+                js_functions[k] = mce_config[k]
+                del mce_config[k]
         mce_json = json.dumps(mce_config)
         for k in js_functions:
             index = mce_json.rfind('}')
-            mce_json = mce_json[:index]+', '+k+':'+js_functions[k].strip()+mce_json[index:]
+            mce_json = mce_json[:index] + ', ' + k + ':' + js_functions[k].strip() + mce_json[index:]
         return mce_json
 
     def render(self, name, value, attrs=None):
@@ -101,7 +101,7 @@ class TinyMCE(forms.Textarea):
             }
             final_attrs['data-mce-gz-conf'] = json.dumps(compressor_config)
         final_attrs['data-mce-conf'] = mce_json
-        html = ['<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
+        html = ['<textarea{!s}>{!s}</textarea>'.format(flatatt(final_attrs), escape(value))]
         return mark_safe('\n'.join(html))
 
     def _media(self):
@@ -141,7 +141,7 @@ def get_language_config(content_language=None):
             default = '+'
         else:
             default = ''
-        sp_langs.append('%s%s=%s' % (default, ' / '.join(names), lang))
+        sp_langs.append('{!s}{!s}={!s}'.format(default, ' / '.join(names), lang))
 
     config['spellchecker_languages'] = ','.join(sp_langs)
 

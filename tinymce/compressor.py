@@ -10,6 +10,7 @@ Licensed under the terms of the MIT License (see LICENSE.txt)
 from datetime import datetime
 import os
 import re
+import json
 
 from django.conf import settings
 from django.core.cache import cache
@@ -41,10 +42,12 @@ def get_file_contents(filename):
     except IOError:
         return ""
 
+
 def split_commas(str):
     if str == '':
         return []
     return str.split(",")
+
 
 def gzip_compressor(request):
     plugins = split_commas(request.GET.get("plugins", ""))
@@ -72,7 +75,7 @@ def gzip_compressor(request):
     cacheKey = '|'.join(plugins + languages + themes)
     cacheData = cache.get(cacheKey)
 
-    if not cacheData is None:
+    if cacheData is not None:
         if 'ETag' in cacheData:
             if_none_match = request.META.get('HTTP_IF_NONE_MATCH', None)
             if if_none_match == cacheData['ETag']:
@@ -89,39 +92,43 @@ def gzip_compressor(request):
                 response['Content-Length'] = '0'
                 return response
 
-    content.append("var tinyMCEPreInit={base:'%s',suffix:''};" % tinymce.settings.JS_BASE_URL);
+    tinyMCEPreInit = {
+        'base': tinymce.settings.JS_BASE_URL,
+        'suffix': '',
+    }
+    content.append("var tinyMCEPreInit={!s};".format(json.dumps(tinyMCEPreInit)))
 
     # Add core
     files = ["tiny_mce"]
 
     # Add core languages
     for lang in languages:
-        files.append("langs/%s" % lang)
+        files.append("langs/{!s}".format(lang))
 
     # Add plugins
     for plugin in plugins:
-        files.append("plugins/%s/editor_plugin%s" % (plugin, suffix))
+        files.append("plugins/{!s}/editor_plugin{!s}".format(plugin, suffix))
 
         for lang in languages:
-            files.append("plugins/%s/langs/%s" % (plugin, lang))
+            files.append("plugins/{!s}/langs/{!s}".format(plugin, lang))
 
     # Add themes
     for theme in themes:
-        files.append("themes/%s/editor_template%s" % (theme, suffix))
+        files.append("themes/{!s}/editor_template{!s}".format(theme, suffix))
 
         for lang in languages:
-            files.append("themes/%s/langs/%s" % (theme, lang))
+            files.append("themes/{!s}/langs/{!s}".format(theme, lang))
 
     for f in files:
         # Check for unsafe characters
         if not safe_filename_re.match(f):
             continue
-        content.append(get_file_contents("%s.js" % f))
+        content.append(get_file_contents("{!s}.js".format(f)))
 
     # Restore loading functions
-    content.append('tinymce.each("%s".split(","), function(f){'
+    content.append('tinymce.each("{!s}".split(","), function(f){{'
                    'tinymce.ScriptLoader.markDone(tinyMCE.baseURL+'
-                   '"/"+f+".js");});' % ",".join(files))
+                   '"/"+f+".js");}});'.format(",".join(files)))
 
     unicode_content = []
     for i, c in enumerate(content):
@@ -131,7 +138,7 @@ def gzip_compressor(request):
             try:
                 unicode_content.append(c.decode('utf-8'))
             except:
-                print("%s is nor latin-1 nor utf-8." % files[i])
+                print("{!s} is nor latin-1 nor utf-8.".format(files[i]))
                 raise
 
     # Compress

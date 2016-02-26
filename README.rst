@@ -6,6 +6,10 @@ django-tinymce
 .. image:: https://img.shields.io/pypi/v/django-tinymce.svg
         :target: https://pypi.python.org/pypi/django-tinymce
 
+.. image:: https://travis-ci.org/aljosa/django-tinymce.svg
+
+.. image:: https://coveralls.io/repos/aljosa/django-tinymce/badge.svg?branch=master
+
 Quickstart
 ==========
 
