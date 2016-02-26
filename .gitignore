@@ -2,3 +2,6 @@
 *.pyc
 .DS_Store
 *.sqlite
+.coverage
+.venv/
+__pycache__/
