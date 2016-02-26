@@ -16,18 +16,21 @@ $(INSTALL_STAMP): $(PYTHON) setup.py
 	$(VENV)/bin/pip install -Ue .
 	touch $(INSTALL_STAMP)
 
-install-dev: $(INSTALL_STAMP) $(DEV_STAMP)
+install-dev: $(INSTALL_STAMP) $(DEV_STAMP) setup.py
 $(DEV_STAMP): $(PYTHON)
-	$(VENV)/bin/pip install django flake8 mock pyenchant coverage
+	$(VENV)/bin/pip install django flake8 mock pyenchant coverage tox
 	touch $(DEV_STAMP)
 
 virtualenv: $(PYTHON)
 $(PYTHON):
 	$(VIRTUALENV) $(VENV)
 
-tests: install-dev
+tests-once: install-dev
 	$(VENV)/bin/coverage run --source=tinymce setup.py test
 	$(VENV)/bin/coverage report
+
+tests: install-dev tox.ini
+	$(VENV)/bin/tox
 
 flake8: install-dev
 	$(VENV)/bin/flake8 tinymce --ignore=E501,E402

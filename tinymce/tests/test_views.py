@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import json
+import os
 from mock import patch, Mock
 from unittest import skip
 
@@ -9,6 +10,8 @@ from django.http import HttpResponse
 from django.test import TestCase
 
 from tinymce.views import render_to_image_list
+
+devnull = open(os.devnull, 'w')
 
 
 class TestViews(TestCase):
@@ -72,8 +75,9 @@ class TestViews(TestCase):
             'method': 'test',
             'params': ['en', 'test']
         })
-        response = self.client.post('/tinymce/spellchecker/',
-                                    body, content_type='application/json')
+        with patch('sys.stderr', devnull):
+            response = self.client.post('/tinymce/spellchecker/',
+                                        body, content_type='application/json')
         result_ok = b'Error running spellchecker'
         self.assertEqual(200, response.status_code)
         self.assertEqual('text/html; charset=utf-8', response['Content-Type'])
