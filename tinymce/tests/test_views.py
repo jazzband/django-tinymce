@@ -3,7 +3,6 @@
 import json
 import os
 from mock import patch, Mock
-from unittest import skip
 
 from django.contrib.flatpages.models import FlatPage
 from django.http import HttpResponse
@@ -94,9 +93,17 @@ class TestViews(TestCase):
         self.assertEqual('application/x-javascript', response['Content-Type'])
         self.assertEqual(result_ok, response.content)
 
-    @skip('implement test for compressor view')
-    def test_compressor(self):
-        pass
+    @patch('tinymce.views.gzip_compressor')
+    def test_compressor(self, gzip_mock):
+        response_ok = HttpResponse('test', content_type='text/javascript')
+        gzip_mock.return_value = response_ok
+
+        response = self.client.get('/tinymce/compressor/')
+
+        self.assertEqual(200, response.status_code)
+        self.assertEqual('text/javascript', response['Content-Type'])
+        self.assertEqual(response_ok.content, response.content)
+        self.assertTrue(gzip_mock.called_once)
 
     def test_render_to_image_list(self):
         response = render_to_image_list([('test', 'test.jpg')])
