@@ -64,7 +64,7 @@ class TestCompressor(TestCase):
             'themes': 'advanced',
         })
         response = gzip_compressor(request)
-        response_string = zlib.decompress(response.content, 16+zlib.MAX_WBITS)
+        response_string = zlib.decompress(response.content, 16 + zlib.MAX_WBITS)
         self.assertEqual(200, response.status_code)
         self.assertEqual('text/javascript', response['Content-Type'])
         self.assertEqual('gzip', response['Content-Encoding'])
