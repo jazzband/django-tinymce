@@ -5,10 +5,9 @@ import logging
 from django.core import urlresolvers
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from django.template import RequestContext, loader
+from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from tinymce.compressor import gzip_compressor
-from tinymce.widgets import get_language_config
 import json
 try:
     from django.views.decorators.csrf import csrf_exempt
@@ -26,27 +25,6 @@ except ImportError:
         from django.utils.encoding import smart_unicode
     except ImportError:
         from django.forms.util import smart_unicode
-
-
-def textareas_js(request, name, lang=None):
-    """
-    Returns a HttpResponse whose content is a Javascript file. The template
-    is loaded from 'tinymce/<name>_textareas.js' or
-    '<name>/tinymce_textareas.js'. Optionally, the lang argument sets the
-    content language.
-    """
-    template_files = (
-        'tinymce/{!s}_textareas.js'.format(name),
-        '{!s}/tinymce_textareas.js'.format(name),
-    )
-    template = loader.select_template(template_files)
-
-    vars = get_language_config(lang)
-    vars['content_language'] = lang
-    context = RequestContext(request, vars)
-
-    return HttpResponse(template.render(context),
-                        content_type="application/x-javascript")
 
 
 def spell_check(request):
@@ -91,21 +69,6 @@ try:
     spell_check = csrf_exempt(spell_check)
 except NameError:
     pass
-
-
-def preview(request, name):
-    """
-    Returns a HttpResponse whose content is an HTML file that is used
-    by the TinyMCE preview plugin. The template is loaded from
-    'tinymce/<name>_preview.html' or '<name>/tinymce_preview.html'.
-    """
-    template_files = (
-        'tinymce/{!s}_preview.html'.format(name),
-        '{!s}/tinymce_preview.html'.format(name),
-    )
-    template = loader.select_template(template_files)
-    return HttpResponse(template.render(RequestContext(request)),
-                        content_type="text/html")
 
 
 def flatpages_link_list(request):
