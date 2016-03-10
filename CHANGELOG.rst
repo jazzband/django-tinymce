@@ -4,10 +4,11 @@ Changelog
 This document describes changes between each past release.
 
 
-2.3.0 (unreleased)
+2.3.0 (2016-03-10)
 ==================
 
-- Nothing changed yet.
+- Added tests (#149)
+- Improved Python3 support
 
 
 2.2.0 (2015-12-23)

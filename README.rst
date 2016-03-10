@@ -60,10 +60,7 @@ http://django-tinymce.readthedocs.org/
 Support and updates
 ===================
 
-You can contact me directly at aljosa.mohorovic@gmail.com, track
-updates at https://twitter.com/maljosa or use github issues.  Be
-persistent and bug me, I often find myself lost in time so ping me if
-you're still waiting for me to answer.
+Use github issues https://github.com/aljosa/django-tinymce/issues
 
 License
 =======
