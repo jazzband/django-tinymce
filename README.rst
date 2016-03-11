@@ -6,10 +6,13 @@ django-tinymce
 .. image:: https://img.shields.io/pypi/v/django-tinymce.svg
         :target: https://pypi.python.org/pypi/django-tinymce
 
-.. image:: https://travis-ci.org/aljosa/django-tinymce.svg
+.. image:: https://img.shields.io/pypi/dm/django-tinymce.svg
+        :target: https://pypi.python.org/pypi/django-tinymce
+
+.. image:: https://img.shields.io/travis/aljosa/django-tinymce.svg
         :target: https://travis-ci.org/aljosa/django-tinymce
 
-.. image:: https://coveralls.io/repos/aljosa/django-tinymce/badge.svg?branch=master
+.. image:: https://img.shields.io/coveralls/aljosa/django-tinymce.svg
         :target: https://coveralls.io/github/aljosa/django-tinymce
 
 Quickstart
