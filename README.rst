@@ -6,6 +6,9 @@ django-tinymce
 .. image:: https://img.shields.io/pypi/v/django-tinymce.svg
         :target: https://pypi.python.org/pypi/django-tinymce
 
+.. image:: https://img.shields.io/pypi/pyversions/django-tinymce.svg
+        :target: https://pypi.python.org/pypi/django-tinymce
+
 .. image:: https://img.shields.io/pypi/dm/django-tinymce.svg
         :target: https://pypi.python.org/pypi/django-tinymce
 
@@ -54,6 +57,12 @@ In your code:
         content = HTMLField()
 
 **django-tinymce** uses staticfiles so everything should work as expected, different use cases (like using widget instead of HTMLField) and other stuff is available in documentation.
+
+Releases
+===================
+
+Latest release is 2.3.0. It's support python 2.7, 3.4, 3.5 and Django >= 1.6.
+Previous releases can be found on github, but they are no longer maintained.
 
 Documentation
 =============
