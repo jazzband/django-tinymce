@@ -40,7 +40,7 @@ def get_file_contents(filename):
             return f.read()
         finally:
             f.close()
-    except IOError:
+    except (IOError, TypeError):
         return ''
 
 
