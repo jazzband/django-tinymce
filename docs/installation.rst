@@ -35,8 +35,8 @@ editor itself and 'django-tinymce' (lower case) to refer to the Django applicati
 .. _`TinyMCE`: http://tinymce.moxiecode.com/download.php
 .. _`language pack`: http://tinymce.moxiecode.com/download_i18n.php
 .. _`spellchecker plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker
-.. _`PyEnchant`: http://pyenchant.sourceforge.net/
-.. _`django-filebrowser`: http://code.google.com/p/django-filebrowser/
+.. _`PyEnchant`: http://pythonhosted.org/pyenchant/download.html
+.. _`django-filebrowser`: https://github.com/sehmaschine/django-filebrowser
 
 Installation
 ------------
