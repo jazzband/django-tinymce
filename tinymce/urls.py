@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^flatpages_link_list/$', views.flatpages_link_list),
     url(r'^compressor/$', views.compressor, name='tinymce-compressor'),
     url(r'^filebrowser/$', views.filebrowser, name='tinymce-filebrowser'),
+    url(r'^filebrowserPath/$', views.filebrowserPath, name='tinymce-filebrowser-path'),
 ]
