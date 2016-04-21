@@ -3,11 +3,7 @@ import codecs
 import os
 from setuptools import setup, find_packages
 
-import metadata
-
 here = os.path.abspath(os.path.dirname(__file__))
-
-version = metadata.version
 
 def read_file(filename):
     """Open a related file and return its content."""
@@ -21,7 +17,7 @@ CHANGELOG = read_file('CHANGELOG.rst')
 
 setup(
     name="gu-django-tinymce",
-    version=version,
+    version='2.3.0',
     packages=find_packages(),
     include_package_data=True,
     author="Aljosa Mohorovic",
@@ -49,5 +45,5 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     platforms = ['any'],
-    url = "https://github.com/agushuley/gu-django-tinymce",
+    url = "https://github.com/agushuley/gu-django-tinymce", requires=['django']
 )

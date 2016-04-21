@@ -51,7 +51,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
     'tinymce',
-    'testtinymce.testapp',
+    'testtinymce',
 )
 
 TINYMCE_SPELLCHECKER = True

@@ -1,9 +1,9 @@
-from django.core.urlresolvers import reverse
 from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
+from django.core.urlresolvers import reverse
 
-from testtinymce.testapp.models import TestPage, TestInline
+from .models import TestPage, TestInline
 from tinymce.widgets import TinyMCE
 
 
