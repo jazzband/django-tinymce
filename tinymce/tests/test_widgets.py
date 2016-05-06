@@ -49,3 +49,7 @@ class TestWidgets(TestCase):
         self.assertIn('name="foobar"', html)
         self.assertIn('lorem ipsum', html)
         self.assertIn('class="tinymce"', html)
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar', 'class': 'foo'}
+        )
+        self.assertIn('class="foo tinymce"', html)
