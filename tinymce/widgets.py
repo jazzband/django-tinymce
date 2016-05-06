@@ -14,6 +14,7 @@ from django.contrib.admin import widgets as admin_widgets
 from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt
 from django.utils.html import escape
+
 try:
     from collections import OrderedDict as SortedDict
 except ImportError:
@@ -21,6 +22,7 @@ except ImportError:
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
 import json
+
 try:
     from django.utils.encoding import smart_text as smart_unicode
 except ImportError:
@@ -47,6 +49,7 @@ class TinyMCE(forms.Textarea):
     the current Django language, the others from the 'content_language'
     parameter.
     """
+
     def __init__(self, content_language=None, attrs=None, mce_attrs=None):
         super(TinyMCE, self).__init__(attrs)
         mce_attrs = mce_attrs or {}
@@ -87,7 +90,10 @@ class TinyMCE(forms.Textarea):
         value = smart_unicode(value)
         final_attrs = self.build_attrs(attrs)
         final_attrs['name'] = name
-        final_attrs['class'] = ' '.join(final_attrs['class'].split(' ') + ['tinymce'])
+        if final_attrs.get('class', None) is None:
+            final_attrs['class'] = 'tinymce'
+        else:
+            final_attrs['class'] = ' '.join(final_attrs['class'].split(' ') + ['tinymce'])
         assert 'id' in final_attrs, "TinyMCE widget attributes must contain 'id'"
         mce_config = self.get_mce_config(final_attrs)
         mce_json = self.get_mce_json(mce_config)
@@ -113,6 +119,7 @@ class TinyMCE(forms.Textarea):
             js.append(reverse('tinymce-filebrowser'))
         js.append('django_tinymce/init_tinymce.js')
         return forms.Media(js=js)
+
     media = property(_media)
 
 
