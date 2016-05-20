@@ -69,7 +69,7 @@ Testing
 Verify that everything is installed and configured properly:
 
 #. Setup an isolated environment with `virtualenv`_ and activate environment::
-    
+
     virtualenv --no-site-packages env
     . env/bin/activate
 
@@ -81,13 +81,22 @@ Verify that everything is installed and configured properly:
 
     export DJANGO_SETTINGS_MODULE='testtinymce.settings'
 
+#. Create project and change into project directory
+
+    django-admin startproject tinymce_test
+    cd tinymce_test
+
 #. Setup test database (it will be created in current folder)::
 
-    django-admin syncdb
+    python manage.py migrate
+
+#. Create superuser
+
+    python manage.py createsuperuser
 
 #. Run Django runserver command to verify results::
 
-    django-admin runserver
+    python manage.py runserver
 
 #. Open this address in a browser::
 
