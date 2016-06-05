@@ -1,3 +1,7 @@
+def baseurl(url):
+    return url[:url.rfind('/')]
+
+
 def is_installed(settings):
     """
     Check Django settings and verify that tinymce application is included
