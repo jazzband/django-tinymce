@@ -27,7 +27,6 @@ class HTMLField(models.TextField):
 
         # As an ugly hack, we override the admin widget
         if defaults['widget'] == admin_widgets.AdminTextareaWidget:
-            defaults['widget'] = tinymce_widgets.AdminTinyMCE(
-                profile=self.tinymce_profile)
+            defaults['widget'] = tinymce_widgets.AdminTinyMCE()
 
         return super(HTMLField, self).formfield(**defaults)
