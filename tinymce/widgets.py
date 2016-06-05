@@ -20,7 +20,10 @@ except ImportError:
     except ImportError:
         from django.forms.util import smart_unicode
 from django.utils.html import escape
-from django.utils.datastructures import SortedDict
+try:
+    from django.utils.datastructures import SortedDict
+except ImportError:
+    from collections import OrderedDict as SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
 import tinymce.settings
