@@ -7,6 +7,8 @@ http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
 from __future__ import unicode_literals
 
+import filebrowser
+
 import tinymce.settings
 from django import forms
 from django.conf import settings
@@ -111,6 +113,10 @@ class TinyMCE(forms.Textarea):
             js = [tinymce.settings.JS_URL]
         if tinymce.settings.USE_FILEBROWSER:
             js.append(reverse('tinymce-filebrowser'))
+            filebrowser_dir_url = reverse('tinymce-filebrowser-path')
+            if filebrowser.get_default_dir():
+                filebrowser_dir_url += "?url={}".format(filebrowser.get_default_dir())
+            js.append(filebrowser_dir_url)
         js.append('django_tinymce/init_tinymce.js')
         return forms.Media(js=js)
     media = property(_media)

@@ -41,6 +41,8 @@ SECRET_KEY = 'w4o4x^&b4h4zne9&3b1m-_p-=+&n_i_sdf@oz=gd+6h6v1$sd9'
 
 ROOT_URLCONF = 'testtinymce.urls'
 
+TINYMCE_FILEBROWSER = True
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,12 +54,13 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'tinymce',
     'testtinymce',
+    'filebrowser',
 )
 
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "advanced",
-    'plugins': "spellchecker",
+    'plugins': "spellchecker, ",
     'theme_advanced_buttons3_add': "|,spellchecker",
 }

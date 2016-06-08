@@ -6,6 +6,7 @@ from django.core import urlresolvers
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.utils.datastructures import MultiValueDictKeyError
 from django.utils.translation import ugettext as _
 from tinymce.compressor import gzip_compressor
 import json
@@ -121,7 +122,10 @@ def filebrowser(request):
             context_instance=RequestContext(request))
 
 def filebrowserPath(request):
-    dir = request.GET['dir']
+    try:
+        _dir = request.GET['dir']
+    except MultiValueDictKeyError:
+        _dir = ''
 
-    return render_to_response('tinymce/defaultpath.js', { 'dir': dir, },
+    return render_to_response('tinymce/defaultpath.js', {'dir': _dir,},
                               context_instance=RequestContext(request))

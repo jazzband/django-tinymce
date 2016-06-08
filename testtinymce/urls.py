@@ -8,6 +8,7 @@ import tinymce.urls
 admin.autodiscover()
 
 urlpatterns = [
+    url(r'^admin/filebrowser/', include('filebrowser.urls')),
     url(r'^tinymce/', include(tinymce.urls)),
     url(r'^admin/', include(admin.site.urls)),
     #url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 
