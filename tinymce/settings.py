@@ -3,7 +3,7 @@ import warnings
 from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.utils.functional import lazy
-from utils import baseurl
+from tinymce.utils import baseurl
 
 OLD_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', False)
 if OLD_CONFIG:
