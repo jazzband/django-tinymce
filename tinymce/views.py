@@ -4,8 +4,7 @@
 import logging
 from django.core import urlresolvers
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.utils.translation import ugettext as _
 from tinymce.compressor import gzip_compressor
 import json
@@ -117,5 +116,4 @@ def filebrowser(request):
     except:
         fb_url = request.build_absolute_uri(urlresolvers.reverse('filebrowser:fb_browse'))
 
-    return render_to_response('tinymce/filebrowser.js', {'fb_url': fb_url},
-                              context_instance=RequestContext(request))
+    return render(request, 'tinymce/filebrowser.js', {'fb_url': fb_url})

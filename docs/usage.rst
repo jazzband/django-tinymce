@@ -162,7 +162,7 @@ Create the widget::
   from tinymce.widgets import TinyMCE
 
   class SomeForm(forms.Form):
-      somefield = forms.CharField(widget=TinyMCE(mce_attrs={'external_link_list_url': reverse('someapp.views.someview')})
+      somefield = forms.CharField(widget=TinyMCE(mce_attrs={'external_link_list_url': reverse('someviewname')})
 
 Create the view::
 
@@ -199,7 +199,7 @@ the link dialog you could use something like this::
           if db_field.name == 'content':
               return db_field.formfield(widget=TinyMCE(
                   attrs={'cols': 80, 'rows': 30},
-                  mce_attrs={'external_link_list_url': reverse('tinymce.views.flatpages_link_list')},
+                  mce_attrs={'external_link_list_url': reverse('tinymce-linklist')},
               ))
           return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 

@@ -7,7 +7,7 @@ This document describes changes between each past release.
 2.4.0 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Added compatibility for Django 1.10.
 
 
 2.3.0 (2016-03-10)
