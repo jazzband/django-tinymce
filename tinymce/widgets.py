@@ -7,27 +7,20 @@ http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
 from __future__ import unicode_literals
 
-import tinymce.settings
+from collections import OrderedDict
+import json
+
 from django import forms
 from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
 from django.core.urlresolvers import reverse
 from django.forms.widgets import flatatt
+from django.utils.encoding import force_text
 from django.utils.html import escape
-try:
-    from collections import OrderedDict as SortedDict
-except ImportError:
-    from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
-import json
-try:
-    from django.utils.encoding import smart_text as smart_unicode
-except ImportError:
-    try:
-        from django.utils.encoding import smart_unicode
-    except ImportError:
-        from django.forms.util import smart_unicode
+
+import tinymce.settings
 
 
 class TinyMCE(forms.Textarea):
@@ -84,7 +77,7 @@ class TinyMCE(forms.Textarea):
     def render(self, name, value, attrs=None):
         if value is None:
             value = ''
-        value = smart_unicode(value)
+        value = force_text(value)
         final_attrs = self.build_attrs(attrs)
         final_attrs['name'] = name
         final_attrs['class'] = 'tinymce'
@@ -130,7 +123,7 @@ def get_language_config(content_language=None):
     config = {}
     config['language'] = language
 
-    lang_names = SortedDict()
+    lang_names = OrderedDict()
     for lang, name in settings.LANGUAGES:
         if lang[:2] not in lang_names:
             lang_names[lang[:2]] = []
