@@ -1,31 +1,25 @@
 # Copyright (c) 2008 Joost Cassee
 # Licensed under the terms of the MIT License (see LICENSE.txt)
 
+import json
 import logging
+
 from django.core import urlresolvers
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext as _
+from django.views.decorators.csrf import csrf_exempt
+
 from tinymce.compressor import gzip_compressor
-import json
-try:
-    from django.views.decorators.csrf import csrf_exempt
-except ImportError:
-    pass
+
 try:
     import enchant
 except ImportError:
     enchant = None
 
-try:
-    from django.utils.encoding import smart_text as smart_unicode
-except ImportError:
-    try:
-        from django.utils.encoding import smart_unicode
-    except ImportError:
-        from django.forms.util import smart_unicode
 
-
+@csrf_exempt
 def spell_check(request):
     """
     Returns a HttpResponse that implements the TinyMCE spellchecker protocol.
@@ -34,7 +28,7 @@ def spell_check(request):
         if not enchant:
             raise RuntimeError("install pyenchant for spellchecker functionality")
 
-        raw = smart_unicode(request.body)
+        raw = force_text(request.body)
         input = json.loads(raw)
         id = input['id']
         method = input['method']
@@ -63,11 +57,6 @@ def spell_check(request):
         return HttpResponse(_("Error running spellchecker"))
     return HttpResponse(json.dumps(output),
                         content_type='application/json')
-
-try:
-    spell_check = csrf_exempt(spell_check)
-except NameError:
-    pass
 
 
 def flatpages_link_list(request):

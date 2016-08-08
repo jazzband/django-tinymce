@@ -7,6 +7,7 @@ Contributors
 * Andy Venet <avenet@users.noreply.github.com>
 * BakaNeko <meganekko@list.ru>
 * Chem <Chemt@ukr.net>
+* Claude Paroz <claude@2xlibre.net>
 * Craig de Stigter <craig.destigter@koordinates.com>
 * Dan Moore <dan@moore.cx>
 * David Harks <dave@dwink.net>
