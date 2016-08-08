@@ -34,3 +34,4 @@ Contributors
 * Zuzel Vera <zuzel.vp@gmail.com>
 * Ivan Chernov <chernoffivan@gmail.com>
 * Andrew Meakovski <meako689@gmail.com>
+* Tom Chiung-ting Chen <ctchen@gmail.com>
