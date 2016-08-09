@@ -35,3 +35,4 @@ Contributors
 * Ivan Chernov <chernoffivan@gmail.com>
 * Andrew Meakovski <meako689@gmail.com>
 * Tom Chiung-ting Chen <ctchen@gmail.com>
+* Dima Revutskyi <rddimon@gmail.com>

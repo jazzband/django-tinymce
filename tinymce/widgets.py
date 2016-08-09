@@ -80,7 +80,10 @@ class TinyMCE(forms.Textarea):
         value = force_text(value)
         final_attrs = self.build_attrs(attrs)
         final_attrs['name'] = name
-        final_attrs['class'] = 'tinymce'
+        if final_attrs.get('class', None) is None:
+            final_attrs['class'] = 'tinymce'
+        else:
+            final_attrs['class'] = ' '.join(final_attrs['class'].split(' ') + ['tinymce'])
         assert 'id' in final_attrs, "TinyMCE widget attributes must contain 'id'"
         mce_config = self.get_mce_config(final_attrs)
         mce_json = self.get_mce_json(mce_config)
