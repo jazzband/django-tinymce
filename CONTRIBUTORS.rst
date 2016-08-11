@@ -18,6 +18,7 @@ Contributors
 * Jaap Roes <jaap@eight.nl>
 * James Cleveland <jamescleveland@gmail.com>
 * Jason Davies <jason@jasondavies.com>
+* Jessamyn Smith <jessamyn.smith@gmail.com>
 * Joel Burton <joel@joelburton.com>
 * Jonathan D. Baker <jonathandavidbaker@gmail.com>
 * Joost Cassee <joost@cassee.net>
