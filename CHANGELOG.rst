@@ -4,10 +4,16 @@ Changelog
 This document describes changes between each past release.
 
 
-2.4.0 (unreleased)
+2.4.0 (2016-08-31)
 ==================
 
 - Added compatibility for Django 1.10.
+- Fix JQuery Problem with grappelli
+- Fix Python 3 compatibility (#170)
+- Improve documentation (#163, #171)
+- Cleaned Imports (#182)
+- Fix TinyMCE Widget for ModelTranslation tabs (#174)
+- Fix JSON mimetype (#186)
 
 
 2.3.0 (2016-03-10)
