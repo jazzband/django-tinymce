@@ -70,11 +70,12 @@ class TinyMCE(forms.Textarea):
 
         mce_config = self.profile.copy()
         #mce_config.update(get_language_config(self.content_language))
-        #if tinymce.settings.USE_FILEBROWSER:
-            #mce_config['file_browser_callback'] = "djangoFileBrowser"
+        if tinymce.settings.USE_FILEBROWSER:
+            mce_config['file_browser_callback'] = "djangoFileBrowser"
+
         mce_config.update(self.mce_attrs)
         mce_config['selector'] = '#%s' % final_attrs['id']
-        
+
         # Fix for js functions
         #js_functions = {}
         #for k in ('paste_preprocess','paste_postprocess'):
@@ -82,6 +83,10 @@ class TinyMCE(forms.Textarea):
                #js_functions[k] = mce_config[k]
                #del mce_config[k]
         mce_json = json.dumps(mce_config)
+
+        if tinymce.settings.USE_FILEBROWSER:
+            mce_json = mce_json.replace('"djangoFileBrowser"', 'djangoFileBrowser')
+
 
         #for k in js_functions:
             #index = mce_json.rfind('}')
