@@ -61,19 +61,6 @@ class TinyMCE(forms.Textarea):
             mce_config['elements'] = attrs['id']
         return mce_config
 
-    def get_mce_json(self, mce_config):
-        # Fix for js functions
-        js_functions = {}
-        for k in ('paste_preprocess', 'paste_postprocess'):
-            if k in mce_config:
-                js_functions[k] = mce_config[k]
-                del mce_config[k]
-        mce_json = json.dumps(mce_config)
-        for k in js_functions:
-            index = mce_json.rfind('}')
-            mce_json = mce_json[:index] + ', ' + k + ':' + js_functions[k].strip() + mce_json[index:]
-        return mce_json
-
     def render(self, name, value, attrs=None):
         if value is None:
             value = ''
@@ -86,7 +73,7 @@ class TinyMCE(forms.Textarea):
             final_attrs['class'] = ' '.join(final_attrs['class'].split(' ') + ['tinymce'])
         assert 'id' in final_attrs, "TinyMCE widget attributes must contain 'id'"
         mce_config = self.get_mce_config(final_attrs)
-        mce_json = self.get_mce_json(mce_config)
+        mce_json = json.dumps(mce_config)
         if tinymce.settings.USE_COMPRESSOR:
             compressor_config = {
                 'plugins': mce_config.get('plugins', ''),
