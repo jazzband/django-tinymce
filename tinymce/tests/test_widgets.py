@@ -1,5 +1,6 @@
 # coding: utf-8
 
+from django import forms
 from django.test import TestCase
 from django.test.utils import override_settings
 
@@ -53,3 +54,15 @@ class TestWidgets(TestCase):
             'foobar', 'lorem ipsum', attrs={'id': 'id_foobar', 'class': 'foo'}
         )
         self.assertIn('class="foo tinymce"', html)
+
+    def test_tinymce_widget_required(self):
+        """
+        The TinyMCE widget should never output the required HTML attribute, even
+        if the form field is required, as the client-side browser validation
+        might prevent form submission.
+        """
+        class TinyForm(forms.Form):
+            field = forms.CharField(required=True, widget=TinyMCE())
+
+        rendered = str(TinyForm())
+        self.assertNotIn('required', rendered)
