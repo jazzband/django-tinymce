@@ -3,6 +3,7 @@
 from django import forms
 from django.test import TestCase
 from django.test.utils import override_settings
+from django.utils.translation import override
 
 from tinymce.widgets import get_language_config, TinyMCE
 
@@ -19,6 +20,10 @@ class TestWidgets(TestCase):
             'spellchecker_rpc_url': '/tinymce/spellchecker/'
         }
         self.assertEqual(config, config_ok)
+        with override(None):
+            # Even when no language is activated
+            config = get_language_config()
+            self.assertEqual(config, config_ok)
 
     @override_settings(LANGUAGES_BIDI=['en'])
     def test_default_config_rtl(self):
