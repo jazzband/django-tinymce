@@ -7,7 +7,8 @@ This document describes changes between each past release.
 2.5.0 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Added compatibility for Django 1.11.
+- Dropped support for Django 1.6.
 
 
 2.4.0 (2016-08-31)
