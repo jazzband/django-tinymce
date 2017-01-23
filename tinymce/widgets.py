@@ -71,7 +71,7 @@ class TinyMCE(forms.Textarea):
         mce_json = json.dumps(mce_config)
         for k in js_functions:
             index = mce_json.rfind('}')
-            mce_json = mce_json[:index] + ', ' + k + ':' + js_functions[k].strip() + mce_json[index:]
+            mce_json = mce_json[:index] + ', \"' + k + '\":\"' + js_functions[k].strip() + '\"' + mce_json[index:]
         return mce_json
 
     def render(self, name, value, attrs=None):
