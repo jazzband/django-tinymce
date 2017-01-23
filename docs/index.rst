@@ -15,18 +15,16 @@ Features:
 
 The django-tinymce code is licensed under the `MIT License`_. See the ``LICENSE.txt``
 file in the distribution. Note that the TinyMCE editor is distributed under
-`its own license`_.
+the `LGPL v2.1 license`_.
 
 Starting with django-tinymce v1.5.1 TinyMCE editor is bundled with django-tinymce to enable easy installation and usage.
-`django-staticfiles`_ support is added to provide an easier way to configure and use django-tinymce.
 Note that django-tinymce and TinyMCE licenses are compatible (although different) and we have permission to bundle TinyMCE with django-tinymce.
 
-.. _Django: http://www.djangoproject.com/
-.. _TinyMCE: http://tinymce.moxiecode.com/
-.. _`django-staticfiles`: http://pypi.python.org/pypi/django-staticfiles/
-.. _`django-filebrowser`: http://code.google.com/p/django-filebrowser/
-.. _`MIT License`: http://www.opensource.org/licenses/mit-license.php
-.. _`its own license`: http://tinymce.moxiecode.com/license.php
+.. _Django: https://www.djangoproject.com/
+.. _TinyMCE: https://www.tinymce.com/
+.. _`django-filebrowser`: https://github.com/sehmaschine/django-filebrowser/
+.. _`MIT License`: https://www.opensource.org/licenses/mit-license.php
+.. _`LGPL v2.1 license`: https://www.tinymce.com/license/
 
 Documentation
 -------------
