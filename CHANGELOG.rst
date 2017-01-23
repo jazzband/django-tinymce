@@ -4,10 +4,17 @@ Changelog
 This document describes changes between each past release.
 
 
-2.5.0 (unreleased)
+2.6.0 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Avoid deprecation warning with django.core.urlresolvers (#188)
+
+
+2.5.0 (2017-01-23)
+==================
+
+- Added compatibility for Django 1.11.
+- Dropped support for Django 1.6.
 
 
 2.4.0 (2016-08-31)

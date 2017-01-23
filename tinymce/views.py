@@ -4,12 +4,16 @@
 import json
 import logging
 
-from django.core import urlresolvers
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt
+try:
+    from django.urls import reverse
+except ImportError:
+    # Django < 1.10
+    from django.core.urlresolvers import reverse
 
 from tinymce.compressor import gzip_compressor
 
@@ -101,9 +105,9 @@ def render_to_js_vardef(var_name, var_value):
 
 def filebrowser(request):
     try:
-        fb_url = request.build_absolute_uri(urlresolvers.reverse('fb_browse'))
+        fb_url = request.build_absolute_uri(reverse('fb_browse'))
     except:
-        fb_url = request.build_absolute_uri(urlresolvers.reverse('filebrowser:fb_browse'))
+        fb_url = request.build_absolute_uri(reverse('filebrowser:fb_browse'))
 
     return render(
         request,

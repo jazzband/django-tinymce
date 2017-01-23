@@ -1,20 +1,20 @@
 sudo: false
 language: python
-python: 2.7
 addons:
   apt:
     packages:
       - libenchant-dev
 env:
-    - TOX_ENV=py27-django16
     - TOX_ENV=py27-django17
     - TOX_ENV=py27-django18
     - TOX_ENV=py27-django19
     - TOX_ENV=py27-django110
+    - TOX_ENV=py27-django111
     - TOX_ENV=py34-django17
     - TOX_ENV=py34-django18
     - TOX_ENV=py34-django19
     - TOX_ENV=py34-django110
+    - TOX_ENV=py34-django111
     - TOX_ENV=flake8
 install:
   - pip install tox
