@@ -10,6 +10,7 @@ This document describes changes between each past release.
 - Avoid deprecation warning with django.core.urlresolvers (#188)
 - Fixed a client-side validation issue when the TinyMCE widget has the HTML
   required attribute set (#187).
+- Fixed a crash when no languages are activated (#175).
 
 
 2.5.0 (2017-01-23)

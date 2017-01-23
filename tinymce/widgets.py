@@ -113,7 +113,8 @@ class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
 
 
 def get_language_config(content_language=None):
-    language = get_language()[:2]
+    language = get_language()
+    language = language[:2] if language is not None else 'en'
     if content_language:
         content_language = content_language[:2]
     else:
