@@ -141,6 +141,9 @@ file.
   reduces the number of requests. The overall initialization time for TinyMCE
   will be reduced dramatically if you use this option.
 
+``TINYMCE_EXTRA_MEDIA`` (default: ``None``)
+  Extra media to include on the page with the :ref:`widget <widget>`.
+
 ``TINYMCE_FILEBROWSER`` (default: ``True`` if ``'filebrowser'`` is in ``INSTALLED_APPS``, else ``False``)
   Whether to use the django-filebrowser_ as a custom filebrowser for media inclusion.
   See the `official TinyMCE documentation on custom filebrowsers`_.
@@ -156,6 +159,16 @@ Example::
   }
   TINYMCE_SPELLCHECKER = True
   TINYMCE_COMPRESSOR = True
+  TINYMCE_EXTRA_MEDIA = {
+      'css': {
+          'all': [
+              ...
+          ],
+      },
+      'js': [
+          ...
+      ],
+  }
 
 .. _`the TinyMCE manual`: http://www.tinymce.com/wiki.php/configuration
 .. _`official TinyMCE documentation on custom filebrowsers`: http://www.tinymce.com/wiki.php/TinyMCE3x:How-to_implement_a_custom_file_browser
