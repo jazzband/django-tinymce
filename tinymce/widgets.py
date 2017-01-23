@@ -55,6 +55,10 @@ class TinyMCE(forms.Textarea):
             content_language = mce_attrs.get('language', None)
         self.content_language = content_language
 
+    def use_required_attribute(self, *args):
+        # The html required attribute may disturb client-side browser validation.
+        return False
+
     def get_mce_config(self, attrs):
         mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
         mce_config.update(get_language_config(self.content_language))
