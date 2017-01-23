@@ -4,7 +4,7 @@ Changelog
 This document describes changes between each past release.
 
 
-2.5.0 (unreleased)
+2.5.0 (2017-01-23)
 ==================
 
 - Added compatibility for Django 1.11.
