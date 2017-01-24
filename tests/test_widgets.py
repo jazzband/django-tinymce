@@ -2,7 +2,11 @@
 
 import pytest
 from selenium.common.exceptions import NoSuchElementException
-from django.urls import reverse
+try:
+    from django.urls import reverse
+except ImportError:
+    # Django < 1.10
+    from django.core.urlresolvers import reverse
 
 from tinymce.widgets import TinyMCE
 

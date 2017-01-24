@@ -17,8 +17,10 @@ class TinyMCE(forms.Textarea):
 
     def build_attrs(self, extra_attrs=None, **kwargs):
         """Add tinymce data attributes."""
-        attrs = super(TinyMCE,
-                      self).build_attrs(extra_attrs=extra_attrs, **kwargs)
+        attrs = super(
+            TinyMCE,
+            self
+        ).build_attrs(extra_attrs=extra_attrs, **kwargs)
 
         if 'class' in attrs:
             attrs['class'] += ' django-tinymce'

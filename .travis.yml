@@ -4,22 +4,25 @@ addons:
   apt:
     packages:
       - libenchant-dev
+python:
+  - '2.7'
+  - '3.5'
+  - '3.6'
 env:
-    - TOX_ENV=py27-django17
-    - TOX_ENV=py27-django18
-    - TOX_ENV=py27-django19
-    - TOX_ENV=py27-django110
-    - TOX_ENV=py27-django111
-    - TOX_ENV=py34-django17
-    - TOX_ENV=py34-django18
-    - TOX_ENV=py34-django19
-    - TOX_ENV=py34-django110
-    - TOX_ENV=py34-django111
-    - TOX_ENV=flake8
+  matrix:
+  - TOXENV=flake8
+  - DJANGO=18
+  - DJANGO=19
+  - DJANGO=110
 install:
   - pip install tox
 script:
-  - tox -e $TOX_ENV
+- |
+  if [[ -z $DJANGO ]]; then
+    tox -e $TOXENV
+  else
+    tox -e py$(echo $TRAVIS_PYTHON_VERSION | sed -e 's/\.//g')-dj$DJANGO
+  fi
 after_success:
   - pip install coveralls
   - coveralls
