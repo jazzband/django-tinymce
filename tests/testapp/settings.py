@@ -74,3 +74,10 @@ TINYMCE_DEFAULT_CONFIG = {
     'plugins': "spellchecker",
     'theme_advanced_buttons3_add': "|,spellchecker",
 }
+
+TINYMCE_EXTRA_MEDIA = {
+    'js': ['test.js'],
+    'css': {
+        'all': ('test.css',)
+    },
+}

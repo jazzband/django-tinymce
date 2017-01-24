@@ -16,7 +16,6 @@ browsers = {
 }
 
 
-
 def random_string(n):
     return ''.join(
         random.choice(string.ascii_uppercase + string.digits)
@@ -45,5 +44,14 @@ def testpages(db):
     from tests.testapp.models import TestPage
 
     return TestPage.objects.bulk_create(
-        [TestPage(pk=pk, content1=random_string(50), content2=random_string(50)) for pk in range(100)]
+        [TestPage(pk=pk, content1=random_string(50), content2=random_string(50)) for pk in range(10)]
+    )
+
+
+@pytest.fixture
+def flatpages(db):
+    from django.contrib.flatpages.models import FlatPage
+
+    return FlatPage.objects.bulk_create(
+        [FlatPage(pk=pk, title=random_string(50), url=random_string(50)) for pk in range(1)]
     )

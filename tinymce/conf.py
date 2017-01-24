@@ -30,8 +30,8 @@ class TinyMCEConf(AppConf):
     }
 
     EXTRA_MEDIA = {
-        'css': [],
         'js': [],
+        'css': {},
     }
 
     class Meta:
