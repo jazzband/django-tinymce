@@ -8,11 +8,8 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': join(ROOT_PATH, "testtinymce.sqlite"),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        # 'NAME': ':memory:',
+        'NAME': join(ROOT_PATH, 'db.sqlite'),
     }
 }
 
@@ -25,8 +22,8 @@ USE_L10N = True
 MEDIA_ROOT = join(ROOT_PATH, "media")
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
-STATIC_ROOT = join(ROOT_PATH, "static")
-STATIC_URL = "/static/"
+STATIC_ROOT = join(ROOT_PATH, 'static')
+STATIC_URL = '/static/'
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -42,9 +39,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,
+        'DIRS': ['templates'],
         'OPTIONS': {
+            'debug': DEBUG,
             'context_processors': [
-                "django.contrib.auth.context_processors.auth",
+                'django.contrib.auth.context_processors.auth',
             ]
         },
     },
@@ -52,7 +51,7 @@ TEMPLATES = [
 
 SECRET_KEY = 'w4o4x^&b4h4zne9&3b1m-_p-=+&n_i_sdf@oz=gd+6h6v1$sd9'
 
-ROOT_URLCONF = 'testtinymce.urls'
+ROOT_URLCONF = 'tests.testapp.urls'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -63,8 +62,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.flatpages',
+
     'tinymce',
-    'testtinymce.testapp',
+    'tests.testapp',
 )
 
 TINYMCE_SPELLCHECKER = True

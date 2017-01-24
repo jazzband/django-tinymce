@@ -7,8 +7,9 @@ except ImportError:
     # Django < 1.10
     from django.core.urlresolvers import reverse
 
-from testtinymce.testapp.models import TestPage, TestInline
 from tinymce.widgets import TinyMCE
+
+from tests.testapp.models import TestPage, TestInline
 
 
 class TinyMCETestInlineAdmin(admin.StackedInline):
@@ -19,7 +20,9 @@ class TinyMCETestInlineAdmin(admin.StackedInline):
         if db_field.name in ('content1', 'content2'):
             return db_field.formfield(widget=TinyMCE(
                 attrs={'cols': 80, 'rows': 30},
-                mce_attrs={'external_link_list_url': reverse('tinymce-linklist')},
+                mce_attrs={
+                    'external_link_list_url': reverse('tinymce-linklist')
+                },
             ))
         return super(TinyMCETestInlineAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
@@ -29,7 +32,9 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
         if db_field.name == 'content':
             return db_field.formfield(widget=TinyMCE(
                 attrs={'cols': 80, 'rows': 30},
-                mce_attrs={'external_link_list_url': reverse('tinymce-linklist')},
+                mce_attrs={
+                    'external_link_list_url': reverse('tinymce-linklist')
+                },
             ))
         return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
@@ -41,7 +46,9 @@ class TinyMCETestPageAdmin(admin.ModelAdmin):
         if db_field.name in ('content1', 'content2'):
             return db_field.formfield(widget=TinyMCE(
                 attrs={'cols': 80, 'rows': 30},
-                mce_attrs={'external_link_list_url': reverse('tinymce-linklist')},
+                mce_attrs={
+                    'external_link_list_url': reverse('tinymce-linklist')
+                },
             ))
         return super(TinyMCETestPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
