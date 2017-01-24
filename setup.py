@@ -18,7 +18,7 @@ CHANGELOG = read_file('CHANGELOG.rst')
 
 setup(
     name="django-tinymce",
-    version='2.7.0.dev0',
+    version='3.0.0.dev0',
     packages=find_packages(),
     include_package_data=True,
     author="Aljosa Mohorovic",
@@ -45,7 +45,11 @@ setup(
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    platforms=['any'],
-    url="https://github.com/aljosa/django-tinymce",
-    test_suite='runtests.runtests',
+    platforms = ['any'],
+    url = "https://github.com/aljosa/django-tinymce",
+    install_requires=[
+        'django-appconf>=0.6.0',
+    ],
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest', 'mock', 'selenium', 'pytest-django', 'django'],
 )
