@@ -11,6 +11,10 @@ Repository:
   * Fixed documentation and test code to use ``db_field.formfield`` instead of
     ``forms.CharField``.
 
+1.5.4 (2017-02-15)
+
+  * Update TinyMCE to 3.5.12
+
 Release 1.5 (2009-02-13):
   * Updated Google Code CSS location.
   * Fixed a compressor crash when 'theme' configuration was omitted.
