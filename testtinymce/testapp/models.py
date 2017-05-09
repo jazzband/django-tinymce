@@ -6,6 +6,6 @@ class TestPage(models.Model):
 
 
 class TestInline(models.Model):
-    page = models.ForeignKey(TestPage)
+    page = models.ForeignKey(TestPage, on_delete=models.CASCADE)
     content1 = models.TextField()
     content2 = models.TextField()

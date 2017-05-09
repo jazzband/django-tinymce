@@ -7,7 +7,8 @@ This document describes changes between each past release.
 2.7.0 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Added INCLUDE_JQUERY setting to decide whether TinyMCE.media should include
+  a jQuery release (#190).
 
 
 2.6.0 (2017-01-23)
