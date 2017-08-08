@@ -69,7 +69,7 @@ class TinyMCE(forms.Textarea):
             mce_config['elements'] = attrs['id']
         return mce_config
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         if value is None:
             value = ''
         value = force_text(value)
