@@ -17,7 +17,7 @@ CHANGELOG = read_file('CHANGELOG.rst')
 
 setup(
     name="gu-django-tinymce",
-    version='2.6.0a',
+    version='2.6.1',
     packages=find_packages(),
     include_package_data=True,
     author="Aljosa Mohorovic",
