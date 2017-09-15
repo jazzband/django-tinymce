@@ -7,29 +7,25 @@ http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
 from __future__ import unicode_literals
 
+from collections import OrderedDict
+import json
 import filebrowser
-
 import tinymce.settings
 from django import forms
 from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
-from django.core.urlresolvers import reverse
-from django.forms.widgets import flatatt
+from django.forms.utils import flatatt
+from django.utils.encoding import force_text
 from django.utils.html import escape
-try:
-    from collections import OrderedDict as SortedDict
-except ImportError:
-    from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
-import json
 try:
-    from django.utils.encoding import smart_text as smart_unicode
+    from django.urls import reverse
 except ImportError:
-    try:
-        from django.utils.encoding import smart_unicode
-    except ImportError:
-        from django.forms.util import smart_unicode
+    # Django < 1.10
+    from django.core.urlresolvers import reverse
+
+import tinymce.settings
 
 
 class TinyMCE(forms.Textarea):
@@ -60,6 +56,10 @@ class TinyMCE(forms.Textarea):
             content_language = mce_attrs.get('language', None)
         self.content_language = content_language
 
+    def use_required_attribute(self, *args):
+        # The html required attribute may disturb client-side browser validation.
+        return False
+
     def get_mce_config(self, attrs):
         mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
         mce_config.update(get_language_config(self.content_language))
@@ -70,29 +70,19 @@ class TinyMCE(forms.Textarea):
             mce_config['elements'] = attrs['id']
         return mce_config
 
-    def get_mce_json(self, mce_config):
-        # Fix for js functions
-        js_functions = {}
-        for k in ('paste_preprocess', 'paste_postprocess'):
-            if k in mce_config:
-                js_functions[k] = mce_config[k]
-                del mce_config[k]
-        mce_json = json.dumps(mce_config)
-        for k in js_functions:
-            index = mce_json.rfind('}')
-            mce_json = mce_json[:index] + ', ' + k + ':' + js_functions[k].strip() + mce_json[index:]
-        return mce_json
-
     def render(self, name, value, attrs=None):
         if value is None:
             value = ''
-        value = smart_unicode(value)
+        value = force_text(value)
         final_attrs = self.build_attrs(attrs)
         final_attrs['name'] = name
-        final_attrs['class'] = 'tinymce'
+        if final_attrs.get('class', None) is None:
+            final_attrs['class'] = 'tinymce'
+        else:
+            final_attrs['class'] = ' '.join(final_attrs['class'].split(' ') + ['tinymce'])
         assert 'id' in final_attrs, "TinyMCE widget attributes must contain 'id'"
         mce_config = self.get_mce_config(final_attrs)
-        mce_json = self.get_mce_json(mce_config)
+        mce_json = json.dumps(mce_config)
         if tinymce.settings.USE_COMPRESSOR:
             compressor_config = {
                 'plugins': mce_config.get('plugins', ''),
@@ -107,6 +97,7 @@ class TinyMCE(forms.Textarea):
         return mark_safe('\n'.join(html))
 
     def _media(self):
+        css = None
         if tinymce.settings.USE_COMPRESSOR:
             js = [reverse('tinymce-compressor')]
         else:
@@ -117,8 +108,15 @@ class TinyMCE(forms.Textarea):
             if filebrowser.get_default_dir():
                 filebrowser_dir_url += "?url={}".format(filebrowser.get_default_dir())
             js.append(filebrowser_dir_url)
+        if tinymce.settings.USE_EXTRA_MEDIA:
+            if 'js' in tinymce.settings.USE_EXTRA_MEDIA:
+                js += tinymce.settings.USE_EXTRA_MEDIA['js']
+
+            if 'css' in tinymce.settings.USE_EXTRA_MEDIA:
+                css = tinymce.settings.USE_EXTRA_MEDIA['css']
+        js.append('django_tinymce/jquery-1.9.1.min.js')
         js.append('django_tinymce/init_tinymce.js')
-        return forms.Media(js=js)
+        return forms.Media(css=css, js=js)
     media = property(_media)
 
 
@@ -127,7 +125,8 @@ class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
 
 
 def get_language_config(content_language=None):
-    language = get_language()[:2]
+    language = get_language()
+    language = language[:2] if language is not None else 'en'
     if content_language:
         content_language = content_language[:2]
     else:
@@ -136,7 +135,7 @@ def get_language_config(content_language=None):
     config = {}
     config['language'] = language
 
-    lang_names = SortedDict()
+    lang_names = OrderedDict()
     for lang, name in settings.LANGUAGES:
         if lang[:2] not in lang_names:
             lang_names[lang[:2]] = []
@@ -157,6 +156,6 @@ def get_language_config(content_language=None):
         config['directionality'] = 'ltr'
 
     if tinymce.settings.USE_SPELLCHECKER:
-        config['spellchecker_rpc_url'] = reverse('tinymce.views.spell_check')
+        config['spellchecker_rpc_url'] = reverse('tinymce-spellcheck')
 
     return config

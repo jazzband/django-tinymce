@@ -12,4 +12,5 @@ def tinymce_preview(element_id):
     return render_to_string('tinymce/preview_javascript.html',
                             {'base_url': tinymce.settings.JS_BASE_URL, 'element_id': element_id})
 
+
 register.simple_tag(tinymce_preview)

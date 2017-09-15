@@ -2,7 +2,11 @@ import filebrowser
 from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except ImportError:
+    # Django < 1.10
+    from django.core.urlresolvers import reverse
 
 from .models import TestPage, TestInline
 from tinymce.widgets import TinyMCE
@@ -16,7 +20,7 @@ class TinyMCETestInlineAdmin(admin.StackedInline):
         if db_field.name in ('content1', 'content2'):
             return db_field.formfield(widget=TinyMCE(
                 attrs={'cols': 80, 'rows': 30},
-                mce_attrs={'external_link_list_url': reverse('tinymce.views.flatpages_link_list')},
+                mce_attrs={'external_link_list_url': reverse('tinymce-linklist')},
             ))
         return super(TinyMCETestInlineAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
@@ -34,7 +38,7 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
         if db_field.name == 'content':
             return db_field.formfield(widget=TinyMCE(
                 attrs={'cols': 80, 'rows': 30},
-                mce_attrs={'external_link_list_url': reverse('tinymce.views.flatpages_link_list')},
+                mce_attrs={'external_link_list_url': reverse('tinymce-linklist')},
             ))
         return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
@@ -50,7 +54,7 @@ class TinyMCETestPageAdmin(admin.ModelAdmin):
         if db_field.name in ('content1', 'content2'):
             return db_field.formfield(widget=TinyMCE(
                 attrs={'cols': 80, 'rows': 30},
-                mce_attrs={'external_link_list_url': reverse('tinymce.views.flatpages_link_list')},
+                mce_attrs={'external_link_list_url': reverse('tinymce-linklist')},
             ))
         return super(TinyMCETestPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 

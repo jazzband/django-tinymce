@@ -4,10 +4,32 @@ Changelog
 This document describes changes between each past release.
 
 
-2.4.0 (unreleased)
+2.6.0 (2017-01-23)
 ==================
 
-- Nothing changed yet.
+- Avoid deprecation warning with django.core.urlresolvers (#188)
+- Fixed a client-side validation issue when the TinyMCE widget has the HTML
+  required attribute set (#187).
+- Fixed a crash when no languages are activated (#175).
+
+
+2.5.0 (2017-01-23)
+==================
+
+- Added compatibility for Django 1.11.
+- Dropped support for Django 1.6.
+
+
+2.4.0 (2016-08-31)
+==================
+
+- Added compatibility for Django 1.10.
+- Fix JQuery Problem with grappelli
+- Fix Python 3 compatibility (#170)
+- Improve documentation (#163, #171)
+- Cleaned Imports (#182)
+- Fix TinyMCE Widget for ModelTranslation tabs (#174)
+- Fix JSON mimetype (#186)
 
 
 2.3.0 (2016-03-10)

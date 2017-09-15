@@ -1,33 +1,32 @@
 # Copyright (c) 2008 Joost Cassee
 # Licensed under the terms of the MIT License (see LICENSE.txt)
 
+import json
 import logging
-from django.core import urlresolvers
+
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.utils.datastructures import MultiValueDictKeyError
+from django.utils.encoding import force_text
+from django.template import RequestContext
 from django.utils.translation import ugettext as _
-from tinymce.compressor import gzip_compressor
-import json
+from django.views.decorators.csrf import csrf_exempt
 try:
-    from django.views.decorators.csrf import csrf_exempt
+    from django.urls import reverse
 except ImportError:
-    pass
+    # Django < 1.10
+    from django.core.urlresolvers import reverse
+
+from tinymce.compressor import gzip_compressor
+
 try:
     import enchant
 except ImportError:
     enchant = None
 
-try:
-    from django.utils.encoding import smart_text as smart_unicode
-except ImportError:
-    try:
-        from django.utils.encoding import smart_unicode
-    except ImportError:
-        from django.forms.util import smart_unicode
 
-
+@csrf_exempt
 def spell_check(request):
     """
     Returns a HttpResponse that implements the TinyMCE spellchecker protocol.
@@ -36,7 +35,7 @@ def spell_check(request):
         if not enchant:
             raise RuntimeError("install pyenchant for spellchecker functionality")
 
-        raw = smart_unicode(request.body)
+        raw = force_text(request.body)
         input = json.loads(raw)
         id = input['id']
         method = input['method']
@@ -65,11 +64,6 @@ def spell_check(request):
         return HttpResponse(_("Error running spellchecker"))
     return HttpResponse(json.dumps(output),
                         content_type='application/json')
-
-try:
-    spell_check = csrf_exempt(spell_check)
-except NameError:
-    pass
 
 
 def flatpages_link_list(request):
@@ -114,12 +108,16 @@ def render_to_js_vardef(var_name, var_value):
 
 def filebrowser(request):
     try:
-        fb_url = request.build_absolute_uri(urlresolvers.reverse('fb_browse'))
+        fb_url = request.build_absolute_uri(reverse('fb_browse'))
     except:
-        fb_url = request.build_absolute_uri(urlresolvers.reverse('filebrowser:fb_browse'))
+        fb_url = request.build_absolute_uri(reverse('filebrowser:fb_browse'))
 
-    return render_to_response('tinymce/filebrowser.js', {'fb_url': fb_url },
-            context_instance=RequestContext(request))
+    return render(
+        request,
+        'tinymce/filebrowser.js',
+        {'fb_url': fb_url},
+        content_type='application/javascript'
+    )
 
 def filebrowserPath(request):
     try:
@@ -127,5 +125,9 @@ def filebrowserPath(request):
     except MultiValueDictKeyError:
         _dir = ''
 
-    return render_to_response('tinymce/defaultpath.js', {'dir': _dir,},
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'tinymce/defaultpath.js',
+        {'dir': _dir, },
+        context_instance=RequestContext(request),
+        content_type='application/javascript'
+    )

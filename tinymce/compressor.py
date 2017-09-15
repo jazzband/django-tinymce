@@ -15,11 +15,11 @@ import json
 from django.conf import settings
 from django.core.cache import cache
 from django.http import HttpResponse
-from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils.text import compress_string
 from django.utils.cache import patch_vary_headers, patch_response_headers
 from django.utils.encoding import smart_text
+from django.utils.http import http_date
 
 import tinymce.settings
 
@@ -65,7 +65,7 @@ def gzip_compressor(request):
     if not isJS:
         response.write(render_to_string('tinymce/tiny_mce_gzip.js', {
             'base_url': tinymce.settings.JS_BASE_URL,
-        }, context_instance=RequestContext(request)))
+        }))
         return response
 
     patch_vary_headers(response, ['Accept-Encoding'])
@@ -157,6 +157,9 @@ def gzip_compressor(request):
     response.write(content)
     timeout = 3600 * 24 * 10
     patch_response_headers(response, timeout)
+    if not response.has_header('Last-Modified'):
+        # Last-Modified not set since Django 1.11
+        response['Last-Modified'] = http_date()
     cache.set(cacheKey, {
         'Last-Modified': response['Last-Modified'],
         'ETag': response.get('ETag', ''),

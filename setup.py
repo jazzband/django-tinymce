@@ -17,18 +17,18 @@ CHANGELOG = read_file('CHANGELOG.rst')
 
 setup(
     name="gu-django-tinymce",
-    version='2.3.2',
+    version='2.6.0',
     packages=find_packages(),
     include_package_data=True,
     author="Aljosa Mohorovic",
     author_email="aljosa.mohorovic@gmail.com",
     description=("A Django application that contains a widget to render a "
                  "form field as a TinyMCE editor."),
-    long_description = README + "\n\n" + CHANGELOG,
-    license = "MIT License",
-    keywords = "django widget tinymce",
+    long_description=README + "\n\n" + CHANGELOG,
+    license="MIT License",
+    keywords="django widget tinymce",
     zip_safe=False,
-    classifiers = [
+    classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Framework :: Django',
@@ -44,6 +44,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    platforms = ['any'],
-    url = "https://github.com/agushuley/gu-django-tinymce", requires=['django']
+    platforms=['any'],
+    url="https://github.com/agushuley/gu-django-tinymce", requires=['django'],
+    test_suite='runtests.runtests',
 )
