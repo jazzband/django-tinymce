@@ -123,7 +123,7 @@ def filebrowser(request):
 
 def filebrowserPath(request):
     try:
-        _dir = request.GET['dir']
+        _dir = request.GET['url']
     except MultiValueDictKeyError:
         _dir = ''
 

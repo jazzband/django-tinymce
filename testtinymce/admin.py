@@ -1,3 +1,4 @@
+import filebrowser
 from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
@@ -21,6 +22,14 @@ class TinyMCETestInlineAdmin(admin.StackedInline):
 
 
 class TinyMCEFlatPageAdmin(FlatPageAdmin):
+
+    def get_form(self, request, obj=None, **kwargs):
+        filebrowser.set_default_dir("custom/subdir")
+
+    def get_form(self, request, obj=None, **kwargs):
+        filebrowser.set_default_dir("custom/subdir")
+        return super(TinyMCEFlatPageAdmin, self).get_form(request=request, obj=obj, **kwargs)
+
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name == 'content':
             return db_field.formfield(widget=TinyMCE(
@@ -32,6 +41,10 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
 
 class TinyMCETestPageAdmin(admin.ModelAdmin):
     inlines = [TinyMCETestInlineAdmin]
+
+    def get_form(self, request, obj=None, **kwargs):
+        filebrowser.set_default_dir("custom/subdir")
+        return super(TinyMCETestPageAdmin, self).get_form(request=request, obj=obj, **kwargs)
 
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name in ('content1', 'content2'):

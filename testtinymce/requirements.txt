@@ -1,0 +1,3 @@
+gu-django-filebrowser-no-grappelli
+django<1.10
+pillow

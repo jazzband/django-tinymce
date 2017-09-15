@@ -43,6 +43,8 @@ ROOT_URLCONF = 'testtinymce.urls'
 
 TINYMCE_FILEBROWSER = True
 
+UPLOAD_FOLDER='u'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
