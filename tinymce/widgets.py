@@ -69,11 +69,17 @@ class TinyMCE(forms.Textarea):
             mce_config['elements'] = attrs['id']
         return mce_config
 
+    def build_attrs(self, base_attrs, extra_attrs=None, **kwargs):
+        attributes = dict(base_attrs, **kwargs)
+        if extra_attrs:
+            attributes.update(extra_attrs)
+        return attributes
+
     def render(self, name, value, attrs=None):
         if value is None:
             value = ''
         value = force_text(value)
-        final_attrs = self.build_attrs(attrs)
+        final_attrs = self.build_attrs(self.attrs, attrs)
         final_attrs['name'] = name
         if final_attrs.get('class', None) is None:
             final_attrs['class'] = 'tinymce'
