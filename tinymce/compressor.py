@@ -143,7 +143,7 @@ def gzip_compressor(request):
         except UnicodeDecodeError:
             try:
                 unicode_content.append(c.decode('utf-8'))
-            except:
+            except Exception:
                 print('{!s} is nor latin-1 nor utf-8.'.format(files[i]))
                 raise
 
