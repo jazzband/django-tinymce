@@ -7,6 +7,9 @@ This document describes changes between each past release.
 2.7.0 (unreleased)
 ==================
 
+- Drop support for Django 1.7, 1.8, 1.9 and 1.10.
+- Django 1.11 is still supported but issues a deprecation warning.
+- Add support for Django 2.0
 - Added INCLUDE_JQUERY setting to decide whether TinyMCE.media should include
   a jQuery release (#190).
 

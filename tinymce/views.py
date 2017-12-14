@@ -4,6 +4,12 @@
 import json
 import logging
 
+import django
+if django.VERSION < (2,):  # pragma: no cover
+    import warnings
+    warnings.warn("Support for Django < 2.0 will be removed soon,"
+                  "please upgrade your projects to use Django 2.0", DeprecationWarning)
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.encoding import force_text
