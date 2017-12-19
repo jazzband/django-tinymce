@@ -4,7 +4,7 @@ Changelog
 This document describes changes between each past release.
 
 
-2.7.0 (unreleased)
+2.7.0 (2017-12-19)
 ==================
 
 - Drop support for Django 1.7, 1.8, 1.9 and 1.10.
