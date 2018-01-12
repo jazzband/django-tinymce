@@ -1,0 +1,34 @@
+language: python
+python:
+- 2.7
+- 3.6
+cache:
+  directories:
+  - "$HOME/.cache/pip"
+env:
+  global:
+  - PIP_INDEX_URL=https://www.fool.com/a/apikey/$DEVPI_API_KEY/fool/packages/+simple/
+  - secure: GfpvKGeoz/nY6XppPI5lxf/5jGGeK16illeym7kWraagNJla9NCNqjbfOfwmE9nlyn2Xj8fnYRxSAmOy6tWYQAIlsWWESMR/foLQiI6ZmoGYrbS7glx8Lo4TjCjv9Z67r+d6/1t8HOKUWyt06757A772TIxPv2UclVvaI3I5104=
+  matrix:
+  - DJANGO_VERSION='Django>=1.8,<1.9'
+  - DJANGO_VERSION='Django>=1.11,<1.12'
+  - DJANGO_VERSION=Django
+matrix:
+  fast_finish: true
+  exclude:
+  - python: 2.7
+    env: DJANGO_VERSION=Django
+install:
+- pip install -U pip
+- pip install .
+script:
+- python setup.py test
+deploy:
+  provider: pypi
+  server: https://www.fool.com/a/apikey/$DEVPI_API_KEY/fool/packages/
+  skip_upload_docs: true
+  user: travisci
+  on:
+    tags: true
+  password:
+    secure: ZDsS/fzDTS9QFjuhIvEeQkDlsCOIASraEhu6z4OhZ9XyZ43SpQuZYHCJxY/xVZl+FJyZ7GjTkFT0CMicbFkeXkIHJL2mq6qXvY9XGFkL8kvUvI2867ch+0HMUYZs1d9OB/5gupW2MLdgNLZy+F91s7S0hLvaq1R9pY3jLTac+m8=
