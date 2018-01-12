@@ -1,0 +1,54 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyCompatibilityInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ourVersions">
+        <value>
+          <list size="3">
+            <item index="0" class="java.lang.String" itemvalue="2.7" />
+            <item index="1" class="java.lang.String" itemvalue="3.5" />
+            <item index="2" class="java.lang.String" itemvalue="3.6" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="25">
+            <item index="0" class="java.lang.String" itemvalue="simplejson" />
+            <item index="1" class="java.lang.String" itemvalue="fool-django-speedbar" />
+            <item index="2" class="java.lang.String" itemvalue="django-widget-tweaks" />
+            <item index="3" class="java.lang.String" itemvalue="ipython" />
+            <item index="4" class="java.lang.String" itemvalue="django-annoying" />
+            <item index="5" class="java.lang.String" itemvalue="fool-mms" />
+            <item index="6" class="java.lang.String" itemvalue="Django" />
+            <item index="7" class="java.lang.String" itemvalue="django-autoslug" />
+            <item index="8" class="java.lang.String" itemvalue="fool-django-localflavor" />
+            <item index="9" class="java.lang.String" itemvalue="requests" />
+            <item index="10" class="java.lang.String" itemvalue="raven" />
+            <item index="11" class="java.lang.String" itemvalue="django-countries" />
+            <item index="12" class="java.lang.String" itemvalue="fool-commerce" />
+            <item index="13" class="java.lang.String" itemvalue="django-debug-toolbar" />
+            <item index="14" class="java.lang.String" itemvalue="newrelic" />
+            <item index="15" class="java.lang.String" itemvalue="mailchimp" />
+            <item index="16" class="java.lang.String" itemvalue="tmf-django-utils" />
+            <item index="17" class="java.lang.String" itemvalue="fool-operations" />
+            <item index="18" class="java.lang.String" itemvalue="fool-error-pages" />
+            <item index="19" class="java.lang.String" itemvalue="keen" />
+            <item index="20" class="java.lang.String" itemvalue="internal-ip-checker" />
+            <item index="21" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="22" class="java.lang.String" itemvalue="django-redis" />
+            <item index="23" class="java.lang.String" itemvalue="django-compressor" />
+            <item index="24" class="java.lang.String" itemvalue="fool-switch-templatetag" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="processCode" value="true" />
+      <option name="processLiterals" value="true" />
+      <option name="processComments" value="true" />
+    </inspection_tool>
+  </profile>
+</component>
