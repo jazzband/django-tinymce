@@ -7,18 +7,17 @@ version = 'metadata.version'
 def read(filename):
     with open(filename) as fp:
         return fp.read()
-long_description = read('README.md')
+
 
 setup(
     name = "fool-django-%s" % app_name,
-    version='2.2.4.dev0',
-    packages = find_packages(),
-    include_package_data = True,
-    author = "Aljosa Mohorovic",
+    url="https://github.com/themotleyfool/django-tinymce",
+    author="Aljosa Mohorovic",
     author_email = "aljosa.mohorovic@gmail.com",
     description = "A Django application that contains a widget to render a" \
             " form field as a TinyMCE editor.",
-    long_description = long_description,
+    long_description = "A Django application forked by The Motley Fool that contains a widget to render a" \
+            " form field as a TinyMCE editor.",
     license = "MIT License",
     keywords = "django widget tinymce",
     classifiers = [
@@ -32,6 +31,14 @@ setup(
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    platforms = ['any'],
-    url = "https://github.com/aljosa/django-tinymce",
+    install_requires=[
+    ],
+    use_scm_version=True,
+    skip_upload_docs=True,
+    setup_requires=[
+        'setuptools_scm'
+    ],
+    packages=find_packages(),
+    include_package_data=True,
+
 )
