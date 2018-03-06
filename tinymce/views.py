@@ -2,11 +2,20 @@
 # Licensed under the terms of the MIT License (see LICENSE.txt)
 
 import logging
-from django.core import urlresolvers
+
+try:
+    from django.core import urlresolvers
+except ImportError:
+    from django import urls as urlresolvers
+
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
-import simplejson
+try:
+    import simplejson
+except ImportError:
+    import json as simplejson
+
 from django.utils.translation import ugettext as _
 from tinymce.compressor import gzip_compressor
 from tinymce.widgets import get_language_config
