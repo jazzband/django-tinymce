@@ -74,6 +74,14 @@ class TestWidgets(TestCase):
         )
         self.assertIn('class="foo tinymce"', html)
 
+    def test_tinymce_widget_size(self):
+        widget = TinyMCE(attrs={'cols': 80, 'rows': 30})
+        html = widget.render(
+            'foobar', 'lorem ipsum', attrs={'id': 'id_foobar'}
+        )
+        self.assertIn('cols="80"', html)
+        self.assertIn('rows="30"', html)
+
     @override_settings(TINYMCE_INCLUDE_JQUERY=False)
     def test_tinymce_widget_media(self):
         widget = TinyMCE()
