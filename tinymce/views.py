@@ -22,6 +22,7 @@ except ImportError:
     from django.core.urlresolvers import reverse
 
 from tinymce.compressor import gzip_compressor
+import tinymce.settings
 
 try:
     import enchant
@@ -115,9 +116,14 @@ def filebrowser(request):
     except Exception:
         fb_url = request.build_absolute_uri(reverse('filebrowser:fb_browse'))
 
+    if tinymce.settings.TINYMCE_VERSION < (4,0,0):
+        filebrowser_js = 'tinymce/filebrowser.js'
+    else:
+        filebrowser_js = 'tinymce/filebrowser_tinymce4.js'
+
     return render(
         request,
-        'tinymce/filebrowser.js',
+        filebrowser_js,
         {'fb_url': fb_url},
         content_type='application/javascript'
     )
