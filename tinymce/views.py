@@ -116,7 +116,7 @@ def filebrowser(request):
     except Exception:
         fb_url = request.build_absolute_uri(reverse('filebrowser:fb_browse'))
 
-    if tinymce.settings.TINYMCE_VERSION < (4,0,0):
+    if tinymce.settings.TINYMCE_VERSION < (4, 0, 0):
         filebrowser_js = 'tinymce/filebrowser.js'
     else:
         filebrowser_js = 'tinymce/filebrowser_tinymce4.js'
