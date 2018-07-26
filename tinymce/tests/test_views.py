@@ -12,6 +12,9 @@ from tinymce.views import render_to_image_list
 
 devnull = open(os.devnull, 'w')
 
+def compress_whitespace(s):
+    # replace whitespace runs with a single space
+    return ' '.join(s.split())
 
 class TestViews(TestCase):
 
@@ -115,6 +118,8 @@ class TestViews(TestCase):
     @patch('tinymce.views.reverse', return_value='/filebrowser')
     def test_filebrowser(self, reverse_mock):
         response = self.client.get('/tinymce/filebrowser/')
-        response_ok = b'function djangoFileBrowser(field_name, url, type, win) {\n    var url = "http://testserver/filebrowser?pop=2&type=" + type;\n\n    tinyMCE.activeEditor.windowManager.open(\n        {\n            \'file\': url,\n            \'width\': 820,\n            \'height\': 500,\n            \'resizable\': "yes",\n            \'scrollbars\': "yes",\n            \'inline\': "no",\n            \'close_previous\': "no"\n        },\n        {\n            \'window\': win,\n            \'input\': field_name,\n            \'editor_id\': tinyMCE.selectedInstance.editorId\n        }\n    );\n    return false;\n}\n'
+        with open('tinymce/templates/tinymce/filebrowser.js') as f:
+            response_ok = f.read()
+        response_ok = response_ok.replace('{{ fb_url }}', 'http://testserver/filebrowser')
         self.assertEqual(200, response.status_code)
-        self.assertEqual(response_ok, response.content)
+        self.assertEqual(compress_whitespace(response_ok), compress_whitespace(response.content))
