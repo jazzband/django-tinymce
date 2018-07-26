@@ -12,9 +12,11 @@ from tinymce.views import render_to_image_list
 
 devnull = open(os.devnull, 'w')
 
+
 def compress_whitespace(s):
     # replace whitespace runs with a single space
     return ' '.join(s.split())
+
 
 class TestViews(TestCase):
 
