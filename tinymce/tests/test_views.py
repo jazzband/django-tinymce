@@ -122,4 +122,4 @@ class TestViews(TestCase):
             response_ok = f.read()
         response_ok = response_ok.replace('{{ fb_url }}', 'http://testserver/filebrowser')
         self.assertEqual(200, response.status_code)
-        self.assertEqual(compress_whitespace(response_ok), compress_whitespace(response.content))
+        self.assertEqual(compress_whitespace(response_ok), compress_whitespace(response.content.decode()))
