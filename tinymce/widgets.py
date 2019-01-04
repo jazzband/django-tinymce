@@ -73,7 +73,7 @@ class TinyMCE(forms.Textarea):
         if value is None:
             value = ''
         value = force_text(value)
-        final_attrs = self.build_attrs(attrs)
+        final_attrs = self.build_attrs(self.attrs, attrs)
         final_attrs['name'] = name
         if final_attrs.get('class', None) is None:
             final_attrs['class'] = 'tinymce'
