@@ -4,11 +4,6 @@
 from django.db import models
 from django.contrib.admin import widgets as admin_widgets
 from tinymce import widgets as tinymce_widgets
-try:
-    from south.modelsinspector import add_introspection_rules
-    add_introspection_rules([], ['^tinymce\.models\.HTMLField'])
-except ImportError:
-    pass
 
 
 class HTMLField(models.TextField):
