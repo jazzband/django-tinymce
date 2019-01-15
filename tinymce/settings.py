@@ -1,6 +1,6 @@
 import os
 from django.conf import settings
-from django.contrib.staticfiles import finders
+from django.core.exceptions import AppRegistryNotReady
 
 DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG',
                          {'theme': "simple", 'relative_urls': False})
@@ -18,7 +18,11 @@ USE_FILEBROWSER = getattr(settings, 'TINYMCE_FILEBROWSER',
 
 if 'staticfiles' in settings.INSTALLED_APPS or 'django.contrib.staticfiles' in settings.INSTALLED_APPS:
     JS_URL = getattr(settings, 'TINYMCE_JS_URL', os.path.join(settings.STATIC_URL, 'tiny_mce/tiny_mce.js'))
-    JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT', finders.find('tiny_mce', all=False))
+    try:
+        from django.contrib.staticfiles import finders
+        JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT', finders.find('tiny_mce', all=False))
+    except AppRegistryNotReady:
+        JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT', os.path.join(settings.STATIC_ROOT, 'tiny_mce'))
 else:
     JS_URL = getattr(settings, 'TINYMCE_JS_URL', '{!s}js/tiny_mce/tiny_mce.js'.format(settings.MEDIA_URL))
     JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT', os.path.join(settings.MEDIA_ROOT, 'js/tiny_mce'))
