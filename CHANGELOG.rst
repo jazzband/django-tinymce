@@ -7,7 +7,7 @@ This document describes changes between each past release.
 2.9.0 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Upgrade test matrix to Python 3.7 and Django 2.1
 
 
 2.8.0 (2019-01-15)
