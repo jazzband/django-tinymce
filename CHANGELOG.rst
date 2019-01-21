@@ -4,6 +4,12 @@ Changelog
 This document describes changes between each past release.
 
 
+2.6.1 (2019-01-21)
+==================
+
+- Fix AppRegistryNotReady exception. (#132)
+
+
 2.6.0 (2017-01-23)
 ==================
 
