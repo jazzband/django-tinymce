@@ -4,6 +4,12 @@ Changelog
 This document describes changes between each past release.
 
 
+2.6.2 (unreleased)
+==================
+
+- Nothing changed yet.
+
+
 2.6.1 (2019-01-21)
 ==================
 
