@@ -15742,7 +15742,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 		editor.onKeyDown.add(function(editor, e) {
 			var keyCode = e.keyCode;
 
-			// Is caracter positon keys left,right,up,down,home,end,pgdown,pgup,enter
+			// Is caracter position keys left,right,up,down,home,end,pgdown,pgup,enter
 			if ((keyCode >= 33 && keyCode <= 36) || (keyCode >= 37 && keyCode <= 40) || keyCode == 45) {
 				if (self.typing) {
 					addNonTypingUndoLevel();
