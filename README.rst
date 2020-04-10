@@ -42,7 +42,7 @@ Add tinymce.urls to urls.py for your project:
 
     urlpatterns = [
         ...
-        url(r'^tinymce/', include('tinymce.urls')),
+        path('tinymce/', include('tinymce.urls')),
     ]
 
 In your code:
@@ -59,9 +59,9 @@ In your code:
 **django-tinymce** uses staticfiles so everything should work as expected, different use cases (like using widget instead of HTMLField) and other stuff is available in documentation.
 
 Releases
-===================
+========
 
-Latest release is 2.6.0. It supports python 2.7, 3.4, 3.5 and Django >= 1.7.
+Latest release is 2.9.0. It supports python 2.7 and Django 1.1.1 as well as Python 3.5, 3.6, 3.7 and Django >= 2.0.
 Previous releases can be found on github, but they are no longer maintained.
 
 Documentation

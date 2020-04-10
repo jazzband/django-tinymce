@@ -97,41 +97,39 @@ def gzip_compressor(request):
         'base': tinymce.settings.JS_BASE_URL,
         'suffix': '',
     }
-    content.append('var tinyMCEPreInit={!s};'.format(
-        json.dumps(tinyMCEPreInit)
-    ))
+    content.append(f'var tinyMCEPreInit={json.dumps(tinyMCEPreInit)};')
 
     # Add core
     files = ['tiny_mce']
 
     # Add core languages
     for lang in languages:
-        files.append('langs/{!s}'.format(lang))
+        files.append(f'langs/{lang}')
 
     # Add plugins
     for plugin in plugins:
-        files.append('plugins/{!s}/editor_plugin{!s}'.format(plugin, suffix))
+        files.append(f'plugins/{plugin}/editor_plugin{suffix}')
 
         for lang in languages:
-            files.append('plugins/{!s}/langs/{!s}'.format(plugin, lang))
+            files.append(f'plugins/{plugin}/langs/{lang}')
 
     # Add themes
     for theme in themes:
-        files.append('themes/{!s}/editor_template{!s}'.format(theme, suffix))
+        files.append(f'themes/{theme}/editor_template{suffix}')
 
         for lang in languages:
-            files.append('themes/{!s}/langs/{!s}'.format(theme, lang))
+            files.append(f'themes/{theme}/langs/{lang}')
 
     for f in files:
         # Check for unsafe characters
         if not safe_filename_re.match(f):
             continue
-        content.append(get_file_contents('{!s}.js'.format(f)))
+        content.append(get_file_contents(f'{f}.js'))
 
     # Restore loading functions
-    content.append('tinymce.each("{!s}".split(","), function(f){{'
+    content.append(f'tinymce.each("{",".join(files)}".split(","), function(f){{'
                    'tinymce.ScriptLoader.markDone(tinyMCE.baseURL+'
-                   '"/"+f+".js");}});'.format(','.join(files)))
+                   '"/"+f+".js");}});')
 
     unicode_content = []
     for i, c in enumerate(content):
@@ -144,7 +142,7 @@ def gzip_compressor(request):
             try:
                 unicode_content.append(c.decode('utf-8'))
             except Exception:
-                print('{!s} is nor latin-1 nor utf-8.'.format(files[i]))
+                print(f'{files[i]} is nor latin-1 nor utf-8.')
                 raise
 
     # Compress

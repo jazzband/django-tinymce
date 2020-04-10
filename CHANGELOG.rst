@@ -4,10 +4,18 @@ Changelog
 This document describes changes between each past release.
 
 
-2.9.0 (unreleased)
+3.0.0 (unreleased)
 ==================
 
-- Upgrade test matrix to Python 3.7 and Django 2.1
+- Nothing changed yet.
+
+
+2.9.0 (2020-04-10)
+==================
+
+- Upgrade test matrix to Python 3.7 and Django 2.1, 2.2
+- Add support for TinyMCE FileBrowser 4.0
+- Remove support for South
 
 
 2.8.0 (2019-01-15)
