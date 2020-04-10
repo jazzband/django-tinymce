@@ -79,4 +79,3 @@ htmlsvn: html
 		`find .build/html -name .svn -type f -prune -o -name *.png`
 	svn propset -R svn:mime-type text/html \
 		`find .build/html -name .svn -type f -prune -o -name *.html`
-

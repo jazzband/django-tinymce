@@ -28,10 +28,10 @@ extensions = []
 templates_path = []
 
 # The suffix of source filenames.
-source_suffix = '.rst'
+source_suffix = ".rst"
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = "index"
 
 # General substitutions.
 project = "django-tinymce"
@@ -50,7 +50,7 @@ release = "2.3.0"
 # non-false value, then it is used:
 # today = ''
 # Else, today_fmt is used as the format for a strftime call.
-today_fmt = '%B %d, %Y'
+today_fmt = "%B %d, %Y"
 
 # List of documents that shouldn't be included in the build.
 # unused_docs = []
@@ -75,7 +75,7 @@ today_fmt = '%B %d, %Y'
 show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = "sphinx"
 
 
 # Options for HTML output
@@ -84,7 +84,7 @@ pygments_style = 'sphinx'
 # The style sheet to use for HTML and HTML Help pages. A file of that name
 # must exist either in Sphinx' static/ path, or in one of the custom paths
 # given in html_static_path.
-html_style = 'default.css'
+html_style = "default.css"
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -105,11 +105,11 @@ html_title = f"{project} {version} documentation"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['.static']
+html_static_path = [".static"]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
-html_last_updated_fmt = '%b %d, %Y'
+html_last_updated_fmt = "%b %d, %Y"
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
@@ -140,10 +140,10 @@ html_copy_source = False
 # html_use_opensearch = ''
 
 # If nonempty, this is the file name suffix for HTML files (e.g. ".xhtml").
-html_file_suffix = '.html'
+html_file_suffix = ".html"
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = f'{project}doc'
+htmlhelp_basename = f"{project}doc"
 
 
 # Options for LaTeX output
@@ -158,8 +158,7 @@ htmlhelp_basename = f'{project}doc'
 # Grouping the document tree into LaTeX files. List of tuples (source
 # start file, target name, title, author, document class [howto/manual]).
 latex_documents = [
-    (master_doc, f'{project}.tex', f'{project} Documentation',
-     authors, 'manual'),
+    (master_doc, f"{project}.tex", f"{project} Documentation", authors, "manual"),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
