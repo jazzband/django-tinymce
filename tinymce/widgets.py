@@ -92,7 +92,7 @@ class TinyMCE(forms.Textarea):
             }
             final_attrs['data-mce-gz-conf'] = json.dumps(compressor_config)
         final_attrs['data-mce-conf'] = mce_json
-        html = ['<textarea{!s}>{!s}</textarea>'.format(flatatt(final_attrs), escape(value))]
+        html = [f'<textarea{flatatt(final_attrs)}>{escape(value)}</textarea>']
         return mark_safe('\n'.join(html))
 
     def _media(self):
@@ -142,7 +142,7 @@ def get_language_config(content_language=None):
             default = '+'
         else:
             default = ''
-        sp_langs.append('{!s}{!s}={!s}'.format(default, ' / '.join(names), lang))
+        sp_langs.append(f'{default}{" / ".join(names)}={lang}')
 
     config['spellchecker_languages'] = ','.join(sp_langs)
 
