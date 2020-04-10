@@ -2,16 +2,6 @@ sudo: false
 language: python
 matrix:
   include:
-    - python: 3.5
-      dist: xenial
-      env: TOX_ENV=flake8
-    - python: 3.5
-      dist: xenial
-      env: TOX_ENV=py37-django22
-    - python: 3.5
-      dist: xenial
-      env: TOX_ENV=py37-django30
-
     - python: 3.6
       dist: xenial
       env: TOX_ENV=flake8
