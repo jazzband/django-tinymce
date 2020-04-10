@@ -99,7 +99,7 @@ class TestWidgets(TestCase):
             self.assertEqual(
                 widget.media.render_js(),
                 [
-                    '<script type="text/javascript" src="/static/tiny_mce/tiny_mce.js"></script>',
+                    '<script type="text/javascript" src="/static/tinymce/tinymce.min.js"></script>',
                     '<script type="text/javascript" src="/static/django_tinymce/init_tinymce.js"></script>',
                 ]
             )
