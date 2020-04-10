@@ -36,7 +36,7 @@ master_doc = 'index'
 # General substitutions.
 project = "django-tinymce"
 authors = "Joost Cassee, Aljosa Mohorovic"
-copyright = "2008-2016, %s" % authors
+copyright = f"2008-2016, {authors}"
 
 # The default replacements for |version| and |release|, also used in various
 # other places throughout the built documents.
@@ -88,7 +88,7 @@ html_style = 'default.css'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "%s %s documentation" % (project, version)
+html_title = f"{project} {version} documentation"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 # html_short_title = None
@@ -143,7 +143,7 @@ html_copy_source = False
 html_file_suffix = '.html'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = '%sdoc' % project
+htmlhelp_basename = f'{project}doc'
 
 
 # Options for LaTeX output
@@ -158,7 +158,7 @@ htmlhelp_basename = '%sdoc' % project
 # Grouping the document tree into LaTeX files. List of tuples (source
 # start file, target name, title, author, document class [howto/manual]).
 latex_documents = [
-    (master_doc, '%s.tex' % project, '%s Documentation' % project,
+    (master_doc, f'{project}.tex', f'{project} Documentation',
      authors, 'manual'),
 ]
 

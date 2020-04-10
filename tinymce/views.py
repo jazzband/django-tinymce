@@ -47,7 +47,7 @@ def spell_check(request):
         arg = params[1]
 
         if not enchant.dict_exists(str(lang)):
-            raise RuntimeError("dictionary not found for language {!r}".format(lang))
+            raise RuntimeError(f"dictionary not found for language {lang}")
 
         checker = enchant.Dict(str(lang))
 
@@ -56,7 +56,7 @@ def spell_check(request):
         elif method == 'getSuggestions':
             result = checker.suggest(arg)
         else:
-            raise RuntimeError("Unknown spellcheck method: {!r}".format(method))
+            raise RuntimeError(f"Unknown spellcheck method: {method}")
         output = {
             'id': id,
             'result': result,
@@ -105,7 +105,7 @@ def render_to_image_list(image_list):
 
 
 def render_to_js_vardef(var_name, var_value):
-    output = "var {!s} = {!s};".format(var_name, json.dumps(var_value))
+    output = f"var {var_name} = {json.dumps(var_value)};"
     return HttpResponse(output, content_type='application/x-javascript')
 
 
