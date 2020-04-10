@@ -61,7 +61,8 @@ In your code:
 Releases
 ========
 
-Latest release is 2.9.0. It supports python 2.7 and Django 1.1.1 as well as Python 3.5, 3.6, 3.7 and Django >= 2.0.
+Latest release is 3.0.0. It supports Python 3.6, 3.7 and 3.8 with Django 2.2 and 3.0
+
 Previous releases can be found on github, but they are no longer maintained.
 
 Documentation
