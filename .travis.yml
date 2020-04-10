@@ -2,37 +2,45 @@ sudo: false
 language: python
 matrix:
   include:
-    - python: 2.7
-      env: TOX_ENV=py27-django111
-
     - python: 3.5
-      env: TOX_ENV=py35-django20
-    - python: 3.5
-      env: TOX_ENV=py35-django21
-    - python: 3.5
-      env: TOX_ENV=py35-django22
-
-    - python: 3.6
-      env: TOX_ENV=flake8
-    - python: 3.6
-      env: TOX_ENV=py36-django20
-    - python: 3.6
-      env: TOX_ENV=py36-django21
-    - python: 3.6
-      env: TOX_ENV=py36-django22
-
-    - python: 3.7
       dist: xenial
       env: TOX_ENV=flake8
+    - python: 3.5
+      dist: xenial
+      env: TOX_ENV=py37-django22
+    - python: 3.5
+      dist: xenial
+      env: TOX_ENV=py37-django30
+
+    - python: 3.6
+      dist: xenial
+      env: TOX_ENV=flake8
+    - python: 3.6
+      dist: xenial
+      env: TOX_ENV=py37-django22
+    - python: 3.6
+      dist: xenial
+      env: TOX_ENV=py37-django30
+
     - python: 3.7
       dist: xenial
-      env: TOX_ENV=py37-django20
-    - python: 3.7
-      dist: xenial
-      env: TOX_ENV=py37-django21
+      env: TOX_ENV=flake8
     - python: 3.7
       dist: xenial
       env: TOX_ENV=py37-django22
+    - python: 3.7
+      dist: xenial
+      env: TOX_ENV=py37-django30
+
+    - python: 3.8
+      dist: xenial
+      env: TOX_ENV=flake8
+    - python: 3.8
+      dist: xenial
+      env: TOX_ENV=py37-django22
+    - python: 3.8
+      dist: xenial
+      env: TOX_ENV=py37-django30
 addons:
   apt:
     packages:
