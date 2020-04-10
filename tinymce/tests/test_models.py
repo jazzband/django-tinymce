@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from django.contrib import admin
 from django.contrib.admin.sites import AdminSite
 from django.test import TestCase
@@ -15,7 +13,4 @@ class TestModels(TestCase):
 
     def test_htmlfield(self):
         ma = admin.ModelAdmin(TestModel, self.site)
-        self.assertIsInstance(
-            ma.get_form(None).base_fields['foobar'].widget,
-            AdminTinyMCE
-        )
+        self.assertIsInstance(ma.get_form(None).base_fields["foobar"].widget, AdminTinyMCE)

@@ -8,11 +8,15 @@ python:
   - 3.6
   - 3.7
   - 3.8
-matrix:
+jobs:
   fast_finish: true
   include:
-    - python: 3.8
-      env: TOX_ENV=flake8
+    - name: "Code checks"
+      python: 3.8
+      install: pip install pre-commit
+      script:
+        pre-commit run --all-files --show-diff-on-failure
+
 addons:
   apt:
     packages:

@@ -35,4 +35,3 @@ Documentation
    installation
    usage
    history
-
