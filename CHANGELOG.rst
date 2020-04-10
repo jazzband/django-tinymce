@@ -4,10 +4,16 @@ Changelog
 This document describes changes between each past release.
 
 
-2.8.0 (unreleased)
+2.9.0 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Upgrade test matrix to Python 3.7 and Django 2.1, 2.2
+
+
+2.8.0 (2019-01-15)
+==================
+
+- Use the attrs set on instantiation as well as the attrs passed to render (#237)
 
 
 2.7.0 (2017-12-19)
