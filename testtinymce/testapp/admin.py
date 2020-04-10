@@ -1,15 +1,10 @@
 from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
+from django.urls import reverse
 
 from testtinymce.testapp.models import TestInline, TestPage
 from tinymce.widgets import TinyMCE
-
-try:
-    from django.urls import reverse
-except ImportError:
-    # Django < 1.10
-    from django.core.urlresolvers import reverse
 
 
 class TinyMCETestInlineAdmin(admin.StackedInline):
