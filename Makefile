@@ -44,3 +44,8 @@ distclean: clean
 
 maintainer-clean: distclean
 	rm -fr .venv/ .tox/ dist/ build/
+
+serve:
+	./testtinymce/manage.py migrate
+	./testtinymce/manage.py createsuperuser --username admin --email "test@tinymce.com" --no-input 2>/dev/null || exit 0
+	./testtinymce/manage.py runserver
