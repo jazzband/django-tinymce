@@ -1,13 +1,17 @@
 import os
 import sys
 
-import django
-from django.conf import settings
-from django.test.utils import get_runner
-
-os.environ["DJANGO_SETTINGS_MODULE"] = "testtinymce.settings"
-test_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, test_dir)
+# Force this to happen before loading django
+try:
+    os.environ["DJANGO_SETTINGS_MODULE"] = "testtinymce.settings"
+    test_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    sys.path.insert(0, test_dir)
+except ImportError:
+    pass
+else:
+    import django
+    from django.conf import settings
+    from django.test.utils import get_runner
 
 
 def runtests():
