@@ -25,7 +25,12 @@ USE_L10N = True
 MEDIA_ROOT = join(ROOT_PATH, "media")
 MEDIA_URL = "/media/"
 ADMIN_MEDIA_PREFIX = "/static/admin/"
-STATIC_ROOT = join(ROOT_PATH, "static")
+
+STATICFINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
+
 STATIC_URL = "/static/"
 
 MIDDLEWARE = [

@@ -134,7 +134,11 @@ var tinyMCE_GZ = {
 		se.text = co;
 
 		// Add it to evaluate it and remove it
-		(document.getElementsByTagName('head')[0] || document.documentElement).appendChild(se);
+		try {
+		  (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(se);
+		} catch (error) {
+		  console.error(error, "Tried to eval:", se);
+		}
 		se.parentNode.removeChild(se);
 	}
 };

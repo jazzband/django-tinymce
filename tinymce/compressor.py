@@ -9,10 +9,11 @@ Licensed under the terms of the MIT License (see LICENSE.txt)
 
 from datetime import datetime
 import json
+import logging
 import os
 import re
 
-from django.conf import settings
+from django.contrib.staticfiles import finders
 from django.core.cache import cache
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -23,19 +24,16 @@ from django.utils.text import compress_string
 
 import tinymce.settings
 
+logger = logging.getLogger(__name__)
+
 safe_filename_re = re.compile("^[a-zA-Z][a-zA-Z0-9_/-]*$")
 
 
-def get_file_contents(filename):
-    if (
-        "staticfiles" in settings.INSTALLED_APPS
-        or "django.contrib.staticfiles" in settings.INSTALLED_APPS
-    ):
-        from django.contrib.staticfiles import finders
+def get_file_contents(filename, source=False):
 
-        file_path = finders.find(os.path.join("tiny_mce", filename))
-    else:
-        file_path = os.path.join(tinymce.settings.JS_ROOT, filename)
+    file_path = finders.find(os.path.join("tinymce", f"{filename}.js"))
+    if not file_path:
+        file_path = finders.find(os.path.join("tinymce", f"{filename}.min.js"))
 
     try:
         f = open(file_path)
@@ -44,6 +42,7 @@ def get_file_contents(filename):
         finally:
             f.close()
     except (IOError, TypeError):
+        logger.error(f"Couldn't load file: {file_path} for {filename}")
         return ""
 
 
@@ -57,9 +56,10 @@ def gzip_compressor(request):
     plugins = split_commas(request.GET.get("plugins", ""))
     languages = split_commas(request.GET.get("languages", ""))
     themes = split_commas(request.GET.get("themes", ""))
+    files = split_commas(request.GET.get("files", ""))
+    source = request.GET.get("src", "") == "true"
     isJS = request.GET.get("js", "") == "true"
     compress = request.GET.get("compress", "true") == "true"
-    suffix = request.GET.get("suffix", "") == "_src" and "_src" or ""
     content = []
 
     response = HttpResponse()
@@ -105,7 +105,7 @@ def gzip_compressor(request):
     content.append(f"var tinyMCEPreInit={json.dumps(tinyMCEPreInit)};")
 
     # Add core
-    files = ["tiny_mce"]
+    files = ["tinymce"]
 
     # Add core languages
     for lang in languages:
@@ -113,14 +113,14 @@ def gzip_compressor(request):
 
     # Add plugins
     for plugin in plugins:
-        files.append(f"plugins/{plugin}/editor_plugin{suffix}")
+        files.append(f"plugins/{plugin}/plugin")
 
         for lang in languages:
             files.append(f"plugins/{plugin}/langs/{lang}")
 
     # Add themes
     for theme in themes:
-        files.append(f"themes/{theme}/editor_template{suffix}")
+        files.append(f"themes/{theme}/theme")
 
         for lang in languages:
             files.append(f"themes/{theme}/langs/{lang}")
@@ -129,13 +129,12 @@ def gzip_compressor(request):
         # Check for unsafe characters
         if not safe_filename_re.match(f):
             continue
-        content.append(get_file_contents(f"{f}.js"))
+        content.append(get_file_contents(f, source=source))
 
     # Restore loading functions
     content.append(
-        f'tinymce.each("{",".join(files)}".split(","), function(f){{'
-        "tinymce.ScriptLoader.markDone(tinyMCE.baseURL+"
-        '"/"+f+".js");}});'
+        'tinymce.each("{}".split(",")'.format(",".join(files))
+        + ', function(f){tinymce.ScriptLoader.markDone(tinyMCE.baseURL+"/"+f+".js");});'
     )
 
     unicode_content = []
@@ -162,7 +161,6 @@ def gzip_compressor(request):
     timeout = 3600 * 24 * 10
     patch_response_headers(response, timeout)
     if not response.has_header("Last-Modified"):
-        # Last-Modified not set since Django 1.11
         response["Last-Modified"] = http_date()
     cache.set(
         cacheKey, {"Last-Modified": response["Last-Modified"], "ETag": response.get("ETag", "")},
