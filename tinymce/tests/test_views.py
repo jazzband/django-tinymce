@@ -1,12 +1,10 @@
-# coding: utf-8
-
 import json
 import os
+from unittest.mock import Mock, patch
 
 from django.contrib.flatpages.models import FlatPage
 from django.http import HttpResponse
 from django.test import TestCase
-from mock import Mock, patch
 
 from tinymce.views import render_to_image_list
 

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from django.contrib import admin
 from django.contrib.admin.sites import AdminSite
 from django.test import TestCase

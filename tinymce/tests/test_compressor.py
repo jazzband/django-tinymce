@@ -1,9 +1,7 @@
-# coding: utf-8
-
+from unittest.mock import patch
 import zlib
 
 from django.test import RequestFactory, TestCase
-from mock import patch
 
 from tinymce.compressor import gzip_compressor
 

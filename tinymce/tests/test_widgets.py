@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from contextlib import contextmanager
 
 from django import forms
