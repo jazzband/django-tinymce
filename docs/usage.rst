@@ -120,7 +120,7 @@ Example::
 
   tinyMCE.init({
       mode: "textareas",
-      theme: "advanced",
+      theme: "silver",
       plugins: "spellchecker,directionality,paste,searchreplace",
       language: "{{ language }}",
       directionality: "{{ directionality }}",
