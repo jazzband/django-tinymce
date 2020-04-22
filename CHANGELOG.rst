@@ -4,10 +4,10 @@ Changelog
 This document describes changes between each past release.
 
 
-3.0.2 (unreleased)
+3.0.2 (2020-04-22)
 ==================
 
-- Nothing changed yet.
+- Update the default config.
 
 
 3.0.0 (2020-04-10)
