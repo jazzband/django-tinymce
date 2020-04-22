@@ -4,7 +4,20 @@ from django.conf import settings
 from django.core.exceptions import AppRegistryNotReady
 
 DEFAULT_CONFIG = getattr(
-    settings, "TINYMCE_DEFAULT_CONFIG", {"theme": "silver", "relative_urls": False}
+    settings,
+    "TINYMCE_DEFAULT_CONFIG",
+    {
+        "theme": "silver",
+        "height": 500,
+        "menubar": False,
+        "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+        "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+        "code,help,wordcount",
+        "toolbar": "undo redo | formatselect | "
+        "bold italic backcolor | alignleft aligncenter "
+        "alignright alignjustify | bullist numlist outdent indent | "
+        "removeformat | help",
+    },
 )
 
 USE_SPELLCHECKER = getattr(settings, "TINYMCE_SPELLCHECKER", False)
