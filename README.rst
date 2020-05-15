@@ -23,13 +23,13 @@ Quickstart
 
 Install django-tinymce:
 
-.. code-block::
+.. code-block:: bash
 
     $ pip install django-tinymce
 
 Add tinymce to INSTALLED_APPS in settings.py for your project:
 
-.. code-block::
+.. code-block:: python
 
     INSTALLED_APPS = (
         ...
@@ -38,7 +38,7 @@ Add tinymce to INSTALLED_APPS in settings.py for your project:
 
 Add tinymce.urls to urls.py for your project:
 
-.. code-block::
+.. code-block:: python
 
     urlpatterns = [
         ...
@@ -47,7 +47,7 @@ Add tinymce.urls to urls.py for your project:
 
 In your code:
 
-.. code-block::
+.. code-block:: python
 
     from django.db import models
     from tinymce.models import HTMLField
