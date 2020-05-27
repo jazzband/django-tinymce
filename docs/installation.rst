@@ -56,7 +56,7 @@ Installation
 
     urlpatterns = patterns('',
         ...
-        (r'^tinymce/', include('tinymce.urls')),
+        path('tinymce/', include('tinymce.urls')),
         ...
     )
 
@@ -81,7 +81,7 @@ Verify that everything is installed and configured properly:
 
     export DJANGO_SETTINGS_MODULE='testtinymce.settings'
 
-#. Create project and change into project directory
+#. Create project and change into project directory::
 
     django-admin startproject tinymce_test
     cd tinymce_test
@@ -90,7 +90,7 @@ Verify that everything is installed and configured properly:
 
     python manage.py migrate
 
-#. Create superuser
+#. Create superuser (follow the prompts)::
 
     python manage.py createsuperuser
 
