@@ -158,7 +158,7 @@ view). The value is a URL that points to a view that fills a list of 2-tuples
 Create the widget::
 
   from django import forms
-  from django.core.urlresolvers import reverse
+  from django.urls import reverse
   from tinymce.widgets import TinyMCE
 
   class SomeForm(forms.Form):
@@ -189,9 +189,9 @@ the flatpages ``content`` field with a predefined list of other flatpages in
 the link dialog you could use something like this::
 
   from django import forms
-  from django.core.urlresolvers import reverse
   from django.contrib.flatpages.admin import FlatPageAdmin
   from django.contrib.flatpages.models import FlatPage
+  from django.urls import reverse
   from tinymce.widgets import TinyMCE
 
   class TinyMCEFlatPageAdmin(FlatPageAdmin):
@@ -238,7 +238,7 @@ provides a view and a template tag to make supporting this plugin easier. To
 use it point the ``plugin_preview_pageurl`` configuration to the view named
 ``tinymce-preview``::
 
-  from django.core.urlresolvers import reverse
+  from django.urls import reverse
   widget = TinyMCE(mce_attrs={'plugin_preview_pageurl': reverse('tinymce-preview', "NAME")})
 
 The view named by ``tinymce-preview`` looks for a template named either
