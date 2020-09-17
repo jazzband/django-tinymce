@@ -48,7 +48,7 @@ class TestWidgets(TestCase):
         self.assertEqual(config, config_ok)
 
     @override_settings(LANGUAGE_CODE="pt-br")
-    def test_default_config(self):
+    def test_config_foreign_language(self):
         config = get_language_config()
         config_ok = {
             "spellchecker_languages": "Inglês=en",
