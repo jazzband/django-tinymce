@@ -58,6 +58,14 @@ class TestWidgets(TestCase):
                 config = get_language_config()
                 self.assertEqual(config["language"], lang_expected)
 
+    def test_language_override_from_config(self):
+        langs = ["es_ES", "ru"]
+        for lang in langs:
+            tinymce.settings.DEFAULT_CONFIG.update(language=lang)
+            config = get_language_config()
+            self.assertEqual(config["language"], lang)
+        tinymce.settings.DEFAULT_CONFIG.pop("language")
+
     def test_content_language(self):
         config = get_language_config("ru-ru")
         config_ok = {
