@@ -47,7 +47,7 @@ class TestWidgets(TestCase):
         }
         self.assertEqual(config, config_ok)
 
-    @override_settings(LANGUAGE_CODE='pt-br')
+    @override_settings(LANGUAGE_CODE="pt-br")
     def test_default_config(self):
         config = get_language_config()
         config_ok = {
