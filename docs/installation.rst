@@ -129,7 +129,7 @@ file.
   The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all
   options. To set the configuration for a specific TinyMCE editor, see the
   ``mce_attrs`` parameter for the :ref:`widget <widget>`.
-  !Important: ``language`` attribute should only be set to force TinyMCE to have a 
+  !Important: ``language`` attribute should only be set to force TinyMCE to have a
   different language than Django's LANGUAGE_CODE setting.
 
 ``TINYMCE_SPELLCHECKER`` (default: ``False``)
