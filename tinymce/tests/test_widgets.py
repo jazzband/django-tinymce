@@ -47,16 +47,16 @@ class TestWidgets(TestCase):
         }
         self.assertEqual(config, config_ok)
 
-    @override_settings(LANGUAGE_CODE="pt-br")
-    def test_config_foreign_language(self):
-        config = get_language_config()
-        config_ok = {
-            "spellchecker_languages": "Inglês=en",
-            "directionality": "ltr",
-            "language": "pt_BR",
-            "spellchecker_rpc_url": "/tinymce/spellchecker/",
-        }
-        self.assertEqual(config, config_ok)
+    def test_config_from_language_code(self):
+        langs = [
+            ("fr", "fr"),
+            ("pt-br", "pt_BR"),
+            ("sr-latn", "sr_Latn"),
+        ]
+        for lang_code, lang_expected in langs:
+            with override_settings(LANGUAGE_CODE=lang_code):
+                config = get_language_config()
+                self.assertEqual(config["language"], lang_expected)
 
     def test_content_language(self):
         config = get_language_config("ru-ru")
