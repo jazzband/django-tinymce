@@ -159,6 +159,15 @@ def get_language_config(content_language=None):
 
 
 def parse_language(lang: str) -> str:
+    """If language code is in format xx-yy, convert it into xx_YY.
+    Otherwise just return unchanged language code. 
+
+    Args:
+        lang (str): The language code to be parsed.
+
+    Returns:
+        str: Converted or unchanged language code.
+    """
     try:
         language, dialect = lang.split('-')
         return f"{language}_{dialect.upper()}"
