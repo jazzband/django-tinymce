@@ -118,11 +118,11 @@ class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
 
 def get_language_config(content_language=None):
     language = get_language()
-    language = language[:2] if language is not None else "en"
+    language = parse_language(language) if language is not None else "en_US"
     if content_language:
         content_language = content_language[:2]
     else:
-        content_language = language
+        content_language = language[:2]
 
     config = {}
     config["language"] = language
@@ -151,3 +151,20 @@ def get_language_config(content_language=None):
         config["spellchecker_rpc_url"] = reverse("tinymce-spellcheck")
 
     return config
+
+
+def parse_language(lang: str) -> str:
+    """If language code is in format xx-yy, convert it into xx_YY.
+       Otherwise just return unchanged language code.
+
+    Args:
+        lang (str): The language code to be parsed.
+
+    Returns:
+        str: Converted or unchanged language code.
+    """
+    try:
+        language, dialect = lang.split("-")
+        return f"{language}_{dialect.upper()}"
+    except ValueError:
+        return lang

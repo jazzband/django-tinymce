@@ -27,7 +27,7 @@ class TestWidgets(TestCase):
         config_ok = {
             "spellchecker_languages": "+English=en",
             "directionality": "ltr",
-            "language": "en",
+            "language": "en_US",
             "spellchecker_rpc_url": "/tinymce/spellchecker/",
         }
         self.assertEqual(config, config_ok)
@@ -42,7 +42,18 @@ class TestWidgets(TestCase):
         config_ok = {
             "spellchecker_languages": "+English=en",
             "directionality": "rtl",
-            "language": "en",
+            "language": "en_US",
+            "spellchecker_rpc_url": "/tinymce/spellchecker/",
+        }
+        self.assertEqual(config, config_ok)
+
+    @override_settings(LANGUAGE_CODE="pt-br")
+    def test_config_foreign_language(self):
+        config = get_language_config()
+        config_ok = {
+            "spellchecker_languages": "Inglês=en",
+            "directionality": "ltr",
+            "language": "pt_BR",
             "spellchecker_rpc_url": "/tinymce/spellchecker/",
         }
         self.assertEqual(config, config_ok)
@@ -52,7 +63,7 @@ class TestWidgets(TestCase):
         config_ok = {
             "spellchecker_languages": "English=en",
             "directionality": "ltr",
-            "language": "en",
+            "language": "en_US",
             "spellchecker_rpc_url": "/tinymce/spellchecker/",
         }
         self.assertEqual(config, config_ok)
