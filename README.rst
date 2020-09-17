@@ -12,11 +12,11 @@ django-tinymce
 .. image:: https://img.shields.io/pypi/dm/django-tinymce.svg
         :target: https://pypi.python.org/pypi/django-tinymce
 
-.. image:: https://travis-ci.org/aljosa/django-tinymce.svg?branch=master
-        :target: https://travis-ci.org/aljosa/django-tinymce
+.. image:: https://travis-ci.org/jazzband/django-tinymce.svg?branch=master
+        :target: https://travis-ci.org/jazzband/django-tinymce
 
-.. image:: https://coveralls.io/repos/github/aljosa/django-tinymce/badge.svg?branch=master
-        :target: https://coveralls.io/github/aljosa/django-tinymce?branch=master
+.. image:: https://coveralls.io/repos/github/jazzband/django-tinymce/badge.svg?branch=master
+        :target: https://coveralls.io/github/jazzband/django-tinymce?branch=master
 
 Quickstart
 ==========
@@ -73,7 +73,7 @@ http://django-tinymce.readthedocs.org/
 Support and updates
 ===================
 
-Use github issues https://github.com/aljosa/django-tinymce/issues
+Use github issues https://github.com/jazzband/django-tinymce/issues
 
 License
 =======
