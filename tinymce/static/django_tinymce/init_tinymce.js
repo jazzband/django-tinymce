@@ -53,7 +53,7 @@ var django = django || {
     // initialize the TinyMCE editor after adding an inline
     // XXX: We don't use jQuery's click event as it won't work in Django 1.4
     document.body.addEventListener("click", function(ev) {
-      if(!ev.target.parentNode || ev.target.parentNode.className.indexOf("add-row") === -1) {
+      if(!ev.target.parentNode || !ev.target.parentNode.getAttribute("class") || ev.target.parentNode.getAttribute("class").indexOf("add-row") === -1) {
         return;
       }
       var $addRow = $(ev.target.parentNode);
