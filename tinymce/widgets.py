@@ -127,7 +127,7 @@ def get_language_config(content_language=None):
     if content_language:
         content_language = content_language[:2]
     else:
-        content_language = language
+        content_language = language[:2]
 
     config = {}
     config["language"] = language
