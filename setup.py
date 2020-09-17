@@ -49,6 +49,6 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     platforms=["any"],
-    url="https://github.com/aljosa/django-tinymce",
+    url="https://github.com/jazzband/django-tinymce",
     test_suite="runtests.runtests",
 )
