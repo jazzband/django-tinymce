@@ -123,7 +123,7 @@ class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
 
 def get_language_config(content_language=None):
     language = get_language()
-    language = parse_language(language) if language is not None else "en"
+    language = parse_language(language) if language is not None else "en_US"
     if content_language:
         content_language = content_language[:2]
     else:
@@ -160,7 +160,7 @@ def get_language_config(content_language=None):
 
 def parse_language(lang: str) -> str:
     """If language code is in format xx-yy, convert it into xx_YY.
-       Otherwise just return unchanged language code. 
+       Otherwise just return unchanged language code.
 
     Args:
         lang (str): The language code to be parsed.
