@@ -49,14 +49,14 @@ class TestWidgets(TestCase):
 
     def test_config_from_language_code(self):
         langs = [
-            ('fr', 'fr'),
-            ('pt-br', 'pt_BR'),
-            ('sr-latn', 'sr_Latn'),
+            ("fr", "fr"),
+            ("pt-br", "pt_BR"),
+            ("sr-latn", "sr_Latn"),
         ]
         for lang_code, lang_expected in langs:
             with override_settings(LANGUAGE_CODE=lang_code):
                 config = get_language_config()
-                self.assertEqual(config['language'], lang_expected)
+                self.assertEqual(config["language"], lang_expected)
 
     def test_content_language(self):
         config = get_language_config("ru-ru")
