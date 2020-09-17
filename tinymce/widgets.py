@@ -16,7 +16,7 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
-from django.utils.translation import get_language, gettext as _
+from django.utils.translation import get_language, gettext as _, to_locale
 
 import tinymce.settings
 
@@ -118,7 +118,7 @@ class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
 
 def get_language_config(content_language=None):
     language = get_language()
-    language = parse_language(language) if language is not None else "en_US"
+    language = to_locale(language) if language is not None else "en_US"
     if content_language:
         content_language = content_language[:2]
     else:
@@ -151,20 +151,3 @@ def get_language_config(content_language=None):
         config["spellchecker_rpc_url"] = reverse("tinymce-spellcheck")
 
     return config
-
-
-def parse_language(lang: str) -> str:
-    """If language code is in format xx-yy, convert it into xx_YY.
-       Otherwise just return unchanged language code.
-
-    Args:
-        lang (str): The language code to be parsed.
-
-    Returns:
-        str: Converted or unchanged language code.
-    """
-    try:
-        language, dialect = lang.split("-")
-        return f"{language}_{dialect.upper()}"
-    except ValueError:
-        return lang
