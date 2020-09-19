@@ -1,15 +1,13 @@
-var django = django || {
-    "jQuery": jQuery.noConflict(true)
-};
+'use strict';
 
-(function ($) {
-  function initTinyMCE($e) {
-    if ($e.parents('.empty-form').length == 0) {  // Don't do empty inlines
-      var mce_conf = $.parseJSON($e.attr('data-mce-conf'));
+{
+  function initTinyMCE(el) {
+    if (el.closest('.empty-form') === null) {  // Don't do empty inlines
+      var mce_conf = JSON.parse(el.dataset.mceConf);
 
       // There is no way to pass a JavaScript function as an option
       // because all options are serialized as JSON.
-      var fns = [
+      const fns = [
         'color_picker_callback',
         'file_browser_callback',
         'file_picker_callback',
@@ -20,9 +18,9 @@ var django = django || {
         'setup',
         'urlconverter_callback',
       ];
-      $.each(fns, function(i, fn_name) {
+      fns.forEach((fn_name) => {
         if (typeof mce_conf[fn_name] != 'undefined') {
-          if (mce_conf[fn_name].indexOf('(') != -1) {
+          if (mce_conf[fn_name].includes('(')) {
             mce_conf[fn_name] = eval('(' + mce_conf[fn_name] + ')');
           }
           else {
@@ -31,12 +29,12 @@ var django = django || {
         }
       });
 
-      var id = $e.attr('id');
+      const id = el.id;
       if ('elements' in mce_conf && mce_conf['mode'] == 'exact') {
         mce_conf['elements'] = id;
       }
-      if ($e.attr('data-mce-gz-conf')) {
-        tinyMCE_GZ.init($.parseJSON($e.attr('data-mce-gz-conf')));
+      if (el.dataset.mceGzConf) {
+        tinyMCE_GZ.init(JSON.parse(el.dataset.mceGzConf));
       }
       if (!tinyMCE.editors[id]) {
         tinyMCE.init(mce_conf);
@@ -44,24 +42,36 @@ var django = django || {
     }
   }
 
-  $(function () {
+  // Call function fn when the DOM is loaded and ready. If it is already
+  // loaded, call the function now.
+  // http://youmightnotneedjquery.com/#ready
+  function ready(fn) {
+    if (document.readyState !== 'loading') {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
+
+  ready(function() {
     // initialize the TinyMCE editors on load
-    $('.tinymce').each(function () {
-      initTinyMCE($(this));
+    document.querySelectorAll('.tinymce').forEach(function(el) {
+      initTinyMCE(el);
     });
 
     // initialize the TinyMCE editor after adding an inline
-    // XXX: We don't use jQuery's click event as it won't work in Django 1.4
     document.body.addEventListener("click", function(ev) {
-      if(!ev.target.parentNode || !ev.target.parentNode.getAttribute("class") || ev.target.parentNode.getAttribute("class").indexOf("add-row") === -1) {
+      if (!ev.target.parentNode ||
+          !ev.target.parentNode.getAttribute("class") ||
+          !ev.target.parentNode.getAttribute("class").includes("add-row")) {
         return;
       }
-      var $addRow = $(ev.target.parentNode);
+      const addRow = ev.target.parentNode;
       setTimeout(function() {  // We have to wait until the inline is added
-        $('textarea.tinymce', $addRow.parent()).each(function () {
-          initTinyMCE($(this));
+        addRow.parentNode.querySelectorAll('textarea.tinymce').forEach(function(el) {
+          initTinyMCE(el);
         });
       }, 0);
     }, true);
   });
-}((typeof django === 'undefined' || typeof django.jQuery === 'undefined') && jQuery || django && django.jQuery));
+}
