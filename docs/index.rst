@@ -21,7 +21,7 @@ Starting with django-tinymce v1.5.1 TinyMCE editor is bundled with django-tinymc
 Note that django-tinymce and TinyMCE licenses are compatible (although different) and we have permission to bundle TinyMCE with django-tinymce.
 
 .. _Django: https://www.djangoproject.com/
-.. _TinyMCE: https://www.tinymce.com/
+.. _TinyMCE: https://www.tiny.cloud/
 .. _`django-filebrowser`: https://github.com/sehmaschine/django-filebrowser/
 .. _`MIT License`: https://www.opensource.org/licenses/mit-license.php
 .. _`LGPL v2.1 license`: https://www.tinymce.com/license/

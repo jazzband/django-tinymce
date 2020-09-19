@@ -31,11 +31,11 @@ Python code::
 Note that the documentation will use 'TinyMCE' (capitalized) to refer the
 editor itself and 'django-tinymce' (lower case) to refer to the Django application.
 
-.. _`Django`: http://www.djangoproject.com/download/
-.. _`TinyMCE`: http://tinymce.moxiecode.com/download.php
-.. _`language pack`: http://tinymce.moxiecode.com/download_i18n.php
-.. _`spellchecker plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker
-.. _`PyEnchant`: http://pythonhosted.org/pyenchant/download.html
+.. _`Django`: https://www.djangoproject.com/download/
+.. _`TinyMCE`: https://www.tiny.cloud/get-tiny/
+.. _`language pack`: https://www.tiny.cloud/get-tiny/language-packages/
+.. _`spellchecker plugin`: https://www.tiny.cloud/docs/plugins/spellchecker/
+.. _`PyEnchant`: https://pyenchant.github.io/pyenchant/install.html
 .. _`django-filebrowser`: https://github.com/sehmaschine/django-filebrowser
 
 Installation
@@ -60,8 +60,8 @@ Installation
         ...
     )
 
-.. _`pip`: http://pip.openplans.org/
-.. _`PyPI`: http://pypi.python.org/
+.. _`pip`: https://pip.pypa.io/
+.. _`PyPI`: https://pypi.org/
 
 Testing
 -------
@@ -104,7 +104,7 @@ Verify that everything is installed and configured properly:
 
 If you see TinyMCE instead of standard textarea boxes everything is working fine, otherwise check installation steps.
 
-.. _`virtualenv`: http://virtualenv.openplans.org/
+.. _`virtualenv`: https://virtualenv.pypa.io/
 
 .. _configuration:
 
@@ -181,5 +181,5 @@ Example::
       ],
   }
 
-.. _`the TinyMCE manual`: http://www.tinymce.com/wiki.php/configuration
-.. _`official TinyMCE documentation on custom filebrowsers`: http://www.tinymce.com/wiki.php/TinyMCE3x:How-to_implement_a_custom_file_browser
+.. _`the TinyMCE manual`: https://www.tiny.cloud/docs/general-configuration-guide/
+.. _`official TinyMCE documentation on custom filebrowsers`: https://www.tiny.cloud/docs/configure/file-image-upload/#file_picker_callback
