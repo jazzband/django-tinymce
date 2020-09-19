@@ -24,7 +24,7 @@ import tinymce.settings
 class TinyMCE(forms.Textarea):
     """
     TinyMCE widget. Set settings.TINYMCE_JS_URL to set the location of the
-    javascript file. Default is "MEDIA_URL + 'js/tiny_mce/tiny_mce.js'".
+    javascript file. Default is "STATIC_URL + 'tinymce/tinymce.min.js'".
     You can customize the configuration with the mce_attrs argument to the
     constructor.
 
