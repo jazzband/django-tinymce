@@ -104,8 +104,6 @@ class TinyMCE(forms.Textarea):
 
             if "css" in tinymce.settings.USE_EXTRA_MEDIA:
                 css = tinymce.settings.USE_EXTRA_MEDIA["css"]
-        if tinymce.settings.INCLUDE_JQUERY:
-            js.append("django_tinymce/jquery-1.9.1.min.js")
         js.append("django_tinymce/init_tinymce.js")
         return forms.Media(css=css, js=js)
 

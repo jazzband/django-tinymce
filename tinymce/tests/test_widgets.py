@@ -84,19 +84,17 @@ class TestWidgets(TestCase):
         self.assertIn('cols="80"', html)
         self.assertIn('rows="30"', html)
 
-    @override_settings(TINYMCE_INCLUDE_JQUERY=False)
     def test_tinymce_widget_media(self):
         widget = TinyMCE()
         self.assertEqual(
             widget.media.render_js(),
             [
                 '<script type="text/javascript" src="/tinymce/compressor/"></script>',
-                '<script type="text/javascript" src="/static/django_tinymce/jquery-1.9.1.min.js"></script>',
                 '<script type="text/javascript" src="/static/django_tinymce/init_tinymce.js"></script>',
             ],
         )
         self.assertEqual(list(widget.media.render_css()), [])
-        with override_tinymce_settings({"USE_COMPRESSOR": False, "INCLUDE_JQUERY": False}):
+        with override_tinymce_settings({"USE_COMPRESSOR": False}):
             widget = TinyMCE()
             self.assertEqual(
                 widget.media.render_js(),
