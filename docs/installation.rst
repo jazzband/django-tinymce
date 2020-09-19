@@ -129,6 +129,8 @@ file.
   The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all
   options. To set the configuration for a specific TinyMCE editor, see the
   ``mce_attrs`` parameter for the :ref:`widget <widget>`.
+  !Important: The ``language`` attribute should only be set to force TinyMCE to
+  have a different language than Django's current active language.
 
 ``TINYMCE_SPELLCHECKER`` (default: ``False``)
   Whether to use the spell checker through the supplied view. You must add
@@ -167,6 +169,7 @@ Example::
       "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
       "a11ycheck ltr rtl | showcomments addcomment code",
       "custom_undo_redo_levels": 10,
+      "language": "es_ES",  # To force a specific language instead of the Django current language.
   }
   TINYMCE_SPELLCHECKER = True
   TINYMCE_COMPRESSOR = True
