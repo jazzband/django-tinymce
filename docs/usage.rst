@@ -215,17 +215,20 @@ ModelAdmin class for flatpages first::
   admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
 
 The source contains a `test project`_ that includes this flatpages model admin.
-You just need to add the TinyMCE javascript code.
 
-#. Checkout the test project:
-   ``svn checkout http://django-tinymce.googlecode.com/svn/trunk/testtinymce``
+#. Checkout django-tinymce:
+   ``git clone https://github.com/jazzband/django-tinymce.git``
+#. Go to the test project:
+   ``cd django-tinymce/testtinymce``
 #. Copy the ``tiny_mce`` directory from the TinyMCE distribution into
    ``media/js``
-#. Run ``python manage.py syncdb``
+#. Run ``python manage.py migrate``
+#. Run ``python manage.py createsuperuser``
 #. Run ``python manage.py runserver``
-#. Connect to `http://localhost:8000/admin/`_
+#. Connect to `http://localhost:8000/admin/`_ and login with the above-created
+   user.
 
-.. _`test project`: http://code.google.com/p/django-tinymce/source/browse/trunk/testproject/
+.. _`test project`: https://github.com/jazzband/django-tinymce/tree/master/testtinymce
 .. _`http://localhost:8000/admin/`: http://localhost:8000/admin/
 
 
