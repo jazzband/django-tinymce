@@ -24,8 +24,6 @@ USE_SPELLCHECKER = getattr(settings, "TINYMCE_SPELLCHECKER", False)
 
 USE_COMPRESSOR = getattr(settings, "TINYMCE_COMPRESSOR", False)
 
-INCLUDE_JQUERY = getattr(settings, "TINYMCE_INCLUDE_JQUERY", True)
-
 USE_EXTRA_MEDIA = getattr(settings, "TINYMCE_EXTRA_MEDIA", None)
 
 USE_FILEBROWSER = getattr(

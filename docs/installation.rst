@@ -143,10 +143,6 @@ file.
   reduces the number of requests. The overall initialization time for TinyMCE
   will be reduced dramatically if you use this option.
 
-``TINYMCE_INCLUDE_JQUERY`` (default: ``True``)
-  Whether a jQuery version should be included in the widget media property.
-  Set this to ``False`` if you include jQuery yourself in your templates.
-
 ``TINYMCE_EXTRA_MEDIA`` (default: ``None``)
   Extra media to include on the page with the :ref:`widget <widget>`.
 
