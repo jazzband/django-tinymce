@@ -230,37 +230,3 @@ The source contains a `test project`_ that includes this flatpages model admin.
 
 .. _`test project`: https://github.com/jazzband/django-tinymce/tree/master/testtinymce
 .. _`http://localhost:8000/admin/`: http://localhost:8000/admin/
-
-
-The TinyMCE preview button
---------------------------
-
-TinyMCE contains a `preview plugin`_ that can be used to allow the user to view
-the contents of the editor in the website context. The tinymce application
-provides a view and a template tag to make supporting this plugin easier. To
-use it point the ``plugin_preview_pageurl`` configuration to the view named
-``tinymce-preview``::
-
-  from django.urls import reverse
-  widget = TinyMCE(mce_attrs={'plugin_preview_pageurl': reverse('tinymce-preview', "NAME")})
-
-The view named by ``tinymce-preview`` looks for a template named either
-``tinymce/NAME_preview.html`` or ``NAME/tinymce_preview.html``. The template
-accesses the content of the TinyMCE editor by using the ``tinymce_preview``
-tag::
-
-  {% load tinymce_tags %}
-  <html>
-  <head>
-  ...
-  {% tinymce_preview "preview-content" %}
-  </head>
-  <body>
-  ...
-  <div id="preview-content"></div>
-  ...
-
-With this template code the text inside the HTML element with id
-``preview-content`` will be replaced by the content of the TinyMCE editor.
-
-.. _`preview plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/preview
