@@ -40,14 +40,12 @@ class TinyMCE(forms.Textarea):
     """
 
     def __init__(self, content_language=None, attrs=None, mce_attrs=None):
-        super(TinyMCE, self).__init__(attrs)
+        super().__init__(attrs)
         mce_attrs = mce_attrs or {}
         self.mce_attrs = mce_attrs
         if "mode" not in self.mce_attrs:
             self.mce_attrs["mode"] = "exact"
         self.mce_attrs["strict_loading_mode"] = 1
-        if content_language is None:
-            content_language = mce_attrs.get("language", None)
         self.content_language = content_language
 
     def use_required_attribute(self, *args):
@@ -56,7 +54,9 @@ class TinyMCE(forms.Textarea):
 
     def get_mce_config(self, attrs):
         mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
-        mce_config.update(get_language_config(self.content_language))
+        if "language" not in mce_config:
+            mce_config["language"] = get_language_from_django()
+        mce_config.update(get_language_config(self.content_language or mce_config["language"]))
         if tinymce.settings.USE_FILEBROWSER:
             mce_config["file_browser_callback"] = "djangoFileBrowser"
         mce_config.update(self.mce_attrs)
@@ -116,17 +116,16 @@ class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
     pass
 
 
-def get_language_config(content_language=None):
+def get_language_from_django():
     language = get_language()
     language = to_locale(language) if language is not None else "en_US"
-    if content_language:
-        content_language = content_language[:2]
-    else:
-        content_language = language[:2]
+    return language
+
+
+def get_language_config(content_language):
+    content_language = content_language[:2]
 
     config = {}
-    config["language"] = language
-
     lang_names = OrderedDict()
     for lang, name in settings.LANGUAGES:
         if lang[:2] not in lang_names:
