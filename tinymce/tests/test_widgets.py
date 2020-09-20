@@ -1,6 +1,7 @@
 from contextlib import contextmanager
 from unittest.mock import patch
 
+import django
 from django import forms
 from django.test import TestCase
 from django.test.utils import override_settings
@@ -105,12 +106,13 @@ class TestWidgets(TestCase):
     @override_settings(TINYMCE_INCLUDE_JQUERY=False)
     def test_tinymce_widget_media(self):
         widget = TinyMCE()
+        js_type = 'type="text/javascript" ' if django.get_version() < "3.1" else ""
         self.assertEqual(
             widget.media.render_js(),
             [
-                '<script type="text/javascript" src="/tinymce/compressor/"></script>',
-                '<script type="text/javascript" src="/static/django_tinymce/jquery-1.9.1.min.js"></script>',
-                '<script type="text/javascript" src="/static/django_tinymce/init_tinymce.js"></script>',
+                f'<script {js_type}src="/tinymce/compressor/"></script>',
+                f'<script {js_type}src="/static/django_tinymce/jquery-1.9.1.min.js"></script>',
+                f'<script {js_type}src="/static/django_tinymce/init_tinymce.js"></script>',
             ],
         )
         self.assertEqual(list(widget.media.render_css()), [])
@@ -119,8 +121,8 @@ class TestWidgets(TestCase):
             self.assertEqual(
                 widget.media.render_js(),
                 [
-                    '<script type="text/javascript" src="/static/tinymce/tinymce.min.js"></script>',
-                    '<script type="text/javascript" src="/static/django_tinymce/init_tinymce.js"></script>',
+                    f'<script {js_type}src="/static/tinymce/tinymce.min.js"></script>',
+                    f'<script {js_type}src="/static/django_tinymce/init_tinymce.js"></script>',
                 ],
             )
 
