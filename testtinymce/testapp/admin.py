@@ -19,7 +19,7 @@ class TinyMCETestInlineAdmin(admin.StackedInline):
                     mce_attrs={"external_link_list_url": reverse("tinymce-linklist")},
                 )
             )
-        return super(TinyMCETestInlineAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        return super().formfield_for_dbfield(db_field, **kwargs)
 
 
 class TinyMCEFlatPageAdmin(FlatPageAdmin):
@@ -31,7 +31,7 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
                     mce_attrs={"external_link_list_url": reverse("tinymce-linklist")},
                 )
             )
-        return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        return super().formfield_for_dbfield(db_field, **kwargs)
 
 
 class TinyMCETestPageAdmin(admin.ModelAdmin):
@@ -45,7 +45,7 @@ class TinyMCETestPageAdmin(admin.ModelAdmin):
                     mce_attrs={"external_link_list_url": reverse("tinymce-linklist")},
                 )
             )
-        return super(TinyMCETestPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        return super().formfield_for_dbfield(db_field, **kwargs)
 
 
 admin.site.unregister(FlatPage)

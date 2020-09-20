@@ -21,4 +21,4 @@ class HTMLField(models.TextField):
         if defaults["widget"] == admin_widgets.AdminTextareaWidget:
             defaults["widget"] = tinymce_widgets.AdminTinyMCE
 
-        return super(HTMLField, self).formfield(**defaults)
+        return super().formfield(**defaults)
