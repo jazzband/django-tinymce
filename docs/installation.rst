@@ -31,11 +31,11 @@ Python code::
 Note that the documentation will use 'TinyMCE' (capitalized) to refer the
 editor itself and 'django-tinymce' (lower case) to refer to the Django application.
 
-.. _`Django`: http://www.djangoproject.com/download/
-.. _`TinyMCE`: http://tinymce.moxiecode.com/download.php
-.. _`language pack`: http://tinymce.moxiecode.com/download_i18n.php
-.. _`spellchecker plugin`: http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker
-.. _`PyEnchant`: http://pythonhosted.org/pyenchant/download.html
+.. _`Django`: https://www.djangoproject.com/download/
+.. _`TinyMCE`: https://www.tiny.cloud/get-tiny/
+.. _`language pack`: https://www.tiny.cloud/get-tiny/language-packages/
+.. _`spellchecker plugin`: https://www.tiny.cloud/docs/plugins/spellchecker/
+.. _`PyEnchant`: https://pyenchant.github.io/pyenchant/install.html
 .. _`django-filebrowser`: https://github.com/sehmaschine/django-filebrowser
 
 Installation
@@ -60,8 +60,8 @@ Installation
         ...
     )
 
-.. _`pip`: http://pip.openplans.org/
-.. _`PyPI`: http://pypi.python.org/
+.. _`pip`: https://pip.pypa.io/
+.. _`PyPI`: https://pypi.org/
 
 Testing
 -------
@@ -104,7 +104,7 @@ Verify that everything is installed and configured properly:
 
 If you see TinyMCE instead of standard textarea boxes everything is working fine, otherwise check installation steps.
 
-.. _`virtualenv`: http://virtualenv.openplans.org/
+.. _`virtualenv`: https://virtualenv.pypa.io/
 
 .. _configuration:
 
@@ -114,21 +114,23 @@ Configuration
 The application can be configured by editing the project's ``settings.py``
 file.
 
-``TINYMCE_JS_URL`` (default: ``settings.MEDIA_URL + 'js/tiny_mce/tiny_mce.js'``)
-    The URL of the TinyMCE javascript file::
+``TINYMCE_JS_URL`` (default: ``settings.STATIC_URL + 'tinymce/tinymce.min.js'``)
+  The URL of the TinyMCE javascript file::
 
-        TINYMCE_JS_URL = os.path.join(MEDIA_URL, "path/to/tiny_mce/tiny_mce.js")
+        TINYMCE_JS_URL = os.path.join(STATIC_URL, "path/to/tiny_mce/tiny_mce.js")
 
-``TINYMCE_JS_ROOT`` (default: ``settings.MEDIA_ROOT + 'js/tiny_mce'``)
+``TINYMCE_JS_ROOT`` (default: ``settings.STATIC_ROOT + 'tinymce'``)
   The filesystem location of the TinyMCE files. It is used by the compressor
   (see below)::
 
-        TINYMCE_JS_ROOT = os.path.join(MEDIA_ROOT, "path/to/tiny_mce")
+        TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "path/to/tiny_mce")
 
 ``TINYMCE_DEFAULT_CONFIG`` (default: ``{'theme': "simple", 'relative_urls': False}``)
   The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all
   options. To set the configuration for a specific TinyMCE editor, see the
   ``mce_attrs`` parameter for the :ref:`widget <widget>`.
+  !Important: The ``language`` attribute should only be set to force TinyMCE to
+  have a different language than Django's current active language.
 
 ``TINYMCE_SPELLCHECKER`` (default: ``False``)
   Whether to use the spell checker through the supplied view. You must add
@@ -163,6 +165,7 @@ Example::
       "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
       "a11ycheck ltr rtl | showcomments addcomment code",
       "custom_undo_redo_levels": 10,
+      "language": "es_ES",  # To force a specific language instead of the Django current language.
   }
   TINYMCE_SPELLCHECKER = True
   TINYMCE_COMPRESSOR = True
@@ -177,5 +180,5 @@ Example::
       ],
   }
 
-.. _`the TinyMCE manual`: http://www.tinymce.com/wiki.php/configuration
-.. _`official TinyMCE documentation on custom filebrowsers`: http://www.tinymce.com/wiki.php/TinyMCE3x:How-to_implement_a_custom_file_browser
+.. _`the TinyMCE manual`: https://www.tiny.cloud/docs/general-configuration-guide/
+.. _`official TinyMCE documentation on custom filebrowsers`: https://www.tiny.cloud/docs/configure/file-image-upload/#file_picker_callback

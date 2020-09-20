@@ -21,7 +21,6 @@ help:
 	@echo "  latex     to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
 	@echo "  changes   to make an overview over all changed/added/deprecated items"
 	@echo "  linkcheck to check all external links for integrity"
-	@echo "  htmlsvn   to set the SVN properties to publish the HTML docs"
 
 clean:
 	-rm -rf .build/doctrees
@@ -69,13 +68,3 @@ linkcheck:
 	@echo
 	@echo "Link check complete; look for any errors in the above output " \
 	      "or in .build/linkcheck/output.txt."
-
-htmlsvn: html
-	svn propset -R svn:mime-type text/css \
-		`find .build/html -name .svn -type f -prune -o -name *.css`
-	svn propset -R svn:mime-type text/javascript \
-		`find .build/html -name .svn -type f -prune -o -name *.js`
-	svn propset -R svn:mime-type image/x-png \
-		`find .build/html -name .svn -type f -prune -o -name *.png`
-	svn propset -R svn:mime-type text/html \
-		`find .build/html -name .svn -type f -prune -o -name *.html`

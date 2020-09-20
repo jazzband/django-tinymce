@@ -1,5 +1,7 @@
 from contextlib import contextmanager
+from unittest.mock import patch
 
+import django
 from django import forms
 from django.test import TestCase
 from django.test.utils import override_settings
@@ -23,47 +25,64 @@ def override_tinymce_settings(settings_dict):
 @override_settings(LANGUAGES=[("en", "English")])
 class TestWidgets(TestCase):
     def test_default_config(self):
-        config = get_language_config()
+        config = get_language_config("en")
         config_ok = {
             "spellchecker_languages": "+English=en",
             "directionality": "ltr",
-            "language": "en_US",
             "spellchecker_rpc_url": "/tinymce/spellchecker/",
         }
         self.assertEqual(config, config_ok)
+
+    def test_no_active_language(self):
+        widget = TinyMCE()
         with override(None):
-            # Even when no language is activated
-            config = get_language_config()
-            self.assertEqual(config, config_ok)
+            config = widget.get_mce_config(attrs={"id": "id"})
+            self.assertEqual(config["language"], "en_US")
+            self.assertEqual(config["spellchecker_languages"], "+English=en")
 
     @override_settings(LANGUAGES_BIDI=["en"])
     def test_default_config_rtl(self):
-        config = get_language_config()
+        config = get_language_config("en")
         config_ok = {
             "spellchecker_languages": "+English=en",
             "directionality": "rtl",
-            "language": "en_US",
             "spellchecker_rpc_url": "/tinymce/spellchecker/",
         }
         self.assertEqual(config, config_ok)
 
     def test_config_from_language_code(self):
         langs = [
+            ("en", "en"),
             ("fr", "fr"),
             ("pt-br", "pt_BR"),
             ("sr-latn", "sr_Latn"),
         ]
+        widget = TinyMCE()
         for lang_code, lang_expected in langs:
             with override_settings(LANGUAGE_CODE=lang_code):
-                config = get_language_config()
+                config = widget.get_mce_config(attrs={"id": "id"})
                 self.assertEqual(config["language"], lang_expected)
+
+    def test_language_override_from_config(self):
+        """language in DEFAULT_CONFIG has priority over current Django language."""
+        widget = TinyMCE()
+        orig_config = tinymce.settings.DEFAULT_CONFIG
+        with patch.dict(tinymce.settings.DEFAULT_CONFIG, {**orig_config, "language": "es_ES"}):
+            config = widget.get_mce_config(attrs={"id": "id"})
+            self.assertEqual(config["language"], "es_ES")
+
+    def test_mce_attrs_language_priority(self):
+        widget = TinyMCE(mce_attrs={"language": "ru"})
+        orig_config = tinymce.settings.DEFAULT_CONFIG
+        with patch.dict(tinymce.settings.DEFAULT_CONFIG, {**orig_config, "language": "es_ES"}):
+            config = widget.get_mce_config(attrs={"id": "id"})
+            self.assertEqual(config["language"], "ru")
 
     def test_content_language(self):
         config = get_language_config("ru-ru")
         config_ok = {
             "spellchecker_languages": "English=en",
             "directionality": "ltr",
-            "language": "en_US",
             "spellchecker_rpc_url": "/tinymce/spellchecker/",
         }
         self.assertEqual(config, config_ok)
@@ -86,11 +105,12 @@ class TestWidgets(TestCase):
 
     def test_tinymce_widget_media(self):
         widget = TinyMCE()
+        js_type = 'type="text/javascript" ' if django.get_version() < "3.1" else ""
         self.assertEqual(
             widget.media.render_js(),
             [
-                '<script type="text/javascript" src="/tinymce/compressor/"></script>',
-                '<script type="text/javascript" src="/static/django_tinymce/init_tinymce.js"></script>',
+                f'<script {js_type}src="/tinymce/compressor/"></script>',
+                f'<script {js_type}src="/static/django_tinymce/init_tinymce.js"></script>',
             ],
         )
         self.assertEqual(list(widget.media.render_css()), [])
@@ -99,8 +119,8 @@ class TestWidgets(TestCase):
             self.assertEqual(
                 widget.media.render_js(),
                 [
-                    '<script type="text/javascript" src="/static/tinymce/tinymce.min.js"></script>',
-                    '<script type="text/javascript" src="/static/django_tinymce/init_tinymce.js"></script>',
+                    f'<script {js_type}src="/static/tinymce/tinymce.min.js"></script>',
+                    f'<script {js_type}src="/static/django_tinymce/init_tinymce.js"></script>',
                 ],
             )
 
