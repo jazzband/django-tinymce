@@ -70,7 +70,7 @@ section (assuming you named your form 'form')::
 
 See also `the section of form media`_ in the Django documentation.
 
-.. _`the section of form media`: http://www.djangoproject.com/documentation/forms/#media-on-forms
+.. _`the section of form media`: https://docs.djangoproject.com/en/stable/topics/forms/media/
 
 The ``HTMLField`` model field type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -144,8 +144,8 @@ links_ and images_. These entries are filled using a variable loaded from an
 external Javascript location. The tinymce application can serve these lists for
 you.
 
-.. _links: http://www.tinymce.com/wiki.php/Configuration:link_list
-.. _images: http://www.tinymce.com/wiki.php/Configuration:image_list
+.. _links: https://www.tiny.cloud/docs/plugins/link/#link_list
+.. _images: https://www.tiny.cloud/docs/plugins/image/#image_list
 
 Creating external link and image views
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
