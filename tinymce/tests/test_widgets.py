@@ -53,15 +53,23 @@ class TestWidgets(TestCase):
     def test_config_from_language_code(self):
         langs = [
             ("en", "en"),
-            ("fr", "fr"),
+            ("fr", "fr_FR"),  # Currently no "fr" language file exist for TinyMCE.
+            ("de-ch", "de"),
             ("pt-br", "pt_BR"),
-            ("sr-latn", "sr_Latn"),
+            ("he", "he_IL"),
+            ("he_il", "he_IL"),
         ]
         widget = TinyMCE()
         for lang_code, lang_expected in langs:
             with override_settings(LANGUAGE_CODE=lang_code):
                 config = widget.get_mce_config(attrs={"id": "id"})
                 self.assertEqual(config["language"], lang_expected)
+        # A language with no matching TinyMCE translation:
+        expected = "No TinyMCE language found for 'kab', defaulting to 'en_US'"
+        with self.assertWarnsRegex(RuntimeWarning, expected):
+            with override_settings(LANGUAGE_CODE="kab"):
+                config = widget.get_mce_config(attrs={"id": "id"})
+                self.assertEqual(config["language"], "en_US")
 
     def test_language_override_from_config(self):
         """language in DEFAULT_CONFIG has priority over current Django language."""

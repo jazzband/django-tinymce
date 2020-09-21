@@ -7,6 +7,8 @@ http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
 from collections import OrderedDict
 import json
+from pathlib import Path
+import warnings
 
 from django import forms
 from django.conf import settings
@@ -56,6 +58,7 @@ class TinyMCE(forms.Textarea):
         mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
         if "language" not in mce_config:
             mce_config["language"] = get_language_from_django()
+        mce_config["language"] = match_language_with_tinymce(mce_config["language"])
         mce_config.update(get_language_config(self.content_language or mce_config["language"]))
         if tinymce.settings.USE_FILEBROWSER:
             mce_config["file_browser_callback"] = "djangoFileBrowser"
@@ -118,6 +121,28 @@ def get_language_from_django():
     language = get_language()
     language = to_locale(language) if language is not None else "en_US"
     return language
+
+
+def match_language_with_tinymce(lang):
+    """
+    Language codes in TinyMCE are inconsistent. E.g. Hebrew is he_IL.js, while
+    Danish is da.js. So we apply some heuristic to find a language code
+    with an existing TinyMCE translation file.
+    """
+    if lang.startswith("en"):
+        return lang
+    # Read tinymce langs from tinymce/static/tinymce/langs/
+    tiny_lang_dir = Path(__file__).parent / "static" / "tinymce" / "langs"
+    tiny_langs = [file_.stem for file_ in tiny_lang_dir.iterdir() if file_.suffix == ".js"]
+    if lang in tiny_langs:
+        return lang
+    if lang[:2] in tiny_langs:
+        return lang[:2]
+    two_letter_map = {lg[:2]: lg for lg in tiny_langs}
+    if lang[:2] in two_letter_map:
+        return two_letter_map[lang[:2]]
+    warnings.warn(f"No TinyMCE language found for '{lang}', defaulting to 'en_US'", RuntimeWarning)
+    return "en_US"
 
 
 def get_language_config(content_language):
