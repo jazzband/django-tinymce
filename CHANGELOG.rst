@@ -4,10 +4,12 @@ Changelog
 This document describes changes between each past release.
 
 
-3.0.3 (unreleased)
+3.1.0 (2020-09-29)
 ==================
 
-- Nothing changed yet.
+- Add support for language configuration
+- Remove the jQuery dependency and fix multiples errors around that
+- Move to the Jazzband organization
 
 
 3.0.2 (2020-04-22)
