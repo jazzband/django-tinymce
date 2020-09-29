@@ -9,6 +9,10 @@ This document describes changes between each past release.
 
 - Add support for language configuration
 - Remove the jQuery dependency and fix multiples errors around that
+
+  .. note::
+     As a consequence, ``TINYMCE_INCLUDE_JQUERY`` setting has been removed.
+
 - Move to the Jazzband organization
 
 
