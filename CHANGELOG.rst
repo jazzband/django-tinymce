@@ -8,6 +8,7 @@ This document describes changes between each past release.
 ==================
 
 - Add support for language configuration
+- Upgrade to TinyMCE 5.5.0
 - Remove the jQuery dependency and fix multiples errors around that
 
   .. note::
