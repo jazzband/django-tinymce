@@ -1,39 +1,17 @@
-function djangoFileBrowser(field_name, url, type, win) {
-    if (tinyMCE.majorVersion >= 4) {
-        var url = "{{ fb_url }}?pop=4&type=" + type;
+function djangoFileBrowser(callback, value, meta) {
+    var url = "{{ fb_url }}?pop=5&type=" + meta.filetype;
 
-        tinyMCE.activeEditor.windowManager.open(
-            {
-                'file': url,
-                'width': 820,
-                'height': 500,
-            },
-            {
-                'window': win,
-                'input': field_name,
+    tinyMCE.activeEditor.windowManager.openUrl(
+        {
+            'title': 'Django Filebrowser',
+            'url': url,
+            'width': 1024,
+            'height': 800,
+            'onMessage': function (dialogApi, details) {
+                callback(details.content)
+                dialogApi.close()
             }
-        );
-        return false;
-    }
-    else {
-        var url = "{{ fb_url }}?pop=2&type=" + type;
-
-        tinyMCE.activeEditor.windowManager.open(
-            {
-                'file': url,
-                'width': 820,
-                'height': 500,
-                'resizable': "yes",
-                'scrollbars': "yes",
-                'inline': "no",
-                'close_previous': "no"
-            },
-            {
-                'window': win,
-                'input': field_name,
-                'editor_id': tinyMCE.selectedInstance.editorId
-            }
-        );
-        return false;
-    }
+        },
+    );
+    return false
 }

@@ -61,7 +61,7 @@ class TinyMCE(forms.Textarea):
         mce_config["language"] = match_language_with_tinymce(mce_config["language"])
         mce_config.update(get_language_config(self.content_language or mce_config["language"]))
         if tinymce.settings.USE_FILEBROWSER:
-            mce_config["file_browser_callback"] = "djangoFileBrowser"
+            mce_config["file_picker_callback"] = "djangoFileBrowser"
         mce_config.update(self.mce_attrs)
         if mce_config["mode"] == "exact":
             mce_config["elements"] = attrs["id"]
