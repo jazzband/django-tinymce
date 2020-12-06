@@ -58,8 +58,13 @@ class TinyMCE(forms.Textarea):
         mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
         if "language" not in mce_config:
             mce_config["language"] = get_language_from_django()
-        mce_config["language"] = match_language_with_tinymce(mce_config["language"])
-        mce_config.update(get_language_config(self.content_language or mce_config["language"]))
+        if mce_config["language"] == "en_US":
+            del mce_config["language"]
+        else:
+            mce_config["language"] = match_language_with_tinymce(mce_config["language"])
+        mce_config.update(
+            get_language_config(self.content_language or mce_config.get("language", "en_US"))
+        )
         if tinymce.settings.USE_FILEBROWSER:
             mce_config["file_picker_callback"] = "djangoFileBrowser"
         mce_config.update(self.mce_attrs)
