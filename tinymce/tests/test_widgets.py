@@ -37,7 +37,7 @@ class TestWidgets(TestCase):
         widget = TinyMCE()
         with override(None):
             config = widget.get_mce_config(attrs={"id": "id"})
-            self.assertEqual(config["language"], "en_US")
+            self.assertNotIn("language", config.keys())
             self.assertEqual(config["spellchecker_languages"], "+English=en")
 
     @override_settings(LANGUAGES_BIDI=["en"])
@@ -70,6 +70,17 @@ class TestWidgets(TestCase):
             with override_settings(LANGUAGE_CODE="kab"):
                 config = widget.get_mce_config(attrs={"id": "id"})
                 self.assertEqual(config["language"], "en_US")
+
+    def test_no_language_for_en_US(self):
+        """
+        en_US shouldn't set 'language'
+        (https://github.com/tinymce/tinymce/issues/4228)
+        """
+        widget = TinyMCE()
+        with override_settings(LANGUAGE_CODE="en-us"):
+            config = widget.get_mce_config(attrs={"id": "id"})
+            self.assertNotIn("language", config.keys())
+        self.assertEqual(config["directionality"], "ltr")
 
     def test_language_override_from_config(self):
         """language in DEFAULT_CONFIG has priority over current Django language."""
