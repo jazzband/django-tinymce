@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.contrib.admin.sites import AdminSite
-from django.test import TestCase
+from django.test import SimpleTestCase
 
 from tinymce.widgets import AdminTinyMCE
 
 from .models import TestModel
 
 
-class TestModels(TestCase):
+class TestModels(SimpleTestCase):
     def setUp(self):
         self.site = AdminSite()
 
