@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import django
 from django import forms
-from django.test import TestCase
+from django.test import SimpleTestCase
 from django.test.utils import override_settings
 from django.utils.translation import override
 
@@ -23,7 +23,7 @@ def override_tinymce_settings(settings_dict):
 
 
 @override_settings(LANGUAGES=[("en", "English")])
-class TestWidgets(TestCase):
+class TestWidgets(SimpleTestCase):
     def test_default_config(self):
         config = get_language_config("en")
         config_ok = {

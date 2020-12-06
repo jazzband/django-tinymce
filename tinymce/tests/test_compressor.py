@@ -1,12 +1,12 @@
 from unittest.mock import patch
 import zlib
 
-from django.test import RequestFactory, TestCase
+from django.test import RequestFactory, SimpleTestCase
 
 from tinymce.compressor import gzip_compressor
 
 
-class TestCompressor(TestCase):
+class TestCompressor(SimpleTestCase):
     def setUp(self):
         self.factory = RequestFactory()
 
