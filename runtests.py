@@ -15,16 +15,23 @@ else:
     from django.test.utils import get_runner
 
 
-def runtests(verbosity=1, failfast=False):
+def runtests(modules=["tinymce"], verbosity=1, failfast=False):
     django.setup()
     TestRunner = get_runner(settings)
     test_runner = TestRunner(interactive=True, verbosity=verbosity, failfast=failfast)
-    failures = test_runner.run_tests(["tinymce"])
+    failures = test_runner.run_tests(modules)
     sys.exit(bool(failures))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the django-tinymce test suite.")
+    parser.add_argument(
+        "modules",
+        nargs="*",
+        metavar="module",
+        help='Optional path(s) to test modules; e.g. "tinymce" or '
+        '"tinymce.tests.test_widgets".',
+    )
     parser.add_argument(
         "-v",
         "--verbosity",
@@ -39,4 +46,4 @@ if __name__ == "__main__":
         help="Stop running the test suite after first failed test.",
     )
     options = parser.parse_args()
-    runtests(verbosity=options.verbosity, failfast=options.failfast)
+    runtests(modules=options.modules, verbosity=options.verbosity, failfast=options.failfast)
