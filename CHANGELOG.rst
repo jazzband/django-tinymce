@@ -149,3 +149,6 @@ This document describes changes between each past release.
 ==================
 
 * Starts supporting Django 1.8
+
+Older Changelog entries can be found on
+https://github.com/jazzband/django-tinymce/blob/3.1.0/docs/history.rst
