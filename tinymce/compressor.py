@@ -18,7 +18,6 @@ from django.core.cache import cache
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils.cache import patch_response_headers, patch_vary_headers
-from django.utils.encoding import smart_text
 from django.utils.http import http_date
 from django.utils.text import compress_string
 
@@ -36,11 +35,8 @@ def get_file_contents(filename, source=False):
         file_path = finders.find(os.path.join("tinymce", f"{filename}.min.js"))
 
     try:
-        f = open(file_path)
-        try:
-            return f.read()
-        finally:
-            f.close()
+        with open(file_path) as fh:
+            return fh.read()
     except (IOError, TypeError):
         logger.error(f"Couldn't load file: {file_path} for {filename}")
         return ""
@@ -137,23 +133,9 @@ def gzip_compressor(request):
         + ', function(f){tinymce.ScriptLoader.markDone(tinyMCE.baseURL+"/"+f+".js");});'
     )
 
-    unicode_content = []
-    for i, c in enumerate(content):
-        try:
-            unicode_content.append(c.decode("latin-1"))
-        except AttributeError:
-            # python 3 way
-            unicode_content.append(smart_text(c))
-        except UnicodeDecodeError:
-            try:
-                unicode_content.append(c.decode("utf-8"))
-            except Exception:
-                print(f"{files[i]} is nor latin-1 nor utf-8.")
-                raise
-
     # Compress
     if compress:
-        content = compress_string(b"".join([c.encode("utf-8") for c in unicode_content]))
+        content = compress_string(b"".join([c.encode("utf-8") for c in content]))
         response["Content-Encoding"] = "gzip"
         response["Content-Length"] = str(len(content))
 
