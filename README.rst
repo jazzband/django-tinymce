@@ -65,7 +65,7 @@ In your code:
 Releases
 ========
 
-Latest release is 3.0.1. It supports Python 3.6, 3.7 and 3.8 with Django 2.2 and 3.0
+Latest release is 3.1.0. It supports Python 3.6+ with Django 2.2 and 3.0
 
 Previous releases can be found on github, but they are no longer maintained.
 
