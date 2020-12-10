@@ -4,10 +4,16 @@ Changelog
 This document describes changes between each past release.
 
 
-3.2.0 (unreleased)
+3.2.0 (2020-12-10)
 ==================
 
-- Nothing changed yet.
+- Remove support for universal builds
+- Add compatibility of django-filebrowser with tinymce 5
+- Load the CHANGELOG in the documentation front page
+- Fix en_US language loading
+- Speed up tests by removing the loading of a database
+- Add verbosity option to tests
+- Assume TinyMCE files are utf-8 encoded
 
 
 3.1.0 (2020-09-29)
