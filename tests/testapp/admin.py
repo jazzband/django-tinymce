@@ -3,7 +3,7 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.urls import reverse
 
-from testtinymce.testapp.models import TestInline, TestPage
+from tests.testapp.models import TestInline, TestPage
 from tinymce.widgets import TinyMCE
 
 

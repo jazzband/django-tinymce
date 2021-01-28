@@ -4,7 +4,7 @@ from django.test import SimpleTestCase
 
 from tinymce.widgets import AdminTinyMCE
 
-from .models import TestModel
+from tests.testapp.models import TestModel
 
 
 class TestModels(SimpleTestCase):
