@@ -2,9 +2,8 @@ from django.contrib import admin
 from django.contrib.admin.sites import AdminSite
 from django.test import SimpleTestCase
 
-from tinymce.widgets import AdminTinyMCE
-
 from tests.testapp.models import TestModel
+from tinymce.widgets import AdminTinyMCE
 
 
 class TestModels(SimpleTestCase):
