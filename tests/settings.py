@@ -86,3 +86,5 @@ TINYMCE_DEFAULT_CONFIG = {
     "alignright alignjustify | bullist numlist outdent indent | "
     "removeformat | help",
 }
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
