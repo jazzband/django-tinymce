@@ -15,7 +15,6 @@ from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
 from django.forms.utils import flatatt
 from django.urls import reverse
-from django.utils.encoding import force_text
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, gettext as _, to_locale
@@ -75,7 +74,6 @@ class TinyMCE(forms.Textarea):
     def render(self, name, value, attrs=None, renderer=None):
         if value is None:
             value = ""
-        value = force_text(value)
         final_attrs = self.build_attrs(self.attrs, attrs)
         final_attrs["name"] = name
         if final_attrs.get("class", None) is None:
