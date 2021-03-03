@@ -7,7 +7,6 @@ import logging
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
-from django.utils.encoding import force_str
 from django.utils.translation import gettext as _
 from django.views.decorators.csrf import csrf_exempt
 
@@ -28,8 +27,7 @@ def spell_check(request):
         if not enchant:
             raise RuntimeError("install pyenchant for spellchecker functionality")
 
-        raw = force_str(request.body)
-        input = json.loads(raw)
+        input = json.loads(request.body)
         id = input["id"]
         method = input["method"]
         params = input["params"]
