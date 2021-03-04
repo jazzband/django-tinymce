@@ -59,19 +59,13 @@
       initTinyMCE(el);
     });
 
-    // initialize the TinyMCE editor after adding an inline
-    document.body.addEventListener("click", function(ev) {
-      if (!ev.target.parentNode ||
-          !ev.target.parentNode.getAttribute("class") ||
-          !ev.target.parentNode.getAttribute("class").includes("add-row")) {
-        return;
-      }
-      const addRow = ev.target.parentNode;
-      setTimeout(function() {  // We have to wait until the inline is added
-        addRow.parentNode.querySelectorAll('textarea.tinymce').forEach(function(el) {
-          initTinyMCE(el);
+    // initialize the TinyMCE editor after adding an inline in the django admin context.
+    if (typeof(django) !== 'undefined' && typeof(django.jQuery) !== 'undefined') {
+      django.jQuery(document).on('formset:added', function(event, $row, formsetName) {
+        $row.find('textarea.tinymce').each(function() {
+          initTinyMCE(this);
         });
-      }, 0);
-    }, true);
+      });
+    }
   });
 }
