@@ -125,12 +125,27 @@ file.
 
         TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "path/to/tiny_mce")
 
-``TINYMCE_DEFAULT_CONFIG`` (default: ``{'theme': "simple", 'relative_urls': False}``)
+``TINYMCE_DEFAULT_CONFIG``
   The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all
   options. To set the configuration for a specific TinyMCE editor, see the
   ``mce_attrs`` parameter for the :ref:`widget <widget>`.
   !Important: The ``language`` attribute should only be set to force TinyMCE to
   have a different language than Django's current active language.
+
+  If not set, the default value of this setting is::
+
+  {
+      "theme": "silver",
+      "height": 500,
+      "menubar": False,
+      "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+      "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+      "code,help,wordcount",
+      "toolbar": "undo redo | formatselect | "
+      "bold italic backcolor | alignleft aligncenter "
+      "alignright alignjustify | bullist numlist outdent indent | "
+      "removeformat | help",
+  }
 
 ``TINYMCE_SPELLCHECKER`` (default: ``False``)
   Whether to use the spell checker through the supplied view. You must add
