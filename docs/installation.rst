@@ -79,7 +79,7 @@ Verify that everything is installed and configured properly:
 
 #. Setup environment variable ``DJANGO_SETTINGS_MODULE``::
 
-    export DJANGO_SETTINGS_MODULE='testtinymce.settings'
+    export DJANGO_SETTINGS_MODULE='tests.settings'
 
 #. Create project and change into project directory::
 

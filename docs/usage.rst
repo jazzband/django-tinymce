@@ -219,7 +219,7 @@ The source contains a `test project`_ that includes this flatpages model admin.
 #. Checkout django-tinymce:
    ``git clone https://github.com/jazzband/django-tinymce.git``
 #. Go to the test project:
-   ``cd django-tinymce/testtinymce``
+   ``cd django-tinymce/tests``
 #. Copy the ``tiny_mce`` directory from the TinyMCE distribution into
    ``media/js``
 #. Run ``python manage.py migrate``
@@ -228,5 +228,5 @@ The source contains a `test project`_ that includes this flatpages model admin.
 #. Connect to `http://localhost:8000/admin/`_ and login with the above-created
    user.
 
-.. _`test project`: https://github.com/jazzband/django-tinymce/tree/master/testtinymce
+.. _`test project`: https://github.com/jazzband/django-tinymce/tree/master/tests
 .. _`http://localhost:8000/admin/`: http://localhost:8000/admin/

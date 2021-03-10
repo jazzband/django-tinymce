@@ -1,5 +1,3 @@
-# Django settings for testtinymce project.
-
 from os.path import dirname, join, realpath
 
 ROOT_PATH = dirname(realpath(__file__))
@@ -8,7 +6,7 @@ DEBUG = True
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": join(ROOT_PATH, "testtinymce.sqlite"),
+        "NAME": join(ROOT_PATH, "tests.sqlite"),
         "USER": "",
         "PASSWORD": "",
         "HOST": "",
@@ -49,6 +47,7 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ]
@@ -58,7 +57,7 @@ TEMPLATES = [
 
 SECRET_KEY = "w4o4x^&b4h4zne9&3b1m-_p-=+&n_i_sdf@oz=gd+6h6v1$sd9"
 
-ROOT_URLCONF = "testtinymce.urls"
+ROOT_URLCONF = "tests.urls"
 
 INSTALLED_APPS = (
     "django.contrib.auth",
@@ -70,7 +69,7 @@ INSTALLED_APPS = (
     "django.contrib.admin",
     "django.contrib.flatpages",
     "tinymce",
-    "testtinymce.testapp",
+    "tests.testapp",
 )
 
 TINYMCE_SPELLCHECKER = True
@@ -87,3 +86,5 @@ TINYMCE_DEFAULT_CONFIG = {
     "alignright alignjustify | bullist numlist outdent indent | "
     "removeformat | help",
 }
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

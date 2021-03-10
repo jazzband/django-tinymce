@@ -51,5 +51,4 @@ setup(
     ],
     platforms=["any"],
     url="https://github.com/jazzband/django-tinymce",
-    test_suite="runtests.runtests",
 )

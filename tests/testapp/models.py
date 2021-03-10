@@ -1,5 +1,11 @@
 from django.db import models
 
+from tinymce import models as tinymce_models
+
+
+class TestModel(models.Model):
+    foobar = tinymce_models.HTMLField()
+
 
 class TestPage(models.Model):
     content1 = models.TextField()

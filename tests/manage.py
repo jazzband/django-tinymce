@@ -3,7 +3,7 @@ import os
 import sys
 
 try:
-    os.environ["DJANGO_SETTINGS_MODULE"] = "testtinymce.settings"
+    os.environ["DJANGO_SETTINGS_MODULE"] = "tests.settings"
     test_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     sys.path.insert(0, test_dir)
 except ImportError:
