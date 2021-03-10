@@ -16,11 +16,14 @@ django-tinymce
 .. image:: https://img.shields.io/pypi/dm/django-tinymce.svg
         :target: https://pypi.python.org/pypi/django-tinymce
 
-.. image:: https://travis-ci.org/jazzband/django-tinymce.svg?branch=master
-        :target: https://travis-ci.org/jazzband/django-tinymce
+.. image:: https://github.com/jazzband/django-tinymce/workflows/Test/badge.svg
+   :target: https://github.com/jazzband/django-tinymce/actions
+   :alt: GitHub Actions
 
-.. image:: https://coveralls.io/repos/github/jazzband/django-tinymce/badge.svg?branch=master
-        :target: https://coveralls.io/github/jazzband/django-tinymce?branch=master
+.. image:: https://codecov.io/gh/jazzband/django-tinymce/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/jazzband/django-tinymce
+   :alt: Code coverage
+
 
 Quickstart
 ==========
