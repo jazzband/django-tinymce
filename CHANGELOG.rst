@@ -4,10 +4,12 @@ Changelog
 This document describes changes between each past release.
 
 
-3.3.0 (unreleased)
+3.3.0 (2021-03-24)
 ==================
 
-- Nothing changed yet.
+- Add support for Django 3.1
+- Improve detection of dynamically added formsets
+- Update configuration documentation
 
 
 3.2.0 (2020-12-10)
