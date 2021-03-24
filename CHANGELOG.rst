@@ -8,7 +8,7 @@ This document describes changes between each past release.
 ==================
 
 - Add support for Django 3.1
-- Add support for Django 3.0
+- Improve detection of dynamically added formsets
 - Update configuration documentation
 
 
