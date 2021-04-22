@@ -119,6 +119,7 @@ def filebrowser(request):
         content_type='application/javascript'
     )
 
+
 def filebrowserPath(request):
     try:
         _dir = request.GET['url']
@@ -127,7 +128,6 @@ def filebrowserPath(request):
 
     return render_to_response(
         'tinymce/defaultpath.js',
-        {'dir': _dir, },
-        context_instance=RequestContext(request),
+        {'dir': _dir,},
         content_type='application/javascript'
     )
