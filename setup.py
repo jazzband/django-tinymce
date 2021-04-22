@@ -45,6 +45,10 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     platforms=['any'],
-    url="https://github.com/agushuley/gu-django-tinymce", requires=['django'],
+    url="https://github.com/agushuley/gu-django-tinymce",
+    requires=[
+        'django',
+        'gu-django-filebrowser-no-grappelli'
+    ],
     test_suite='runtests.runtests',
 )
