@@ -19,11 +19,7 @@ from django.utils.encoding import force_text
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, ugettext as _
-try:
-    from django.urls import reverse
-except ImportError:
-    # Django < 1.10
-    from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 import tinymce.settings
 
@@ -70,7 +66,7 @@ class TinyMCE(forms.Textarea):
             mce_config['elements'] = attrs['id']
         return mce_config
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         if value is None:
             value = ''
         value = force_text(value)
