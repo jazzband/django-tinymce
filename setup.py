@@ -44,7 +44,7 @@ setup(
     url="https://github.com/hu-django/tinymce",
     requires=[
         'django',
-        'gu-django-filebrowser-no-grappelli'
+        'gu_django_filebrowser_no_grappelli',
     ],
     test_suite='runtests.runtests',
 )
