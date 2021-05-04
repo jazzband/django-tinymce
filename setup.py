@@ -17,7 +17,7 @@ CHANGELOG = read_file('CHANGELOG.rst')
 
 setup(
     name="gu-django-tinymce",
-    version='2.6.2',
+    version='2.6.3',
     packages=find_packages(),
     include_package_data=True,
     author="Aljosa Mohorovic",
@@ -45,7 +45,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     platforms=['any'],
-    url="https://github.com/agushuley/gu-django-tinymce",
+    url="https://github.com/hu-django/tinymce",
     requires=[
         'django',
         'gu-django-filebrowser-no-grappelli'
