@@ -5,18 +5,14 @@ import json
 import logging
 
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render as render_to_response
 from django.shortcuts import render
 from django.utils.datastructures import MultiValueDictKeyError
 from django.utils.encoding import force_text
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt
-try:
-    from django.urls import reverse
-except ImportError:
-    # Django < 1.10
-    from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from tinymce.compressor import gzip_compressor
 
@@ -127,6 +123,7 @@ def filebrowserPath(request):
         _dir = ''
 
     return render_to_response(
+        request,
         'tinymce/defaultpath.js',
         {'dir': _dir,},
         content_type='application/javascript'
