@@ -162,7 +162,7 @@ Create the widget::
   from tinymce.widgets import TinyMCE
 
   class SomeForm(forms.Form):
-      somefield = forms.CharField(widget=TinyMCE(mce_attrs={'external_link_list_url': reverse('someviewname')})
+      somefield = forms.CharField(widget=TinyMCE(mce_attrs={'external_link_list_url': reverse('someviewname')}))
 
 Create the view::
 
