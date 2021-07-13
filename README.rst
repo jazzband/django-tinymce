@@ -3,20 +3,20 @@ gu-django-tinymce
 
 **gu-django-tinymce** is a Django application that contains a widget to render a form field as a TinyMCE editor.
 
-.. image:: https://img.shields.io/pypi/v/django-tinymce.svg
-        :target: https://pypi.python.org/pypi/django-tinymce
+.. image:: https://img.shields.io/pypi/v/gu-django-tinymce.svg
+        :target: https://pypi.python.org/pypi/gu-django-tinymce
 
-.. image:: https://img.shields.io/pypi/pyversions/django-tinymce.svg
-        :target: https://pypi.python.org/pypi/django-tinymce
+.. image:: https://img.shields.io/pypi/pyversions/gu-django-tinymce.svg
+        :target: https://pypi.python.org/pypi/gu-django-tinymce
 
-.. image:: https://img.shields.io/pypi/dm/django-tinymce.svg
-        :target: https://pypi.python.org/pypi/django-tinymce
+.. image:: https://img.shields.io/pypi/dm/gu-django-tinymce.svg
+        :target: https://pypi.python.org/pypi/gu-django-tinymce
 
-.. image:: https://img.shields.io/travis/aljosa/django-tinymce.svg
-        :target: https://travis-ci.org/aljosa/django-tinymce
+.. image:: https://img.shields.io/travis/aljosa/gu-django-tinymce.svg
+        :target: https://travis-ci.org/aljosa/gu-django-tinymce
 
-.. image:: https://img.shields.io/coveralls/aljosa/django-tinymce.svg
-        :target: https://coveralls.io/github/aljosa/django-tinymce
+.. image:: https://img.shields.io/coveralls/aljosa/gu-django-tinymce.svg
+        :target: https://coveralls.io/github/aljosa/gu-django-tinymce
 
 Quickstart
 ==========
