@@ -65,9 +65,9 @@ class TestWidgets(SimpleTestCase):
                 config = widget.get_mce_config(attrs={"id": "id"})
                 self.assertEqual(config["language"], lang_expected)
         # A language with no matching TinyMCE translation:
-        expected = "No TinyMCE language found for 'kab', defaulting to 'en_US'"
+        expected = "No TinyMCE language found for 'af', defaulting to 'en_US'"
         with self.assertWarnsRegex(RuntimeWarning, expected):
-            with override_settings(LANGUAGE_CODE="kab"):
+            with override_settings(LANGUAGE_CODE="af"):
                 config = widget.get_mce_config(attrs={"id": "id"})
                 self.assertEqual(config["language"], "en_US")
 
