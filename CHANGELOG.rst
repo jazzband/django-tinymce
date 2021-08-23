@@ -7,7 +7,7 @@ This document describes changes between each past release.
 3.3.0 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Upgrade to TinyMCE 5.7.1 (contains security fixes, #366).
 
 
 3.2.0 (2020-12-10)
