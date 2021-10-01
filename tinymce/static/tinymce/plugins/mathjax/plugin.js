@@ -169,6 +169,10 @@ tinymce.PluginManager.add('mathjax', function (editor, url) {
                 return 0;
             })
         }
+        if (!symbol) {
+            symbol = '$$'
+            latex = ''
+        }
 
         // show new window
         editor.windowManager.open({
