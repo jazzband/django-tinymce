@@ -34,4 +34,5 @@ Documentation
 
    installation
    usage
+   mathjax
    history
