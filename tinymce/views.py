@@ -23,36 +23,46 @@ def spell_check(request):
     """
     Returns a HttpResponse that implements the TinyMCE spellchecker protocol.
     """
+    e_msg = _("Something went wrong in tinymce spell checker")
     try:
         if not enchant:
             raise RuntimeError("install pyenchant for spellchecker functionality")
 
-        input = json.loads(request.body)
-        id = input["id"]
-        method = input["method"]
-        params = input["params"]
-        lang = params[0]
-        arg = params[1]
+        method = request.POST.get("method",None)
+        text = request.POST.get("text",None)
+        lang = request.POST.get("lang",None)
 
         if not enchant.dict_exists(str(lang)):
-            raise RuntimeError(f"dictionary not found for language {lang}")
+            e_msg = f"Dictionary not found for language '{lang}', check pyenchant."
+            raise RuntimeError(e_msg)
 
         checker = enchant.Dict(str(lang))
 
-        if method == "checkWords":
-            result = [word for word in arg if word and not checker.check(word)]
-        elif method == "getSuggestions":
-            result = checker.suggest(arg)
+        def sanitize_word(text):
+            """Sanitize the words and reccommend suggestion for word
+            fix.
+            """
+            suggested_words = {}
+            words = text.split()
+            for word in words:
+                word.strip()
+                word.strip(".,:;'\"")
+                if not checker.check(word):
+                    suggested_words[word] = checker.suggest(word)
+            return suggested_words
+    
+        if method == "spellcheck":
+            if text:
+                words = sanitize_word(text)
+            output = {"words": words}
         else:
-            raise RuntimeError(f"Unknown spellcheck method: {method}")
-        output = {
-            "id": id,
-            "result": result,
-            "error": None,
-        }
+            e_msg = f"Got an unexpected method '{method}'"
+            raise Exception(e_msg)
+
     except Exception:
         logging.exception("Error running spellchecker")
-        return HttpResponse(_("Error running spellchecker"))
+        output = {"error": e_msg}
+
     return HttpResponse(json.dumps(output), content_type="application/json")
 
 
