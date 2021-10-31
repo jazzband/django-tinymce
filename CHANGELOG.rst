@@ -7,7 +7,7 @@ This document describes changes between each past release.
 3.4.0 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Fixed the bug in spellchecker.
 
 
 3.3.0 (2021-03-24)
