@@ -28,9 +28,9 @@ def spell_check(request):
         if not enchant:
             raise RuntimeError("install pyenchant for spellchecker functionality")
 
-        method = request.POST.get("method",None)
-        text = request.POST.get("text",None)
-        lang = request.POST.get("lang",None)
+        method = request.POST.get("method", None)
+        text = request.POST.get("text", None)
+        lang = request.POST.get("lang", None)
 
         if not enchant.dict_exists(str(lang)):
             e_msg = f"Dictionary not found for language '{lang}', check pyenchant."
@@ -50,7 +50,7 @@ def spell_check(request):
                 if not checker.check(word):
                     suggested_words[word] = checker.suggest(word)
             return suggested_words
-    
+
         if method == "spellcheck":
             if text:
                 words = sanitize_word(text)
