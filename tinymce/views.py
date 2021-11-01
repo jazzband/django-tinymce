@@ -4,7 +4,7 @@
 import json
 import logging
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -21,7 +21,7 @@ except ImportError:
 @csrf_exempt
 def spell_check(request):
     """
-    Returns a HttpResponse that implements the TinyMCE spellchecker protocol.
+    Returns a response that implements the TinyMCE spellchecker protocol.
     """
     try:
         if not enchant:
@@ -53,7 +53,7 @@ def spell_check(request):
     except Exception:
         logging.exception("Error running spellchecker")
         return HttpResponse(_("Error running spellchecker"))
-    return HttpResponse(json.dumps(output), content_type="application/json")
+    return JsonResponse(output)
 
 
 def flatpages_link_list(request):
