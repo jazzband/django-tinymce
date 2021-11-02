@@ -61,7 +61,8 @@ def spell_check(request):
 
     except Exception:
         logging.exception("Error running spellchecker")
-        return HttpResponse(_("Error running spellchecker"))
+        output = {"error": e_msg}
+
     return JsonResponse(output)
 
 
