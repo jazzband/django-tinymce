@@ -1,7 +1,7 @@
-import os
 import json
-import urllib
+import os
 from unittest.mock import Mock, patch
+import urllib
 
 from django.contrib.flatpages.models import FlatPage
 from django.http import HttpResponse
@@ -29,9 +29,7 @@ class TestViews(TestCase):
             "/tinymce/spellchecker/", body, content_type="application/x-www-form-urlencoded"
         )
 
-        output = {
-            "words": {}
-        }
+        output = {"words": {}}
 
         self.assertEqual(200, response.status_code)
         self.assertEqual("application/json", response["Content-Type"])
@@ -50,11 +48,7 @@ class TestViews(TestCase):
             "/tinymce/spellchecker/", body, content_type="application/x-www-form-urlencoded"
         )
 
-        output = {
-            "words": {
-                "smaple": ['sample',]
-            }
-        }
+        output = {"words": {"smaple": ["sample",]}}
 
         self.assertEqual(200, response.status_code)
         self.assertEqual("application/json", response["Content-Type"])
