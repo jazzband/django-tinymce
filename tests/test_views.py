@@ -33,10 +33,9 @@ class TestViews(TestCase):
             "result": ["test"],
             "error": None,
         }
-        response_ok = HttpResponse(json.dumps(output), content_type="application/json")
         self.assertEqual(200, response.status_code)
         self.assertEqual("application/json", response["Content-Type"])
-        self.assertEqual(response_ok.content, response.content)
+        self.assertEqual(output, response.json())
 
     @patch("tinymce.views.enchant")
     def test_spell_check_suggest(self, enchant_mock):
@@ -54,10 +53,9 @@ class TestViews(TestCase):
             "result": result,
             "error": None,
         }
-        response_ok = HttpResponse(json.dumps(output), content_type="application/json")
         self.assertEqual(200, response.status_code)
         self.assertEqual("application/json", response["Content-Type"])
-        self.assertEqual(response_ok.content, response.content)
+        self.assertEqual(output, response.json())
 
     @patch("tinymce.views.enchant")
     def test_spell_check_unknown(self, enchant_mock):
