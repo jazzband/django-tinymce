@@ -1,7 +1,6 @@
-import json
 import os
 from unittest.mock import Mock, patch
-import urllib
+from urllib.parse import urlencode
 
 from django.contrib.flatpages.models import FlatPage
 from django.http import HttpResponse
@@ -24,7 +23,7 @@ class TestViews(TestCase):
         checker_mock.check.return_value = True
         enchant_mock.Dict.return_value = checker_mock
 
-        body = urllib.parse.urlencode({"method": "spellcheck", "text": "tesat", "lang": "en"})
+        body = urlencode({"method": "spellcheck", "text": "tesat", "lang": "en"})
         response = self.client.post(
             "/tinymce/spellchecker/", body, content_type="application/x-www-form-urlencoded"
         )
@@ -43,12 +42,12 @@ class TestViews(TestCase):
         checker_mock.suggest.return_value = result
         enchant_mock.Dict.return_value = checker_mock
 
-        body = urllib.parse.urlencode({"method": "spellcheck", "text": "smaple", "lang": "en"})
+        body = urlencode({"method": "spellcheck", "text": "smaple", "lang": "en"})
         response = self.client.post(
             "/tinymce/spellchecker/", body, content_type="application/x-www-form-urlencoded"
         )
 
-        output = {"words": {"smaple": ["sample",]}}
+        output = {"words": {"smaple": ["sample", ]}}
 
         self.assertEqual(200, response.status_code)
         self.assertEqual("application/json", response["Content-Type"])
@@ -56,7 +55,7 @@ class TestViews(TestCase):
 
     @patch("tinymce.views.enchant")
     def test_spell_check_unknown_method(self, enchant_mock):
-        body = urllib.parse.urlencode({"method": "test", "text": "test", "lang": "en"})
+        body = urlencode({"method": "test", "text": "test", "lang": "en"})
         with patch("sys.stderr", devnull):
             response = self.client.post(
                 "/tinymce/spellchecker/", body, content_type="application/x-www-form-urlencoded"
@@ -72,7 +71,7 @@ class TestViews(TestCase):
     def test_spell_check_unknown_lang(self, enchant_mock):
         enchant_mock.dict_exists.return_value = False
 
-        body = urllib.parse.urlencode({"method": "spellcheck", "text": "test", "lang": "en"})
+        body = urlencode({"method": "spellcheck", "text": "test", "lang": "en"})
         with patch("sys.stderr", devnull):
             response = self.client.post(
                 "/tinymce/spellchecker/", body, content_type="application/x-www-form-urlencoded"

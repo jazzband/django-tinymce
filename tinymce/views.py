@@ -23,14 +23,13 @@ def spell_check(request):
     """
     Returns a response that implements the TinyMCE spellchecker protocol.
     """
-    e_msg = _("Something went wrong in tinymce spell checker")
     try:
         if not enchant:
             raise RuntimeError("install pyenchant for spellchecker functionality")
 
-        method = request.POST.get("method", None)
-        text = request.POST.get("text", None)
-        lang = request.POST.get("lang", None)
+        method = request.POST.get("method")
+        text = request.POST.get("text")
+        lang = request.POST.get("lang")
 
         if not enchant.dict_exists(str(lang)):
             e_msg = f"Dictionary not found for language '{lang}', check pyenchant."
@@ -57,11 +56,11 @@ def spell_check(request):
             output = {"words": words}
         else:
             e_msg = f"Got an unexpected method '{method}'"
-            raise Exception(e_msg)
+            raise RuntimeError(e_msg)
 
-    except Exception:
+    except Exception as err:
         logging.exception("Error running spellchecker")
-        output = {"error": e_msg}
+        output = {"error": str(err)}
 
     return JsonResponse(output)
 
