@@ -47,7 +47,7 @@ class TestViews(TestCase):
             "/tinymce/spellchecker/", body, content_type="application/x-www-form-urlencoded"
         )
 
-        output = {"words": {"smaple": ["sample", ]}}
+        output = {"words": {"smaple": ["sample",]}}
 
         self.assertEqual(200, response.status_code)
         self.assertEqual("application/json", response["Content-Type"])
