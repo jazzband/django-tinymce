@@ -145,6 +145,7 @@ def gzip_compressor(request):
     if not response.has_header("Last-Modified"):
         response["Last-Modified"] = http_date()
     cache.set(
-        cacheKey, {"Last-Modified": response["Last-Modified"], "ETag": response.get("ETag", "")},
+        cacheKey,
+        {"Last-Modified": response["Last-Modified"], "ETag": response.get("ETag", "")},
     )
     return response
