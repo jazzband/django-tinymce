@@ -31,7 +31,9 @@ USE_FILEBROWSER = getattr(
 )
 
 JS_URL = getattr(
-    settings, "TINYMCE_JS_URL", os.path.join(settings.STATIC_URL, "tinymce/tinymce.min.js"),
+    settings,
+    "TINYMCE_JS_URL",
+    os.path.join(settings.STATIC_URL, "tinymce/tinymce.min.js"),
 )
 try:
     from django.contrib.staticfiles import finders

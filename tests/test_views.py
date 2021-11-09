@@ -102,7 +102,8 @@ class TestViews(TestCase):
 
     def test_flatpages_link_list(self):
         FlatPage.objects.create(
-            url="/test/url", title="Test Title",
+            url="/test/url",
+            title="Test Title",
         )
         response = self.client.get("/tinymce/flatpages_link_list/")
         result_ok = b'var tinyMCELinkList = [["Test Title", "/test/url"]];'
@@ -137,5 +138,6 @@ class TestViews(TestCase):
         response_ok = response_ok.replace("{{ fb_url }}", "http://testserver/filebrowser")
         self.assertEqual(200, response.status_code)
         self.assertEqual(
-            compress_whitespace(response_ok), compress_whitespace(response.content.decode()),
+            compress_whitespace(response_ok),
+            compress_whitespace(response.content.decode()),
         )
