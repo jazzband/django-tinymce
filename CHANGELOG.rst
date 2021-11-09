@@ -9,6 +9,7 @@ This document describes changes between each past release.
 
 - Upgrade to TinyMCE 5.10.1
 - Confirmed support for Django 3.2
+- Repair the spellchecker plugin functionality.
 
 
 3.3.0 (2021-03-24)
