@@ -70,7 +70,6 @@ class TestViews(TestCase):
         self.assertEqual("application/json", response["Content-Type"])
         self.assertEqual(output, response.json())
 
-
     @patch("tinymce.views.enchant")
     def test_spell_check_unknown_method(self, enchant_mock):
         body = urlencode({"method": "test", "text": "test", "lang": "en"})
