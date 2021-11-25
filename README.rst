@@ -68,9 +68,9 @@ In your code:
 Releases
 ========
 
-Latest release is 3.3.0. It supports Python 3.6+ Django 2.2, 3.0 and 3.1
+Latest release is 3.4.0. It supports Python 3.6+ and Django 2.2 to 3.2.
 
-Using TinyMCE 5.5.0.
+Using TinyMCE 5.10.1.
 
 Previous releases can be found on github, but they are no longer maintained.
 

@@ -4,7 +4,7 @@ Changelog
 This document describes changes between each past release.
 
 
-3.4.0 (unreleased)
+3.4.0 (2021-11-25)
 ==================
 
 - Upgrade to TinyMCE 5.10.1
