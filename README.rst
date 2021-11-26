@@ -13,6 +13,9 @@ django-tinymce
 .. image:: https://img.shields.io/pypi/pyversions/django-tinymce.svg
         :target: https://pypi.python.org/pypi/django-tinymce
 
+.. image:: https://img.shields.io/pypi/djversions/django-tinymce.svg
+        :target: https://pypi.org/project/django-tinymce/
+
 .. image:: https://img.shields.io/pypi/dm/django-tinymce.svg
         :target: https://pypi.python.org/pypi/django-tinymce
 
