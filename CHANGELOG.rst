@@ -7,7 +7,16 @@ This document describes changes between each past release.
 3.4.0 (2021-11-25)
 ==================
 
-- Upgrade to TinyMCE 5.10.1
+Security advisory
+-----------------
+
+- This release embeds TinyMCE 5.10.1 as older versions are
+  subject to a `XSS vulnerability
+  <https://github.com/advisories/GHSA-r8hm-w5f7-wj39>`_.
+
+Other improvements
+------------------
+
 - Confirmed support for Django 3.2
 - Repair the spellchecker plugin functionality.
 
