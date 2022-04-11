@@ -3,7 +3,7 @@
 exclude: '^tinymce/(static/tinymce|media/tiny_mce|static/.*min.js$)'
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.2.0
     hooks:
       - id: check-added-large-files
       - id: check-ast
@@ -14,7 +14,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/psf/black
-    rev: 21.11b1
+    rev: 22.3.0
     hooks:
       - id: black
         args: [--exclude=static]
