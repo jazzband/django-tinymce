@@ -3,6 +3,7 @@ Changelog
 
 This document describes changes between each past release.
 
+- Confirmed support for Django 4.0
 - Drop support for Django 3.0
 - Add Python 3.10 support
 
