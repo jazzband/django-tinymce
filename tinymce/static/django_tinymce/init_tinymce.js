@@ -36,7 +36,7 @@
       if (el.dataset.mceGzConf) {
         tinyMCE_GZ.init(JSON.parse(el.dataset.mceGzConf));
       }
-      if (!tinyMCE.editors[id]) {
+      if (!tinyMCE.get(id)) {
         tinyMCE.init(mce_conf);
       }
     }
