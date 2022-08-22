@@ -3,7 +3,11 @@ Changelog
 
 This document describes changes between each past release.
 
+3.5.0 (2022-08-27)
+==================
+
 - Support new non-jQuery formset:added event triggered on Django 4.1
+- Replace an obsolete call to tinyMCE.editors (#391)
 - Confirm support for Django 4.0 and 4.1
 - Drop support for Django 3.0, 3.1 and Python 3.6
 - Add Python 3.10 support
