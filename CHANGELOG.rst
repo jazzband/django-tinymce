@@ -4,8 +4,8 @@ Changelog
 This document describes changes between each past release.
 
 - Support new non-jQuery formset:added event triggered on Django 4.1
-- Confirmed support for Django 4.0
-- Drop support for Django 3.0 and Python 3.6
+- Confirm support for Django 4.0 and 4.1
+- Drop support for Django 3.0, 3.1 and Python 3.6
 - Add Python 3.10 support
 
 3.4.0 (2021-11-25)
