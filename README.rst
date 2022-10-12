@@ -80,7 +80,7 @@ Previous releases can be found on github, but they are no longer maintained.
 Documentation
 =============
 
-http://django-tinymce.readthedocs.org/
+https://django-tinymce.readthedocs.org/
 
 Support and updates
 ===================
