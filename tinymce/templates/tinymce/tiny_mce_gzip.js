@@ -1,7 +1,7 @@
 /**
  * Based on "TinyMCE Compressor PHP v2.0.4" from MoxieCode.
  *
- * http://tinymce.moxiecode.com/
+ * https://tinymce.moxiecode.com/
  *
  * Copyright (c) 2012 Jason Davies
  * Licensed under the terms of the MIT License (see LICENSE.txt)
