@@ -29,14 +29,13 @@
         }
       });
 
-      const id = el.id;
-      if ('elements' in mce_conf && mce_conf['mode'] == 'exact') {
-        mce_conf['elements'] = id;
+      if (!'selector' in mce_conf) {
+        mce_conf['target'] = el;
       }
       if (el.dataset.mceGzConf) {
         tinyMCE_GZ.init(JSON.parse(el.dataset.mceGzConf));
       }
-      if (!tinyMCE.get(id)) {
+      if (!tinyMCE.get(el.id)) {
         tinyMCE.init(mce_conf);
       }
     }

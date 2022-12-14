@@ -44,8 +44,6 @@ class TinyMCE(forms.Textarea):
         super().__init__(attrs)
         mce_attrs = mce_attrs or {}
         self.mce_attrs = mce_attrs
-        if "mode" not in self.mce_attrs:
-            self.mce_attrs["mode"] = "exact"
         self.mce_attrs["strict_loading_mode"] = 1
         self.content_language = content_language
 
@@ -67,8 +65,9 @@ class TinyMCE(forms.Textarea):
         if tinymce.settings.USE_FILEBROWSER:
             mce_config["file_picker_callback"] = "djangoFileBrowser"
         mce_config.update(self.mce_attrs)
-        if mce_config["mode"] == "exact":
-            mce_config["elements"] = attrs["id"]
+        # Assuming that if selector is present, it should include "textarea".
+        if not mce_config.get("selector"):
+            mce_config["selector"] = f"#{attrs['id']}"
         return mce_config
 
     def render(self, name, value, attrs=None, renderer=None):
