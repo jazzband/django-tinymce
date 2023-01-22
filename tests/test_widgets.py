@@ -5,7 +5,7 @@ import django
 from django import forms
 from django.test import SimpleTestCase
 from django.test.utils import override_settings
-from django.utils.translation import override, gettext_lazy
+from django.utils.translation import gettext_lazy, override
 
 import tinymce.settings
 from tinymce.widgets import TinyMCE, get_language_config
@@ -159,7 +159,9 @@ class TestWidgets(SimpleTestCase):
     def test_tinymce_widget_allow_translated_options(self):
         widget = TinyMCE()
         orig_config = tinymce.settings.DEFAULT_CONFIG
-        style_formats = [{'title': gettext_lazy("Awesome style"), 'inline': 'strong'}]
-        with patch.dict(tinymce.settings.DEFAULT_CONFIG, {**orig_config, "style_formats": style_formats}):
+        style_formats = [{"title": gettext_lazy("Awesome style"), "inline": "strong"}]
+        with patch.dict(
+            tinymce.settings.DEFAULT_CONFIG, {**orig_config, "style_formats": style_formats}
+        ):
             html = widget.render("foobar", "lorem ipsum", attrs={"id": "id_foobar"})
-            self.assertIn('Awesome style', html)
+            self.assertIn("Awesome style", html)
