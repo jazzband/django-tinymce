@@ -13,6 +13,7 @@ import warnings
 from django import forms
 from django.conf import settings
 from django.contrib.admin import widgets as admin_widgets
+from django.core.serializers.json import DjangoJSONEncoder
 from django.forms.utils import flatatt
 from django.urls import reverse
 from django.utils.html import escape
@@ -81,7 +82,7 @@ class TinyMCE(forms.Textarea):
             final_attrs["class"] = " ".join(final_attrs["class"].split(" ") + ["tinymce"])
         assert "id" in final_attrs, "TinyMCE widget attributes must contain 'id'"
         mce_config = self.get_mce_config(final_attrs)
-        mce_json = json.dumps(mce_config)
+        mce_json = json.dumps(mce_config, cls=DjangoJSONEncoder)
         if tinymce.settings.USE_COMPRESSOR:
             compressor_config = {
                 "plugins": mce_config.get("plugins", ""),
