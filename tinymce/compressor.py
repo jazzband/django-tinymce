@@ -29,7 +29,6 @@ safe_filename_re = re.compile("^[a-zA-Z][a-zA-Z0-9_/-]*$")
 
 
 def get_file_contents(filename, source=False):
-
     file_path = finders.find(os.path.join("tinymce", f"{filename}.js"))
     if not file_path:
         file_path = finders.find(os.path.join("tinymce", f"{filename}.min.js"))
