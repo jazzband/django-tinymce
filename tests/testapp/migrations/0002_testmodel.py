@@ -6,7 +6,6 @@ import tinymce.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("testapp", "0001_initial"),
     ]
