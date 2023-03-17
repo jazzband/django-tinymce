@@ -3,6 +3,16 @@ Changelog
 
 This document describes changes between each past release.
 
+3.6.0 (2023-03-18)
+==================
+
+- Upgrade embedded tinyMCE from 5.10.1 to 5.10.7
+- Replace obsolete mode and elements by selector and target (#417)
+- Detect non-installed tinyMCE soon in init_tinymce.js
+- Stop installing the tests directory (#355)
+- Add support for translatable strings in tinyMCE config
+- Use staticfiles storage API to find tinymce location (#420)
+
 3.5.0 (2022-08-27)
 ==================
 
