@@ -3,6 +3,11 @@ Changelog
 
 This document describes changes between each past release.
 
+Unreleased
+==========
+
+- Drop support for Django 2.2.
+
 3.6.1 (2023-03-20)
 ==================
 
