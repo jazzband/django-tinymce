@@ -1,7 +1,6 @@
 from contextlib import contextmanager
 from unittest.mock import patch
 
-import django
 from django import forms
 from django.test import SimpleTestCase
 from django.test.utils import override_settings
@@ -124,12 +123,11 @@ class TestWidgets(SimpleTestCase):
 
     def test_tinymce_widget_media(self):
         widget = TinyMCE()
-        js_type = 'type="text/javascript" ' if django.get_version() < "3.1" else ""
         self.assertEqual(
             widget.media.render_js(),
             [
-                f'<script {js_type}src="/tinymce/compressor/"></script>',
-                f'<script {js_type}src="/static/django_tinymce/init_tinymce.js"></script>',
+                '<script src="/tinymce/compressor/"></script>',
+                '<script src="/static/django_tinymce/init_tinymce.js"></script>',
             ],
         )
         self.assertEqual(list(widget.media.render_css()), [])
@@ -138,8 +136,8 @@ class TestWidgets(SimpleTestCase):
             self.assertEqual(
                 widget.media.render_js(),
                 [
-                    f'<script {js_type}src="/static/tinymce/tinymce.min.js"></script>',
-                    f'<script {js_type}src="/static/django_tinymce/init_tinymce.js"></script>',
+                    '<script src="/static/tinymce/tinymce.min.js"></script>',
+                    '<script src="/static/django_tinymce/init_tinymce.js"></script>',
                 ],
             )
 
