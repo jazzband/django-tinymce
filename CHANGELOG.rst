@@ -3,6 +3,12 @@ Changelog
 
 This document describes changes between each past release.
 
+3.6.1 (2023-03-20)
+==================
+
+- Fixed a regression by reverting usage of staticfiles to find tinymce
+  location (#420, #430).
+
 3.6.0 (2023-03-18)
 ==================
 
