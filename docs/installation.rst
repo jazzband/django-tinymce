@@ -119,12 +119,6 @@ file.
 
         TINYMCE_JS_URL = os.path.join(STATIC_URL, "path/to/tiny_mce/tiny_mce.js")
 
-``TINYMCE_JS_ROOT`` (default: ``settings.STATIC_ROOT + 'tinymce'``)
-  The filesystem location of the TinyMCE files. It is used by the compressor
-  (see below)::
-
-        TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "path/to/tiny_mce")
-
 ``TINYMCE_DEFAULT_CONFIG``
   The default TinyMCE configuration to use. See `the TinyMCE manual`_ for all
   options. To set the configuration for a specific TinyMCE editor, see the
