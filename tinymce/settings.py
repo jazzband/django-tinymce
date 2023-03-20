@@ -28,6 +28,7 @@ USE_FILEBROWSER = getattr(
     settings, "TINYMCE_FILEBROWSER", "filebrowser" in settings.INSTALLED_APPS
 )
 
+
 def get_js_url():
     return getattr(
         settings,
