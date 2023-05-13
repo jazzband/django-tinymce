@@ -27,12 +27,10 @@ flatpage form you could use the following code::
   from tinymce.widgets import TinyMCE
 
   class FlatPageForm(forms.ModelForm):
-      ...
-      content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
-      ...
 
       class Meta:
           model = FlatPage
+          widgets = {'content': TinyMCE(attrs={'cols': 80, 'rows': 30})}
 
 The widget accepts the following extra keyword argument:
 
