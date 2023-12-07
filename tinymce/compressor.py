@@ -60,12 +60,10 @@ def gzip_compressor(request):
     response = HttpResponse()
     response["Content-Type"] = "text/javascript"
 
+    js_url = tinymce.settings.get_js_url()
+    js_base_url = js_url[: js_url.rfind("/")]
     if not isJS:
-        response.write(
-            render_to_string(
-                "tinymce/tiny_mce_gzip.js", {"base_url": tinymce.settings.JS_BASE_URL}
-            )
-        )
+        response.write(render_to_string("tinymce/tiny_mce_gzip.js", {"base_url": js_base_url}))
         return response
 
     patch_vary_headers(response, ["Accept-Encoding"])
@@ -94,7 +92,7 @@ def gzip_compressor(request):
                 return response
 
     tinyMCEPreInit = {
-        "base": tinymce.settings.JS_BASE_URL,
+        "base": js_base_url,
         "suffix": "",
     }
     content.append(f"var tinyMCEPreInit={json.dumps(tinyMCEPreInit)};")

@@ -101,7 +101,7 @@ class TinyMCE(forms.Textarea):
         if tinymce.settings.USE_COMPRESSOR:
             js = [reverse("tinymce-compressor")]
         else:
-            js = [tinymce.settings.JS_URL]
+            js = [tinymce.settings.get_js_url()]
         if tinymce.settings.USE_FILEBROWSER:
             js.append(reverse("tinymce-filebrowser"))
         if tinymce.settings.USE_EXTRA_MEDIA:

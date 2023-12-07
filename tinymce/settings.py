@@ -1,6 +1,5 @@
-import os
-
 from django.conf import settings
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 DEFAULT_CONFIG = getattr(
     settings,
@@ -29,10 +28,10 @@ USE_FILEBROWSER = getattr(
     settings, "TINYMCE_FILEBROWSER", "filebrowser" in settings.INSTALLED_APPS
 )
 
-JS_URL = getattr(
-    settings,
-    "TINYMCE_JS_URL",
-    os.path.join(settings.STATIC_URL, "tinymce/tinymce.min.js"),
-)
 
-JS_BASE_URL = JS_URL[: JS_URL.rfind("/")]
+def get_js_url():
+    return getattr(
+        settings,
+        "TINYMCE_JS_URL",
+        staticfiles_storage.url("tinymce/tinymce.min.js"),
+    )
