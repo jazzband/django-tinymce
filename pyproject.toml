@@ -1,3 +1,53 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-tinymce"
+version = "3.6.1"
+description = """
+A Django application that contains a widget to render a
+form field as a TinyMCE editor."""
+readme = "README.rst"
+authors = [
+  {name = "Aljosa Mohorovic", email = "aljosa.mohorovic@gmail.com"},
+]
+maintainers = [
+  {name = "Rémy Hubscher", email = "hubscher.remy@gmail.com"},
+  {name = "Claude Paroz", email = "claude@2xlibre.net"},
+]
+license = {text = "MIT License"}
+requires-python = ">=3.8"
+dependencies = [
+  "django>=3.2",
+]
+keywords = ["django", "widget", "tinymce"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Web Environment",
+  "Framework :: Django",
+  "Framework :: Django :: 3.2",
+  "Framework :: Django :: 4.2",
+  "Framework :: Django :: 5.0",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Libraries :: Application Frameworks",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/jazzband/django-tinymce"
+Documentation = "https://django-tinymce.readthedocs.org/"
+Changelog = "https://github.com/jazzband/django-tinymce/blob/master/CHANGELOG.rst"
+
 [tool.black]
 line-length = 99
 skip-numeric-underscore-normalization = true
@@ -17,7 +67,7 @@ exclude = '''
 force_grid_wrap = 0
 include_trailing_comma = true
 known_first_party = 'lib,model,presenters'
-known_third_party = ["django", "setuptools"]
+known_third_party = ["django"]
 line_length = 99
 multi_line_output = 3
 skip_glob = ''
@@ -26,3 +76,7 @@ combine_as_imports = true
 
 # If set, imports will be sorted within their section independent to the import_type.
 force_sort_within_sections = true
+
+[tool.coverage.run]
+source = ["tinymce"]
+branch = true
