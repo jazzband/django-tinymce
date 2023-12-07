@@ -10,21 +10,23 @@ jobs:
       fail-fast: false
       max-parallel: 5
       matrix:
-        python-version: ['3.7', '3.8', '3.9', '3.10']
-        django-version: ['3.2', '4.0', '4.1', 'main']
+        python-version: ['3.8', '3.11', '3.12']
+        django-version: ['3.2', '4.2', '5.0', 'main']
         exclude:
-          - python-version: 3.7
-            django-version: 4.0
-          - python-version: 3.7
-            django-version: 4.1
-          - python-version: 3.7
+          - python-version: 3.8
+            django-version: 5.0
+          - python-version: 3.8
             django-version: main
+          - python-version: 3.11
+            django-version: 3.2
+          - python-version: 3.12
+            django-version: 3.2
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -54,6 +56,6 @@ jobs:
         DJANGO: ${{ matrix.django-version }}
 
     - name: Upload coverage
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v3
       with:
         name: Python ${{ matrix.python-version }}
