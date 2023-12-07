@@ -38,7 +38,7 @@ editor itself and 'django-tinymce' (lower case) to refer to the Django applicati
 
 Installation
 ------------
-#. Install django-tinymce using `pip`_ (or any other way to install python package) from `PyPI`_. If you need to use a different way to install django-tinymce you can place the ``tinymce`` module on your Python path. You can put it into your Django project directory or run ``python setup.py install`` from a shell. ::
+#. Install django-tinymce using `pip`_ (or any other way to install python package) from `PyPI`_. If you need to use a different way to install django-tinymce you can place the ``tinymce`` module on your Python path. ::
 
     pip install django-tinymce
 

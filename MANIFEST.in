@@ -1,5 +1,0 @@
-include *.txt *.py *.rst setup.cfg
-include docs/*.rst
-exclude *.pyc
-recursive-include tests *
-recursive-include tinymce *
