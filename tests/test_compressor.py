@@ -31,7 +31,7 @@ class TestCompressor(SimpleTestCase):
         self.assertEqual("0", response["Content-Length"])
         self.assertEqual("text/javascript", response["Content-Type"])
         self.assertEqual(b"", response.content)
-        self.assertTrue(cache_mock.called_once)
+        cache_mock.assert_called_once()
 
     @patch("tinymce.compressor.cache.get")
     def test_cache_data_last_modified(self, cache_mock):
@@ -46,7 +46,7 @@ class TestCompressor(SimpleTestCase):
         self.assertEqual("0", response["Content-Length"])
         self.assertEqual("text/javascript", response["Content-Type"])
         self.assertEqual(b"", response.content)
-        self.assertTrue(cache_mock.called_once)
+        cache_mock.assert_called_once()
 
     def test_compressor(self):
         request = self.factory.get(

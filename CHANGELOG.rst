@@ -6,7 +6,9 @@ This document describes changes between each past release.
 Unreleased
 ==========
 
-- Drop support for Django 2.2.
+- Drop support for Django 2.2, 4.0, and 4.1.
+- Add support for Django 4.2 and 5.0.
+- Drop support for Python 3.7 and add support for Python 3.11 and 3.12.
 
 3.6.1 (2023-03-20)
 ==================

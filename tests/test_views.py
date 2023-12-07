@@ -121,7 +121,7 @@ class TestViews(TestCase):
         self.assertEqual(200, response.status_code)
         self.assertEqual("text/javascript", response["Content-Type"])
         self.assertEqual(response_ok.content, response.content)
-        self.assertTrue(gzip_mock.called_once)
+        gzip_mock.assert_called_once()
 
     def test_render_to_image_list(self):
         response = render_to_image_list([("test", "test.jpg")])
