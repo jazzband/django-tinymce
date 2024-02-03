@@ -3,12 +3,17 @@ Changelog
 
 This document describes changes between each past release.
 
-Unreleased
-==========
+3.7.0 (2024-02-06)
+==================
 
 - Drop support for Django 2.2, 4.0, and 4.1.
 - Add support for Django 4.2 and 5.0.
 - Drop support for Python 3.7 and add support for Python 3.11 and 3.12.
+- New ``pyproject.toml`` replaces the legacy ``setup.py`` project config.
+- Use staticfiles storage API to find tinymce location (#420). It was already
+  done in 3.6.0, but had to be reverted in 3.6.1 (see #430).
+- Fixed selector usage for elements with ``__prefix__`` (typically inlines).
+- ``TINYMCE_JS_ROOT`` setting has been removed.
 
 3.6.1 (2023-03-20)
 ==================
