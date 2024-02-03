@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-tinymce"
-version = "3.6.1"
+version = "3.7.0"
 description = """
 A Django application that contains a widget to render a
 form field as a TinyMCE editor."""
@@ -51,7 +51,7 @@ Changelog = "https://github.com/jazzband/django-tinymce/blob/master/CHANGELOG.rs
 [tool.black]
 line-length = 99
 skip-numeric-underscore-normalization = true
-target-version = ['py37']
+target-version = ['py38']
 include = '\.pyi?$'
 exclude = '''
 /(
