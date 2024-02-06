@@ -3,6 +3,12 @@ Changelog
 
 This document describes changes between each past release.
 
+3.7.1 (2024-02-06)
+==================
+
+- Reintroduce the ``MANIFEST.in`` file to properly build the package.
+  Release 3.7.0 on PyPI was unusable (#454).
+
 3.7.0 (2024-02-06)
 ==================
 
