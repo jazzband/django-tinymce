@@ -2,64 +2,12 @@
 # Licensed under the terms of the MIT License (see LICENSE.txt)
 
 import json
-import logging
 
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.decorators.csrf import csrf_exempt
 
 from tinymce.compressor import gzip_compressor
-
-try:
-    import enchant
-except ImportError:
-    enchant = None
-
-
-@csrf_exempt
-def spell_check(request):
-    """
-    Returns a response that implements the TinyMCE spellchecker protocol.
-    """
-    try:
-        if not enchant:
-            raise RuntimeError("install pyenchant for spellchecker functionality")
-
-        method = request.POST.get("method")
-        text = request.POST.get("text")
-        lang = request.POST.get("lang")
-
-        if not enchant.dict_exists(lang):
-            e_msg = f"Dictionary not found for language '{lang}', check pyenchant."
-            raise RuntimeError(e_msg)
-
-        checker = enchant.Dict(lang)
-
-        def sanitize_words(text):
-            """
-            Sanitize words in text and recommend suggestions for wrong words.
-            """
-            suggested_words = {}
-            words = text.split()
-            for word in words:
-                word.strip()
-                word.strip(".,:;'\"")
-                if not checker.check(word):
-                    suggested_words[word] = checker.suggest(word)
-            return suggested_words
-
-        if method == "spellcheck":
-            output = {"words": sanitize_words(text)}
-        else:
-            e_msg = f"Got an unexpected method '{method}'"
-            raise RuntimeError(e_msg)
-
-    except Exception as err:
-        logging.exception("Error running spellchecker")
-        output = {"error": str(err)}
-
-    return JsonResponse(output)
 
 
 def flatpages_link_list(request):

@@ -55,8 +55,8 @@ class TestCompressor(SimpleTestCase):
                 "js": "true",
                 "compress": "true",
                 "languages": "en",
-                "plugins": "example",
-                "themes": "advanced",
+                "plugins": "codesample",
+                "themes": "silver",
             },
         )
         response = gzip_compressor(request)

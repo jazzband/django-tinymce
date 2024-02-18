@@ -50,6 +50,8 @@ def split_commas(str):
 def gzip_compressor(request):
     plugins = split_commas(request.GET.get("plugins", ""))
     languages = split_commas(request.GET.get("languages", ""))
+    if "en" in languages:
+        languages.remove("en")
     themes = split_commas(request.GET.get("themes", ""))
     files = split_commas(request.GET.get("files", ""))
     source = request.GET.get("src", "") == "true"

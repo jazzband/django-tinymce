@@ -8,8 +8,9 @@ DEFAULT_CONFIG = getattr(
         "theme": "silver",
         "height": 500,
         "menubar": False,
-        "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
-        "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+        "browser_spellcheck": True,
+        "plugins": "advlist,autolink,lists,link,image,charmap,preview,anchor,"
+        "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,"
         "code,help,wordcount",
         "toolbar": "undo redo | formatselect | "
         "bold italic backcolor | alignleft aligncenter "
@@ -17,8 +18,6 @@ DEFAULT_CONFIG = getattr(
         "removeformat | help",
     },
 )
-
-USE_SPELLCHECKER = getattr(settings, "TINYMCE_SPELLCHECKER", False)
 
 USE_COMPRESSOR = getattr(settings, "TINYMCE_COMPRESSOR", False)
 

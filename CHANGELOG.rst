@@ -3,6 +3,16 @@ Changelog
 
 This document describes changes between each past release.
 
+4.0.0 (?)
+=========
+
+- Upgrade embedded tinyMCE from 5.10.7 to 6.8.3
+
+The spellchecker plugin is gone (including ``USE_SPELLCHECKER`` setting). Use
+the `browser_spellcheck` TinyMCE option (activated by default) to enable
+browser-based spellchecking.
+
+
 3.7.1 (2024-02-06)
 ==================
 
