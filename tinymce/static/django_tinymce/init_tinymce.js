@@ -47,7 +47,6 @@
 
   // Call function fn when the DOM is loaded and ready. If it is already
   // loaded, call the function now.
-  // https://youmightnotneedjquery.com/#ready
   function ready(fn) {
     if (document.readyState !== 'loading') {
       fn();

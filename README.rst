@@ -73,7 +73,7 @@ Releases
 
 Latest release is 3.7.1. It supports Python 3.8+ and Django 3.2 to 5.0.
 
-Using TinyMCE 5.10.7.
+Using TinyMCE 6.8.3.
 
 Previous releases can be found on github, but they are no longer maintained.
 

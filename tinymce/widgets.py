@@ -35,10 +35,9 @@ class TinyMCE(forms.Textarea):
     parameter by default.
 
     In addition to the default settings from settings.TINYMCE_DEFAULT_CONFIG,
-    this widget sets the 'language', 'directionality' and
-    'spellchecker_languages' parameters by default. The first is derived from
-    the current Django language, the others from the 'content_language'
-    parameter.
+    this widget sets the 'language' and 'directionality' parameters by default.
+    The first is derived from the current Django language, the second from the
+    'content_language' parameter.
     """
 
     def __init__(self, content_language=None, attrs=None, mce_attrs=None):
@@ -165,14 +164,9 @@ def get_language_config(content_language):
             default = ""
         sp_langs.append(f'{default}{" / ".join(names)}={lang}')
 
-    config["spellchecker_languages"] = ",".join(sp_langs)
-
     if content_language in settings.LANGUAGES_BIDI:
         config["directionality"] = "rtl"
     else:
         config["directionality"] = "ltr"
-
-    if tinymce.settings.USE_SPELLCHECKER:
-        config["spellchecker_rpc_url"] = reverse("tinymce-spellcheck")
 
     return config

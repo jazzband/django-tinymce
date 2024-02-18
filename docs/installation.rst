@@ -15,25 +15,11 @@ The django-tinymce application requires a supported `Django`_ version.
 If you use the `django-filebrowser`_ application in your project, the tinymce
 application can use it as a browser when including media.
 
-If you want to use the `spellchecker plugin`_ using the supplied view (no PHP
-needed) you must install the `PyEnchant`_ package and dictionaries for your
-project languages. Note that the Enchant needs a dictionary that exactly
-matches your language codes. For example, a dictionary for code ``'en-us'``
-will not automatically be used for ``'en'``. You can check the availability of
-the Enchant dictionary for the ``'en'`` language code using the following
-Python code::
-
-  import enchant
-  enchant.dict_exists('en')
-
 Note that the documentation will use 'TinyMCE' (capitalized) to refer the
 editor itself and 'django-tinymce' (lower case) to refer to the Django application.
 
 .. _`Django`: https://www.djangoproject.com/download/
 .. _`TinyMCE`: https://www.tiny.cloud/get-tiny/
-.. _`language pack`: https://www.tiny.cloud/get-tiny/language-packages/
-.. _`spellchecker plugin`: https://www.tiny.cloud/docs/plugins/spellchecker/
-.. _`PyEnchant`: https://pyenchant.github.io/pyenchant/install.html
 .. _`django-filebrowser`: https://github.com/sehmaschine/django-filebrowser
 
 Installation
@@ -131,8 +117,8 @@ file.
         "theme": "silver",
         "height": 500,
         "menubar": False,
-        "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
-        "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+        "plugins": "advlist,autolink,lists,link,image,charmap,preview,anchor,"
+        "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,"
         "code,help,wordcount",
         "toolbar": "undo redo | formatselect | "
         "bold italic backcolor | alignleft aligncenter "
@@ -140,11 +126,6 @@ file.
         "removeformat | help",
     }
 
-
-``TINYMCE_SPELLCHECKER`` (default: ``False``)
-  Whether to use the spell checker through the supplied view. You must add
-  ``spellchecker`` to the TinyMCE plugin list yourself, it is not added
-  automatically.
 
 ``TINYMCE_COMPRESSOR`` (default: ``False``)
   Whether to use the TinyMCE compressor, which gzips all Javascript files into
@@ -166,17 +147,17 @@ Example::
       "height": "320px",
       "width": "960px",
       "menubar": "file edit view insert format tools table help",
-      "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
-      "fullscreen insertdatetime media table paste code help wordcount spellchecker",
+      "plugins": "advlist autolink lists link image charmap preview anchor searchreplace visualblocks code "
+      "fullscreen insertdatetime media table code help wordcount",
       "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
       "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
       "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
       "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
       "a11ycheck ltr rtl | showcomments addcomment code",
       "custom_undo_redo_levels": 10,
-      "language": "es_ES",  # To force a specific language instead of the Django current language.
+      "language": "es",  # To force a specific language instead of the Django current language.
+      "browser_spellcheck": True,
   }
-  TINYMCE_SPELLCHECKER = True
   TINYMCE_COMPRESSOR = True
   TINYMCE_EXTRA_MEDIA = {
       'css': {

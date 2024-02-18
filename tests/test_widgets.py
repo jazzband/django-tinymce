@@ -26,9 +26,7 @@ class TestWidgets(SimpleTestCase):
     def test_default_config(self):
         config = get_language_config("en")
         config_ok = {
-            "spellchecker_languages": "+English=en",
             "directionality": "ltr",
-            "spellchecker_rpc_url": "/tinymce/spellchecker/",
         }
         self.assertEqual(config, config_ok)
 
@@ -37,17 +35,11 @@ class TestWidgets(SimpleTestCase):
         with override(None):
             config = widget.get_mce_config(attrs={"id": "id"})
             self.assertNotIn("language", config.keys())
-            self.assertEqual(config["spellchecker_languages"], "+English=en")
 
     @override_settings(LANGUAGES_BIDI=["en"])
     def test_default_config_rtl(self):
         config = get_language_config("en")
-        config_ok = {
-            "spellchecker_languages": "+English=en",
-            "directionality": "rtl",
-            "spellchecker_rpc_url": "/tinymce/spellchecker/",
-        }
-        self.assertEqual(config, config_ok)
+        self.assertEqual(config["directionality"], "rtl")
 
     def test_config_from_language_code(self):
         langs = [
@@ -85,25 +77,16 @@ class TestWidgets(SimpleTestCase):
         """language in DEFAULT_CONFIG has priority over current Django language."""
         widget = TinyMCE()
         orig_config = tinymce.settings.DEFAULT_CONFIG
-        with patch.dict(tinymce.settings.DEFAULT_CONFIG, {**orig_config, "language": "es_ES"}):
+        with patch.dict(tinymce.settings.DEFAULT_CONFIG, {**orig_config, "language": "es"}):
             config = widget.get_mce_config(attrs={"id": "id"})
-            self.assertEqual(config["language"], "es_ES")
+            self.assertEqual(config["language"], "es")
 
     def test_mce_attrs_language_priority(self):
         widget = TinyMCE(mce_attrs={"language": "ru"})
         orig_config = tinymce.settings.DEFAULT_CONFIG
-        with patch.dict(tinymce.settings.DEFAULT_CONFIG, {**orig_config, "language": "es_ES"}):
+        with patch.dict(tinymce.settings.DEFAULT_CONFIG, {**orig_config, "language": "es"}):
             config = widget.get_mce_config(attrs={"id": "id"})
             self.assertEqual(config["language"], "ru")
-
-    def test_content_language(self):
-        config = get_language_config("ru-ru")
-        config_ok = {
-            "spellchecker_languages": "English=en",
-            "directionality": "ltr",
-            "spellchecker_rpc_url": "/tinymce/spellchecker/",
-        }
-        self.assertEqual(config, config_ok)
 
     def test_tinymce_widget(self):
         widget = TinyMCE()

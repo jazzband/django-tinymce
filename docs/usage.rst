@@ -46,11 +46,11 @@ The tinymce application adds one TinyMCE configuration option that can be set
 using ``mce_attrs`` (it is not useful as a default configuration):
 
 ``content_language`` (default: ``django.utils.translation.get_language_code()``)
-  The language of the widget content. Will be used to set the ``language``,
-  ``directionality`` and ``spellchecker_languages`` configuration options of
-  the TinyMCE editor. It may be different from the interface language, which
-  defaults to the current Django language and can be changed using the
-  ``language`` configuration option in ``mce_attrs``)
+  The language of the widget content. Will be used to set the ``language`` and
+  ``directionality`` configuration options of the TinyMCE editor. It may be
+  different from the interface language, which defaults to the current Django
+  language and can be changed using the ``language`` configuration option in
+  ``mce_attrs``)
 
 Templates
 ^^^^^^^^^
@@ -119,11 +119,9 @@ Example::
   tinyMCE.init({
       mode: "textareas",
       theme: "silver",
-      plugins: "spellchecker,directionality,paste,searchreplace",
+      plugins: "directionality,searchreplace",
       language: "{{ language }}",
       directionality: "{{ directionality }}",
-      spellchecker_languages : "{{ spellchecker_languages }}",
-      spellchecker_rpc_url : "{{ spellchecker_rpc_url }}"
   });
 
 This example also shows the variables you can use in the template. The language
