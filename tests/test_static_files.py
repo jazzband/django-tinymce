@@ -19,4 +19,4 @@ class TestStaticFiles(SimpleTestCase):
             STATICFILES_STORAGE="django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
         ):
             result = call_command("collectstatic", "--no-input")
-            self.assertRegexpMatches(result, r"\d+ static files copied")
+            self.assertRegex(result, r"\d+ static files copied")
