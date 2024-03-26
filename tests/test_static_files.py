@@ -13,10 +13,10 @@ class TestStaticFiles(SimpleTestCase):
         .map files can cause this to fail if the static
         files refer to them (GH issue #460)
         """
-        temp_dir = tempfile.mkdtemp()
-        with self.settings(
-            STATIC_ROOT=temp_dir,
-            STATICFILES_STORAGE="django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
-        ):
-            result = call_command("collectstatic", "--no-input")
-            self.assertRegex(result, r"\d+ static files copied")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            with self.settings(
+                STATIC_ROOT=temp_dir,
+                STATICFILES_STORAGE="django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
+            ):
+                result = call_command("collectstatic", "--no-input")
+                self.assertRegex(result, r"\d+ static files copied")
