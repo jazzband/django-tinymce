@@ -3,6 +3,8 @@ django-tinymce
 
 **django-tinymce** is a Django application that contains a widget to render a form field as a TinyMCE editor.
 
+It supports Python 3.8+ and Django 3.2 to 5.0. Using TinyMCE 6.8.3.
+
 .. image:: https://jazzband.co/static/img/badge.svg
         :target: https://jazzband.co/
         :alt: Jazzband
@@ -67,15 +69,6 @@ In your code:
         content = HTMLField()
 
 **django-tinymce** uses staticfiles so everything should work as expected, different use cases (like using widget instead of HTMLField) and other stuff is available in documentation.
-
-Releases
-========
-
-Latest release is 3.7.1. It supports Python 3.8+ and Django 3.2 to 5.0.
-
-Using TinyMCE 6.8.3.
-
-Previous releases can be found on github, but they are no longer maintained.
 
 Documentation
 =============

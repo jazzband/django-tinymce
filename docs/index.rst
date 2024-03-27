@@ -13,7 +13,7 @@ Features:
   * Integration with `django-filebrowser`_.
 
 The django-tinymce code is licensed under the `MIT License`_, the same licence
-as the TinyMCE editor itself. See the ``LICENSE.txt`` file in the distribution.
+as the TinyMCE 6 editor itself. See the ``LICENSE.txt`` file in the distribution.
 
 Starting with django-tinymce v1.5.1 TinyMCE editor is bundled with django-tinymce to enable easy installation and usage.
 
