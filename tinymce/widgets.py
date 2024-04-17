@@ -16,7 +16,7 @@ from django.contrib.admin import widgets as admin_widgets
 from django.core.serializers.json import DjangoJSONEncoder
 from django.forms.utils import flatatt
 from django.urls import reverse
-from django.utils.html import escape
+from django.utils.html import escape, format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language, gettext as _, to_locale
 
@@ -113,6 +113,18 @@ class TinyMCE(forms.Textarea):
         return forms.Media(css=css, js=js)
 
     media = property(_media)
+
+    def _render_js(self):
+        revision_parameter = tinymce.settings.DEFAULT_CONFIG.get('cache_suffix', '')
+
+        return [
+            format_html(
+                '<script src="{}{}"></script>',
+                (self.absolute_path(path)), revision_parameter)
+            for path in self._js
+        ]
+
+    forms.widgets.Media.render_js = _render_js
 
 
 class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
