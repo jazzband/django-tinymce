@@ -115,12 +115,12 @@ class TinyMCE(forms.Textarea):
     media = property(_media)
 
     def _render_js(self):
-        revision_parameter = tinymce.settings.DEFAULT_CONFIG.get('cache_suffix', '')
+        revision_parameter = tinymce.settings.DEFAULT_CONFIG.get("cache_suffix", "")
 
         return [
             format_html(
-                '<script src="{}{}"></script>',
-                (self.absolute_path(path)), revision_parameter)
+                '<script src="{}{}"></script>', (self.absolute_path(path)), revision_parameter
+            )
             for path in self._js
         ]
 
