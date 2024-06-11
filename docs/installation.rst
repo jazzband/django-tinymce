@@ -120,7 +120,7 @@ file.
         "plugins": "advlist,autolink,lists,link,image,charmap,preview,anchor,"
         "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,"
         "code,help,wordcount",
-        "toolbar": "undo redo | formatselect | "
+        "toolbar": "undo redo | blocks | "
         "bold italic backcolor | alignleft aligncenter "
         "alignright alignjustify | bullist numlist outdent indent | "
         "removeformat | help",
@@ -149,7 +149,7 @@ Example::
       "menubar": "file edit view insert format tools table help",
       "plugins": "advlist autolink lists link image charmap preview anchor searchreplace visualblocks code "
       "fullscreen insertdatetime media table code help wordcount",
-      "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+      "toolbar": "undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft "
       "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
       "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
       "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "

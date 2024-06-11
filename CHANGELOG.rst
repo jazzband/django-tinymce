@@ -3,6 +3,12 @@ Changelog
 
 This document describes changes between each past release.
 
+Unreleased
+==========
+
+- Renamed toolbar elements (namely ``formatselect`` is now ``blocks``) to follow
+  TinyMCE 6 renames (#470).
+
 4.0.0 (2024-03-27)
 ==================
 
