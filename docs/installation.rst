@@ -148,12 +148,11 @@ Example::
       "width": "960px",
       "menubar": "file edit view insert format tools table help",
       "plugins": "advlist autolink lists link image charmap preview anchor searchreplace visualblocks code "
-      "fullscreen insertdatetime media table code help wordcount",
+      "codesample emoticons fullscreen insertdatetime media table code help wordcount save directionality",
       "toolbar": "undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft "
-      "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
-      "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
-      "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
-      "a11ycheck ltr rtl | showcomments addcomment code",
+      "aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor "
+      "backcolor removeformat | pagebreak | charmap emoticons | "
+      "fullscreen  preview save print | image media link anchor codesample | ltr rtl | code",
       "custom_undo_redo_levels": 10,
       "language": "es",  # To force a specific language instead of the Django current language.
       "browser_spellcheck": True,
