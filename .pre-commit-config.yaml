@@ -3,7 +3,7 @@
 exclude: '^tinymce/(static/tinymce|media/tiny_mce|static/.*min.js$)'
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-toml
       - id: check-added-large-files
@@ -15,7 +15,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/psf/black
-    rev: 24.1.1
+    rev: 24.4.2
     hooks:
       - id: black
         args: [--exclude=static]
@@ -32,7 +32,7 @@ repos:
       - toml
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
+    rev: 7.1.0
     hooks:
     -   id: flake8
         args: [--max-line-length=110]
