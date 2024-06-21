@@ -3,8 +3,8 @@ Changelog
 
 This document describes changes between each past release.
 
-Unreleased
-==========
+4.0.1 (2024-06-21)
+==================
 
 - Upgrade embedded TinyMCE from 6.8.3 to 6.8.4
 - Renamed toolbar elements (namely ``formatselect`` is now ``blocks``) to follow
