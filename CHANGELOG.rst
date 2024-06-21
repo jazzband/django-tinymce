@@ -6,6 +6,7 @@ This document describes changes between each past release.
 Unreleased
 ==========
 
+- Upgrade embedded TinyMCE from 6.8.3 to 6.8.4
 - Renamed toolbar elements (namely ``formatselect`` is now ``blocks``) to follow
   TinyMCE 6 renames. Also removed from the docs examples some buttons only
   available through paid subscriptions (#470).
