@@ -8,9 +8,16 @@ from django.http import HttpResponse
 from django.shortcuts import render as render_to_response
 from django.shortcuts import render
 from django.utils.datastructures import MultiValueDictKeyError
-from django.utils.encoding import force_text
+try:
+    from django.utils.encoding import force_str as force_text
+except ImportError:
+    from django.utils.encoding import force_text # Django 3 fallback
 from django.template import RequestContext
-from django.utils.translation import ugettext as _
+try:
+    from django.utils.translation import gettext as _
+except ImportError:
+    from django.utils.translation import ugettext as _ # Django 3 fallback
+
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 
