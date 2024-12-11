@@ -3,6 +3,10 @@ Changelog
 
 This document describes changes between each past release.
 
+2.7.0 (2024-12-10)
+==================
+
+- Compatibility with Django 4
 
 2.6.0 (2017-01-23)
 ==================
