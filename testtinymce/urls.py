@@ -5,7 +5,8 @@ from django.conf.urls import include
 try:
     from django.urls import re_path as url, path
 except ImportError:
-    from django.conf.urls import url, path
+    from django.conf.urls import url
+    from django.urls import path
 from django.views.static import serve
 
 import filebrowser.urls
