@@ -3,8 +3,8 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.urls import reverse
 
-from tests.testapp.models import TestInline, TestPage
-from tinymce.widgets import TinyMCE
+from tests.testapp.models import TestInline, TestModel, TestPage
+from tinymce.widgets import AdminTinyMCE
 
 
 class TinyMCETestInlineAdmin(admin.StackedInline):
@@ -14,7 +14,7 @@ class TinyMCETestInlineAdmin(admin.StackedInline):
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name in ("content1", "content2"):
             return db_field.formfield(
-                widget=TinyMCE(
+                widget=AdminTinyMCE(
                     attrs={"cols": 80, "rows": 30},
                     mce_attrs={"external_link_list_url": reverse("tinymce-linklist")},
                 )
@@ -26,7 +26,7 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name == "content":
             return db_field.formfield(
-                widget=TinyMCE(
+                widget=AdminTinyMCE(
                     attrs={"cols": 80, "rows": 30},
                     mce_attrs={"external_link_list_url": reverse("tinymce-linklist")},
                 )
@@ -40,7 +40,7 @@ class TinyMCETestPageAdmin(admin.ModelAdmin):
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name in ("content1", "content2"):
             return db_field.formfield(
-                widget=TinyMCE(
+                widget=AdminTinyMCE(
                     attrs={"cols": 80, "rows": 30},
                     mce_attrs={"external_link_list_url": reverse("tinymce-linklist")},
                 )
@@ -51,3 +51,4 @@ class TinyMCETestPageAdmin(admin.ModelAdmin):
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
 admin.site.register(TestPage, TinyMCETestPageAdmin)
+admin.site.register(TestModel)
