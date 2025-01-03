@@ -1,0 +1,15 @@
+/*
+Workaround for the following rule defined in
+django/contrib/admin/static/admin/css/responsive.css (which is
+unsuitable for textareas used by TinyMCE internally):
+
+@media (max-width: 1024px) {
+    textarea {
+        max-width: 100%;
+        max-height: 120px;
+    }
+}
+*/
+.tox .tox-textarea-wrap .tox-textarea {
+    max-height: none;
+}
