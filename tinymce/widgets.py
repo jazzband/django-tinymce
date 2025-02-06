@@ -116,7 +116,13 @@ class TinyMCE(forms.Textarea):
 
 
 class AdminTinyMCE(TinyMCE, admin_widgets.AdminTextareaWidget):
-    pass
+    def _media(self):
+        css = {
+            "all": ["django_tinymce/admin_tinymce.css"],
+        }
+        return forms.Media(css=css) + super().media
+
+    media = property(_media)
 
 
 def get_language_from_django():

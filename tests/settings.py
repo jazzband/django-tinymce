@@ -84,7 +84,7 @@ TINYMCE_DEFAULT_CONFIG = {
     "toolbar": "undo redo | blocks | "
     "bold italic backcolor | alignleft aligncenter "
     "alignright alignjustify | bullist numlist outdent indent | "
-    "removeformat | help",
+    "removeformat | code | help",
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
