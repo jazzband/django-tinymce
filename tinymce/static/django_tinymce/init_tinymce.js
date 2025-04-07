@@ -17,6 +17,7 @@
         'paste_preprocess',
         'setup',
         'urlconverter_callback',
+        'media_url_resolver',
       ];
       fns.forEach((fn_name) => {
         if (typeof mce_conf[fn_name] != 'undefined') {
