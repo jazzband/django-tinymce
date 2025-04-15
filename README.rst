@@ -3,7 +3,7 @@ django-tinymce
 
 **django-tinymce** is a Django application that contains a widget to render a form field as a TinyMCE editor.
 
-It supports Python 3.9+ and Django 4.2 to 5.2. Using TinyMCE 6.8.4.
+It supports Python 3.9+ and Django 4.2 to 5.2. Using TinyMCE 7.8.0.
 
 .. image:: https://jazzband.co/static/img/badge.svg
         :target: https://jazzband.co/
