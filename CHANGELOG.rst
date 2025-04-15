@@ -3,6 +3,13 @@ Changelog
 
 This document describes changes between each past release.
 
+5.0.0 (unreleased)
+==================
+
+- Drop support for Django 3.2.
+- Add support for Django 5.1 and 5.2.
+- Drop support for Python 3.8 and add support for Python 3.13.
+
 4.0.1 (2024-06-21)
 ==================
 
