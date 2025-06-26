@@ -6,7 +6,6 @@ The application can enable TinyMCE for one form field using the ``widget``
 keyword argument of ``Field`` constructors or for all textareas on a page using
 a view.
 
-
 .. _widget:
 
 Using the widget
@@ -22,15 +21,15 @@ The TinyMCE widget can be enabled by setting it as the widget for a formfield.
 For example, to use a nice big TinyMCE widget for the content field of a
 flatpage form you could use the following code::
 
-  from django import forms
-  from django.contrib.flatpages.models import FlatPage
-  from tinymce.widgets import TinyMCE
+    from django import forms
+    from django.contrib.flatpages.models import FlatPage
+    from tinymce.widgets import TinyMCE
 
-  class FlatPageForm(forms.ModelForm):
+    class FlatPageForm(forms.ModelForm):
 
-      class Meta:
-          model = FlatPage
-          widgets = {'content': TinyMCE(attrs={'cols': 80, 'rows': 30})}
+        class Meta:
+            model = FlatPage
+            widgets = {'content': TinyMCE(attrs={'cols': 80, 'rows': 30})}
 
 The widget accepts the following extra keyword argument:
 
@@ -50,7 +49,7 @@ using ``mce_attrs`` (it is not useful as a default configuration):
   ``directionality`` configuration options of the TinyMCE editor. It may be
   different from the interface language, which defaults to the current Django
   language and can be changed using the ``language`` configuration option in
-  ``mce_attrs``)
+  ``mce_attrs``.
 
 Templates
 ^^^^^^^^^
@@ -61,10 +60,10 @@ just using tinymce in admin forms then you are done. In your own templates
 containing a TinyMCE widget you must add the following to the HTML ``HEAD``
 section (assuming you named your form 'form')::
 
-  <head>
-      ...
-      {{ form.media }}
-  </head>
+    <head>
+        ...
+        {{ form.media }}
+    </head>
 
 See also `the section of form media`_ in the Django documentation.
 
@@ -78,11 +77,11 @@ for storing HTML. It uses the TinyMCE widget to render its form field. In this
 example, the admin will render the ``my_field`` field using the TinyMCE
 widget::
 
-  from django.db import models
-  from tinymce import models as tinymce_models
+    from django.db import models
+    from tinymce import models as tinymce_models
 
-  class MyModel(models.Model):
-      my_field = tinymce_models.HTMLField()
+    class MyModel(models.Model):
+        my_field = tinymce_models.HTMLField()
 
 In all other regards, ``HTMLField`` behaves just like the standard Django
 ``TextField`` field type.
@@ -95,16 +94,16 @@ If you cannot or will not change the widget on a form you can also use the
 TinyMCE editors. On the template of the page, add the following lines to the
 ``HEAD`` element::
 
-  <script src="{{ STATIC_URL }}js/tiny_mce/tiny_mce.js"></script>
-  <script src="{% url "tinymce-js" "NAME" %}"></script>
+    <script src="{{ STATIC_URL }}js/tiny_mce/tiny_mce.js"></script>
+    <script src="{% url "tinymce-js" "NAME" %}"></script>
 
 The use of ``STATIC_URL`` needs the
 ``django.core.context_processors.static`` context processors.
 
-You may want to use``{% static %}`` instead like::
+You may want to use ``{% static %}`` instead like::
 
-  <script src="{% static "js/tiny_mce/tiny_mce.js" %}"></script>
-  <script src="{% url "tinymce-js" "NAME" %}"></script>
+    <script src="{% static "js/tiny_mce/tiny_mce.js" %}"></script>
+    <script src="{% url "tinymce-js" "NAME" %}"></script>
 
 Be careful that some ``STATICFILES_STORAGE`` will modify your
 ``tiny_mce.js`` file name and your file will fail to load.
@@ -116,113 +115,74 @@ placed in the template path as ``NAME/tinymce_textareas.js`` or
 
 Example::
 
-  tinyMCE.init({
-      mode: "textareas",
-      theme: "silver",
-      plugins: "directionality,searchreplace",
-      language: "{{ language }}",
-      directionality: "{{ directionality }}",
-  });
+    tinyMCE.init({
+        mode: "textareas",
+        theme: "silver",
+        plugins: "directionality,searchreplace",
+        language: "{{ language }}",
+        directionality: "{{ directionality }}",
+    });
 
 This example also shows the variables you can use in the template. The language
 variables are based on the current Django language. If the content language is
 different from the interface language use the ``tinymce-js-lang`` view which
 takes a language (``LANG_CODE``) argument::
 
-  <script src="{% url "tinymce-js-lang" "NAME","LANG_CODE" %}"></script>
-
+    <script src="{% url "tinymce-js-lang" "NAME","LANG_CODE" %}"></script>
 
 External link and image lists
------------------------------
+------------------------------
 
 The TinyMCE link and image dialogs can be enhanced with a predefined list of
-links_ and images_. These entries are filled using a variable loaded from an
-external Javascript location. The tinymce application can serve these lists for
-you.
+links_ and images_. These entries are configured using the ``link_list`` and
+``image_list`` options. These options must point to a URL that returns JSON
+data.
 
 .. _links: https://www.tiny.cloud/docs/plugins/link/#link_list
 .. _images: https://www.tiny.cloud/docs/plugins/image/#image_list
 
-Creating external link and image views
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example JSON response
+^^^^^^^^^^^^^^^^^^^^^
 
-To use a predefined link list, add the ``external_link_list_url`` option to the
-``mce_attrs`` keyword argument to the widget (or the template if you use the
-view). The value is a URL that points to a view that fills a list of 2-tuples
-(*name*, *URL*) and calls ``tinymce.views.render_to_link_list``. For example:
+Each URL must return a JSON array of objects with ``title`` and ``value`` fields, for example::
 
-Create the widget::
+    [
+      {"title": "My Page 1", "value": "https://example.com/page1"},
+      {"title": "My Page 2", "value": "https://example.com/page2"}
+    ]
 
-  from django import forms
-  from django.urls import reverse
-  from tinymce.widgets import TinyMCE
+Example Usage
+^^^^^^^^^^^^^
 
-  class SomeForm(forms.Form):
-      somefield = forms.CharField(widget=TinyMCE(mce_attrs={'external_link_list_url': reverse('someviewname')}))
+To use a predefined link list::
 
-Create the view::
+    from django import forms
+    from django.urls import reverse
+    from tinymce.widgets import TinyMCE
 
-  from tinymce.views import render_to_link_list
+    class SomeForm(forms.Form):
+        somefield = forms.CharField(
+            widget=TinyMCE(mce_attrs={'link_list': reverse('someviewname')})
+        )
 
-  def someview(request):
-      objects = ...
-      link_list = [(unicode(obj), obj.get_absolute_url()) for obj in objects]
-      return render_to_link_list(link_list)
+Example view for links::
 
-Finally, include the view in your URLconf.
+    from django.http import JsonResponse
 
-Image lists work exactly the same way, just use the TinyMCE
-``external_image_list_url`` configuration option and call
-``tinymce.views.render_to_image_list`` from your view.
+    def someview(request):
+        objects = ...
+        link_list = [{"title": str(obj), "value": obj.get_absolute_url()} for obj in objects]
+        return JsonResponse(link_list, safe=False)
 
-The ``flatpages_link_list`` view
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Similarly, for images::
 
-As an example, the tinymce application contains a predefined view that lists
-all ``django.contrib.flatpages`` objects:
-``tinymce.views.flatpages_link_list``. If you want to use a TinyMCE widget for
-the flatpages ``content`` field with a predefined list of other flatpages in
-the link dialog you could use something like this::
+    somefield = forms.CharField(
+        widget=TinyMCE(mce_attrs={'image_list': reverse('someimageview')})
+    )
 
-  from django import forms
-  from django.contrib.flatpages.admin import FlatPageAdmin
-  from django.contrib.flatpages.models import FlatPage
-  from django.urls import reverse
-  from tinymce.widgets import TinyMCE
+Legacy Options
+^^^^^^^^^^^^^^
 
-  class TinyMCEFlatPageAdmin(FlatPageAdmin):
-      def formfield_for_dbfield(self, db_field, **kwargs):
-          if db_field.name == 'content':
-              return db_field.formfield(widget=TinyMCE(
-                  attrs={'cols': 80, 'rows': 30},
-                  mce_attrs={'external_link_list_url': reverse('tinymce-linklist')},
-              ))
-          return super().formfield_for_dbfield(db_field, **kwargs)
+Previous versions of TinyMCE used ``external_link_list_url`` and ``external_image_list_url``, and required using ``tinymce.views.render_to_link_list`` or ``tinymce.views.render_to_image_list``. These are no longer supported by recent TinyMCE versions and will not work.
 
-  somesite.register(FlatPage, TinyMCEFlatPageAdmin)
-
-If you want to enable this for the default admin site
-(``django.contrib.admin.site``) you will need to unregister the original
-ModelAdmin class for flatpages first::
-
-  from django.contrib import admin
-
-  admin.site.unregister(FlatPage)
-  admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
-
-The source contains a `test project`_ that includes this flatpages model admin.
-
-#. Checkout django-tinymce:
-   ``git clone https://github.com/jazzband/django-tinymce.git``
-#. Go to the test project:
-   ``cd django-tinymce/tests``
-#. Copy the ``tiny_mce`` directory from the TinyMCE distribution into
-   ``media/js``
-#. Run ``python manage.py migrate``
-#. Run ``python manage.py createsuperuser``
-#. Run ``python manage.py runserver``
-#. Connect to `http://localhost:8000/admin/`_ and login with the above-created
-   user.
-
-.. _`test project`: https://github.com/jazzband/django-tinymce/tree/master/tests
-.. _`http://localhost:8000/admin/`: http://localhost:8000/admin/
+If you have old code referring to ``external_link_list_url`` or ``external_image_list_url``, you must update it to use ``link_list`` and ``image_list`` as shown above.
