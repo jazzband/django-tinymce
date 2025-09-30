@@ -3,14 +3,19 @@ Changelog
 
 This document describes changes between each past release.
 
-5.0.0 (unreleased)
+5.0.0 (2025-10-21)
 ==================
 
 - Upgrade embedded TinyMCE from 6.8.4 to 7.8.0.
-- Drop support for Django 3.2.
+- Drop support for Django < 4.2.
 - Add support for Django 5.1 and 5.2.
 - Drop support for Python 3.8 and add support for Python 3.13.
 - The ``template`` plugin has been removed in TinyMCE 7.
+- Improved styling of textareas with the AdminTinyMCE widget.
+- If present, a `media_url_resolver` function is evaluated during the JS setup
+  phase.
+- Documentation for `image_list` and `link_list` was improved.
+
 
 4.0.1 (2024-06-21)
 ==================
