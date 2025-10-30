@@ -1,6 +1,10 @@
 'use strict';
 
 {
+  function onEditorInit(editors) {
+    const event = new CustomEvent('tinyMceEditorInit', { detail: editors });
+    document.dispatchEvent(event);
+  }
   function initTinyMCE(el) {
     if (el.closest('.empty-form') === null) {  // Don't do empty inlines
       var mce_conf = JSON.parse(el.dataset.mceConf);
@@ -41,7 +45,9 @@
         tinyMCE_GZ.init(JSON.parse(el.dataset.mceGzConf));
       }
       if (!tinyMCE.get(el.id)) {
-        tinyMCE.init(mce_conf);
+        tinyMCE.init(mce_conf).then(editors => {
+          onEditorInit(editors);
+        });
       }
     }
   }
