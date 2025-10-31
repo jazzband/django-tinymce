@@ -1,6 +1,11 @@
 Changelog
 #########
 
+Unreleased
+==========
+
+- Add `tinyMceEditorInit` and `tinyMceAllEditorsInit` events
+
 This document describes changes between each past release.
 
 5.0.0 (2025-10-21)
