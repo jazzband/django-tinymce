@@ -18,6 +18,9 @@
         'setup',
         'urlconverter_callback',
         'media_url_resolver',
+        'video_template_callback',
+        'iframe_template_callback',
+        'audio_template_callback',
       ];
       fns.forEach((fn_name) => {
         if (typeof mce_conf[fn_name] != 'undefined') {
