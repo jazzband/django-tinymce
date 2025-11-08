@@ -1,7 +1,11 @@
 'use strict';
 
 {
-  function initTinyMCE(el) {
+  function onEditorInit(editor) {
+    const event = new CustomEvent('tinyMceEditorInit', { detail: editor });
+    document.dispatchEvent(event);
+  }
+  async function initTinyMCE(el) {
     if (el.closest('.empty-form') === null) {  // Don't do empty inlines
       var mce_conf = JSON.parse(el.dataset.mceConf);
 
@@ -15,6 +19,7 @@
         'images_upload_handler',
         'paste_postprocess',
         'paste_preprocess',
+        'init_instance_callback',
         'setup',
         'urlconverter_callback',
         'media_url_resolver',
@@ -43,10 +48,19 @@
       if (el.dataset.mceGzConf) {
         tinyMCE_GZ.init(JSON.parse(el.dataset.mceGzConf));
       }
+      // Dispatch per-instance event while preserving user callback
+      const userInitInstanceCallback = mce_conf.init_instance_callback;
+      mce_conf.init_instance_callback = function(editor) {
+        if (typeof userInitInstanceCallback === 'function') {
+          userInitInstanceCallback(editor);
+        }
+        onEditorInit(editor);
+      };
       if (!tinyMCE.get(el.id)) {
-        tinyMCE.init(mce_conf);
+        return await tinyMCE.init(mce_conf);
       }
     }
+    return [];
   }
 
   // Call function fn when the DOM is loaded and ready. If it is already
@@ -59,8 +73,17 @@
     }
   }
 
-  function initializeTinyMCE(element, formsetName) {
-    Array.from(element.querySelectorAll('.tinymce')).forEach(area => initTinyMCE(area));
+  async function initializeTinyMCE(element, formsetName) {
+    const areas = Array.from(element.querySelectorAll('.tinymce'));
+    const initPromises = areas.map(area => initTinyMCE(area));
+
+    const results = await Promise.all(initPromises);
+    const allEditors = results.flat();
+    if (allEditors.length) {
+      const event = new CustomEvent('tinyMceAllEditorsInit', { detail: allEditors });
+      document.dispatchEvent(event);
+    }
+    return allEditors;
   }
 
   ready(function() {

@@ -6,7 +6,9 @@ This document describes changes between each past release.
 Unreleased
 ==========
 
+- Add `tinyMceEditorInit` and `tinyMceAllEditorsInit` events
 - Add media template callbacks to TinyMCE function parsing
+
 
 5.0.0 (2025-10-21)
 ==================
