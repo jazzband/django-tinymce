@@ -55,7 +55,7 @@ class TinyMCE(forms.Textarea):
         mce_config = tinymce.settings.DEFAULT_CONFIG.copy()
         if "language" not in mce_config:
             mce_config["language"] = get_language_from_django()
-        if mce_config["language"] == "en_US":
+        if mce_config["language"] in ["en_GB", "en_US"]:
             del mce_config["language"]
         else:
             mce_config["language"] = match_language_with_tinymce(mce_config["language"])
