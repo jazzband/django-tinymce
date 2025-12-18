@@ -124,6 +124,25 @@ class TestWidgets(SimpleTestCase):
                 ],
             )
 
+    def test_widget_media_applied_cache_suffix(self):
+        tinymce_version = "6.8"
+
+        orig_config = tinymce.settings.DEFAULT_CONFIG
+        with patch.dict(
+            tinymce.settings.DEFAULT_CONFIG,
+            {**orig_config, "cache_suffix": f"?ver={tinymce_version}"},
+        ):
+            widget = TinyMCE()
+
+            self.assertEqual(list(widget.media.render_css()), [])
+            self.assertEqual(
+                widget.media.render_js(),
+                [
+                    f'<script src="/tinymce/compressor/?ver={tinymce_version}"></script>',
+                    f'<script src="/static/django_tinymce/init_tinymce.js?ver={tinymce_version}"></script>',
+                ],
+            )
+
     def test_tinymce_widget_required(self):
         """
         The TinyMCE widget should never output the required HTML attribute, even
