@@ -5,6 +5,7 @@
 This TinyMCE widget was copied and extended from this code by John D'Agostino:
 http://code.djangoproject.com/wiki/CustomWidgetsTinyMCE
 """
+
 from collections import OrderedDict
 import json
 from pathlib import Path
