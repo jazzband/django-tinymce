@@ -62,13 +62,16 @@ class TestWidgets(SimpleTestCase):
                 config = widget.get_mce_config(attrs={"id": "id"})
                 self.assertEqual(config["language"], "en_US")
 
-    def test_no_language_for_en_US(self):
+    def test_no_language_for_en(self):
         """
-        en_US shouldn't set 'language'
+        en_US nor en_GB shouldn't set 'language'
         (https://github.com/tinymce/tinymce/issues/4228)
         """
         widget = TinyMCE()
         with override_settings(LANGUAGE_CODE="en-us"):
+            config = widget.get_mce_config(attrs={"id": "id"})
+            self.assertNotIn("language", config.keys())
+        with override_settings(LANGUAGE_CODE="en-gb"):
             config = widget.get_mce_config(attrs={"id": "id"})
             self.assertNotIn("language", config.keys())
         self.assertEqual(config["directionality"], "ltr")
